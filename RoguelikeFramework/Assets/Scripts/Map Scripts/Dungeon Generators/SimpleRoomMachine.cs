@@ -21,7 +21,7 @@ public class SimpleRoomMachine : Machine
             current.Setup();
 
             //Set it's position randomly, keeping it in bounds.
-            Vector2Int placeBounds = this.size - current.size;
+            Vector2Int placeBounds = this.size - current.size - new Vector2Int(1, 1);
             Vector2Int newStart = new Vector2Int(Random.Range(0, placeBounds.x), Random.Range(0, placeBounds.y));
             newStart += this.start;
             current.SetPosition(newStart);
