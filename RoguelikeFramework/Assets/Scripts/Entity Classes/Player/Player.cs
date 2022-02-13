@@ -50,7 +50,7 @@ public class Player : Monster
     public override void Die()
     {
         base.Die();
-        if (resources.health == 0)
+        if (resources.health <= 0)
         {
             Debug.Log("Game should be over! This message should be replaced by loading an exit level instead.");
         }
