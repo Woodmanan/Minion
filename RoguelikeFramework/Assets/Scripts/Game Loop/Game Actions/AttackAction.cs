@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackAction : GameAction
 {
+    // Caller is the attacker
     public Monster target;
     public List<Weapon> primaryWeapons = new List<Weapon>();
     public List<Weapon> secondaryWeapons = new List<Weapon>();
