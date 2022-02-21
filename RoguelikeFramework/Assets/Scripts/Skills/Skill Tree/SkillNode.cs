@@ -9,6 +9,7 @@ public class SkillNode : Node
 	[Input] public bool canBePurchased;
 	[Input] public Skill[] skills;
 	[Input] public int skillLevel;
+	[Input] public SkillFlag skillFlag;
 	[Output] public bool hasBeenPurchased;
 
 	// Use this for initialization
@@ -31,7 +32,7 @@ public class SkillNode : Node
 		}
 		else if (port.fieldName == "skills") return skills;
 		else if (port.fieldName == "skillLevel") return skillLevel;
-		else if (port.fieldName == "hasBeenPurchased") return hasBeenPurchased;
+		else if (port.fieldName == "hasBeenPurchased") return skillLevel > 0;
 		else return null; // Crisis mode, everything is broken, this should never happen
 	}
 
@@ -40,9 +41,27 @@ public class SkillNode : Node
 		return IsConnectedTo(port);
 	}
 
-	public Object GetCurrentSkill()
+	public Skill GetCurrentSkill()
 	{
 		if (skillLevel > skills.Length) return null;
 		else return skills[skillLevel];
 	}
+
+	public void Purchase()
+    {
+		Skill skill = GetCurrentSkill();
+		if (skill != null)
+		{
+			// apply skill here
+			skillLevel++;
+		}
+	}
+
+	[System.Flags]
+	public enum SkillFlag
+    {
+		Tutorial	= (1 << 0),
+		Warrior		= (1 << 1),
+		Mage		= (1 << 2)
+    }
 }

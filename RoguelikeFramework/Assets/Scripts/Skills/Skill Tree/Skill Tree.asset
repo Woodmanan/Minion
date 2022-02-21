@@ -20,6 +20,7 @@ MonoBehaviour:
     - skills
     - skillLevel
     - canBePurchased
+    - skillFlag
     values:
     - _fieldName: hasBeenPurchased
       _node: {fileID: -6420434811753366377}
@@ -63,11 +64,21 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: -6420434811753366377}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   canBePurchased: 0
   skills:
   - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
   - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
   skillLevel: 0
+  skillFlag: 0
   hasBeenPurchased: 0
 --- !u!114 &-6382712622367831547
 MonoBehaviour:
@@ -89,6 +100,7 @@ MonoBehaviour:
     - skills
     - skillLevel
     - hasBeenPurchased
+    - skillFlag
     values:
     - _fieldName: canBePurchased
       _node: {fileID: -6382712622367831547}
@@ -132,10 +144,20 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: -6382712622367831547}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   canBePurchased: 0
   skills:
   - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
   skillLevel: 0
+  skillFlag: 0
   hasBeenPurchased: 0
 --- !u!114 &-4586400737393937805
 MonoBehaviour:
@@ -157,6 +179,7 @@ MonoBehaviour:
     - skills
     - skillLevel
     - hasBeenPurchased
+    - skillFlag
     values:
     - _fieldName: canBePurchased
       _node: {fileID: -4586400737393937805}
@@ -200,10 +223,20 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: -4586400737393937805}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   canBePurchased: 0
   skills:
   - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
   skillLevel: 0
+  skillFlag: 0
   hasBeenPurchased: 0
 --- !u!114 &-765389027919451268
 MonoBehaviour:
@@ -225,6 +258,7 @@ MonoBehaviour:
     - skills
     - skillLevel
     - hasBeenPurchased
+    - skillFlag
     values:
     - _fieldName: canBePurchased
       _node: {fileID: -765389027919451268}
@@ -265,10 +299,20 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: -765389027919451268}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   canBePurchased: 1
   skills:
   - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
   skillLevel: 0
+  skillFlag: 0
   hasBeenPurchased: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -308,6 +352,7 @@ MonoBehaviour:
     - skills
     - skillLevel
     - canBePurchased
+    - skillFlag
     values:
     - _fieldName: hasBeenPurchased
       _node: {fileID: 7761639871191831317}
@@ -348,8 +393,18 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: 7761639871191831317}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   canBePurchased: 1
   skills:
   - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
   skillLevel: 0
+  skillFlag: 0
   hasBeenPurchased: 0
