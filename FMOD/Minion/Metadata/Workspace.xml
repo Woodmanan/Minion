@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="Workspace" id="{95bd0afb-5611-4c9e-989d-ca105b25fe85}">
+		<property name="builtBanksOutputDirectory">
+			<value>../../RoguelikeFramework/Assets/FMOD</value>
+		</property>
+		<relationship name="masterEventFolder">
+			<destination>{e2820bcd-97fc-4c28-92d5-91a86c305732}</destination>
+		</relationship>
+		<relationship name="masterTagFolder">
+			<destination>{0101f763-7588-496e-abaf-87b3c0277a86}</destination>
+		</relationship>
+		<relationship name="masterEffectPresetFolder">
+			<destination>{38d1d101-b1e0-4a66-b93b-c96af995b241}</destination>
+		</relationship>
+		<relationship name="masterParameterPresetFolder">
+			<destination>{532b5a6d-6c91-4f03-8ae2-f126bc7ded0f}</destination>
+		</relationship>
+		<relationship name="masterBankFolder">
+			<destination>{af833852-3a12-42f2-a6ae-bbdee7c7eea3}</destination>
+		</relationship>
+		<relationship name="masterSandboxFolder">
+			<destination>{75f7d20e-48fd-4568-9e76-4fc7d89e029c}</destination>
+		</relationship>
+		<relationship name="masterAssetFolder">
+			<destination>{76158cb0-5a10-43e3-9645-5e32c3323f46}</destination>
+		</relationship>
+		<relationship name="mixer">
+			<destination>{49ee4d10-543b-4847-a7ec-9e71dbfeaf0b}</destination>
+		</relationship>
+		<relationship name="profilerSessionFolder">
+			<destination>{b037706c-5617-42d3-8f7f-d8c07f384d83}</destination>
+		</relationship>
+		<relationship name="platforms">
+			<destination>{13c37011-caa6-4f5f-bd28-e71258043f9d}</destination>
+		</relationship>
+	</object>
+</objects>
