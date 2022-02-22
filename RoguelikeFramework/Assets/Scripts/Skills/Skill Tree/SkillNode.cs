@@ -5,7 +5,6 @@ using XNode;
 
 public class SkillNode : Node
 {
-
 	[Input] public bool canBePurchased;
 	[Input] public Skill[] skills;
 	[Input] public int skillLevel;
@@ -24,14 +23,16 @@ public class SkillNode : Node
 	{
 		if (port.fieldName == "canBePurchased")
 		{
+			if (canBePurchased) return true;
 			foreach (bool hasBeenPurchased in GetInputValues("canBePurchased", canBePurchased))
-            {
+			{
 				if (hasBeenPurchased) return true;
-            }
+			}
 			return false;
 		}
 		else if (port.fieldName == "skills") return skills;
 		else if (port.fieldName == "skillLevel") return skillLevel;
+		else if (port.fieldName == "skillFlag") return skillFlag;
 		else if (port.fieldName == "hasBeenPurchased") return skillLevel > 0;
 		else return null; // Crisis mode, everything is broken, this should never happen
 	}
@@ -43,7 +44,7 @@ public class SkillNode : Node
 
 	public Skill GetCurrentSkill()
 	{
-		if (skillLevel > skills.Length) return null;
+		if (skillLevel >= skills.Length) return null;
 		else return skills[skillLevel];
 	}
 

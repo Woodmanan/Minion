@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -152, y: -120}
+  position: {x: -152, y: -136}
   ports:
     keys:
     - hasBeenPurchased
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 88, y: 8}
+  position: {x: 88, y: 24}
   ports:
     keys:
     - canBePurchased
@@ -234,6 +234,8 @@ MonoBehaviour:
       _dynamic: 0
   canBePurchased: 0
   skills:
+  - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
+  - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
   - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
   skillLevel: 0
   skillFlag: 0
@@ -345,7 +347,7 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -376, y: -120}
+  position: {x: -376, y: -136}
   ports:
     keys:
     - hasBeenPurchased
