@@ -6,6 +6,7 @@ using XNode;
 public class SkillNode : Node
 {
 	[Input] public bool canBePurchased;
+	[Input] public bool purchaseAllRootsFirst;
 	[Input] public Skill[] skills;
 	[Input] public int skillLevel;
 	[Input] public SkillFlag skillFlag;
@@ -23,13 +24,16 @@ public class SkillNode : Node
 	{
 		if (port.fieldName == "canBePurchased")
 		{
-			if (canBePurchased) return true;
+			// if (canBePurchased) return true;
 			foreach (bool hasBeenPurchased in GetInputValues("canBePurchased", canBePurchased))
 			{
-				if (hasBeenPurchased) return true;
+				if (purchaseAllRootsFirst && !hasBeenPurchased) return false;
+				else if (!purchaseAllRootsFirst && hasBeenPurchased) return true;
 			}
+			if (purchaseAllRootsFirst) return true;
 			return false;
 		}
+		else if (port.fieldName == "purchaseAllRootsFirst") return purchaseAllRootsFirst;
 		else if (port.fieldName == "skills") return skills;
 		else if (port.fieldName == "skillLevel") return skillLevel;
 		else if (port.fieldName == "skillFlag") return skillFlag;
@@ -41,6 +45,21 @@ public class SkillNode : Node
 	{
 		return IsConnectedTo(port);
 	}
+
+	public List<NodePort> GetAllRoots()
+    {
+		return GetInputPort("canBePurchased").GetConnections();
+	}
+
+	public List<NodePort> GetAllChildren()
+    {
+		return GetOutputPort("hasBeenPurchased").GetConnections();
+    }
+	
+	public bool IsRoot()
+    {
+		return GetInputPort("canBePurchased").ConnectionCount == 0;
+    }
 
 	public Skill GetCurrentSkill()
 	{

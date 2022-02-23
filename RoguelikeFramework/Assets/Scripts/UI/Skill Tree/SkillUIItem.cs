@@ -13,6 +13,8 @@ public class SkillUIItem : MonoBehaviour
     public TextMeshProUGUI desc;
     public Button btn;
     public TextMeshProUGUI count;
+    public RectTransform rootLineAnchor;
+    public RectTransform childLineAnchor;
 
     // Start is called before the first frame update
     void Start()

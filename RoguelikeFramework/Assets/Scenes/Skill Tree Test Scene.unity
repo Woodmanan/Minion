@@ -313,6 +313,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillTree: {fileID: 11400000, guid: e9fcfe7391b16a741ad4c11d432efd9a, type: 2}
   skillUIItem: {fileID: 5405080488723918374, guid: 28c57b74652291d4f85470c6efe6e994, type: 3}
+  resetSkillLevelsOnRestart: 1
+  offset: {x: 320, y: 120}
+  start: {x: 0, y: -150}
+  lineThickness: 10
 --- !u!1 &779538249
 GameObject:
   m_ObjectHideFlags: 0
