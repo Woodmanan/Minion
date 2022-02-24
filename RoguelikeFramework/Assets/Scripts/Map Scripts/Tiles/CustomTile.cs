@@ -19,6 +19,7 @@ public class CustomTile : MonoBehaviour
     private bool setup = false;
 
     public Vector2Int location;
+    public int lightLevel;
     
     //Stuff that will not change a lot, and should not be (too) visible
     [Header("Static elements")] 
@@ -47,7 +48,7 @@ public class CustomTile : MonoBehaviour
     private Color currentColor;
     #endif
 
-    Map map;
+    public Map map;
     
     // Start is called before the first frame update
     void Start()
@@ -146,7 +147,9 @@ public class CustomTile : MonoBehaviour
     {
         if (isVisible)
         {
-            render.color = color;
+            Color torchColor = new Color(1f,0.9f,0.6f,1f);
+            if (lightLevel == 0f) torchColor = Color.white;
+            render.color = color * (torchColor * 0.25f * (3.2f + lightLevel));
             if (render.enabled == false)
             {
                 render.enabled = true;
@@ -155,6 +158,7 @@ public class CustomTile : MonoBehaviour
         else
         {
             //TODO: Item coloring on tiles that are not visible anymore
+            //and account for lighting lol
             if (!isHidden)
             {
                 render.enabled = true;
