@@ -19,6 +19,11 @@ public class ActionController : MonoBehaviour
         selection = DetermineAction();
     }
 
+    public virtual void Setup()
+    {
+
+    }
+
     public virtual IEnumerator DetermineAction()
     {
         Debug.LogWarning("A monster used an ActionController, instead of it's derivative classes!");

@@ -15,7 +15,7 @@ public class RangedAttackAction : AttackAction
     //See GameAction.cs for more information on how this function should work!
     public override IEnumerator TakeAction()
     {
-        //See if we have any weapons actively equipped, or unarmed sltos that can attack
+        //See if we have any weapons actively equipped
         List<EquipmentSlot> slots = caller.equipment.equipmentSlots.FindAll(x => x.active && x.equipped.held[0].type == ItemType.RANGED_WEAPON);
 
         //Do we have any weapons equipped?
@@ -44,8 +44,9 @@ public class RangedAttackAction : AttackAction
             foreach (Weapon w in primaryWeapons)
             {
                 RangedWeapon weapon = (RangedWeapon) w;
-
+                Debug.Log("Right before we try to target?");
                 IEnumerator targeting = caller.controller.DetermineTarget(weapon.targeting, (b) => canFire = b);
+                Debug.Log("Right after we try to target. Canfire is " + canFire);
                 while (targeting.MoveNext())
                 {
                     yield return targeting.Current;
