@@ -15,11 +15,38 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637810574860000000
+  lastModified: 637815753540000000
   FileSizes:
   - Name: Desktop
-    Value: 13664
+    Value: 67328
   Exists: 1
+--- !u!114 &-3220773946456464474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/Mouseover
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/Mouseover
+  Guid:
+    Data1: -161657060
+    Data2: 1325993101
+    Data3: 632803244
+    Data4: 374749654
+  Banks:
+  - {fileID: -3847520494295556954}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 38
 --- !u!114 &-1938003296789447384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,10 +62,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637810574860000000
+  lastModified: 637815753540000000
   FileSizes:
   - Name: Desktop
-    Value: 760
+    Value: 868
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -57,13 +84,42 @@ MonoBehaviour:
   - {fileID: -3847520494295556954}
   EditorEvents:
   - {fileID: 8086859981843155520}
+  - {fileID: -3220773946456464474}
+  - {fileID: 7055765646901955736}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3847520494295556954}
   StringsBanks:
   - {fileID: -1938003296789447384}
-  cacheTime: 637810574860000000
+  cacheTime: 637815753540000000
   cacheVersion: 10
+--- !u!114 &7055765646901955736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/Select
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/Select
+  Guid:
+    Data1: -1424569508
+    Data2: 1116638018
+    Data3: 1531449743
+    Data4: 1802967172
+  Banks:
+  - {fileID: -3847520494295556954}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
 --- !u!114 &8086859981843155520
 MonoBehaviour:
   m_ObjectHideFlags: 0
