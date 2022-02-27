@@ -91,6 +91,9 @@ public class Query
         if (outOf == 0) return 0.0f;
 
         float value = 0;
+
+        if (terms.Count == 0) return 0;
+
         foreach (QueryTerm term in terms)
         {
             value += term.Evaluate(owner, inSight, ability, item);

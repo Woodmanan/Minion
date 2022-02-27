@@ -17,9 +17,19 @@ public class IntNode : FastPriorityQueueNode
 public class MonsterAI : ActionController
 {
     public Query fleeQuery;
-    public Query approachQuery;
+    public Query fightQuery;
 
     public float interactionRange;
+    public bool ranged = false;
+    public int minRange = 0;
+
+    public int intelligence = 2;
+    int currentTries = 0;
+    
+    float loseDistance = 20;
+
+    public Monster lastEnemy;
+
     //The main loop for monster AI! This assumes 
     public override IEnumerator DetermineAction()
     {
@@ -36,6 +46,12 @@ public class MonsterAI : ActionController
 
         FastPriorityQueue<IntNode> choices = new FastPriorityQueue<IntNode>(300);
 
+        if (lastEnemy && (monster.location.GameDistance(lastEnemy.location) > loseDistance || currentTries == 0))
+        {
+            lastEnemy = null;
+            currentTries = 0;
+        }
+
         if (enemies.Count == 0)
         {
             //Standard behavior
@@ -44,17 +60,27 @@ public class MonsterAI : ActionController
             (InteractableTile tile, float interactableCost) = GetInteraction(false, interactionRange);
             choices.Enqueue(new IntNode(1), 1f - interactableCost);
 
+            //2 - Chase someone who we don't see anymore
+            if (lastEnemy && currentTries > 0)
+            {
+                choices.Enqueue(new IntNode(2), 1f - .8f);
+            }
+
             //Else, try to go exploring!
 
-            //3 - Wait
-            choices.Enqueue(new IntNode(3), 1f - .1f);
+            //4 - Wait
+            choices.Enqueue(new IntNode(4), 1f - .1f);
 
             switch (choices.First.value)
             {
                 case 1:
                     nextAction = tile.GetAction();
                     break;
-                case 3:
+                case 2:
+                    nextAction = new PathfindAction(lastEnemy.location);
+                    currentTries--;
+                    break;
+                case 4:
                     nextAction = new WaitAction();
                     break;
                 default:
@@ -75,9 +101,14 @@ public class MonsterAI : ActionController
             //3 - Some offered action
 
             float flee = fleeQuery.Evaluate(monster, monster.view.visibleMonsters, null, null);
-            float approach = approachQuery.Evaluate(monster, monster.view.visibleMonsters, null, null);
+            Debug.Log($"Flee value is {flee}");
+            float approach = fightQuery.Evaluate(monster, monster.view.visibleMonsters, null, null);
+            Debug.Log($"Approach value us {approach}");
+
             (int spellIndex, float spellValue) = (-1, -1);
             if (monster.abilities) (spellIndex, spellValue) = monster.abilities.GetBestAbility();
+            Debug.Log($"I think we should cast spell {spellIndex} with value {spellValue}");
+
             (InteractableTile tile, float interactableCost) = GetInteraction(false, interactionRange);
             
 
@@ -90,11 +121,35 @@ public class MonsterAI : ActionController
             switch (choices.First.value)
             {
                 case 0:
+                    Debug.Log("Fleeing!");
                     nextAction = new FleeAction();
                     break;
                 case 1:
-                    enemies = enemies.OrderBy(x => Vector2Int.Distance(monster.location, x.location)).ToList();
-                    nextAction = new PathfindAction(enemies[0].location);
+                    Debug.Log("Monster chose to attack!");
+                    enemies = enemies.OrderBy(x => monster.location.GameDistance(x.location)).ToList();
+                    int dist = Mathf.RoundToInt(monster.location.GameDistance(enemies[0].location) + .5f);
+                    Debug.Log($"Min range is {minRange}, dist is {dist}");
+                    if (ranged)
+                    {
+                        Debug.Log("Went the ranged path");
+                        if (dist <= minRange)
+                        {
+                            Debug.Log("They are within range");
+                            nextAction = new RangedAttackAction();
+                        }
+                        else
+                        {
+                            Debug.Log("They are not in range.");
+                            nextAction = new PathfindAction(enemies[0].location);
+                        }
+                    }
+                    else
+                    {
+                        nextAction = new PathfindAction(enemies[0].location);
+                    }
+
+                    lastEnemy = enemies[0];
+                    currentTries = intelligence;
                     break;
                 case 2:
                     nextAction = new AbilityAction(spellIndex);
@@ -196,5 +251,22 @@ public class MonsterAI : ActionController
                 setValidityTo(true);
             }
         }
+    }
+
+    public override void Setup()
+    {
+        GetComponent<Equipment>().OnEquipmentAdded += UpdateRanged;
+    }
+
+    void UpdateRanged()
+    {
+        List<EquipmentSlot> slots = GetComponent<Equipment>().equipmentSlots.FindAll(x => x.active && x.equipped.held[0].type == ItemType.RANGED_WEAPON);
+        ranged = slots.Count > 0;
+        if (ranged)
+        {
+            minRange = slots.Min(x => x.equipped.held[0].ranged.targeting.range);
+        }
+
+        Debug.Log("Monster equipped item! Ranged is now " + ranged);
     }
 }

@@ -4326,7 +4326,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1717730535
 Canvas:
   m_ObjectHideFlags: 0
@@ -5390,7 +5390,7 @@ MonoBehaviour:
   msPerFrame: 4
   randomSeed: 0
   seed: 42
-  JITLoading: 0
+  JITLoading: 1
   StartAt: 0
 --- !u!4 &1953941108
 Transform:

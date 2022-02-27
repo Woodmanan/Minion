@@ -84,6 +84,10 @@ public class Monster : MonoBehaviour
 
         connections.OnFullyHealed.BlendInvoke(other?.OnFullyHealed);
 
+        inventory?.Setup();
+        equipment?.Setup();
+        controller?.Setup();
+
         loadout?.Apply(this);
 
         setup = true;
