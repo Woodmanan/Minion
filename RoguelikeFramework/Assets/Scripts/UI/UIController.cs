@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private ItemInspectionPanel inspection;
     [SerializeField] private TargetingPanel targetting;
     [SerializeField] private ConfirmationPanel confirm;
+    [SerializeField] private SkillsPanel skills;
+    [SerializeField] private StatusEffectsDisplay statusDisplay;
     public static bool WindowsOpen
     {
         get { return RogueUIPanel.WindowsOpen; }
@@ -162,5 +164,15 @@ public class UIController : MonoBehaviour
     {
         confirm.Setup(msg, funcToCall);
         confirm.Activate();
+    }
+
+    public void AddStatusEffect(Effect effectToDisplay)
+    {
+        statusDisplay.AddStatusEffectToDisplay(effectToDisplay);
+    }
+
+    public void RemoveStatusEffect(Effect effectToRemove)
+    {
+        statusDisplay.RemoveStatusEffectFromDisplay(effectToRemove);
     }
 }
