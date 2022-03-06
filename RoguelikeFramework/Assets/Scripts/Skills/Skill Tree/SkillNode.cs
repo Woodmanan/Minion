@@ -84,7 +84,9 @@ public class SkillNode : Node
 		Skill skill = GetCurrentSkill();
 		if (skill != null)
 		{
-			// apply skill here
+			foreach (StatusEffect effectToApply in skill.effectsToApply) Player.player.AddEffect(effectToApply);
+			foreach (Ability ability in skill.abilitiesToApply) Player.player.abilities.AddAbility(ability);
+
 			skillLevel++;
 
 			foreach (NodePort port in GetAllChildren())
