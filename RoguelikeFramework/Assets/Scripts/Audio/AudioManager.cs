@@ -31,8 +31,8 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void StartMusic(int newFloorNum) {
-        level = newFloorNum;
+    public void StartMusic(int levelNum) {
+        level = levelNum;
         //switch music using level variable
         string eventString;
         switch(level)
