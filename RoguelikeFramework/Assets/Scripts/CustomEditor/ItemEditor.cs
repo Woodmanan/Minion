@@ -14,7 +14,7 @@ public class ItemEditor : Editor
     {
         DrawDefaultInspector();
         Item item = (Item) target;
-        string msg = (item.uniqueID.Length > 0) ? "Re-upload item (overwrites existing data in sheet)" : "Upload item to narrative sheet";
+        string msg = (item.uniqueID != null && item.uniqueID.Length > 0) ? "Re-upload item (overwrites existing data in sheet)" : "Upload item to narrative sheet";
 
         if (GUILayout.Button(msg))
         {

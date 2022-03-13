@@ -1476,6 +1476,8 @@ MonoBehaviour:
       accuracy: 0
       piercing: 0
       damage: []
+      applyOnHit:
+        list: []
   - slotName: Primary Hand
     type: 0200000003000000
     equipped:
@@ -1498,6 +1500,8 @@ MonoBehaviour:
           rolls: 2
           dice: 2
         type: 1
+      applyOnHit:
+        list: []
   - slotName: Secondary Hand
     type: 03000000
     equipped:
@@ -1520,6 +1524,8 @@ MonoBehaviour:
           rolls: 1
           dice: 2
         type: 1
+      applyOnHit:
+        list: []
   - slotName: Body
     type: 04000000
     equipped:
@@ -1538,6 +1544,8 @@ MonoBehaviour:
       accuracy: 0
       piercing: 0
       damage: []
+      applyOnHit:
+        list: []
 --- !u!114 &546573368
 MonoBehaviour:
   m_ObjectHideFlags: 0

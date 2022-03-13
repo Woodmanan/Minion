@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89a9638c9dc3a4d408c07966f43aed51, type: 3}
-  m_Name: Default
+  m_Name: Player Default
   m_EditorClassIdentifier: 
   items:
   - {fileID: 5723771033562300096, guid: 0bd2ea389f9c9f2408b9375f53f932ff, type: 3}
@@ -24,3 +24,6 @@ MonoBehaviour:
   maxAbilties: 1
   minDepth: 0
   maxDepth: 0
+  effects:
+    list:
+    - heldEffect: {fileID: 11400000, guid: 1d7d8cc7e85269846ba76a80c77757cc, type: 2}

@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[EffectGroup("General Effects")]
 [CreateAssetMenu(fileName = "New DamageResistance", menuName = "Status Effects/DamageResistance", order = 1)]
 public class DamageResistance : Effect
 {
-    [SerializeField] int numTurns;
+    public DamageType resistedType;
+    public DamageSource resistedSource;
+    public int numTurns;
+    public int shavedDamage = 0;
+    public float percentDamage = 20f;
+
+    float storedDamage = 0;
     //Constuctor for the object; use this in code if you're not using the asset version!
     public DamageResistance(int numTurns)
     {
@@ -58,7 +65,17 @@ public class DamageResistance : Effect
     //Called when a monster takes damage from any source, good for making effects fire upon certain types of damage
     public override void OnTakeDamage(ref int damage, ref DamageType damageType, ref DamageSource source)
     {
-        damage = damage - 3;
+        //Some weird float math that tries to keep the damage accurate
+        if ((damageType & resistedType) > 0 && (source & resistedSource) > 0)
+        {
+            storedDamage += (damage * percentDamage / 100);
+            while (storedDamage > 1 && damage > 1)
+            {
+                damage--;
+                storedDamage -= 1.0f;
+            }
+            damage = damage - shavedDamage;
+        }
     }
 
     //Called when a monster recieves a healing event request

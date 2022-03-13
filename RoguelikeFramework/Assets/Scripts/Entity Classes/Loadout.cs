@@ -15,6 +15,8 @@ public class Loadout : ScriptableObject
     public int minDepth;
     public int maxDepth;
 
+    public StatusEffectList effects;
+
 
     public void Apply(Monster m)
     {
@@ -61,6 +63,11 @@ public class Loadout : ScriptableObject
 
             m.abilities.AddAbility(ability.Instantiate());
             numAttached++;
+        }
+
+        foreach (StatusEffect effect in effects.list)
+        {
+            m.AddEffect(effect.Instantiate());
         }
     }
 }
