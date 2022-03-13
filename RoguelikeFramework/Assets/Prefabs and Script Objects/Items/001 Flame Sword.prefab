@@ -124,7 +124,7 @@ MonoBehaviour:
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: kivqywjr
-  description: Ooof owie ow my hands (PLS REWRITE ME)
+  description: 
 --- !u!114 &1590367683034208567
 MonoBehaviour:
   m_ObjectHideFlags: 0

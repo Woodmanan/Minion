@@ -124,7 +124,7 @@ MonoBehaviour:
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: gqebdaay
-  description: It's a test description!
+  description: 
 --- !u!114 &8807692175375108183
 MonoBehaviour:
   m_ObjectHideFlags: 0
