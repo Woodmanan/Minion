@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ce513ce41ec854b8468d6e711882a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rarity: 4
+  rarity: 0
   type: 4
   minDepth: 0
   maxDepth: 3
@@ -123,7 +123,7 @@ MonoBehaviour:
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: xfcavsyu
-  description: Test Description!
+  description: 
 --- !u!114 &8971845401904230734
 MonoBehaviour:
   m_ObjectHideFlags: 0

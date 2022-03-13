@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Standard Fighter
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  maxItems: 0
+  - {fileID: 8807692175375108180, guid: 5bb814d95e406d34899df12272a0d667, type: 3}
+  - {fileID: 623495136018800968, guid: f4f17bc22caab454aa3c753558d8a6cd, type: 3}
+  maxItems: 2
   abilities: []
   maxAbilties: 0
   minDepth: 0

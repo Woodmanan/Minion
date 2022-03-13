@@ -124,7 +124,7 @@ MonoBehaviour:
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: ufpxllhc
-  description: Please do not lick the bow. (I'M A JOKE, PLS UPDATE ME)
+  description: 
 --- !u!114 &4889488825457435892
 MonoBehaviour:
   m_ObjectHideFlags: 0
