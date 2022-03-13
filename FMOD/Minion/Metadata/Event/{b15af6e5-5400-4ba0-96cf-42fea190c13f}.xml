@@ -365,7 +365,7 @@
 	</object>
 	<object class="TransitionMarker" id="{e1c4e7dc-e7b2-4503-a83a-ddb5ca707f4e}">
 		<property name="position">
-			<value>19.715447154471544</value>
+			<value>19.600000000000001</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{025ce825-9b15-4f4c-ae71-ad30d854f310}</destination>
@@ -733,7 +733,7 @@
 			<value>0</value>
 		</property>
 		<property name="releaseTime">
-			<value>2615.38403</value>
+			<value>2211.53662</value>
 		</property>
 		<property name="releaseShape">
 			<value>0.145493373</value>
