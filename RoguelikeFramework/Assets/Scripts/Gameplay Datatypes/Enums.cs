@@ -68,12 +68,14 @@ public enum Faction
     PLAYER      = (1 << 1)
 }
 
+[Flags]
 public enum DamageType
 {
-    NONE,
-    BLUNT,
-    CUTTING,
-    PIERCING
+    BLUNT       = (1 << 0),
+    CUTTING     = (1 << 1),
+    PIERCING    = (1 << 2),
+    FIRE        = (1 << 3),
+    ICE         = (1 << 4),
 }
 
 [Flags]
@@ -113,7 +115,8 @@ public enum EquipSlotType
     PRIMARY_HAND,
     SECONDARY_HAND,
     BODY,
-    TAIL
+    RING,
+    BOOTS
 }
 
 //Order is very important here! Order written is order shown in inventory.

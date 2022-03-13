@@ -49,6 +49,7 @@ public class ItemSortWizard
         {
             items[i].ID = i;
             AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(items[i]), $"{i.ToString().PadLeft(3, '0')} {items[i].GetNameClean()}");
+            EditorUtility.SetDirty(items[i]);
             //items[i].gameObject.name = $"{i.ToString().PadLeft(0, '0')} {items[i].name}";
             //Debug.Log($"{i}{(i >= 10 ? "" : " ")}: {items[i].name}");
         }

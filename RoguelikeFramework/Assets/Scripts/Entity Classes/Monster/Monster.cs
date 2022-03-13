@@ -54,6 +54,9 @@ public class Monster : MonoBehaviour
     public CustomTile currentTile;
 
     private bool setup = false;
+
+    public int XP;
+    public int level;
     
     // Start is called before the first frame update
     public virtual void Start()
@@ -156,7 +159,7 @@ public class Monster : MonoBehaviour
         return true;
     }
 
-    public void Damage(int damage, DamageType type, DamageSource source, string message = "{name} take%s{|s} {damage} damage")
+    private void Damage(int damage, DamageType type, DamageSource source, string message = "{name} take%s{|s} {damage} damage")
     {
         connections.OnTakeDamage.BlendInvoke(other?.OnTakeDamage, ref damage, ref type, ref source);
         resources.health -= damage;
@@ -177,9 +180,12 @@ public class Monster : MonoBehaviour
 
     public void Damage(Monster dealer, int damage, DamageType type, DamageSource source, string message = "{name} take%s{|s} {damage} damage")
     {
-        dealer.connections.OnDealDamage.BlendInvoke(dealer.other?.OnDealDamage, ref damage, ref type, ref source);
+        dealer?.connections.OnDealDamage.BlendInvoke(dealer.other?.OnDealDamage, ref damage, ref type, ref source);
         Damage(damage, type, source, message);
-
+        if (resources.health <= 0)
+        {
+            dealer?.KillMonster(this, type, source);
+        }
     }
 
     public virtual void Die()
@@ -196,6 +202,43 @@ public class Monster : MonoBehaviour
             dropAll.Setup(this);
             while (dropAll.action.MoveNext()) { }
         }
+    }
+
+    public void KillMonster(Monster target, DamageType type, DamageSource source)
+    {
+        connections.OnKillMonster.BlendInvoke(other?.OnKillMonster, ref target, ref type, ref source);
+        GainXP(1); //TODO: Make this possibly a variable amount?
+    }
+
+    public virtual void GainXP(int amount)
+    {
+        Debug.Log($"{DebugName()} has gained {amount} of XP!");
+        connections.OnGainXP.BlendInvoke(other?.OnGainXP, ref amount);
+        XP += amount;
+        if (XP >= XPTillNextLevel())
+        {
+            XP -= XPTillNextLevel();
+            LevelUp();
+        }
+
+    }
+    
+    //TODO: Make this 
+    public virtual int XPTillNextLevel()
+    {
+        return int.MaxValue;
+    }
+
+    public  void LevelUp()
+    {
+        level++;
+        connections.OnLevelUp.BlendInvoke(other?.OnLevelUp, ref level);
+        OnLevelUp();
+    }
+
+    public virtual void OnLevelUp()
+    {
+        Debug.Log($"{DebugName()} leveled up! This does nothing, yet.");
     }
 
     public bool IsDead()
@@ -250,6 +293,10 @@ public class Monster : MonoBehaviour
         this.view = LOS.LosAt(map, location, visionRadius);
     }
 
+    public string DebugName()
+    {
+        return $"{this.name} ({this.location})";
+    }
     
 
     public void StartTurn()

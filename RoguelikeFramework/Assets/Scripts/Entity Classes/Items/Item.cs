@@ -23,8 +23,8 @@ public class Item : MonoBehaviour
     [HideInInspector] public Vector2Int location;
     public bool held;
     private Monster heldBy;
-    [SerializeField] new private string name;
-    [SerializeField] private string plural;
+    new public string name;
+    public string plural;
 
     [HideInInspector] public bool CanEquip;
     [HideInInspector] public bool CanApply;
@@ -70,6 +70,9 @@ public class Item : MonoBehaviour
     private static readonly float itemZValue = -7.0f;
 
     private bool setup = false;
+
+    public string uniqueID;
+    public string description;
 
     //Stuff used for convenience editor hacking, and should never be seen.
 

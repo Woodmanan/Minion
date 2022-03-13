@@ -46,6 +46,16 @@ public class Player : Monster
     {
         view = LOS.GeneratePlayerLOS(Map.current, location, visionRadius);
     }
+ 
+    public override int XPTillNextLevel()
+    {
+        return level;
+    }
+
+    public override void OnLevelUp()
+    {
+        Debug.Log("The level up code should go here!");
+    }
 
     public override void Die()
     {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class Combat
 {
@@ -24,6 +25,11 @@ public class Combat
         foreach (DamagePairing damage in stats.damage)
         {
             defender.Damage(attacker, damage.damage.evaluate(), damage.type, source);
+        }
+
+        foreach (StatusEffect s in stats.applyOnHit)
+        {
+            defender.AddEffect(s.Instantiate());
         }
     }
 }
