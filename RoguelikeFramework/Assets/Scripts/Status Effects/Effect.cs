@@ -19,6 +19,8 @@ public class Effect : ScriptableObject
     //AUTO: Connection count
     [HideInInspector] public const int connectionCount = 15;
 
+    public Sprite statusIcon;
+
     [HideInInspector] public Connections connectedTo;
     [HideInInspector] public bool ReadyToDelete = false;
 
@@ -56,6 +58,8 @@ public class Effect : ScriptableObject
         }
         Type current = this.GetType();
         Type defaultType = typeof(Effect);
+
+        if (connectedTo.monster == Player.player) UIController.singleton.AddStatusEffect(this);
 
         //BEGIN AUTO CONNECT
 
@@ -1133,6 +1137,8 @@ public class Effect : ScriptableObject
         }
 
         Connections c = connectedTo;
+
+        if (connectedTo.monster == Player.player) UIController.singleton.RemoveStatusEffect(this);
 
         //BEGIN AUTO DISCONNECT
 

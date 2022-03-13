@@ -50,6 +50,9 @@ public class SkillTreeConstructor : MonoBehaviour
             {
                 depthDict.Add(skillNode, 0);
                 q.Enqueue(skillNode);
+
+                // Only used for roots right now, probably implement this as a callback as well
+                skillTree.availableSkills.Add(skillNode);
             }
         }
 
@@ -98,7 +101,7 @@ public class SkillTreeConstructor : MonoBehaviour
             }
 
             // Reset the ScriptableObject skill level
-            if (resetSkillLevelsOnRestart) skillNode.skillLevel = 0;
+            if (resetSkillLevelsOnRestart) skillNode.ResetSkillLevel();
         }
     }
 
