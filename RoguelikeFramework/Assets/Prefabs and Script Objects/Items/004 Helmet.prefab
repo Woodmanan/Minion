@@ -123,7 +123,7 @@ MonoBehaviour:
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: gvfolbpj
-  description: Helmet Description!
+  description: 
 --- !u!114 &623495136018800969
 MonoBehaviour:
   m_ObjectHideFlags: 0
