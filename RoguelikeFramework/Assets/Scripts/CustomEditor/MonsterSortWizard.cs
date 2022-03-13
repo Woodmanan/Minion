@@ -49,6 +49,7 @@ public class MonsterSortWizard
         {
             monsters[i].ID = i;
             AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(monsters[i]), $"{i.ToString().PadLeft(3, '0')} {monsters[i].displayName}");
+            EditorUtility.SetDirty(monsters[i]);
             //items[i].gameObject.name = $"{i.ToString().PadLeft(0, '0')} {items[i].name}";
             //Debug.Log($"{i}{(i >= 10 ? "" : " ")}: {items[i].name}");
         }
