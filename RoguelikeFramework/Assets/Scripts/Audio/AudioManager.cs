@@ -22,7 +22,6 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UISelect();
         StartMusic(2);
     }
 
@@ -30,6 +29,15 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateMusic(bool isInDanger) {
+        Debug.Log("changing!");
+        int newVal = 0;
+        if(isInDanger) {
+            newVal = 1;
+        }
+        Music.setParameterByName("InDanger", newVal);
     }
 
     public void StartMusic(int levelNum) {
