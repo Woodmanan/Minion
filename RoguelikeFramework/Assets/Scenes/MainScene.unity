@@ -1424,6 +1424,7 @@ GameObject:
   - component: {fileID: 546573367}
   - component: {fileID: 546573366}
   - component: {fileID: 546573373}
+  - component: {fileID: 546573374}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1702,6 +1703,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 0}
+--- !u!114 &546573374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546573365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673dd832e2f37425f94223d903805b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterType: 0
 --- !u!1 &553205232
 GameObject:
   m_ObjectHideFlags: 0

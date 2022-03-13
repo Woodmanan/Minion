@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a0af6fcb-ef4a-4708-9dd5-aa64f78a4f09}">
 		<property name="name">
-			<value>New Event</value>
+			<value>Footstep</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -33,6 +33,9 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{3f23cd61-4fc7-4f66-91af-a44a1f1f14c1}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{276b5f74-68b5-4d58-bc5d-45476436f9d4}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{b4d7abc9-800f-4e33-9f3f-b53f2e9a5ce2}">
@@ -77,6 +80,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{83e119ea-cc55-4c90-971f-a7fe71314e12}">
+		<property name="volume">
+			<value>-13</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{8e1f5672-018a-497c-bebf-7c9f2c98e764}</destination>
 		</relationship>

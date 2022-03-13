@@ -32,12 +32,12 @@ public class AudioManager : MonoBehaviour
     }
 
     public void UpdateMusic(bool isInDanger) {
-        Debug.Log("changing!");
-        int newVal = 0;
+        
+        float newVal = 0f;
         if(isInDanger) {
-            newVal = 1;
+            newVal = 1f;
         }
-        Music.setParameterByName("InDanger", newVal);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("InDanger", newVal);
     }
 
     public void StartMusic(int levelNum) {
@@ -64,9 +64,6 @@ public class AudioManager : MonoBehaviour
         }
         Music = FMODUnity.RuntimeManager.CreateInstance(eventString);
         Music.start();
-        if(level == 4) {
-            Music.setParameterByName("Enemies", 2);
-        }
     }
 
     public void GameOver() {
@@ -93,6 +90,7 @@ public class AudioManager : MonoBehaviour
     //Player SFX
 
     public void Footstep() {
+        Debug.Log("i take a stepi");
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Footstep");
     }
 }
