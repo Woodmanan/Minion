@@ -63,6 +63,7 @@ public class ItemUpdateWizard
                 item.maxDepth = data.maxDepth;
                 item.rarity = data.rarity;
                 newInfo.Remove(id);
+                EditorUtility.SetDirty(item);
             }
             else
             {

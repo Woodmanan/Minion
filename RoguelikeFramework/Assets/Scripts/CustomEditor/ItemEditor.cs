@@ -14,21 +14,25 @@ public class ItemEditor : Editor
     {
         DrawDefaultInspector();
         Item item = (Item) target;
-        string msg = (item.uniqueID.Length > 0) ? "Re-upload item (overwrites existing data in sheet)" : "Upload item to narrative sheet";
+        string msg = (item.uniqueID != null && item.uniqueID.Length > 0) ? "Re-upload item (overwrites existing data in sheet)" : "Upload item to narrative sheet";
 
         if (GUILayout.Button(msg))
         {
-            UploadItemToSheets(item);
+            UploadItemToSheets(item, serializedObject);
         }
+
+        serializedObject.ApplyModifiedProperties();
     }
 
-    public async void UploadItemToSheets(Item item)
+    public async void UploadItemToSheets(Item item, SerializedObject SO)
     {
         if (item.uniqueID.Length == 0)
         {
             System.Random rand = new System.Random();
             //Stolen from stack overflow!
             item.uniqueID = string.Join("", Enumerable.Range(0, 8).Select(n => (char)rand.Next(97, 122)));
+            SerializedProperty idSave = SO.FindProperty("uniqueID");
+            idSave.stringValue = item.uniqueID;
         }
 
         //Begin Upload Process
