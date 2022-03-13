@@ -109,7 +109,7 @@ public class ItemUpdateWizard
     // This is not a generic process file. It processes the specific tsv file downloaded from google sheets
     static Dictionary<string, ItemData> ProcessFile(string path)
     {
-        var lines = File.ReadLines(path);
+        List<string> lines = File.ReadLines(path).ToList();
         
         List<string> headers = lines.First().Split('\t').ToList();
         int nameIndex = headers.IndexOf("Item Name");
