@@ -30,7 +30,7 @@ public class AreaDamage : Ability
 
         foreach (Monster m in targets)
         {
-            m.Damage(damage.evaluate() + (int) stats.power, type, DamageSource.ABILITY);
+            m.Damage(caster, damage.evaluate() + (int) stats.power, type, DamageSource.ABILITY);
         }
     }
 }

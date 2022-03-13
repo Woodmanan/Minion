@@ -1552,6 +1552,8 @@ MonoBehaviour:
   abilities: {fileID: 0}
   controller: {fileID: 0}
   currentTile: {fileID: 0}
+  XP: 0
+  level: 1
   testRoom: {fileID: 0}
   uiControls: {fileID: 216533712}
 --- !u!4 &546573372
