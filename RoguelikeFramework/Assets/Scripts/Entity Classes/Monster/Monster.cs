@@ -56,7 +56,11 @@ public class Monster : MonoBehaviour
     private bool setup = false;
 
     public int XP;
+    public int XPFromKill;
     public int level;
+
+    public string description;
+    public string uniqueID;
     
     // Start is called before the first frame update
     public virtual void Start()
@@ -207,7 +211,7 @@ public class Monster : MonoBehaviour
     public void KillMonster(Monster target, DamageType type, DamageSource source)
     {
         connections.OnKillMonster.BlendInvoke(other?.OnKillMonster, ref target, ref type, ref source);
-        GainXP(1); //TODO: Make this possibly a variable amount?
+        GainXP(target.XPFromKill);
     }
 
     public virtual void GainXP(int amount)

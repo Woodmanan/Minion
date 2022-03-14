@@ -12,6 +12,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 15f97d19619ce4b4e85faa3b51e14151, type: 2}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: uniqueID
+      value: kufnualu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: XPFromKill
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: description
+      value: Test Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName
       value: Goblin
       objectReference: {fileID: 0}
