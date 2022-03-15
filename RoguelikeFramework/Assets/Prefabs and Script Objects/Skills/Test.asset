@@ -17,6 +17,6 @@ MonoBehaviour:
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   effectsToApply:
     list:
-    - heldEffect: {fileID: 11400000, guid: 93ab28216af10354dbc2e5b8198207b6, type: 2}
+    - heldEffect: {fileID: 11400000, guid: 1608162cf6b573243b046b14525032f8, type: 2}
   abilitiesToApply:
   - {fileID: 11400000, guid: c5e9332c1b918f24bb40e86cfa955eef, type: 2}

@@ -20,6 +20,8 @@ public class Effect : ScriptableObject
     [HideInInspector] public const int connectionCount = 15;
 
     public Sprite statusIcon;
+    public string displayName;
+    [TextArea] public string description;
 
     [HideInInspector] public Connections connectedTo;
     [HideInInspector] public bool ReadyToDelete = false;
