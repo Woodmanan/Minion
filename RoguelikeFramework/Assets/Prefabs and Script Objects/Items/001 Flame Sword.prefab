@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590367683034208521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.181823, y: 0.8453553, z: -0.5529693}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   location: {x: 0, y: 0}
   held: 0
   name: Flame Sword
-  plural: 
+  plural: Flame Swords
   CanEquip: 0
   CanApply: 0
   CanTarget: 0

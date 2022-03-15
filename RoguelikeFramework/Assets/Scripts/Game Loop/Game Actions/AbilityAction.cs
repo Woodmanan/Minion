@@ -23,7 +23,7 @@ public class AbilityAction : GameAction
             yield break;
         }
         #else
-        if (caller.abilites == null) yield break;
+        if (caller.abilities == null) yield break;
         #endif
 
         Ability toCast = caller.abilities[abilityIndex];

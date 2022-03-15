@@ -1671,7 +1671,10 @@ MonoBehaviour:
   controller: {fileID: 0}
   currentTile: {fileID: 0}
   XP: 0
+  XPFromKill: 0
   level: 1
+  description: 
+  uniqueID: 
   testRoom: {fileID: 0}
   uiControls: {fileID: 216533712}
 --- !u!4 &546573372
@@ -1784,7 +1787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &562374445
 RectTransform:
   m_ObjectHideFlags: 0
