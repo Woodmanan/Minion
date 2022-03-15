@@ -3052,7 +3052,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278248788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.12051, y: 39.69878, z: -319.58005}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4730,7 +4730,7 @@ MonoBehaviour:
   - name: Level 1
     depth: 1
     seed: 0
-    bounds: {x: 50, y: 50}
+    bounds: {x: 45, y: 45}
     machines:
     - {fileID: 11400000, guid: 32cc623154e2c9a4a9503c84815c324a, type: 2}
     - {fileID: 11400000, guid: 4b3adc1c4598ed24d86c152c0b35c092, type: 2}
@@ -4746,7 +4746,7 @@ MonoBehaviour:
     availableMonsters: {fileID: 11400000, guid: c083bb6c4c4307340887537b8744d336, type: 2}
     numMonsters:
       rolls: 1
-      dice: 5
+      dice: 10
     JIT: 0
     finished: 0
   - name: Level 2

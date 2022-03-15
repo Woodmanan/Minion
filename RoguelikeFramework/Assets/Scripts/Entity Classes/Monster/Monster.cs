@@ -194,6 +194,15 @@ public class Monster : MonoBehaviour
         }
     }
 
+    public virtual void Remove()
+    {
+        // Like dying but no drops
+        Debug.Log("Monster Removed!");
+        resources.health = 0;
+        if (currentTile.currentlyStanding == this)
+            currentTile.currentlyStanding = null;
+    }
+
     public bool IsDead()
     {
         //Oops, this must be <= 0, Sometimes people can overkill!

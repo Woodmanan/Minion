@@ -213,7 +213,13 @@ public class GameController : MonoBehaviour
                     Destroy(monster.gameObject);
                 }
             }
-            
+
+            //Add new monsters to the main list
+            while (Map.current.spawnedMonsters.Count != 0) {
+                Map.current.monsters.Add(Map.current.spawnedMonsters[0]);
+                Map.current.spawnedMonsters.RemoveAt(0);
+            }
+
             CallTurnEndGlobal();
 
             turn++;

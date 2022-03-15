@@ -14,30 +14,34 @@ PrefabInstance:
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: loadout
       value: 
-      objectReference: {fileID: 11400000, guid: 99375263964d5244f86f4073e414ba79, type: 2}
+      objectReference: {fileID: 11400000, guid: a9f522cc3fbe4ab46a98249e8475d696, type: 2}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName
-      value: Big Slime
+      value: Small Slime
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.ac
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.ev
-      value: 6
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: visionRadius
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: stats.resources.health
-      value: 40
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: stats.resources.stamina
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.resources.health
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_RootOrder
@@ -85,38 +89,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: BigSlime
+      value: SmallSlime
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7770694097599547242, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
+      objectReference: {fileID: -586135874679548905, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.b
-      value: 0.123529434
+      value: 0.59161466
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.g
-      value: 0.5
+      value: 0.6698113
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: fleeQuery.outOf
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: fleeQuery.terms.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
