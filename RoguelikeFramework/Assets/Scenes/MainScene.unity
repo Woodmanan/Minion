@@ -5390,7 +5390,7 @@ MonoBehaviour:
   msPerFrame: 4
   randomSeed: 0
   seed: 42
-  JITLoading: 0
+  JITLoading: 1
   StartAt: 0
 --- !u!4 &1953941108
 Transform:
