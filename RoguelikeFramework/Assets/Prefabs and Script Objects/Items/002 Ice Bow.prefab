@@ -124,7 +124,16 @@ MonoBehaviour:
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: ufpxllhc
-  description: 
+  description: It is a common tale amongst the uneducated that there was local artificer's
+    apprentice whose magical implements kept overheating long ago. Instead of learning
+    how to improve their magical circuitry, they developed an engravement for absorbing
+    all heat. Naturally, the second thing they did was weaponize this. Of course,
+    this is false. The apprentice merely found the work of some faraway tribes in
+    a hot desert, where this type of bow is very effective. Their origins matter
+    less than their capabilities, really. The geniuses truly responsible for this
+    created a weapon that would imbue basic arrows with effects as if someone had
+    engraved the arrows themselves. They are impractical in cold places, but I doubt
+    that will be a problem.
 --- !u!114 &4889488825457435892
 MonoBehaviour:
   m_ObjectHideFlags: 0

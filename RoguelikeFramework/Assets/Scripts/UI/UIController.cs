@@ -13,6 +13,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private ConfirmationPanel confirm;
     [SerializeField] private SkillsPanel skills;
     [SerializeField] private StatusEffectsDisplay statusDisplay;
+    [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private BugReportScreen bugReportScreen;
+
     public static bool WindowsOpen
     {
         get { return RogueUIPanel.WindowsOpen; }
@@ -174,5 +177,15 @@ public class UIController : MonoBehaviour
     public void RemoveStatusEffect(Effect effectToRemove)
     {
         statusDisplay.RemoveStatusEffectFromDisplay(effectToRemove);
+    }
+
+    public void OpenPause()
+    {
+        pauseMenu.Activate();
+    }
+
+    public void OpenBugMenu()
+    {
+        bugReportScreen.Activate();
     }
 }

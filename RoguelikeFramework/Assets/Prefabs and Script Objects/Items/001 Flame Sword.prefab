@@ -124,7 +124,11 @@ MonoBehaviour:
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: kivqywjr
-  description: 
+  description: Every so often, some young, enterprising fool in the Academy decides
+    that making a flaming sword would be a good idea. Almost as often, someone loses
+    an arm. Setting yourself on fire is poor ettiquette, but setting your enemies
+    on fire... Just remember to practice proper fire safety and you will not catch
+    fire. Simple.
 --- !u!114 &1590367683034208567
 MonoBehaviour:
   m_ObjectHideFlags: 0

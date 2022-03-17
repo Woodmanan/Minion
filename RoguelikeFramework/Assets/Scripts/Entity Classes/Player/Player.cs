@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class Player : Monster
 {
@@ -62,7 +63,8 @@ public class Player : Monster
         base.Die();
         if (resources.health == 0)
         {
-            Debug.Log("Game should be over! This message should be replaced by loading an exit level instead.");
+            Debug.Log("Game over!");
+            SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
         }
     }
 }
