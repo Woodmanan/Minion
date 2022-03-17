@@ -50,11 +50,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     resources:
-      health: 10
-      mana: 10
-      stamina: 10
-    ac: 10
-    ev: 10
+      health: 2
+      mana: 3
+      stamina: 4
+    ac: 5
+    ev: 6
   stats:
     resources:
       health: 0
@@ -70,12 +70,12 @@ MonoBehaviour:
   nameRequiresPluralVerbs: 0
   faction: 1
   ID: 0
-  minDepth: 0
-  maxDepth: 30
+  minDepth: 7
+  maxDepth: 8
   energy: 0
   location: {x: 15, y: 44}
-  visionRadius: 8
-  energyPerStep: 100
+  visionRadius: 9
+  energyPerStep: 10
   loadout: {fileID: 0}
   effects: []
   inventory: {fileID: 0}
@@ -84,10 +84,10 @@ MonoBehaviour:
   controller: {fileID: 0}
   currentTile: {fileID: 0}
   XP: 0
-  XPFromKill: 0
+  XPFromKill: 1
   level: 0
   description: 
-  uniqueID: 
+  uniqueID: quaidlbv
 --- !u!212 &6511624763293797814
 SpriteRenderer:
   m_ObjectHideFlags: 0
