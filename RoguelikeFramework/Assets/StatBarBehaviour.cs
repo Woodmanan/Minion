@@ -5,27 +5,49 @@ using UnityEngine.UI;
 
 public class StatBarBehaviour : MonoBehaviour
 {
+    public Monster examined;
+    public Resource resource;
 
-    private Slider s;
+    public Image sub;
+    public Image mainBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        s = GetComponent<Slider>();
+        
     }
 
-    public void setMaxValue(float val)
+    private void Update()
     {
-        GetComponent<Slider>().maxValue = val;
-        GetComponent<Slider>().value = val;
+        if (examined)
+        {
+            setCurValue(((float)examined.resources[resource]) / examined.stats.resources[resource]);
+        }
+
     }
 
     public void setCurValue(float val)
     {
-        
-        if(val > s.maxValue)
-            s.value = s.maxValue;
+
+        if (val > 0)
+        {
+            mainBar.fillAmount = val;
+        }
         else
-            s.value = val;
+        {
+            mainBar.fillAmount = 0;
+        }
+
+        if (sub)
+        {
+            if (Mathf.Abs(sub.fillAmount - mainBar.fillAmount) > .007f && sub.fillAmount > mainBar.fillAmount)
+            {
+                sub.fillAmount = Mathf.Lerp(sub.fillAmount, mainBar.fillAmount, 0.01f);
+            }
+            else
+            {
+                sub.fillAmount = mainBar.fillAmount;
+            }
+        }
     }
 }

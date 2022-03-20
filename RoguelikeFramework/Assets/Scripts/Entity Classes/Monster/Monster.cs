@@ -89,7 +89,6 @@ public class Monster : MonoBehaviour
         connections = new Connections(this);
 
         resources.health = stats.resources.health;
-        healthScript.setMaxValue(resources.health);
         connections.OnFullyHealed.BlendInvoke(other?.OnFullyHealed);
 
         inventory?.Setup();
@@ -135,7 +134,6 @@ public class Monster : MonoBehaviour
         if (healthReturned > 0) //Negative health healing is currently just ignored, for clarity's sake
         {
             resources.health += healthReturned;
-            healthScript.setCurValue(resources.health);
         }
         if (resources.health >= stats.resources.health)
         {
@@ -171,7 +169,6 @@ public class Monster : MonoBehaviour
     {
         connections.OnTakeDamage.BlendInvoke(other?.OnTakeDamage, ref damage, ref type, ref source);
         resources.health -= damage;
-        healthScript.setCurValue(resources.health);
         
         //Loggingstuff
         string toPrint = FormatStringForName(message).Replace("{damage}", $"{damage}");
