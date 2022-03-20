@@ -100,7 +100,7 @@ public class BuildWizard
 
         { //Pull fresh item data and sort
             ItemUpdateWizard.UpdateItems();
-            //TODO: Update monsters
+            MonsterUpdateWizard.UpdateItems();
 
             ItemSortWizard.SortItems();
             MonsterSortWizard.SortItems();

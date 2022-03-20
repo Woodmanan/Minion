@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     resources:
-      health: 10
+      health: 25
       mana: 10
       stamina: 10
     ac: 10
@@ -86,8 +86,8 @@ MonoBehaviour:
   XP: 0
   XPFromKill: 0
   level: 0
-  description: 
-  uniqueID: 
+  description: TWO OF THESE ON SPAWN WHEN YOU KILL MEDIUM SLIME(so 4 in total)
+  uniqueID: quaidlbv
 --- !u!212 &6511624763293797814
 SpriteRenderer:
   m_ObjectHideFlags: 0

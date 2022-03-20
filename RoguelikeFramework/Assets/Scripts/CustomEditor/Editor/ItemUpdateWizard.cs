@@ -33,8 +33,10 @@ public class ItemUpdateWizard
             return;
         }
         Debug.Log($"Path to folder is {itemFolderPath}");
-
-        List<Item> items = FetchItems(itemFolderPath);
+        
+        List<Item> items = new List<Item>();
+        items = FetchItems(itemFolderPath, items);
+        
         Debug.Log("Folder items successfully fetched");
         
         string fileName = itemFolderPath + "/info.tsv";
@@ -90,10 +92,8 @@ public class ItemUpdateWizard
 
         }
 
-    static List<Item> FetchItems(string path)
+    static List<Item> FetchItems(string path, List<Item> items)
     {
-        List<Item> items = new List<Item>();
-
         var info = new DirectoryInfo(path);
 
         foreach (FileInfo f in info.GetFiles("*.prefab"))
@@ -102,6 +102,11 @@ public class ItemUpdateWizard
             int length = filePath.Length - info.FullName.Length + path.Length;
             filePath = filePath.Substring(f.FullName.Length - length, length);
             items.Add(AssetDatabase.LoadAssetAtPath<Item>(filePath));
+        }
+        
+        foreach (string subPath in Directory.GetDirectories(path))
+        {
+            FetchItems(subPath, items);
         }
 
         return items;
@@ -150,7 +155,7 @@ public class ItemUpdateWizard
             string key = attributes[keyIndex];
             if (key.Length == 0)
             {
-                Debug.Log($"Item {item.name} is in the drive, but not in the project! Please create it, and assign it a key in the drive.");
+                Debug.LogWarning($"Item {item.name} is in the drive, but not in the project! Please create it, and assign it a key in the drive.");
             }
             else
             {
