@@ -90,7 +90,15 @@ public class AudioManager : MonoBehaviour
     //Player SFX
 
     public void Footstep() {
-        Debug.Log("i take a stepi");
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Footstep");
     }
+
+    public void HealthUp(float health) {
+        FMOD.Studio.EventInstance healthUp = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Health Up");
+        healthUp.setParameterByName("Health", health);
+        healthUp.release();
+        healthUp.start();
+
+    }
+
 }

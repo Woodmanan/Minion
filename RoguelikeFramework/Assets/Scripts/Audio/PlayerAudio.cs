@@ -11,11 +11,17 @@ public class PlayerAudio : MonsterAudio
     {
         player = GetComponent<Player>();
         base.Start();
+        player.connections.OnHealing.AddListener(1, OnHealing);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void OnHealing(ref int healAmount)
+    {
+        AudioManager.i.HealthUp(player.baseStats.resources.health);
     }
 }
