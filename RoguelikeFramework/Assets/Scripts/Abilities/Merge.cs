@@ -58,6 +58,13 @@ public class Merge : Ability
 
     public override void OnCast(Monster caster)
     {
+        // Destroy caster and merge target
+        Monster merger = mergeCanidates[Random.Range(0, mergeCanidates.Count)];
+        if (merger.IsDead())
+            return;
+        merger.Remove();
+        caster.Remove();
+
         Monster parent = Instantiate(mergeInto);
         Map.current.GetTile(caster.location).currentlyStanding = parent;
         parent.location = caster.location;
@@ -65,10 +72,5 @@ public class Merge : Ability
         parent.Setup();
         parent.PostSetup(Map.current);
         Map.current.spawnedMonsters.Add(parent);
-
-        // Destroy caster and merge target
-        Monster merger = mergeCanidates[Random.Range(0, mergeCanidates.Count)];
-        merger.Remove();
-        caster.Remove();
     }
 }
