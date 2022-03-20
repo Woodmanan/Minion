@@ -32,6 +32,7 @@ public class Map : MonoBehaviour
     public bool activeGraphics = false;
 
     public List<Monster> monsters = new List<Monster>();
+    public List<Monster> spawnedMonsters = new List<Monster>();
 
     public int numStairsUp;
     public int numStairsDown;

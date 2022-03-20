@@ -197,7 +197,8 @@ public class Monster : MonoBehaviour
         Debug.Log("Monster is dead!");
 
         //Clear tile, so other systems don't try to use a dead monster
-        currentTile.currentlyStanding = null;
+        if (currentTile.currentlyStanding == this)
+            currentTile.currentlyStanding = null;
 
         //Clear inventory, if it exists
         if (inventory)
@@ -243,6 +244,15 @@ public class Monster : MonoBehaviour
     public virtual void OnLevelUp()
     {
         Debug.Log($"{DebugName()} leveled up! This does nothing, yet.");
+    }
+
+    public virtual void Remove()
+    {
+        // Like dying but no drops
+        Debug.Log("Monster Removed!");
+        resources.health = 0;
+        if (currentTile.currentlyStanding == this)
+            currentTile.currentlyStanding = null;
     }
 
     public bool IsDead()
@@ -305,8 +315,11 @@ public class Monster : MonoBehaviour
 
     public void StartTurn()
     {
+        Debug.Log($"Monster is starting turn. Sanity check, I am setup: {setup}", this);
         CallRegenerateStats();
+        Debug.Log("Regened stats sucessfully", this);
         abilities?.CheckAvailability();
+        Debug.Log("Monster checked availability sucessfully", this);
         connections.OnTurnStartLocal.BlendInvoke(other?.OnTurnStartLocal);
     }
 
