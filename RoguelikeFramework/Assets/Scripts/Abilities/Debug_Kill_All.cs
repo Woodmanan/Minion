@@ -27,7 +27,7 @@ public class Debug_Kill_All : Ability
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
         foreach (Monster m in targeting.affected)
         {
-            m.Damage((int)(m.stats.resources.health * percentOfHealth / 100), DamageType.NONE, DamageSource.ABILITY, "DEBUG: Insta-kill of " + m.name);
+            m.Damage(null, (int)(m.stats.resources.health * percentOfHealth / 100), (DamageType)(0), DamageSource.ABILITY, "DEBUG: Insta-kill of " + m.name);
         }
 #endif
     }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ec958dc3bda454b91afa99dd858f39, type: 3}
+  m_Name: SlimeTable
+  m_EditorClassIdentifier: 
+  monsters:
+  - {fileID: 2776638571021120720, guid: 612a3366c6c0ac74a836683ff6136eee, type: 3}
+  - {fileID: 2776638571021120720, guid: 83fe178f60bb41d47a0b896910eda2c5, type: 3}
+  loadouts: []
+  chanceForHigherLoadout: 0
+  uniques: []
+  chanceForUnique: 0
