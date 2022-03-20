@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class StatusEffectUIChunk : MonoBehaviour, IPointerEnterHandler
+public class StatusEffectUIChunk : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Effect statusEffect;
     public Image statusEffectImage;
@@ -17,6 +17,13 @@ public class StatusEffectUIChunk : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log(statusEffect.name);
+        StatusEffectPopupWindow.singleton.effect = statusEffect;
+        StatusEffectPopupWindow.singleton.group.alpha = 1;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        StatusEffectPopupWindow.singleton.effect = null;
+        StatusEffectPopupWindow.singleton.group.alpha = 0;
     }
 }

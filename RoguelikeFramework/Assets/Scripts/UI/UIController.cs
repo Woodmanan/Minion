@@ -169,6 +169,11 @@ public class UIController : MonoBehaviour
         confirm.Activate();
     }
 
+    public void OpenSkillsPanel()
+    {
+        skills.gameObject.SetActive(true);
+    }
+
     public void AddStatusEffect(Effect effectToDisplay)
     {
         statusDisplay.AddStatusEffectToDisplay(effectToDisplay);

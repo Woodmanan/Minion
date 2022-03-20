@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UISelect();
+        StartMusic(2);
     }
 
     // Update is called once per frame
@@ -31,17 +31,26 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void StartMusic(int newFloorNum) {
-        level = newFloorNum;
+    public void UpdateMusic(bool isInDanger) {
+        
+        float newVal = 0f;
+        if(isInDanger) {
+            newVal = 1f;
+        }
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("InDanger", newVal);
+    }
+
+    public void StartMusic(int levelNum) {
+        level = levelNum;
         //switch music using level variable
         string eventString;
         switch(level)
-        {
+        { 
             case 1:
                 eventString = "event:/Music/Level 1 Music";
                 break;
             case 2:
-                eventString = "event:/Music/Jungle Music";
+                eventString = "event:/Music/Forest Music";
                 break;
             case 3:
                 eventString = "event:/Music/Level 3 Music";
@@ -55,10 +64,17 @@ public class AudioManager : MonoBehaviour
         }
         Music = FMODUnity.RuntimeManager.CreateInstance(eventString);
         Music.start();
-        if(level == 4) {
-            Music.setParameterByName("Enemies", 2);
-        }
+    }
+
+    public void GameOver() {
+        StopMusic();
+        Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Game Over");
         Music.release();
+    }
+
+    public void StopMusic() {
+        Music.release();
+        Music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     //UI SFX
@@ -68,6 +84,13 @@ public class AudioManager : MonoBehaviour
     }
 
     public void UISelect() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Select");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Start");
+    }
+
+    //Player SFX
+
+    public void Footstep() {
+        Debug.Log("i take a stepi");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Footstep");
     }
 }

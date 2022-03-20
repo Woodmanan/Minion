@@ -30,6 +30,7 @@ public class PlayerBehavior : Effect
     {
         if (isInDanger ^ value) Debug.Log("Setting player danger to " + value);
         isInDanger = value;
+        AudioManager.i.UpdateMusic(isInDanger);
     }
 
     //Called the moment an effect connects to a monster

@@ -55,7 +55,7 @@ public class Player : Monster
 
     public override void OnLevelUp()
     {
-        Debug.Log("The level up code should go here!");
+        UIController.singleton.OpenSkillsPanel();
     }
 
     public override void Die()
