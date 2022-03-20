@@ -61,7 +61,7 @@ public class Player : Monster
     public override void Die()
     {
         base.Die();
-        if (resources.health == 0)
+        if (resources.health <= 0)
         {
             Debug.Log("Game over!");
             SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);

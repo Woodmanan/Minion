@@ -76,6 +76,7 @@ public class Monster : MonoBehaviour
         equipment = GetComponent<Equipment>();
         abilities = GetComponent<Abilities>();
         controller = GetComponent<ActionController>();
+        
 
         //TODO: Have starting equipment? Probably not a huge concern right now, though.
         stats = baseStats;
@@ -88,7 +89,7 @@ public class Monster : MonoBehaviour
         connections = new Connections(this);
 
         resources.health = stats.resources.health;
-
+        healthScript.setMaxValue(resources.health);
         connections.OnFullyHealed.BlendInvoke(other?.OnFullyHealed);
 
         inventory?.Setup();
@@ -117,6 +118,8 @@ public class Monster : MonoBehaviour
         //Put us in that space, and build our initial LOS
         SetPosition(map, location);
         UpdateLOS(map);
+
+        
     }
 
     // Update is called once per frame
@@ -132,6 +135,7 @@ public class Monster : MonoBehaviour
         if (healthReturned > 0) //Negative health healing is currently just ignored, for clarity's sake
         {
             resources.health += healthReturned;
+            healthScript.setCurValue(resources.health);
         }
         if (resources.health >= stats.resources.health)
         {
@@ -167,7 +171,8 @@ public class Monster : MonoBehaviour
     {
         connections.OnTakeDamage.BlendInvoke(other?.OnTakeDamage, ref damage, ref type, ref source);
         resources.health -= damage;
-
+        healthScript.setCurValue(resources.health);
+        
         //Loggingstuff
         string toPrint = FormatStringForName(message).Replace("{damage}", $"{damage}");
         Debug.Log($"Console print: {toPrint}");
