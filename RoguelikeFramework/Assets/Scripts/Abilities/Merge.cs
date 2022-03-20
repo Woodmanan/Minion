@@ -41,6 +41,11 @@ public class Merge : Ability
                     continue;
 
                 Vector2Int checkCoords = location + new Vector2Int(x, y);
+                if (checkCoords.x < 0 || checkCoords.x >= Map.current.width ||
+                    checkCoords.y < 0 || checkCoords.y >= Map.current.height)
+                {
+                    continue;
+                }
                 CustomTile checkSpot = Map.current.GetTile(checkCoords);
                 if (checkSpot != null && checkSpot.currentlyStanding != null
                     && checkSpot.currentlyStanding.ID == caster.ID

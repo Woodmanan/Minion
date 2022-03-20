@@ -90,6 +90,7 @@ public class Monster : MonoBehaviour
 
         resources.health = stats.resources.health;
         connections.OnFullyHealed.BlendInvoke(other?.OnFullyHealed);
+        resources.xp = 0;
 
         inventory?.Setup();
         equipment?.Setup();

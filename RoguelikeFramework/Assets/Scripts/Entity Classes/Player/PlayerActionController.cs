@@ -7,6 +7,11 @@ public class PlayerActionController : ActionController
 {
     public override IEnumerator DetermineAction()
     {
+        //Quick check for lingering UI
+        if (UIController.WindowsOpen)
+        {
+            yield return new WaitUntil(() => !UIController.WindowsOpen);
+        }
         if (InputTracking.HasNextAction())
         {
             Player.player.view.CollectEntities(Map.current);

@@ -171,7 +171,8 @@ public class UIController : MonoBehaviour
 
     public void OpenSkillsPanel()
     {
-        skills.gameObject.SetActive(true);
+        skills.canBeEscaped = false;
+        skills.Activate();
     }
 
     public void AddStatusEffect(Effect effectToDisplay)

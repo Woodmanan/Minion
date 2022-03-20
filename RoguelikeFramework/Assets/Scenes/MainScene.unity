@@ -2631,7 +2631,7 @@ MonoBehaviour:
       health: 100
       mana: 20
       stamina: 20
-      xp: 0
+      xp: 1
     ac: 5
     ev: 5
   stats:
