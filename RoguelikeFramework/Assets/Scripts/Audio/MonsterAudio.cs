@@ -15,7 +15,6 @@ public class MonsterAudio : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        Debug.Log("im a little deer uwu");
         monster = GetComponent<Monster>();
         StartAmbientSFX();
         monster.connections.OnMove.AddListener(1, MoveSFX);
@@ -36,7 +35,6 @@ public class MonsterAudio : MonoBehaviour
     }
 
     void MoveSFX() {
-        Debug.Log("aaa");
         switch (monsterType) {
             case MonsterType.player:
                 AudioManager.i.Footstep();
