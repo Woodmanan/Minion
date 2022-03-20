@@ -920,10 +920,10 @@ MonoBehaviour:
   inspection: {fileID: 1984115623}
   targetting: {fileID: 1717730531}
   confirm: {fileID: 957919038}
-  skills: {fileID: 0}
-  statusDisplay: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  bugReportScreen: {fileID: 0}
+  skills: {fileID: 503594456}
+  statusDisplay: {fileID: 562374446}
+  pauseMenu: {fileID: 1947191574}
+  bugReportScreen: {fileID: 363733907}
 --- !u!224 &216533713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2631,6 +2631,7 @@ MonoBehaviour:
       health: 100
       mana: 20
       stamina: 20
+      xp: 0
     ac: 5
     ev: 5
   stats:
@@ -2638,12 +2639,14 @@ MonoBehaviour:
       health: 0
       mana: 0
       stamina: 0
+      xp: 0
     ac: 0
     ev: 0
   resources:
     health: 0
     mana: 0
     stamina: 0
+    xp: 0
   displayName: You
   nameRequiresPluralVerbs: 1
   faction: 2
@@ -2661,7 +2664,6 @@ MonoBehaviour:
   abilities: {fileID: 0}
   controller: {fileID: 0}
   currentTile: {fileID: 0}
-  XP: 0
   XPFromKill: 0
   level: 0
   description: 
@@ -9312,6 +9314,10 @@ PrefabInstance:
       propertyPath: examined
       value: 
       objectReference: {fileID: 546573371}
+    - target: {fileID: 3405697935986113668, guid: e839fa55edd2c754f97b3d5ffade021b, type: 3}
+      propertyPath: resource
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3405697936315772151, guid: e839fa55edd2c754f97b3d5ffade021b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

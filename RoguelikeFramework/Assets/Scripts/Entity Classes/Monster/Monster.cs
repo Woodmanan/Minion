@@ -55,7 +55,7 @@ public class Monster : MonoBehaviour
 
     private bool setup = false;
 
-    public int XP;
+    //public int XP;
     public int XPFromKill;
     public int level;
 
@@ -221,10 +221,10 @@ public class Monster : MonoBehaviour
     {
         Debug.Log($"{DebugName()} has gained {amount} of XP!");
         connections.OnGainXP.BlendInvoke(other?.OnGainXP, ref amount);
-        XP += amount;
-        if (XP >= XPTillNextLevel())
+        resources.xp += amount;
+        if (resources.xp >= stats.resources.xp)
         {
-            XP -= XPTillNextLevel();
+            resources.xp -= XPTillNextLevel();
             LevelUp();
         }
 
@@ -240,6 +240,7 @@ public class Monster : MonoBehaviour
     {
         level++;
         connections.OnLevelUp.BlendInvoke(other?.OnLevelUp, ref level);
+        baseStats.resources.xp = XPTillNextLevel();
         OnLevelUp();
     }
 

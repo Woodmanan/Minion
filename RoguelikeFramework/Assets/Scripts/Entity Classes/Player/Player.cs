@@ -50,6 +50,7 @@ public class Player : Monster
  
     public override int XPTillNextLevel()
     {
+        baseStats.resources.xp = level;
         return level;
     }
 
