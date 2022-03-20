@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 555078043481598783}
   - component: {fileID: 9015174743555470436}
   m_Layer: 0
-  m_Name: Item Test 7 (Gun)
+  m_Name: 004 Wooden Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   minDepth: 0
   maxDepth: 10
   elevatesTo: 1
-  id: 4
+  ID: 0
   stackable: 0
   color: {r: 0.50377357, g: 0.941315, b: 1, a: 1}
   location: {x: 45, y: 91}
@@ -175,7 +175,7 @@ MonoBehaviour:
     accuracy: 0
     piercing: 0
     damage: []
-  source: 0
+  source: 1
   item: {fileID: 0}
   targeting:
     numPoints: 1
@@ -188,6 +188,8 @@ MonoBehaviour:
     pointsRequireLOS: 1
     includesCasterSpace: 0
     recommendsPlayerTarget: 0
+    targetPriority: 0
+    tags: 0
     origin: {x: 0, y: 0}
     target: {x: 0, y: 0}
     points: []

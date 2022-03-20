@@ -31,8 +31,10 @@ public class Equipment : MonoBehaviour
         get { return equipmentSlots[index]; }
     }
 
+    public Action OnEquipmentAdded;
+
     // Start is called before the first frame update
-    void Start()
+    public void Setup()
     {
         monster = GetComponent<Monster>();
         inventory = GetComponent<Inventory>();
@@ -42,6 +44,7 @@ public class Equipment : MonoBehaviour
         for (int i = 0; i < equipmentSlots.Count; i++)
         {
             equipmentSlots[i].position = i;
+            equipmentSlots[i].equipped = null;
         }
     }
 
@@ -146,7 +149,7 @@ public class Equipment : MonoBehaviour
                 if (!succeeded)
                 {
                     //TODO: Console message me!
-                    Debug.Log($"You must have your {t} slot avaible to equip a {equip.GetComponent<Item>().GetName()}");
+                    Debug.Log($"You must have your {t} slot available to equip a {equip.GetComponent<Item>().GetName()}");
                     return false;
                 }
             }
@@ -341,6 +344,11 @@ public class Equipment : MonoBehaviour
 
         //Fire off equip function
         equip.OnEquip(monster);
+
+        //Fire off our own events to let people know that this has succeeded
+        //succ
+        OnEquipmentAdded?.Invoke();
+
         //Done!
     }
 

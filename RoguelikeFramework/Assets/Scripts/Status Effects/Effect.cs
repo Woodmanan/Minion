@@ -17,7 +17,7 @@ using System.Linq;
 public class Effect : ScriptableObject
 {
     //AUTO: Connection count
-    [HideInInspector] public const int connectionCount = 15;
+    //[HideInInspector] public const int connectionCount = 15;
 
     [HideInInspector] public Connections connectedTo;
     [HideInInspector] public bool ReadyToDelete = false;
