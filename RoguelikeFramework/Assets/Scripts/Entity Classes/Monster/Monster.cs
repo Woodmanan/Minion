@@ -183,7 +183,8 @@ public class Monster : MonoBehaviour
         Debug.Log("Monster is dead!");
 
         //Clear tile, so other systems don't try to use a dead monster
-        currentTile.currentlyStanding = null;
+        if (currentTile.currentlyStanding == this)
+            currentTile.currentlyStanding = null;
 
         //Clear inventory, if it exists
         if (inventory)

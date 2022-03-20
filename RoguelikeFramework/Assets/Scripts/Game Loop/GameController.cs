@@ -154,7 +154,6 @@ public class GameController : MonoBehaviour
                 player.EndTurn();
             }
 
-
             watch.Restart();
             for (int i = 0; i < Map.current.monsters.Count; i++)
             {
