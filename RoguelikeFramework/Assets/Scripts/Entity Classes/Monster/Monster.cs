@@ -219,12 +219,13 @@ public class Monster : MonoBehaviour
 
     public virtual void GainXP(int amount)
     {
-        Debug.Log($"{DebugName()} has gained {amount} of XP!");
+        Debug.Log($"{DebugName()} has gained {amount} XP!");
         connections.OnGainXP.BlendInvoke(other?.OnGainXP, ref amount);
         resources.xp += amount;
         if (resources.xp >= stats.resources.xp)
         {
             resources.xp -= XPTillNextLevel();
+            Debug.Log($"After leveling up with {XPTillNextLevel()} xp, monster now has {resources.xp} xp");
             LevelUp();
         }
 

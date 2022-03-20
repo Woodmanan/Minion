@@ -2665,7 +2665,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   currentTile: {fileID: 0}
   XPFromKill: 0
-  level: 0
+  level: 1
   description: 
   uniqueID: 
   testRoom: {fileID: 0}
@@ -9310,13 +9310,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1272693945}
     m_Modifications:
+    - target: {fileID: 384888160999715438, guid: e839fa55edd2c754f97b3d5ffade021b, type: 3}
+      propertyPath: examined
+      value: 
+      objectReference: {fileID: 546573371}
+    - target: {fileID: 1540901476954937281, guid: e839fa55edd2c754f97b3d5ffade021b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3405697935986113668, guid: e839fa55edd2c754f97b3d5ffade021b, type: 3}
       propertyPath: examined
       value: 
       objectReference: {fileID: 546573371}
     - target: {fileID: 3405697935986113668, guid: e839fa55edd2c754f97b3d5ffade021b, type: 3}
       propertyPath: resource
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3405697936315772151, guid: e839fa55edd2c754f97b3d5ffade021b, type: 3}
       propertyPath: m_Pivot.x

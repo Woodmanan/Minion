@@ -14,7 +14,7 @@ public class StatBarBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void Update()
@@ -29,24 +29,30 @@ public class StatBarBehaviour : MonoBehaviour
     public void setCurValue(float val)
     {
 
-        if (val > 0)
+        val = Mathf.Clamp(val, 0, 1);
+
+
+        if (mainBar.fillAmount > val)
         {
             mainBar.fillAmount = val;
+            if (sub)
+            {
+                if (Mathf.Abs(sub.fillAmount - mainBar.fillAmount) > .007f && sub.fillAmount > mainBar.fillAmount)
+                {
+                    sub.fillAmount = Mathf.Lerp(sub.fillAmount, mainBar.fillAmount, 0.01f);
+                }
+                else
+                {
+                    sub.fillAmount = mainBar.fillAmount;
+                }
+            }
         }
         else
         {
-            mainBar.fillAmount = 0;
-        }
-
-        if (sub)
-        {
-            if (Mathf.Abs(sub.fillAmount - mainBar.fillAmount) > .007f && sub.fillAmount > mainBar.fillAmount)
+            mainBar.fillAmount = Mathf.Lerp(mainBar.fillAmount, val, 0.01f);
+            if (sub)
             {
                 sub.fillAmount = Mathf.Lerp(sub.fillAmount, mainBar.fillAmount, 0.01f);
-            }
-            else
-            {
-                sub.fillAmount = mainBar.fillAmount;
             }
         }
     }
