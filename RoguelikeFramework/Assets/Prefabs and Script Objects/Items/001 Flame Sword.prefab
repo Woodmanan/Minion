@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590367683034208521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.181823, y: 0.8453553, z: -0.5529693}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   location: {x: 0, y: 0}
   held: 0
   name: Flame Sword
-  plural: 
+  plural: Flame Swords
   CanEquip: 0
   CanApply: 0
   CanTarget: 0
@@ -124,7 +124,11 @@ MonoBehaviour:
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: kivqywjr
-  description: 
+  description: Every so often, some young, enterprising fool in the Academy decides
+    that making a flaming sword would be a good idea. Almost as often, someone loses
+    an arm. Setting yourself on fire is poor ettiquette, but setting your enemies
+    on fire... Just remember to practice proper fire safety and you will not catch
+    fire. Simple.
 --- !u!114 &1590367683034208567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +148,7 @@ MonoBehaviour:
       health: 0
       mana: 0
       stamina: 0
+      xp: 0
     ac: 0
     ev: 0
   addedEffects:

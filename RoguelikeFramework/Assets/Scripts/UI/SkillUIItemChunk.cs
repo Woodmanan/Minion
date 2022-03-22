@@ -21,6 +21,6 @@ public class SkillUIItemChunk : MonoBehaviour
     public void Purchase()
     {
         skillNode.Purchase();
-        parentSkillsPanel.gameObject.SetActive(false);
+        RogueUIPanel.ExitAllWindows();
     }
 }

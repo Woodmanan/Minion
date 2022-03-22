@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class Player : Monster
 {
@@ -49,6 +50,7 @@ public class Player : Monster
  
     public override int XPTillNextLevel()
     {
+        baseStats.resources.xp = level;
         return level;
     }
 
@@ -60,9 +62,10 @@ public class Player : Monster
     public override void Die()
     {
         base.Die();
-        if (resources.health == 0)
+        if (resources.health <= 0)
         {
-            Debug.Log("Game should be over! This message should be replaced by loading an exit level instead.");
+            Debug.Log("Game over!");
+            SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
         }
     }
 }

@@ -7,6 +7,11 @@ public class PlayerActionController : ActionController
 {
     public override IEnumerator DetermineAction()
     {
+        //Quick check for lingering UI
+        if (UIController.WindowsOpen)
+        {
+            yield return new WaitUntil(() => !UIController.WindowsOpen);
+        }
         if (InputTracking.HasNextAction())
         {
             Player.player.view.CollectEntities(Map.current);
@@ -122,8 +127,15 @@ public class PlayerActionController : ActionController
 
                 //Handle potentially weird cases (Thanks, Nethack design philosophy!)
                 case PlayerAction.ESCAPE_SCREEN:
-                    //TODO: Open up the pause menu screen here
-                    RogueUIPanel.ExitTopLevel(); //This really, really shouldn't do anything. Let it happen, though!
+                    if (UIController.WindowsOpen)
+                    {
+                        RogueUIPanel.ExitTopLevel(); //This really, really shouldn't do anything. Let it happen, though!
+                    }
+                    else
+                    {
+                        UIController.singleton.OpenPause();
+                        yield return new WaitUntil(() => !UIController.WindowsOpen);
+                    }
                     break;
                 case PlayerAction.ACCEPT:
                 case PlayerAction.NONE:
