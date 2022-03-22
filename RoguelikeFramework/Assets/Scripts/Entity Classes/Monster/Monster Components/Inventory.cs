@@ -101,7 +101,7 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!setup) Setup();
+
     }
 
     public void Setup()
@@ -180,6 +180,10 @@ public class Inventory : MonoBehaviour
                 foreach (Item item in newStack.held)
                 {
                     item.transform.parent = holder;
+                    if (monster)
+                    {
+                        item.DisableSprite();
+                    }
                 }
 
                 return i;
@@ -246,6 +250,11 @@ public class Inventory : MonoBehaviour
                     Items[i].count += stack.count;
                     for (int j = 0; j < stack.count; j++)
                     {
+                        if (monster)
+                        {
+                            stack.held[j].DisableSprite();
+                        }
+                        stack.held[j].transform.parent = holder;
                         Items[i].held.Add(stack.held[j]);
                     }
                     Items[i].lastUpdated = updateCounter;

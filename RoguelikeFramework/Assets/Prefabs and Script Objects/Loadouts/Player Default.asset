@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a9638c9dc3a4d408c07966f43aed51, type: 3}
+  m_Name: Player Default
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 8807692175375108180, guid: 5bb814d95e406d34899df12272a0d667, type: 3}
+  maxItems: 1
+  abilities: []
+  maxAbilties: 0
+  minDepth: 0
+  maxDepth: 0
+  effects:
+    list:
+    - heldEffect: {fileID: 11400000, guid: 1d7d8cc7e85269846ba76a80c77757cc, type: 2}

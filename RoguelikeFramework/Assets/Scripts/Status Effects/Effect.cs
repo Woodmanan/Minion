@@ -19,6 +19,10 @@ public class Effect : ScriptableObject
     //AUTO: Connection count
     [HideInInspector] public const int connectionCount = 15;
 
+    public Sprite statusIcon;
+    public string displayName;
+    [TextArea] public string description;
+
     [HideInInspector] public Connections connectedTo;
     [HideInInspector] public bool ReadyToDelete = false;
 
@@ -56,6 +60,8 @@ public class Effect : ScriptableObject
         }
         Type current = this.GetType();
         Type defaultType = typeof(Effect);
+
+        if (connectedTo.monster == Player.player) UIController.singleton.AddStatusEffect(this);
 
         //BEGIN AUTO CONNECT
 
@@ -95,55 +101,59 @@ public class Effect : ScriptableObject
 
         if (connections[17] >= 0) { c.OnLoseResources.AddListener(connections[17], OnLoseResources); }
 
-        if (connections[18] >= 0) { c.OnRegenerateAbilityStats.AddListener(connections[18], OnRegenerateAbilityStats); }
+        if (connections[18] >= 0) { c.OnGainXP.AddListener(connections[18], OnGainXP); }
 
-        if (connections[19] >= 0) { c.OnCheckAvailability.AddListener(connections[19], OnCheckAvailability); }
+        if (connections[19] >= 0) { c.OnLevelUp.AddListener(connections[19], OnLevelUp); }
 
-        if (connections[20] >= 0) { c.OnTargetsSelected.AddListener(connections[20], OnTargetsSelected); }
+        if (connections[20] >= 0) { c.OnRegenerateAbilityStats.AddListener(connections[20], OnRegenerateAbilityStats); }
 
-        if (connections[21] >= 0) { c.OnPreCast.AddListener(connections[21], OnPreCast); }
+        if (connections[21] >= 0) { c.OnCheckAvailability.AddListener(connections[21], OnCheckAvailability); }
 
-        if (connections[22] >= 0) { c.OnPostCast.AddListener(connections[22], OnPostCast); }
+        if (connections[22] >= 0) { c.OnTargetsSelected.AddListener(connections[22], OnTargetsSelected); }
 
-        if (connections[23] >= 0) { c.OnTargetedByAbility.AddListener(connections[23], OnTargetedByAbility); }
+        if (connections[23] >= 0) { c.OnPreCast.AddListener(connections[23], OnPreCast); }
 
-        if (connections[24] >= 0) { c.OnHitByAbility.AddListener(connections[24], OnHitByAbility); }
+        if (connections[24] >= 0) { c.OnPostCast.AddListener(connections[24], OnPostCast); }
 
-        if (connections[25] >= 0) { c.OnStartAttack.AddListener(connections[25], OnStartAttack); }
+        if (connections[25] >= 0) { c.OnTargetedByAbility.AddListener(connections[25], OnTargetedByAbility); }
 
-        if (connections[26] >= 0) { c.OnGenerateArmedAttacks.AddListener(connections[26], OnGenerateArmedAttacks); }
+        if (connections[26] >= 0) { c.OnHitByAbility.AddListener(connections[26], OnHitByAbility); }
 
-        if (connections[27] >= 0) { c.OnBeginPrimaryAttack.AddListener(connections[27], OnBeginPrimaryAttack); }
+        if (connections[27] >= 0) { c.OnStartAttack.AddListener(connections[27], OnStartAttack); }
 
-        if (connections[28] >= 0) { c.OnPrimaryAttackResult.AddListener(connections[28], OnPrimaryAttackResult); }
+        if (connections[28] >= 0) { c.OnGenerateArmedAttacks.AddListener(connections[28], OnGenerateArmedAttacks); }
 
-        if (connections[29] >= 0) { c.OnEndPrimaryAttack.AddListener(connections[29], OnEndPrimaryAttack); }
+        if (connections[29] >= 0) { c.OnBeginPrimaryAttack.AddListener(connections[29], OnBeginPrimaryAttack); }
 
-        if (connections[30] >= 0) { c.OnBeginSecondaryAttack.AddListener(connections[30], OnBeginSecondaryAttack); }
+        if (connections[30] >= 0) { c.OnPrimaryAttackResult.AddListener(connections[30], OnPrimaryAttackResult); }
 
-        if (connections[31] >= 0) { c.OnSecondaryAttackResult.AddListener(connections[31], OnSecondaryAttackResult); }
+        if (connections[31] >= 0) { c.OnEndPrimaryAttack.AddListener(connections[31], OnEndPrimaryAttack); }
 
-        if (connections[32] >= 0) { c.OnEndSecondaryAttack.AddListener(connections[32], OnEndSecondaryAttack); }
+        if (connections[32] >= 0) { c.OnBeginSecondaryAttack.AddListener(connections[32], OnBeginSecondaryAttack); }
 
-        if (connections[33] >= 0) { c.OnGenerateUnarmedAttacks.AddListener(connections[33], OnGenerateUnarmedAttacks); }
+        if (connections[33] >= 0) { c.OnSecondaryAttackResult.AddListener(connections[33], OnSecondaryAttackResult); }
 
-        if (connections[34] >= 0) { c.OnBeginUnarmedAttack.AddListener(connections[34], OnBeginUnarmedAttack); }
+        if (connections[34] >= 0) { c.OnEndSecondaryAttack.AddListener(connections[34], OnEndSecondaryAttack); }
 
-        if (connections[35] >= 0) { c.OnUnarmedAttackResult.AddListener(connections[35], OnUnarmedAttackResult); }
+        if (connections[35] >= 0) { c.OnGenerateUnarmedAttacks.AddListener(connections[35], OnGenerateUnarmedAttacks); }
 
-        if (connections[36] >= 0) { c.OnEndUnarmedAttack.AddListener(connections[36], OnEndUnarmedAttack); }
+        if (connections[36] >= 0) { c.OnBeginUnarmedAttack.AddListener(connections[36], OnBeginUnarmedAttack); }
 
-        if (connections[37] >= 0) { c.OnBeforePrimaryAttackTarget.AddListener(connections[37], OnBeforePrimaryAttackTarget); }
+        if (connections[37] >= 0) { c.OnUnarmedAttackResult.AddListener(connections[37], OnUnarmedAttackResult); }
 
-        if (connections[38] >= 0) { c.OnAfterPrimaryAttackTarget.AddListener(connections[38], OnAfterPrimaryAttackTarget); }
+        if (connections[38] >= 0) { c.OnEndUnarmedAttack.AddListener(connections[38], OnEndUnarmedAttack); }
 
-        if (connections[39] >= 0) { c.OnBeforeSecondaryAttackTarget.AddListener(connections[39], OnBeforeSecondaryAttackTarget); }
+        if (connections[39] >= 0) { c.OnBeforePrimaryAttackTarget.AddListener(connections[39], OnBeforePrimaryAttackTarget); }
 
-        if (connections[40] >= 0) { c.OnAfterSecondaryAttackTarget.AddListener(connections[40], OnAfterSecondaryAttackTarget); }
+        if (connections[40] >= 0) { c.OnAfterPrimaryAttackTarget.AddListener(connections[40], OnAfterPrimaryAttackTarget); }
 
-        if (connections[41] >= 0) { c.OnBeforeUnarmedAttackTarget.AddListener(connections[41], OnBeforeUnarmedAttackTarget); }
+        if (connections[41] >= 0) { c.OnBeforeSecondaryAttackTarget.AddListener(connections[41], OnBeforeSecondaryAttackTarget); }
 
-        if (connections[42] >= 0) { c.OnAfterUnarmedAttackTarget.AddListener(connections[42], OnAfterUnarmedAttackTarget); }
+        if (connections[42] >= 0) { c.OnAfterSecondaryAttackTarget.AddListener(connections[42], OnAfterSecondaryAttackTarget); }
+
+        if (connections[43] >= 0) { c.OnBeforeUnarmedAttackTarget.AddListener(connections[43], OnBeforeUnarmedAttackTarget); }
+
+        if (connections[44] >= 0) { c.OnAfterUnarmedAttackTarget.AddListener(connections[44], OnAfterUnarmedAttackTarget); }
 
 
         OnConnection();
@@ -154,7 +164,7 @@ public class Effect : ScriptableObject
     public void SetupConnections()
     {
         //AUTO VARIABLE
-        int numConnections = 43;
+        int numConnections = 45;
 
         int[] connections = new int[numConnections];
 
@@ -546,8 +556,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //----------------- OnRegenerateAbilityStats -----------------
-        method = ((ActionRef<Targeting, AbilityBlock, Ability>) OnRegenerateAbilityStats).Method;
+        //------------------------- OnGainXP -------------------------
+        method = ((ActionRef<int>) OnGainXP).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -567,8 +577,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------- OnCheckAvailability -------------------
-        method = ((ActionRef<Ability, bool>) OnCheckAvailability).Method;
+        //------------------------ OnLevelUp ------------------------
+        method = ((ActionRef<int>) OnLevelUp).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -588,8 +598,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //-------------------- OnTargetsSelected --------------------
-        method = ((ActionRef<Targeting, Ability>) OnTargetsSelected).Method;
+        //----------------- OnRegenerateAbilityStats -----------------
+        method = ((ActionRef<Targeting, AbilityBlock, Ability>) OnRegenerateAbilityStats).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -609,8 +619,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------------ OnPreCast ------------------------
-        method = ((ActionRef<Ability>) OnPreCast).Method;
+        //------------------- OnCheckAvailability -------------------
+        method = ((ActionRef<Ability, bool>) OnCheckAvailability).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -630,8 +640,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------------ OnPostCast ------------------------
-        method = ((ActionRef<Ability>) OnPostCast).Method;
+        //-------------------- OnTargetsSelected --------------------
+        method = ((ActionRef<Targeting, Ability>) OnTargetsSelected).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -651,8 +661,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------- OnTargetedByAbility -------------------
-        method = ((ActionRef<AbilityAction>) OnTargetedByAbility).Method;
+        //------------------------ OnPreCast ------------------------
+        method = ((ActionRef<Ability>) OnPreCast).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -672,8 +682,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //---------------------- OnHitByAbility ----------------------
-        method = ((ActionRef<AbilityAction>) OnHitByAbility).Method;
+        //------------------------ OnPostCast ------------------------
+        method = ((ActionRef<Ability>) OnPostCast).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -693,8 +703,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //---------------------- OnStartAttack ----------------------
-        method = ((ActionRef<AttackAction, bool>) OnStartAttack).Method;
+        //------------------- OnTargetedByAbility -------------------
+        method = ((ActionRef<AbilityAction>) OnTargetedByAbility).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -714,8 +724,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------ OnGenerateArmedAttacks ------------------
-        method = ((ActionRef<List<Weapon>, List<Weapon>>) OnGenerateArmedAttacks).Method;
+        //---------------------- OnHitByAbility ----------------------
+        method = ((ActionRef<AbilityAction>) OnHitByAbility).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -735,8 +745,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------- OnBeginPrimaryAttack -------------------
-        method = ((ActionRef<Weapon, AttackAction>) OnBeginPrimaryAttack).Method;
+        //---------------------- OnStartAttack ----------------------
+        method = ((ActionRef<AttackAction, bool>) OnStartAttack).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -756,8 +766,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------ OnPrimaryAttackResult ------------------
-        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnPrimaryAttackResult).Method;
+        //------------------ OnGenerateArmedAttacks ------------------
+        method = ((ActionRef<List<Weapon>, List<Weapon>>) OnGenerateArmedAttacks).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -777,8 +787,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //-------------------- OnEndPrimaryAttack --------------------
-        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnEndPrimaryAttack).Method;
+        //------------------- OnBeginPrimaryAttack -------------------
+        method = ((ActionRef<Weapon, AttackAction>) OnBeginPrimaryAttack).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -798,8 +808,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------ OnBeginSecondaryAttack ------------------
-        method = ((ActionRef<Weapon, AttackAction>) OnBeginSecondaryAttack).Method;
+        //------------------ OnPrimaryAttackResult ------------------
+        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnPrimaryAttackResult).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -819,8 +829,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //----------------- OnSecondaryAttackResult -----------------
-        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnSecondaryAttackResult).Method;
+        //-------------------- OnEndPrimaryAttack --------------------
+        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnEndPrimaryAttack).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -840,8 +850,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------- OnEndSecondaryAttack -------------------
-        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnEndSecondaryAttack).Method;
+        //------------------ OnBeginSecondaryAttack ------------------
+        method = ((ActionRef<Weapon, AttackAction>) OnBeginSecondaryAttack).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -861,8 +871,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //----------------- OnGenerateUnarmedAttacks -----------------
-        method = ((ActionRef<List<EquipmentSlot>>) OnGenerateUnarmedAttacks).Method;
+        //----------------- OnSecondaryAttackResult -----------------
+        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnSecondaryAttackResult).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -882,8 +892,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------- OnBeginUnarmedAttack -------------------
-        method = ((ActionRef<EquipmentSlot, AttackAction>) OnBeginUnarmedAttack).Method;
+        //------------------- OnEndSecondaryAttack -------------------
+        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnEndSecondaryAttack).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -903,8 +913,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //------------------ OnUnarmedAttackResult ------------------
-        method = ((ActionRef<EquipmentSlot, AttackAction, AttackResult>) OnUnarmedAttackResult).Method;
+        //----------------- OnGenerateUnarmedAttacks -----------------
+        method = ((ActionRef<List<EquipmentSlot>>) OnGenerateUnarmedAttacks).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -924,8 +934,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //-------------------- OnEndUnarmedAttack --------------------
-        method = ((ActionRef<EquipmentSlot, AttackAction, AttackResult>) OnEndUnarmedAttack).Method;
+        //------------------- OnBeginUnarmedAttack -------------------
+        method = ((ActionRef<EquipmentSlot, AttackAction>) OnBeginUnarmedAttack).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -945,8 +955,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //--------------- OnBeforePrimaryAttackTarget ---------------
-        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnBeforePrimaryAttackTarget).Method;
+        //------------------ OnUnarmedAttackResult ------------------
+        method = ((ActionRef<EquipmentSlot, AttackAction, AttackResult>) OnUnarmedAttackResult).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -966,8 +976,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //---------------- OnAfterPrimaryAttackTarget ----------------
-        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnAfterPrimaryAttackTarget).Method;
+        //-------------------- OnEndUnarmedAttack --------------------
+        method = ((ActionRef<EquipmentSlot, AttackAction, AttackResult>) OnEndUnarmedAttack).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -987,8 +997,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //-------------- OnBeforeSecondaryAttackTarget --------------
-        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnBeforeSecondaryAttackTarget).Method;
+        //--------------- OnBeforePrimaryAttackTarget ---------------
+        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnBeforePrimaryAttackTarget).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -1008,8 +1018,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //--------------- OnAfterSecondaryAttackTarget ---------------
-        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnAfterSecondaryAttackTarget).Method;
+        //---------------- OnAfterPrimaryAttackTarget ----------------
+        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnAfterPrimaryAttackTarget).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -1029,8 +1039,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //--------------- OnBeforeUnarmedAttackTarget ---------------
-        method = ((ActionRef<EquipmentSlot, AttackAction, AttackResult>) OnBeforeUnarmedAttackTarget).Method;
+        //-------------- OnBeforeSecondaryAttackTarget --------------
+        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnBeforeSecondaryAttackTarget).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -1050,8 +1060,8 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
-        //---------------- OnAfterUnarmedAttackTarget ----------------
-        method = ((ActionRef<EquipmentSlot, AttackAction, AttackResult>) OnAfterUnarmedAttackTarget).Method;
+        //--------------- OnAfterSecondaryAttackTarget ---------------
+        method = ((ActionRef<Weapon, AttackAction, AttackResult>) OnAfterSecondaryAttackTarget).Method;
         if (method.DeclaringType != typeof(Effect))
         {
             object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
@@ -1071,6 +1081,48 @@ public class Effect : ScriptableObject
         }
         //------------------------------------------------------------
 
+        //--------------- OnBeforeUnarmedAttackTarget ---------------
+        method = ((ActionRef<EquipmentSlot, AttackAction, AttackResult>) OnBeforeUnarmedAttackTarget).Method;
+        if (method.DeclaringType != typeof(Effect))
+        {
+            object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
+            if (attribute != null)
+            {
+                connections[43] = ((PriorityAttribute)attribute).Priority;
+            }
+            else
+            {
+                connections[43] = this.priority;
+            }
+
+        }
+        else
+        {
+            connections[43] = -1;
+        }
+        //------------------------------------------------------------
+
+        //---------------- OnAfterUnarmedAttackTarget ----------------
+        method = ((ActionRef<EquipmentSlot, AttackAction, AttackResult>) OnAfterUnarmedAttackTarget).Method;
+        if (method.DeclaringType != typeof(Effect))
+        {
+            object attribute = method.GetCustomAttributes(typeof(PriorityAttribute), false).FirstOrDefault();
+            if (attribute != null)
+            {
+                connections[44] = ((PriorityAttribute)attribute).Priority;
+            }
+            else
+            {
+                connections[44] = this.priority;
+            }
+
+        }
+        else
+        {
+            connections[44] = -1;
+        }
+        //------------------------------------------------------------
+
 
 
         connectionDict.Add(this.GetType(), connections);
@@ -1087,6 +1139,8 @@ public class Effect : ScriptableObject
         }
 
         Connections c = connectedTo;
+
+        if (connectedTo.monster == Player.player) UIController.singleton.RemoveStatusEffect(this);
 
         //BEGIN AUTO DISCONNECT
 
@@ -1126,55 +1180,59 @@ public class Effect : ScriptableObject
 
         if (connections[17] >= 0) { c.OnLoseResources.RemoveListener(OnLoseResources); }
 
-        if (connections[18] >= 0) { c.OnRegenerateAbilityStats.RemoveListener(OnRegenerateAbilityStats); }
+        if (connections[18] >= 0) { c.OnGainXP.RemoveListener(OnGainXP); }
 
-        if (connections[19] >= 0) { c.OnCheckAvailability.RemoveListener(OnCheckAvailability); }
+        if (connections[19] >= 0) { c.OnLevelUp.RemoveListener(OnLevelUp); }
 
-        if (connections[20] >= 0) { c.OnTargetsSelected.RemoveListener(OnTargetsSelected); }
+        if (connections[20] >= 0) { c.OnRegenerateAbilityStats.RemoveListener(OnRegenerateAbilityStats); }
 
-        if (connections[21] >= 0) { c.OnPreCast.RemoveListener(OnPreCast); }
+        if (connections[21] >= 0) { c.OnCheckAvailability.RemoveListener(OnCheckAvailability); }
 
-        if (connections[22] >= 0) { c.OnPostCast.RemoveListener(OnPostCast); }
+        if (connections[22] >= 0) { c.OnTargetsSelected.RemoveListener(OnTargetsSelected); }
 
-        if (connections[23] >= 0) { c.OnTargetedByAbility.RemoveListener(OnTargetedByAbility); }
+        if (connections[23] >= 0) { c.OnPreCast.RemoveListener(OnPreCast); }
 
-        if (connections[24] >= 0) { c.OnHitByAbility.RemoveListener(OnHitByAbility); }
+        if (connections[24] >= 0) { c.OnPostCast.RemoveListener(OnPostCast); }
 
-        if (connections[25] >= 0) { c.OnStartAttack.RemoveListener(OnStartAttack); }
+        if (connections[25] >= 0) { c.OnTargetedByAbility.RemoveListener(OnTargetedByAbility); }
 
-        if (connections[26] >= 0) { c.OnGenerateArmedAttacks.RemoveListener(OnGenerateArmedAttacks); }
+        if (connections[26] >= 0) { c.OnHitByAbility.RemoveListener(OnHitByAbility); }
 
-        if (connections[27] >= 0) { c.OnBeginPrimaryAttack.RemoveListener(OnBeginPrimaryAttack); }
+        if (connections[27] >= 0) { c.OnStartAttack.RemoveListener(OnStartAttack); }
 
-        if (connections[28] >= 0) { c.OnPrimaryAttackResult.RemoveListener(OnPrimaryAttackResult); }
+        if (connections[28] >= 0) { c.OnGenerateArmedAttacks.RemoveListener(OnGenerateArmedAttacks); }
 
-        if (connections[29] >= 0) { c.OnEndPrimaryAttack.RemoveListener(OnEndPrimaryAttack); }
+        if (connections[29] >= 0) { c.OnBeginPrimaryAttack.RemoveListener(OnBeginPrimaryAttack); }
 
-        if (connections[30] >= 0) { c.OnBeginSecondaryAttack.RemoveListener(OnBeginSecondaryAttack); }
+        if (connections[30] >= 0) { c.OnPrimaryAttackResult.RemoveListener(OnPrimaryAttackResult); }
 
-        if (connections[31] >= 0) { c.OnSecondaryAttackResult.RemoveListener(OnSecondaryAttackResult); }
+        if (connections[31] >= 0) { c.OnEndPrimaryAttack.RemoveListener(OnEndPrimaryAttack); }
 
-        if (connections[32] >= 0) { c.OnEndSecondaryAttack.RemoveListener(OnEndSecondaryAttack); }
+        if (connections[32] >= 0) { c.OnBeginSecondaryAttack.RemoveListener(OnBeginSecondaryAttack); }
 
-        if (connections[33] >= 0) { c.OnGenerateUnarmedAttacks.RemoveListener(OnGenerateUnarmedAttacks); }
+        if (connections[33] >= 0) { c.OnSecondaryAttackResult.RemoveListener(OnSecondaryAttackResult); }
 
-        if (connections[34] >= 0) { c.OnBeginUnarmedAttack.RemoveListener(OnBeginUnarmedAttack); }
+        if (connections[34] >= 0) { c.OnEndSecondaryAttack.RemoveListener(OnEndSecondaryAttack); }
 
-        if (connections[35] >= 0) { c.OnUnarmedAttackResult.RemoveListener(OnUnarmedAttackResult); }
+        if (connections[35] >= 0) { c.OnGenerateUnarmedAttacks.RemoveListener(OnGenerateUnarmedAttacks); }
 
-        if (connections[36] >= 0) { c.OnEndUnarmedAttack.RemoveListener(OnEndUnarmedAttack); }
+        if (connections[36] >= 0) { c.OnBeginUnarmedAttack.RemoveListener(OnBeginUnarmedAttack); }
 
-        if (connections[37] >= 0) { c.OnBeforePrimaryAttackTarget.RemoveListener(OnBeforePrimaryAttackTarget); }
+        if (connections[37] >= 0) { c.OnUnarmedAttackResult.RemoveListener(OnUnarmedAttackResult); }
 
-        if (connections[38] >= 0) { c.OnAfterPrimaryAttackTarget.RemoveListener(OnAfterPrimaryAttackTarget); }
+        if (connections[38] >= 0) { c.OnEndUnarmedAttack.RemoveListener(OnEndUnarmedAttack); }
 
-        if (connections[39] >= 0) { c.OnBeforeSecondaryAttackTarget.RemoveListener(OnBeforeSecondaryAttackTarget); }
+        if (connections[39] >= 0) { c.OnBeforePrimaryAttackTarget.RemoveListener(OnBeforePrimaryAttackTarget); }
 
-        if (connections[40] >= 0) { c.OnAfterSecondaryAttackTarget.RemoveListener(OnAfterSecondaryAttackTarget); }
+        if (connections[40] >= 0) { c.OnAfterPrimaryAttackTarget.RemoveListener(OnAfterPrimaryAttackTarget); }
 
-        if (connections[41] >= 0) { c.OnBeforeUnarmedAttackTarget.RemoveListener(OnBeforeUnarmedAttackTarget); }
+        if (connections[41] >= 0) { c.OnBeforeSecondaryAttackTarget.RemoveListener(OnBeforeSecondaryAttackTarget); }
 
-        if (connections[42] >= 0) { c.OnAfterUnarmedAttackTarget.RemoveListener(OnAfterUnarmedAttackTarget); }
+        if (connections[42] >= 0) { c.OnAfterSecondaryAttackTarget.RemoveListener(OnAfterSecondaryAttackTarget); }
+
+        if (connections[43] >= 0) { c.OnBeforeUnarmedAttackTarget.RemoveListener(OnBeforeUnarmedAttackTarget); }
+
+        if (connections[44] >= 0) { c.OnAfterUnarmedAttackTarget.RemoveListener(OnAfterUnarmedAttackTarget); }
 
         //END AUTO DISCONNECT
 
@@ -1205,6 +1263,8 @@ public class Effect : ScriptableObject
     public virtual void OnCastAbility(ref AbilityAction action, ref bool canContinue) {}
     public virtual void OnGainResources(ref ResourceList resources) {}
     public virtual void OnLoseResources(ref ResourceList resources) {}
+    public virtual void OnGainXP(ref int XPAmount) {}
+    public virtual void OnLevelUp(ref int Level) {}
     public virtual void OnRegenerateAbilityStats(ref Targeting targeting, ref AbilityBlock abilityBlock, ref Ability ability) {}
     public virtual void OnCheckAvailability(ref Ability abilityToCheck, ref bool available) {}
     public virtual void OnTargetsSelected(ref Targeting targeting, ref Ability ability) {}

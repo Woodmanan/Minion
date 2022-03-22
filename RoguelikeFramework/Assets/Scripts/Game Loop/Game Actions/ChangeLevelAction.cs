@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChangeLevelAction : GameAction
 {
@@ -27,6 +28,13 @@ public class ChangeLevelAction : GameAction
                 UIController.singleton.OpenConfirmation($"<color=\"black\">Are you sure you want to go {(up ? "up" : "down")}?", (b) => keepGoing = b);
                 yield return new WaitUntil(() => !UIController.WindowsOpen);
                 if (!keepGoing) yield break;*/
+            }
+
+            if (stair.connectsToFloor >= LevelLoader.singleton.generators.Count)
+            {
+                //We win!
+                SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+                yield break;
             }
 
             GameController.singleton.MoveToLevel(stair.connectsToFloor);

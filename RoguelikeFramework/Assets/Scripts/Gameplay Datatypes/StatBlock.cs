@@ -64,4 +64,5 @@ public class WeaponBlock
     public int accuracy;
     public int piercing;
     public List<DamagePairing> damage;
+    public StatusEffectList applyOnHit;
 }

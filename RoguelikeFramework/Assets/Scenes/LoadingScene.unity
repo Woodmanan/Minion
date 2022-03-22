@@ -716,6 +716,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &216533716
 Canvas:
   m_ObjectHideFlags: 0
@@ -1176,6 +1177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1330,9 +1332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c5d49c9825a8d4b8ba6052b0b01b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingAbilities:
-  - {fileID: 11400000, guid: c5e9332c1b918f24bb40e86cfa955eef, type: 2}
-  - {fileID: 11400000, guid: c1f6324b3e6051e4bb94f02add99337d, type: 2}
 --- !u!114 &546573367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,7 +1441,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   capacity: 52
   available: 0
-  startingItems: []
 --- !u!212 &546573369
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1536,16 +1534,24 @@ MonoBehaviour:
     health: 0
     mana: 0
     stamina: 0
-  name: player
+  displayName: 
   nameRequiresPluralVerbs: 1
+  faction: 1
+  ID: 0
+  minDepth: 0
+  maxDepth: 0
   energy: 0
   location: {x: 30, y: 30}
   visionRadius: 8
   energyPerStep: 100
+  loadout: {fileID: 0}
   effects: []
   inventory: {fileID: 546573368}
   equipment: {fileID: 0}
   abilities: {fileID: 0}
+  controller: {fileID: 0}
+  currentTile: {fileID: 0}
+  testRoom: {fileID: 0}
   uiControls: {fileID: 216533712}
 --- !u!4 &546573372
 Transform:
@@ -1835,6 +1841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2175,8 +2182,8 @@ GameObject:
   m_Component:
   - component: {fileID: 903354582}
   - component: {fileID: 903354579}
-  - component: {fileID: 903354581}
   - component: {fileID: 903354580}
+  - component: {fileID: 903354581}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2245,14 +2252,20 @@ MonoBehaviour:
   stopDist: 1
   stopSpeed: -1
   stopSpeedMultiplier: 1.6
---- !u!81 &903354581
-AudioListener:
+--- !u!114 &903354581
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903354578}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!4 &903354582
 Transform:
   m_ObjectHideFlags: 0
@@ -2690,6 +2703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3678,6 +3692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4142,6 +4157,8 @@ MonoBehaviour:
     pointsRequireLOS: 1
     includesCasterSpace: 0
     recommendsPlayerTarget: 0
+    targetPriority: 0
+    tags: 0
     origin: {x: 0, y: 0}
     target: {x: 0, y: 0}
     points: []
@@ -4213,6 +4230,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1717730535
 Canvas:
   m_ObjectHideFlags: 0
@@ -4614,6 +4632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generators:
   - name: Level 1
+    depth: 0
     seed: 0
     bounds: {x: 50, y: 50}
     machines:
@@ -4624,10 +4643,18 @@ MonoBehaviour:
     tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
     numberOfAttempts: 100
     attemptsPerMachine: 100
-    player: {fileID: 0}
+    availableItems: {fileID: 0}
+    numItems:
+      rolls: 0
+      dice: 0
+    availableMonsters: {fileID: 0}
+    numMonsters:
+      rolls: 0
+      dice: 0
     JIT: 0
     finished: 0
   - name: Level 2
+    depth: 0
     seed: 0
     bounds: {x: 60, y: 60}
     machines:
@@ -4638,10 +4665,18 @@ MonoBehaviour:
     tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
     numberOfAttempts: 100
     attemptsPerMachine: 100
-    player: {fileID: 0}
+    availableItems: {fileID: 0}
+    numItems:
+      rolls: 0
+      dice: 0
+    availableMonsters: {fileID: 0}
+    numMonsters:
+      rolls: 0
+      dice: 0
     JIT: 0
     finished: 0
   - name: Level 3
+    depth: 0
     seed: 0
     bounds: {x: 60, y: 60}
     machines:
@@ -4652,10 +4687,18 @@ MonoBehaviour:
     tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
     numberOfAttempts: 100
     attemptsPerMachine: 100
-    player: {fileID: 0}
+    availableItems: {fileID: 0}
+    numItems:
+      rolls: 0
+      dice: 0
+    availableMonsters: {fileID: 0}
+    numMonsters:
+      rolls: 0
+      dice: 0
     JIT: 0
     finished: 0
   - name: Level 4
+    depth: 0
     seed: 0
     bounds: {x: 60, y: 60}
     machines:
@@ -4666,10 +4709,18 @@ MonoBehaviour:
     tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
     numberOfAttempts: 100
     attemptsPerMachine: 100
-    player: {fileID: 0}
+    availableItems: {fileID: 0}
+    numItems:
+      rolls: 0
+      dice: 0
+    availableMonsters: {fileID: 0}
+    numMonsters:
+      rolls: 0
+      dice: 0
     JIT: 0
     finished: 0
   - name: Level 5
+    depth: 0
     seed: 0
     bounds: {x: 60, y: 60}
     machines:
@@ -4680,10 +4731,18 @@ MonoBehaviour:
     tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
     numberOfAttempts: 100
     attemptsPerMachine: 100
-    player: {fileID: 0}
+    availableItems: {fileID: 0}
+    numItems:
+      rolls: 0
+      dice: 0
+    availableMonsters: {fileID: 0}
+    numMonsters:
+      rolls: 0
+      dice: 0
     JIT: 0
     finished: 0
   - name: Level 6
+    depth: 0
     seed: 0
     bounds: {x: 60, y: 60}
     machines:
@@ -4694,7 +4753,14 @@ MonoBehaviour:
     tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
     numberOfAttempts: 100
     attemptsPerMachine: 100
-    player: {fileID: 0}
+    availableItems: {fileID: 0}
+    numItems:
+      rolls: 0
+      dice: 0
+    availableMonsters: {fileID: 0}
+    numMonsters:
+      rolls: 0
+      dice: 0
     JIT: 0
     finished: 0
   msPerFrame: 4
@@ -4810,9 +4876,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInFocus: 0
   canBeEscaped: 1
-  name: {fileID: 1697134978}
-  description: {fileID: 1919058212}
-  attributes: {fileID: 1079236548}
+  nameBox: {fileID: 0}
+  descriptionBox: {fileID: 0}
+  attributesBox: {fileID: 0}
   image: {fileID: 273582753}
 --- !u!1 &2050102313
 GameObject:
@@ -5283,6 +5349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}

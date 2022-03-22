@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.IO.Compression;
+#if UNITY_EDITOR
 using UnityEditor.AssetImporters;
 using UnityEditor.Experimental.AssetImporters;
+#endif
 using System.Net;
 using System.Diagnostics;
 
@@ -27,7 +29,7 @@ public class RexpaintAssetPipeline
                                         BuildTarget.StandaloneWindows);
     }*/
     //TODO: Discover the magic of MacOS, and figure out how to launch Wine
-
+    #if UNITY_EDITOR
     [MenuItem("Tools/Launch Rexpaint", priority = 5)]
     public static void LaunchRexpaint()
     {
@@ -91,7 +93,6 @@ public class RexpaintAssetPipeline
 
     }
 
-
     static string GetPathTo(string filename, string path = "Assets")
     {
         var info = new DirectoryInfo(path);
@@ -128,8 +129,9 @@ public class RexpaintAssetPipeline
         }
         return "No Folder Found!";
     }
+    #endif
 
-    
+
     public static SadRex.Image Load(TextAsset asset)
     {
         MemoryStream stream = new MemoryStream(System.Convert.FromBase64String(asset.text));
@@ -160,7 +162,7 @@ public class RexpaintAssetPipeline
  * memstream -> bytes -> binary encoding as string
  * string -> TextAsset
  */
-
+#if UNITY_EDITOR
 [ScriptedImporter(1, "xp")]
 public class RexpaintImporter : ScriptedImporter
 {
@@ -176,4 +178,5 @@ public class RexpaintImporter : ScriptedImporter
         ctx.SetMainObject(xp);
     }
 }
+#endif
 
