@@ -9,23 +9,27 @@ public class MonsterSortWizard
     [MenuItem("Tools/Dangerous/Sort Monsters")]
     public static void SortItems()
     {
-        string path = GetPathToFolder("Monsters");
+        string path = GetPathToFolder("Prefabs and Script Objects");
         Debug.Log($"Path to folder is {path}");
 
         List<Monster> monsters = new List<Monster>();
 
         var info = new DirectoryInfo(path);
 
-        foreach (FileInfo f in info.GetFiles("*.prefab"))
+        foreach (FileInfo f in info.GetFiles("*.prefab", SearchOption.AllDirectories))
         {
             Debug.Log($"File {f.Name} being searched!");
             string filePath = f.FullName;
             int length = filePath.Length - info.FullName.Length + path.Length;
-            filePath = filePath.Substring(f.FullName.Length - length, length);
+            filePath = filePath.Substring(f.FullName.Length - length, length); 
 
-            Debug.Log($"Loading {filePath} from that!");
+            Monster m = AssetDatabase.LoadAssetAtPath<Monster>(filePath);
 
-            monsters.Add(AssetDatabase.LoadAssetAtPath<Monster>(filePath));
+            if (m != null)
+            {
+                Debug.Log($"Loading {filePath} from that!");
+                monsters.Add(AssetDatabase.LoadAssetAtPath<Monster>(filePath));
+            }
         }
 
         Debug.Log($"Search discovered {monsters.Count} items to order!");

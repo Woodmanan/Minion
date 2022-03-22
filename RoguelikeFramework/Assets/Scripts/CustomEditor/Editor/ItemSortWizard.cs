@@ -9,23 +9,25 @@ public class ItemSortWizard
     [MenuItem("Tools/Dangerous/Sort Items")]
     public static void SortItems()
     {
-        string path = GetPathToFolder("Items");
+        string path = GetPathToFolder("Prefabs and Script Objects");
         Debug.Log($"Path to folder is {path}");
 
         List<Item> items = new List<Item>();
 
         var info = new DirectoryInfo(path);
-
-        foreach (FileInfo f in info.GetFiles("*.prefab"))
+        foreach (FileInfo f in info.GetFiles("*.prefab", SearchOption.AllDirectories))
         {
             Debug.Log($"File {f.Name} being searched!");
             string filePath = f.FullName;
             int length = filePath.Length - info.FullName.Length + path.Length;
             filePath = filePath.Substring(f.FullName.Length - length, length);
 
-            Debug.Log($"Loading {filePath} from that!");
-
-            items.Add(AssetDatabase.LoadAssetAtPath<Item>(filePath));
+            Item i = AssetDatabase.LoadAssetAtPath<Item>(filePath);
+            if (i != null)
+            {
+                Debug.Log($"Loading {filePath} from that!");
+                items.Add(i);
+            }
         }
 
         Debug.Log($"Search discovered {items.Count} items to order!");
@@ -55,7 +57,7 @@ public class ItemSortWizard
         }
 
         AssetDatabase.Refresh();
-
+        Debug.Log("Got here!");
         if (items[items.Count - 1].ID != items.Count - 1)
         {
             Debug.LogError("You can't be looking at the folder when this happens! I don't know why!");

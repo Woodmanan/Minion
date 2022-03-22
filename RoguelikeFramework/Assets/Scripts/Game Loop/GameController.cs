@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator BeginGame()
     {
+        UnityEngine.Debug.Log("Launching Game!");
         int start = LevelLoader.singleton.StartAt;
         if (start < 0) start = 0;
         //Wait for initial level loading to finish

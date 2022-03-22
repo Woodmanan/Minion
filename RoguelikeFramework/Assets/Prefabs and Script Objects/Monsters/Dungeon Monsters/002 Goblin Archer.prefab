@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: ID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: faction
       value: 1
       objectReference: {fileID: 0}
@@ -33,7 +37,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: description
-      value: 
+      value: Usually ridiculed relentlessly by most species for their courage (or
+        lack thereof), goblin archers are masters at running away from fights they
+        will not win. Nevertheless, with overwhelming numbers or the presence of
+        a goblin warlord, goblin archers can be a deadly foe. They will dance in
+        and out of the darkness, nooks, and traps that make up a dungeon and quickly
+        turn their opponent into a pincushion.
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName

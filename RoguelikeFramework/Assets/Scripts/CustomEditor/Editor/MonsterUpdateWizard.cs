@@ -74,7 +74,7 @@ public class MonsterUpdateWizard : MonoBehaviour
             }
             else
             {
-                Debug.LogError(string.Format("Google sheets does not have the monster {0} " +
+                Debug.LogWarning(string.Format("Google sheets does not have the monster {0} " +
                                              "with id {1}", monster.name, id));
             }
         }
@@ -147,8 +147,16 @@ public class MonsterUpdateWizard : MonoBehaviour
         {
             string[] attributes = line.Split('\t');
             MonsterData monster = new MonsterData();
+            string key = attributes[keyIndex];
+            if (key.Length == 0)
+            {
+                Debug.LogWarning($"Monster {monster.name} is in the drive, but not in the project! Please create it, and assign it a key in the drive.");
+                continue;
+            }
+
             monster.name = attributes[nameIndex];
             monster.description = attributes[descriptionIndex];
+            Debug.Log($"XP header is {xpIndex}, with value of '{attributes[xpIndex]}'");
             monster.XPOnKill = int.Parse(attributes[xpIndex]);
             monster.health = int.Parse(attributes[healthIndex]);
             monster.mana = int.Parse(attributes[manaIndex]);
@@ -159,15 +167,8 @@ public class MonsterUpdateWizard : MonoBehaviour
             monster.maxDepth = int.Parse(attributes[maxDepthIndex]);
             monster.visionRadius = int.Parse(attributes[visionRadiusIndex]);
             monster.energyPerStep = int.Parse(attributes[energyPerStepIndex]);
-            string key = attributes[keyIndex];
-            if (key.Length == 0)
-            {
-                Debug.LogWarning($"Monster {monster.name} is in the drive, but not in the project! Please create it, and assign it a key in the drive.");
-            }
-            else
-            {
-                newInfo.Add(key, monster);
-            }
+            newInfo.Add(key, monster);
+
         }
 
         return newInfo;

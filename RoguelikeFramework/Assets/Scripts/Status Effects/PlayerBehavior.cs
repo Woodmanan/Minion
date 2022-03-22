@@ -11,6 +11,9 @@ public class PlayerBehavior : Effect
     public float playerHealthForDanger;
     public float numMonstersForDanger;
 
+    public float healthPer100;
+    float healthStore; //Stores overflow per turn
+
     Monster player;
     /* The default priority of all functions in this class - the order in which they'll be called
      * relative to other status effects
@@ -50,18 +53,30 @@ public class PlayerBehavior : Effect
     //Called at the start of the global turn sequence
     public override void OnTurnStartGlobal()
     {
-        if ((player.resources.health / ((float)player.stats.resources.health)) < playerHealthForDanger)
+        healthStore += healthPer100 / 100;
+        player.Heal((int)healthStore);
+        healthStore %= 1;
+        if (!isInDanger)
         {
-            SetDanger(true);
-        }
-        else if (player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).Count >= numMonstersForDanger)
-        {
-            SetDanger(true);
+
+            if ((player.resources.health / ((float)player.stats.resources.health)) < playerHealthForDanger)
+            {
+                SetDanger(true);
+            }
+            else if (player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).Count >= numMonstersForDanger)
+            {
+                SetDanger(true);
+            }
         }
         else
         {
-            SetDanger(false);
+            if (((player.resources.health / ((float)player.stats.resources.health)) > playerHealthForDanger)
+                && (player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).Count == 0))
+            {
+                SetDanger(false);
+            }
         }
+        
     }
 
     //Called at the end of the global turn sequence

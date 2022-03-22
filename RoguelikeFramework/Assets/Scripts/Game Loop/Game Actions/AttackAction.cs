@@ -80,8 +80,9 @@ public class AttackAction : GameAction
             Debug.Log("Console Log: You have nothing to attack with!");
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.LogError("Assuming a monster did this. Taking its turn as retribution! (PLS Fix)");
-            caller.energy -= 100;
             #endif
+            caller.energy -= 100;
+            
             yield break;
         }
     }

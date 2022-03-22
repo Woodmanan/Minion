@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: PlayerBehavior-2203131509PM03
   m_EditorClassIdentifier: 
   statusIcon: {fileID: 0}
+  displayName: 
+  description: 
   ReadyToDelete: 0
   playerHealthForDanger: 0.5
   numMonstersForDanger: 3
+  healthPer100: 50
