@@ -33,7 +33,7 @@ public class CustomTile : MonoBehaviour
     public Inventory inventory;
     private ItemVisiblity itemVis;
 
-    private SpriteRenderer render;
+    [HideInInspector] public SpriteRenderer render;
 
     public event Action<Monster> MonsterEntered;
 
@@ -50,7 +50,7 @@ public class CustomTile : MonoBehaviour
     Map map;
     
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         
     }
@@ -142,7 +142,7 @@ public class CustomTile : MonoBehaviour
         }
     }
 
-    public void RebuildGraphics()
+    public virtual void RebuildGraphics()
     {
         if (isVisible)
         {
@@ -151,6 +151,7 @@ public class CustomTile : MonoBehaviour
             {
                 render.enabled = true;
             }
+            currentlyStanding?.SetGraphics(true);
         }
         else
         {
@@ -170,6 +171,7 @@ public class CustomTile : MonoBehaviour
                 render.enabled = false;
                 render.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             }
+            currentlyStanding?.SetGraphics(false);
 
         }
 

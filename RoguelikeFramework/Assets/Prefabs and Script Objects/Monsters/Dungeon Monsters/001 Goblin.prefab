@@ -117,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: Goblin
+      value: 001 Goblin
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size
@@ -210,6 +210,86 @@ PrefabInstance:
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_SortingOrder
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.outOf
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.outOf
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[0].value
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[1].value
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.data[1].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[1].subject
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.data[0].subject
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[0].equality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[1].equality
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[1].valueMod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.data[0].equality
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.data[0].valueMod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[1].subjectMod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fightQuery.terms.Array.data[0].subjectMod
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
