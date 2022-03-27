@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   items:
-  - {fileID: 7913379573585751926, guid: a8b2b66d3017fd04fbdf4aa02653f65f, type: 3}
-  - {fileID: 8514963120815226497, guid: 4255b4c1c522fc343ae3ac00415e0b1b, type: 3}
+  - {fileID: 623495136018800968, guid: f4f17bc22caab454aa3c753558d8a6cd, type: 3}
+  - {fileID: 2438652870206314187, guid: 5a37fd33e40701845af32d4f92b58006, type: 3}
+  - {fileID: 7862637001111088772, guid: 6e63238ce9677b54ea6c6394ff0bb588, type: 3}
   minRarity: 0
   maxRarity: 0
   elevationOptions:

@@ -2,15 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XNode;
+using System.Linq;
 
 public class SkillNode : Node
 {
 	[Input] public bool canBePurchased;
 	[Input] public bool purchaseAllRootsFirst;
 	[Input] public Skill[] skills;
-	[Input] public int skillLevel;
 	[Input] public SkillFlag skillFlag;
 	[Output] public bool hasBeenPurchased;
+
+	private int _skillLevel;
+	public int skillLevel {
+		get { return _skillLevel; }
+		set
+		{
+			if (value == 0) ((SkillTree)graph).AddToAvailableSkills(this);
+			else if (value >= skills.Length) ((SkillTree)graph).RemoveFromAvailableSkills(this);
+			_skillLevel = value;
+		}
+	}
+
+	private bool hasBeenMadeAvailable;
 
 	// Use this for initialization
 	protected override void Init()
@@ -24,7 +37,6 @@ public class SkillNode : Node
 	{
 		if (port.fieldName == "canBePurchased")
 		{
-			// if (canBePurchased) return true;
 			foreach (bool hasBeenPurchased in GetInputValues("canBePurchased", canBePurchased))
 			{
 				if (purchaseAllRootsFirst && !hasBeenPurchased) return false;
@@ -63,7 +75,7 @@ public class SkillNode : Node
 
 	public Skill GetCurrentSkill()
 	{
-		if (skillLevel >= skills.Length) return null;
+		if (skillLevel < 0 || skillLevel >= skills.Length) return null;
 		else return skills[skillLevel];
 	}
 
@@ -72,10 +84,23 @@ public class SkillNode : Node
 		Skill skill = GetCurrentSkill();
 		if (skill != null)
 		{
-			// apply skill here
+			foreach (StatusEffect effectToApply in skill.effectsToApply) Player.player.AddEffect(effectToApply);
+			foreach (Ability ability in skill.abilitiesToApply) Player.player.abilities.AddAbility(ability);
+
 			skillLevel++;
+
+			foreach (NodePort port in GetAllChildren())
+            {
+				if ((bool)((SkillNode) port.node).GetValue(port)) ((SkillNode) port.node).skillLevel++;
+
+			}
 		}
 	}
+
+	public void ResetSkillLevel()
+    {
+		skillLevel = IsRoot() ? 0 : -1;
+    }
 
 	[System.Flags]
 	public enum SkillFlag

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   items:
-  - {fileID: 9015174743555470457, guid: 8212d04b5d4bef743941dabbf09cb09b, type: 3}
-  - {fileID: 6296949928881241513, guid: aaaa8a1991ec4cf4d8df714b5fc74511, type: 3}
+  - {fileID: 4517772849714452307, guid: 78d2b53819f11bd47af907fbb1f5d9f4, type: 3}
+  - {fileID: 4889488825457435893, guid: 47eb42e24148c0040863041a4dd023b0, type: 3}
   minRarity: 0
   maxRarity: 0
   elevationOptions:

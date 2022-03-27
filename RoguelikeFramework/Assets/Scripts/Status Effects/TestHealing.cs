@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[EffectGroup("Example Effects")]
 [CreateAssetMenu(fileName = "New TestHealing", menuName = "Status Effects/TestHealing", order = 1)]
 public class TestHealing : Effect
 {

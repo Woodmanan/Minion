@@ -10,6 +10,7 @@ public struct ResourceList
     public int health;
     public int mana;
     public int stamina;
+    public int xp;
 
     public int this[Resource resource]
     {
@@ -23,6 +24,8 @@ public struct ResourceList
                     return mana;
                 case 2: //RESOURCE.STAMINA
                     return stamina;
+                case 3: //RESOURCE.XP
+                    return xp;
                 default:
                     return -1;
             }
@@ -41,6 +44,9 @@ public struct ResourceList
                 case 2: //RESOURCE.STAMINA
                     stamina = value;
                     break;
+                case 3: //RESOURCE.XP
+                    xp = value;
+                    break;
             }
         }
     }
@@ -53,6 +59,7 @@ public struct ResourceList
         r.health = a.health + b.health;
         r.mana = a.mana + b.mana;
         r.stamina = a.stamina + b.stamina;
+        r.xp = a.xp + b.xp;
 
         return r;
     }
@@ -65,6 +72,7 @@ public struct ResourceList
         r.health = a.health - b.health;
         r.mana = a.mana - b.mana;
         r.stamina = a.stamina - b.stamina;
+        r.xp = a.xp - b.xp;
 
         return r;
     }

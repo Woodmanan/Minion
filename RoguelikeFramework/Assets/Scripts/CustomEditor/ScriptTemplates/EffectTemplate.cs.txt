@@ -82,6 +82,12 @@ public class #SCRIPTNAME# : Effect
     //Called when this monster loses resources. (Different from damage, but can take health)
     //public override void OnLoseResources(ref ResourceList resources) {}
 
+    //Called when this monster gains XP from any source.
+    //public override void OnGainXP(ref int XPAmount) {}
+
+    //Called when this monster levels up! Level CANNOT be modified.
+    //public override void OnLevelUp(ref int Level) {}
+
     //Called when new status effects are added. All status effects coming through are bunched together as a list.
     //public override void OnRegenerateAbilityStats(ref Targeting targeting, ref AbilityBlock abilityBlock, ref Ability ability) {}
 

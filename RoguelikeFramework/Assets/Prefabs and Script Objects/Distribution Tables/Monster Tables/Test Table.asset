@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test Table
   m_EditorClassIdentifier: 
   monsters:
-  - {fileID: 8893793752867473429, guid: c66fad1e5816b5a469ea1bacef430064, type: 3}
-  - {fileID: 7022932251972435270, guid: 3e85cb7eb47e1294aa7a63dfabad85f1, type: 3}
+  - {fileID: 2776638571021120720, guid: 612a3366c6c0ac74a836683ff6136eee, type: 3}
+  - {fileID: 2776638571021120720, guid: 83fe178f60bb41d47a0b896910eda2c5, type: 3}
   loadouts: []
   chanceForHigherLoadout: 0
   uniques: []

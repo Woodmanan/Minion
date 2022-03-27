@@ -10,5 +10,6 @@ public class Skill : ScriptableObject
     public string name;
     public string description;
     public Sprite icon;
-    public string effect;
+    public StatusEffectList effectsToApply;
+    public List<Ability> abilitiesToApply;
 }

@@ -90,7 +90,7 @@ public class LevelLoader : MonoBehaviour
         #if !UNITY_EDITOR
         if (JITLoading)
         {
-            Debug.LogError("JIT Loading was left on! Don't do that!");
+            UnityEngine.Debug.LogError("JIT Loading was left on! Don't do that!");
             JITLoading = false;
         }
         #endif
