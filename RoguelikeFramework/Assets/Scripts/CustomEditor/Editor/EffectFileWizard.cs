@@ -14,7 +14,7 @@ public class EffectFileWizard
     static void RebuildEffects()
     {
         //Load in our definitions from the file
-        EffectConnections declarations = AssetDatabase.LoadAssetAtPath<EffectConnections>("Assets/Scripts/CustomEditor/Effects/Effect Connections.asset");
+        EffectConnections declarations = AssetDatabase.LoadAssetAtPath<EffectConnections>("Assets/Scripts/CustomEditor/Effects/Editor/Effect Connections.asset");
 
         declarations.connections.Sort((a, b) => a.priority.CompareTo(b.priority));
 
