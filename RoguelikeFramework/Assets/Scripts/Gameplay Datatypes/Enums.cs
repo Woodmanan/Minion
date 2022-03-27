@@ -128,7 +128,8 @@ public enum ItemType
     ARMOR           = (1 << 2),
     CONSUMABLE      = (1 << 3),
     ACTIVATABLE     = (1 << 4),
-    MISC            = (1 << 5)
+    MISC            = (1 << 5),
+    KEY             = (1 << 6)
 }
 
 public enum TargetType

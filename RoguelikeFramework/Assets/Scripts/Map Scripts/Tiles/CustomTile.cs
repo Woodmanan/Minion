@@ -33,7 +33,7 @@ public class CustomTile : MonoBehaviour
     public Inventory inventory;
     private ItemVisiblity itemVis;
 
-    private SpriteRenderer render;
+    [HideInInspector] public SpriteRenderer render;
 
     public event Action<Monster> MonsterEntered;
 
