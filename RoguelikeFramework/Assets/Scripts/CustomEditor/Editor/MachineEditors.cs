@@ -16,7 +16,7 @@ using UnityEditor;
  *
  * NOTE: If you're looking for a class that is in any capacity an editor and not just pretty, I would look for RoomEditor instead.
  */
-
+/*
 [CustomEditor(typeof(Machine))]
 [CanEditMultipleObjects]
 public class MachineEditor : Editor
@@ -107,4 +107,4 @@ public class SimpleConnectionMachineEditor : MachineEditor
     {
         EditorGUILayout.HelpBox("This machine has no additional features", MessageType.Info);
     }
-}
+}*/
