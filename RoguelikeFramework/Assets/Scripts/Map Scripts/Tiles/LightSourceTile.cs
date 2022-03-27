@@ -9,26 +9,24 @@ using UnityEditor;
 
 public class LightSourceTile : CustomTile
 {
-    public void Cast(CustomTile tile, int lvl)
+    [HideInInspector] public LOSData view;
+
+    public void Cast(LOSData ld)
     {
-        if (!tile.blocksVision) 
+        Vector2Int origin = ld.origin;
+        int radius = ld.radius;
+        bool[,] definedArea = ld.definedArea;
+        Vector2Int start = origin - Vector2Int.one * radius;
+        for (int i = 0; i < (radius * 2 + 1); i++)
         {
-            //walls should probably be lit when shader is written, but looks bad rn.
-            tile.lightLevel = lvl;
-
-            int x = tile.location.x;
-            int y = tile.location.y;
-        
-            CustomTile[] neighbors = new CustomTile[] 
-            {map.GetTile(new Vector2Int(x,y-1)),
-            map.GetTile(new Vector2Int(x,y+1)),
-            map.GetTile(new Vector2Int(x+1,y)),
-            map.GetTile(new Vector2Int(x-1,y))};
-
-            foreach(CustomTile nb in neighbors)
+            for (int j = 0; j < (radius * 2 + 1); j++)
             {
-                if (lvl > nb.lightLevel)
-                    Cast(nb, lvl - 1); 
+                if (definedArea[i, j])
+                {
+                    Vector2Int pos = new Vector2Int(i + start.x, j + start.y);
+                    int lvl = radius - Math.Abs(origin.x - pos.x) - Math.Abs(origin.y - pos.y);
+                    if (lvl > 0) map.GetTile(pos).lightLevel = lvl; //add check for !blocksVision here if you don't want walls lit
+                }
             }
         }
     }
@@ -36,6 +34,8 @@ public class LightSourceTile : CustomTile
     //Called at the end of map construction, once this tile is guarunteed to be in the map!
     public override void SetInMap(Map m)
     {
-        Cast(this, lightLevel);
+        view = LOS.LosAt(m, location, lightLevel-1);
+        Cast(view);
+        if (!isVisible) isHidden = true;
     }
 }
