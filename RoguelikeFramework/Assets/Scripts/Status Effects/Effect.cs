@@ -18,6 +18,12 @@ public class EffectDisplayInfo
 {
     public int imageID;
     public string subDisplayText;
+
+    public EffectDisplayInfo(int imageID, string subDisplayText)
+    {
+        this.imageID = imageID;
+        this.subDisplayText = subDisplayText;
+    }
 }
 
 public class Effect : ScriptableObject
