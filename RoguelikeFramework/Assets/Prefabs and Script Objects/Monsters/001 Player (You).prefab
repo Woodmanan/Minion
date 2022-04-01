@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 3853786310894742761}
   - component: {fileID: 3853786310894742754}
   m_Layer: 0
-  m_Name: Player
+  m_Name: 001 Player (You)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   displayName: Player (You)
   nameRequiresPluralVerbs: 1
   faction: 2
-  ID: 0
+  ID: 1
   minDepth: 0
   maxDepth: 0
   energy: 0
