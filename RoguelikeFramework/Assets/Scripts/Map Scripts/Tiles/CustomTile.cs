@@ -34,7 +34,7 @@ public class CustomTile : MonoBehaviour
     public Inventory inventory;
     private ItemVisiblity itemVis;
 
-    private SpriteRenderer render;
+    [HideInInspector] public SpriteRenderer render;
 
     public event Action<Monster> MonsterEntered;
 
@@ -51,7 +51,7 @@ public class CustomTile : MonoBehaviour
     public Map map;
     
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         
     }
@@ -143,7 +143,7 @@ public class CustomTile : MonoBehaviour
         }
     }
 
-    public void RebuildGraphics()
+    public virtual void RebuildGraphics()
     {
         Color torchColor = new Color(1f,0.9f,0.6f,1f);
         if (lightLevel == 0) torchColor = Color.white;
@@ -151,6 +151,7 @@ public class CustomTile : MonoBehaviour
         if (lightLevel > 7) brightness = 7;
         else brightness = lightLevel;
         Color litColor = color * (brightness + 2.8f) * 0.26f * torchColor;
+        litColor.a = 1.0f;
         if (isVisible)
         {
             render.color = litColor;
@@ -158,6 +159,7 @@ public class CustomTile : MonoBehaviour
             {
                 render.enabled = true;
             }
+            currentlyStanding?.SetGraphics(true);
         }
         else
         {
@@ -167,7 +169,7 @@ public class CustomTile : MonoBehaviour
             {
                 render.enabled = true;
                 float gray = litColor.grayscale / 2;
-                render.color = new Color(gray, gray, gray);
+                render.color = new Color(gray, gray, gray, 1.0f);
             }
             else
             {
@@ -178,6 +180,7 @@ public class CustomTile : MonoBehaviour
                 render.enabled = false;
                 render.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             }
+            currentlyStanding?.SetGraphics(false);
 
         }
 

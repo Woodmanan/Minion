@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
 
-[CustomEditor(typeof(Monster))]
+[CustomEditor(typeof(Monster), true)]
 [CanEditMultipleObjects]
 public class MonsterEditor : Editor
 {
