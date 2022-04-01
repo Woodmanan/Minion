@@ -151,6 +151,7 @@ public class CustomTile : MonoBehaviour
         if (lightLevel > 7) brightness = 7;
         else brightness = lightLevel;
         Color litColor = color * (brightness + 2.8f) * 0.26f * torchColor;
+        litColor.a = 1.0f;
         if (isVisible)
         {
             render.color = litColor;
@@ -168,7 +169,7 @@ public class CustomTile : MonoBehaviour
             {
                 render.enabled = true;
                 float gray = litColor.grayscale / 2;
-                render.color = new Color(gray, gray, gray);
+                render.color = new Color(gray, gray, gray, 1.0f);
             }
             else
             {
