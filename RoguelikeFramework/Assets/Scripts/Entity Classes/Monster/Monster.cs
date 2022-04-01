@@ -50,6 +50,8 @@ public class Monster : MonoBehaviour
 
     [HideInInspector] public ActionController controller;
 
+    private SpriteRenderer renderer;
+
     public GameAction currentAction;
     public CustomTile currentTile;
 
@@ -76,6 +78,8 @@ public class Monster : MonoBehaviour
         equipment = GetComponent<Equipment>();
         abilities = GetComponent<Abilities>();
         controller = GetComponent<ActionController>();
+
+        renderer = GetComponent<SpriteRenderer>();
         
 
         //TODO: Have starting equipment? Probably not a huge concern right now, though.
@@ -385,6 +389,7 @@ public class Monster : MonoBehaviour
     //Takes the local turn
     public IEnumerator LocalTurn()
     {
+        if (view.visibleMonsters.Any(x => x.IsEnemy(this))) currentAction = null;
         while (energy > 0)
         {
             if (currentAction == null)
@@ -467,6 +472,14 @@ public class Monster : MonoBehaviour
         transform.position = new Vector3(location.x, location.y, monsterZPosition);
         currentTile = map.GetTile(location);
         currentTile.SetMonster(this);
+        if (currentTile.isVisible)
+        {
+            SetGraphics(true);
+        }
+        else
+        {
+            SetGraphics(false);
+        }
     }
 
     //Function to activate event call of Global turn start
@@ -523,4 +536,9 @@ public class Monster : MonoBehaviour
     {
         return Vector2Int.Distance(location, other.location);
     }
+
+    public void SetGraphics(bool state)
+    {
+        renderer.enabled = state;
+    }    
 }

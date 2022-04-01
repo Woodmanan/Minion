@@ -45,8 +45,11 @@ public class FleeAction : GameAction
                     {
                         yield break;
                     }
+
+                    Monster target = enemies[0];
+
                     //TODO: attack instead!
-                    GameAction act = new WaitAction();
+                    GameAction act = new AttackAction(target);
                     act.Setup(caller);
                     while (act.action.MoveNext())
                     {
