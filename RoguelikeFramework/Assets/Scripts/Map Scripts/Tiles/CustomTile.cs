@@ -145,7 +145,7 @@ public class CustomTile : MonoBehaviour
 
     public virtual void RebuildGraphics()
     {
-        Color torchColor = new Color(1f,0.9f,0.6f,1f);
+        Color torchColor = new Color(1f,1.0f,1.0f,1f);
         if (lightLevel == 0) torchColor = Color.white;
         int brightness;
         if (lightLevel > 7) brightness = 7;
@@ -168,7 +168,7 @@ public class CustomTile : MonoBehaviour
             if (!isHidden)
             {
                 render.enabled = true;
-                float gray = litColor.grayscale / 2;
+                float gray = color.grayscale / 2;
                 render.color = new Color(gray, gray, gray, 1.0f);
             }
             else
