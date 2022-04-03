@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e67a6ce24f207cf4daf25601428e6404, type: 3}
-  m_Name: Slow-2203271410PM89
+  m_Name: Slow-2204031509PM03
   m_EditorClassIdentifier: 
-  statusIcon: {fileID: 3482512805507413357, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
+  statusIcon: {fileID: 5647580403619596446, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
   displayName: Slow
-  description: (TEMP) Doubles the movement cost of affected enemies
+  description: (Temp) Reduces the movement speed of effected enemies
   ReadyToDelete: 0
+  duration: 12
+  level: 2

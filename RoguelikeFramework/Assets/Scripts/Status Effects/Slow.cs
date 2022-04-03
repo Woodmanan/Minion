@@ -6,6 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Slow", menuName = "Status Effects/Slow", order = 1)]
 public class Slow : Effect
 {
+    public int duration = 1;
+    public float level = 1;
+
+    protected float specSpeed;
     
     /* The default priority of all functions in this class - the order in which they'll be called
      * relative to other status effects
@@ -23,13 +27,23 @@ public class Slow : Effect
 
     //Called the moment an effect connects to a monster
     //Use this to apply effects or stats immediately, before the next frame
-    /*public override void OnConnection() {}*/
+    public override void OnConnection()
+    {
+        float temp = connectedTo.monster.energyPerStep;
+        specSpeed = (temp * level);
+        connectedTo.monster.energyPerStep = (int)specSpeed;
+    }
 
     //Called when an effect gets disconnected from a monster
-    /*public override void OnDisconnection() {} */
+    public override void OnDisconnection() {
+        connectedTo.monster.energyPerStep = (int)(specSpeed / level);
+    }
 
     //Called at the start of the global turn sequence
-    //public override void OnTurnStartGlobal() {}
+    public override void OnTurnStartGlobal() {
+        duration--;
+        if (duration <= 0) Disconnect();
+    }
 
     //Called at the end of the global turn sequence
     //public override void OnTurnEndGlobal() {}

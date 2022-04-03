@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cac120780b1ee804c879f55f6e1ea5b0, type: 3}
-  m_Name: AOE Slow
+  m_Name: Speed
   m_EditorClassIdentifier: 
-  displayName: Enemy Slowdown
-  image: {fileID: 3482512805507413357, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
-  color: {r: 0.28575784, g: 0.19363353, b: 0.5754717, a: 0}
+  displayName: Swiftness
+  image: {fileID: -6113606757653322527, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
+  color: {r: 0.24130766, g: 0.7830189, b: 0.74199545, a: 0}
   baseTargeting:
     numPoints: 1
-    targetingType: 5
+    targetingType: 0
     areaType: 5
-    range: 8
-    radius: 3
+    range: 0
+    radius: 1
     degree: 0
     pointsShareOverlap: 1
     pointsRequireLOS: 1
-    includesCasterSpace: 0
-    recommendsPlayerTarget: 0
+    includesCasterSpace: 1
+    recommendsPlayerTarget: 1
     targetPriority: 0
     tags: 0
     origin: {x: 0, y: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
       mana: 0
       stamina: 0
       xp: 0
-    cooldown: 8
+    cooldown: 16
     power: 0
   castQuery:
     outOf: 1
@@ -92,4 +92,4 @@ MonoBehaviour:
     list: []
   toApply:
     list:
-    - heldEffect: {fileID: 11400000, guid: 4e14c00d50fec6942a474743db5fdd82, type: 2}
+    - heldEffect: {fileID: 11400000, guid: 7683327fbf2c75a489b023e8b356230a, type: 2}
