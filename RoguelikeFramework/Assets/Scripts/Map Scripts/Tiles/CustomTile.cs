@@ -150,7 +150,7 @@ public class CustomTile : MonoBehaviour
         int brightness;
         if (lightLevel > 7) brightness = 7;
         else brightness = lightLevel;
-        Color litColor = color * (brightness + 2.8f) * 0.26f * torchColor;
+        Color litColor = color * (torchColor * 0.25f * (3.2f + lightLevel));
         litColor.a = 1.0f;
         if (isVisible)
         {
