@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -30,9 +31,23 @@ public class MonsterAI : ActionController
 
     public Monster lastEnemy;
 
+    private Transform targetEnemy;
+    private Transform AttackIndicator;
+    private void Start()
+    {
+        base.Start();
+        GameObject IndicatorPrefab = Resources.Load<GameObject>("AttackIndicator");
+        AttackIndicator = Instantiate(IndicatorPrefab, gameObject.transform, false).transform;
+        AttackIndicator.gameObject.SetActive(false);
+        monster.connections.OnTurnEndLocal.AddListener(50, UpdateAttackIndicationUI);
+    }
+    
     //The main loop for monster AI! This assumes 
     public override IEnumerator DetermineAction()
     {
+        // target for UI purposes
+        targetEnemy = null;
+        
         if (monster.view == null)
         {
             Debug.LogError("Monster did not have a view available! If this happened during real gameplay, we have a problem. Eating its turn to be safe.");
@@ -149,6 +164,7 @@ public class MonsterAI : ActionController
                     }
 
                     lastEnemy = enemies[0];
+                    targetEnemy = enemies[0].transform;
                     currentTries = intelligence;
                     break;
                 case 2:
@@ -163,6 +179,20 @@ public class MonsterAI : ActionController
                     break;
             }
         }
+    }
+
+    private void UpdateAttackIndicationUI()
+    {
+        if (targetEnemy == null)
+        {
+            AttackIndicator.gameObject.SetActive(false);
+            return;
+        }
+        
+        AttackIndicator.gameObject.SetActive(true);
+        Vector3 dir = targetEnemy.position - monster.transform.position;
+        float dirAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
+        AttackIndicator.rotation = Quaternion.AngleAxis(dirAngle, new Vector3(0,0,1));
     }
 
     public (InteractableTile, float) GetInteraction(bool isInCombat, float distanceCutoff)
@@ -252,7 +282,7 @@ public class MonsterAI : ActionController
             }
         }
     }
-
+    
     public override void Setup()
     {
         GetComponent<Equipment>().OnEquipmentAdded += UpdateRanged;

@@ -162,7 +162,8 @@ public enum Resource
 {
     HEALTH,
     MANA,
-    STAMINA
+    STAMINA,
+    XP
 }
 
 [Flags]

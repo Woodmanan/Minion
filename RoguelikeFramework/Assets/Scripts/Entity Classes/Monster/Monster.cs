@@ -50,13 +50,19 @@ public class Monster : MonoBehaviour
 
     [HideInInspector] public ActionController controller;
 
+    private SpriteRenderer renderer;
+
     public GameAction currentAction;
     public CustomTile currentTile;
 
     private bool setup = false;
 
-    public int XP;
+    //public int XP;
+    public int XPFromKill;
     public int level;
+
+    public string description;
+    public string uniqueID;
     
     // Start is called before the first frame update
     public virtual void Start()
@@ -73,6 +79,9 @@ public class Monster : MonoBehaviour
         abilities = GetComponent<Abilities>();
         controller = GetComponent<ActionController>();
 
+        renderer = GetComponent<SpriteRenderer>();
+        
+
         //TODO: Have starting equipment? Probably not a huge concern right now, though.
         stats = baseStats;
 
@@ -84,8 +93,8 @@ public class Monster : MonoBehaviour
         connections = new Connections(this);
 
         resources.health = stats.resources.health;
-
         connections.OnFullyHealed.BlendInvoke(other?.OnFullyHealed);
+        resources.xp = 0;
 
         inventory?.Setup();
         equipment?.Setup();
@@ -113,6 +122,8 @@ public class Monster : MonoBehaviour
         //Put us in that space, and build our initial LOS
         SetPosition(map, location);
         UpdateLOS(map);
+
+        
     }
 
     // Update is called once per frame
@@ -152,10 +163,8 @@ public class Monster : MonoBehaviour
             return false;
         }
 
-        
-
         //TODO: Log Hit
-        //TakeDamage(damage, DamageType.NONE);
+        // 
         return true;
     }
 
@@ -163,7 +172,7 @@ public class Monster : MonoBehaviour
     {
         connections.OnTakeDamage.BlendInvoke(other?.OnTakeDamage, ref damage, ref type, ref source);
         resources.health -= damage;
-
+        
         //Loggingstuff
         string toPrint = FormatStringForName(message).Replace("{damage}", $"{damage}");
         Debug.Log($"Console print: {toPrint}");
@@ -182,6 +191,7 @@ public class Monster : MonoBehaviour
     {
         dealer?.connections.OnDealDamage.BlendInvoke(dealer.other?.OnDealDamage, ref damage, ref type, ref source);
         Damage(damage, type, source, message);
+        LogManager.S.LogSpecificEntityAttackWithDamage(dealer.displayName, displayName, "hit", damage, nameRequiresPluralVerbs, this == Player.player, this != Player.player);
         if (resources.health <= 0)
         {
             dealer?.KillMonster(this, type, source);
@@ -193,7 +203,8 @@ public class Monster : MonoBehaviour
         Debug.Log("Monster is dead!");
 
         //Clear tile, so other systems don't try to use a dead monster
-        currentTile.currentlyStanding = null;
+        if (currentTile.currentlyStanding == this)
+            currentTile.currentlyStanding = null;
 
         //Clear inventory, if it exists
         if (inventory)
@@ -207,17 +218,18 @@ public class Monster : MonoBehaviour
     public void KillMonster(Monster target, DamageType type, DamageSource source)
     {
         connections.OnKillMonster.BlendInvoke(other?.OnKillMonster, ref target, ref type, ref source);
-        GainXP(1); //TODO: Make this possibly a variable amount?
+        GainXP(target.XPFromKill);
     }
 
     public virtual void GainXP(int amount)
     {
-        Debug.Log($"{DebugName()} has gained {amount} of XP!");
+        Debug.Log($"{DebugName()} has gained {amount} XP!");
         connections.OnGainXP.BlendInvoke(other?.OnGainXP, ref amount);
-        XP += amount;
-        if (XP >= XPTillNextLevel())
+        resources.xp += amount;
+        if (resources.xp >= stats.resources.xp)
         {
-            XP -= XPTillNextLevel();
+            resources.xp -= XPTillNextLevel();
+            Debug.Log($"After leveling up with {XPTillNextLevel()} xp, monster now has {resources.xp} xp");
             LevelUp();
         }
 
@@ -233,12 +245,22 @@ public class Monster : MonoBehaviour
     {
         level++;
         connections.OnLevelUp.BlendInvoke(other?.OnLevelUp, ref level);
+        baseStats.resources.xp = XPTillNextLevel();
         OnLevelUp();
     }
 
     public virtual void OnLevelUp()
     {
         Debug.Log($"{DebugName()} leveled up! This does nothing, yet.");
+    }
+
+    public virtual void Remove()
+    {
+        // Like dying but no drops
+        Debug.Log("Monster Removed!");
+        resources.health = 0;
+        if (currentTile.currentlyStanding == this)
+            currentTile.currentlyStanding = null;
     }
 
     public bool IsDead()
@@ -301,8 +323,11 @@ public class Monster : MonoBehaviour
 
     public void StartTurn()
     {
+        Debug.Log($"Monster is starting turn. Sanity check, I am setup: {setup}", this);
         CallRegenerateStats();
+        Debug.Log("Regened stats sucessfully", this);
         abilities?.CheckAvailability();
+        Debug.Log("Monster checked availability sucessfully", this);
         connections.OnTurnStartLocal.BlendInvoke(other?.OnTurnStartLocal);
     }
 
@@ -363,6 +388,7 @@ public class Monster : MonoBehaviour
     //Takes the local turn
     public IEnumerator LocalTurn()
     {
+        if (view.visibleMonsters.Any(x => x.IsEnemy(this))) currentAction = null;
         while (energy > 0)
         {
             if (currentAction == null)
@@ -445,6 +471,14 @@ public class Monster : MonoBehaviour
         transform.position = new Vector3(location.x, location.y, monsterZPosition);
         currentTile = map.GetTile(location);
         currentTile.SetMonster(this);
+        if (currentTile.isVisible)
+        {
+            SetGraphics(true);
+        }
+        else
+        {
+            SetGraphics(false);
+        }
     }
 
     //Function to activate event call of Global turn start
@@ -501,4 +535,9 @@ public class Monster : MonoBehaviour
     {
         return Vector2Int.Distance(location, other.location);
     }
+
+    public void SetGraphics(bool state)
+    {
+        renderer.enabled = state;
+    }    
 }

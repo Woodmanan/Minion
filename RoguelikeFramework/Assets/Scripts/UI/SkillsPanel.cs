@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillsPanel : MonoBehaviour
+public class SkillsPanel : RogueUIPanel
 {
     public SkillTree tree;
     public Transform skillUIParent;

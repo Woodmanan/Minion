@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator BeginGame()
     {
+        UnityEngine.Debug.Log("Launching Game!");
         int start = LevelLoader.singleton.StartAt;
         if (start < 0) start = 0;
         //Wait for initial level loading to finish
@@ -154,7 +155,6 @@ public class GameController : MonoBehaviour
                 player.EndTurn();
             }
 
-
             watch.Restart();
             for (int i = 0; i < Map.current.monsters.Count; i++)
             {
@@ -213,7 +213,13 @@ public class GameController : MonoBehaviour
                     Destroy(monster.gameObject);
                 }
             }
-            
+
+            //Add new monsters to the main list
+            while (Map.current.spawnedMonsters.Count != 0) {
+                Map.current.monsters.Add(Map.current.spawnedMonsters[0]);
+                Map.current.spawnedMonsters.RemoveAt(0);
+            }
+
             CallTurnEndGlobal();
 
             turn++;

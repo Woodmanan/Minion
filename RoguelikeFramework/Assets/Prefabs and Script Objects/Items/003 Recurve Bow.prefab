@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4517772849714452310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4517772849714452333}
+  - component: {fileID: 4517772849714452306}
+  - component: {fileID: 4517772849714452307}
+  - component: {fileID: 4517772849714452304}
+  - component: {fileID: 4517772849714452305}
+  m_Layer: 0
+  m_Name: 003 Recurve Bow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4517772849714452333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517772849714452310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4517772849714452306
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517772849714452310}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -521381110006258880, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.39598608, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &4517772849714452307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517772849714452310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ce513ce41ec854b8468d6e711882a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rarity: 0
+  type: 2
+  minDepth: 0
+  maxDepth: 4
+  elevatesTo: 0
+  ID: 3
+  stackable: 0
+  color: {r: 0, g: 1, b: 0.39598608, a: 1}
+  location: {x: 0, y: 0}
+  held: 0
+  name: Recurve Bow
+  plural: Recurve Bows
+  CanEquip: 0
+  CanApply: 0
+  CanTarget: 0
+  CanMelee: 0
+  CanRanged: 0
+  effects:
+    list: []
+  optionalEffects:
+    list: []
+  applyable: {fileID: 0}
+  targetable: {fileID: 0}
+  equipable: {fileID: 0}
+  melee: {fileID: 0}
+  ranged: {fileID: 0}
+  uniqueID: okgciysy
+  description: The recurve bow was devised long ago by hunters near the Spine as
+    an alternative to the sling. Although bandits would often use them for ambushes,
+    it took nearly a thousand years for armies to understand their power and the
+    Age of Archery to start. With the right arrow, the recurve bow can shoot through
+    two men with armor or the hide of a wild bear. And with enough of the right arrows,
+    the recurve bow can shoot through two thousand men with armor and the hide of
+    a thousand wild beasts.
+--- !u!114 &4517772849714452304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517772849714452310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061029ab2cec2c74693f98a94e2c64cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primarySlot: 2
+  secondarySlots: 03000000
+  addedStats:
+    resources:
+      health: 0
+      mana: 0
+      stamina: 0
+      xp: 0
+    ac: 0
+    ev: 0
+  addedEffects:
+    list: []
+  isEquipped: 0
+  removable: 1
+--- !u!114 &4517772849714452305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517772849714452310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3061391dbedbc54685ac19ed906d84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primary:
+    chanceToHit: 100
+    accuracy: 0
+    piercing: 0
+    damage:
+    - damage:
+        rolls: 3
+        dice: 2
+      type: 4
+    applyOnHit:
+      list: []
+  secondary:
+    chanceToHit: 0
+    accuracy: 0
+    piercing: 0
+    damage: []
+    applyOnHit:
+      list: []
+  source: 0
+  item: {fileID: 0}
+  targeting:
+    numPoints: 1
+    targetingType: 1
+    areaType: 0
+    range: 5
+    radius: 0
+    degree: 0
+    pointsShareOverlap: 1
+    pointsRequireLOS: 1
+    includesCasterSpace: 0
+    recommendsPlayerTarget: 0
+    targetPriority: 0
+    tags: 0
+    origin: {x: 0, y: 0}
+    target: {x: 0, y: 0}
+    points: []
+    isValid: 0
+    isFinished: 0
+    length: 0
+    offset: 0
+    affected: []
