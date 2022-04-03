@@ -33,7 +33,9 @@ public class Player : Monster
     public override void Start()
     {
         base.Start();
+        Setup();
         player = this;
+        Player.player.connections.OnTurnStartLocal.AddListener(1000, OnTurnStart);
     }
 
     // Update is called once per frame
@@ -67,5 +69,10 @@ public class Player : Monster
             Debug.Log("Game over!");
             SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
         }
+    }
+
+    public void OnTurnStart()
+    {
+
     }
 }

@@ -23,6 +23,12 @@ public class AutoExploreAction : GameAction
             }
 
             //TODO: Rest action first!
+            GameAction restAct = new RestAction();
+            restAct.Setup(caller);
+            while (restAct.action.MoveNext())
+            {
+                yield return restAct.action.Current;
+            }
 
             //Build up the points we need!
             List<Vector2Int> goals = new List<Vector2Int>();
@@ -71,7 +77,7 @@ public class AutoExploreAction : GameAction
                     yield return act.action.Current;
                 }
 
-                //yield return new WaitForSeconds(.1f);
+                yield return new WaitForSeconds(.05f);
 
                 yield return GameAction.StateCheck;
             }
