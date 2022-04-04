@@ -67,6 +67,7 @@ public class Player : Monster
         if (resources.health <= 0)
         {
             Debug.Log("Game over!");
+            AudioManager.i.GameOver();
             SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
         }
     }

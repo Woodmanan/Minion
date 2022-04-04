@@ -93,12 +93,20 @@ public class AudioManager : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Footstep");
     }
 
-    public void HealthUp(float health) {
+    public void HealthUp(float totalHealth, float healthAdded) {
         FMOD.Studio.EventInstance healthUp = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Health Up");
-        healthUp.setParameterByName("Health", health);
-        healthUp.release();
+        healthUp.setParameterByName("Health", totalHealth);
+        healthUp.setParameterByName("healthAdded", healthAdded);
         healthUp.start();
+        healthUp.release();
+    }
 
+    public void TakeDamage(float damage) {
+        Debug.Log("aasas " + damage);
+        FMOD.Studio.EventInstance takeDamage = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Take Damage");
+        takeDamage.setParameterByName("AttackDamage", damage);
+        takeDamage.start();
+        takeDamage.release();
     }
 
 }
