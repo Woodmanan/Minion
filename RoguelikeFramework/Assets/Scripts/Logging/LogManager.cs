@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LogManager : MonoBehaviour
 {
@@ -15,10 +16,14 @@ public class LogManager : MonoBehaviour
     private Transform loggerWindowContentArea;
     [SerializeField]
     private int maximumNumMessages = 50;
+    [SerializeField]
+    private Transform worldCanvas;
 
     [Header("Non-Scene Objects")]
     [SerializeField]
     private GameObject messagePrefab;
+    [SerializeField]
+    private GameObject floatingNumberPrefab;
 
     [Header("Color Values")]
     [SerializeField]
@@ -31,12 +36,15 @@ public class LogManager : MonoBehaviour
     private Color damageDealtHighlightColor = Color.blue;
     [SerializeField]
     private Color damageTakenHighlightColor = Color.red;
+    [SerializeField]
+    private Color critTakenHighlightColor = new Color(120, 0, 0);
 
     private string itemHighlightColorHexString;
     private string healHighlightColorHexString;
     private string enemyHighlightColorHexString;
     private string damageDealtHighlightColorHexString;
     private string damageTakenHighlightColorHexString;
+    private string critTakenHighlightColorHexString;
 
     public static LogManager S;
 
@@ -50,6 +58,7 @@ public class LogManager : MonoBehaviour
         enemyHighlightColorHexString = ColorUtility.ToHtmlStringRGB(enemyHighlightColor);
         damageDealtHighlightColorHexString = ColorUtility.ToHtmlStringRGB(damageDealtHighlightColor);
         damageTakenHighlightColorHexString = ColorUtility.ToHtmlStringRGB(damageTakenHighlightColor);
+        critTakenHighlightColorHexString = ColorUtility.ToHtmlStringRGB(critTakenHighlightColor);
     }
 
     /// <summary>
@@ -406,6 +415,22 @@ public class LogManager : MonoBehaviour
             string nameString = createHighlightedEntityName((useCapitals ? capitalize(speakerName) : speakerName), isEnemy, true, isItem);
             Log(nameString + $": <color=#{messageColor}>{message}");
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void LogFloatingNumber(int number, Transform parent, bool isCrit=false)
+    {
+        string numberColor = isCrit ? critTakenHighlightColorHexString : damageTakenHighlightColorHexString;
+        if (number > 0) numberColor = healHighlightColorHexString;
+
+        Color trueColor = Color.white;
+        ColorUtility.TryParseHtmlString(numberColor, out trueColor);
+
+        GameObject floatingNumberObj = Instantiate(floatingNumberPrefab, parent.position, Quaternion.identity);
+        TextMeshProUGUI tm = floatingNumberObj.GetComponentInChildren<TextMeshProUGUI>();
+        tm.text = $"<color=#{numberColor}>{number}</color>";
     }
 
     ///// HELPER METHODS /////

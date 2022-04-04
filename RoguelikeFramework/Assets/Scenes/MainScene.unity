@@ -916,7 +916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -34.93199}
+  m_AnchoredPosition: {x: 0, y: -22.568909}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &185049596
@@ -5038,12 +5038,15 @@ MonoBehaviour:
   loggerWindow: {fileID: 1198759701}
   loggerWindowContentArea: {fileID: 185049595}
   maximumNumMessages: 30
+  worldCanvas: {fileID: 4128399512536800578, guid: 556d56d5848464d43acd3675aed17d68, type: 3}
   messagePrefab: {fileID: 6928566755086859916, guid: 1fbda9eeea789204e943ad041acf591a, type: 3}
+  floatingNumberPrefab: {fileID: 8979565402981459624, guid: 556d56d5848464d43acd3675aed17d68, type: 3}
   itemHighlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   healHighlightColor: {r: 0, g: 1, b: 0, a: 1}
   enemyHighlightColor: {r: 0.8113208, g: 0.29479894, b: 0, a: 1}
   damageDealtHighlightColor: {r: 0, g: 0, b: 1, a: 1}
   damageTakenHighlightColor: {r: 1, g: 0, b: 0, a: 1}
+  critTakenHighlightColor: {r: 0.33333334, g: 0, b: 0, a: 1}
 --- !u!114 &1198759704
 MonoBehaviour:
   m_ObjectHideFlags: 0
