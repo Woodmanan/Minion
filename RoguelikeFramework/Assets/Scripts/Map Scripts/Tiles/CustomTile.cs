@@ -20,6 +20,7 @@ public class CustomTile : MonoBehaviour
 
     public Vector2Int location;
     public int lightLevel;
+    public Color lightSourceColor = Color.white; //color of light projected onto this tile
     
     //Stuff that will not change a lot, and should not be (too) visible
     [Header("Static elements")] 
@@ -145,13 +146,16 @@ public class CustomTile : MonoBehaviour
 
     public virtual void RebuildGraphics()
     {
-        Color torchColor = new Color(1f,1.0f,1.0f,1f);
-        if (lightLevel == 0) torchColor = Color.white;
+        if (lightLevel == 0) lightSourceColor = Color.white;
         int brightness;
-        if (lightLevel > 7) brightness = 7;
+        if (lightLevel > 8) brightness = 8;
         else brightness = lightLevel;
-        Color litColor = color * (torchColor * 0.25f * (3.2f + lightLevel));
+        float p = (float)lightLevel / 8f;
+        float q = 1 - ((float)lightLevel / 8f);
+        float falloff = (((float)lightLevel + 3f) / 8f);
+        Color litColor = (falloff * lightSourceColor) * p + (falloff * color) * q;
         litColor.a = 1.0f;
+
         if (isVisible)
         {
             render.color = litColor;
@@ -168,7 +172,7 @@ public class CustomTile : MonoBehaviour
             if (!isHidden)
             {
                 render.enabled = true;
-                float gray = color.grayscale / 2;
+                float gray = color.grayscale / 4;
                 render.color = new Color(gray, gray, gray, 1.0f);
             }
             else

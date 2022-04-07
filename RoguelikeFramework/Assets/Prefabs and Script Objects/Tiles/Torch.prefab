@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -6710916951090259558, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
-  m_Color: {r: 1, g: 0.30576408, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.83413935, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,14 +102,17 @@ MonoBehaviour:
   dirty: 1
   location: {x: 0, y: 0}
   lightLevel: 7
+  lightSourceColor: {r: 1, g: 1, b: 1, a: 1}
   name: 
   description: 
   movementCost: 0
   blocksVision: 0
-  color: {r: 1, g: 0.30576408, b: 0, a: 1}
+  color: {r: 1, g: 0.83413935, b: 0, a: 1}
   currentlyStanding: {fileID: 0}
   inventory: {fileID: 0}
+  render: {fileID: 6429724181694475099}
   map: {fileID: 0}
+  lightColor: {r: 1, g: 0.68598413, b: 0, a: 1}
 --- !u!114 &1392881899909829115
 MonoBehaviour:
   m_ObjectHideFlags: 0
