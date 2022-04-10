@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterType {player, slime}
+public enum MonsterType {player, slime, goblin, bigSlime}
 
 public class MonsterAudio : MonoBehaviour
 {
@@ -19,7 +19,8 @@ public class MonsterAudio : MonoBehaviour
         StartAmbientSFX();
         monster.connections.OnMove.AddListener(1, MoveSFX);
         monster.connections.OnTakeDamage.AddListener(1, TakeDamageSFX);
-        monster.connections.OnStartAttack.AddListener(1, StartAttackSFX);
+        monster.connections.OnBeginPrimaryAttack.AddListener(1, BeginAttackSFX);
+        monster.connections.OnBeginSecondaryAttack.AddListener(1, BeginAttackSFX);
     }
 
     void OnDestroy() {
@@ -42,8 +43,22 @@ public class MonsterAudio : MonoBehaviour
         }
     }
 
+    void AttackedSFX() {
+        //how to do shield sfx :sob:
+        /*
+        switch(monster.equipment.) {
+            case SFXItemType.WoodShield: {
+                AudioManager.i.WoodenShield();
+                break;
+            }
+        }
+
+        foreach(Effect e in item.effects) {
+            //effect layers here
+        } */
+    }
+
     void TakeDamageSFX(ref int damage, ref DamageType damageType, ref DamageSource source) {
-        
         switch (monsterType) {
             case MonsterType.player: 
                 float maxDamagePct = 0.40f;
@@ -54,11 +69,23 @@ public class MonsterAudio : MonoBehaviour
         }
     }
 
-    void StartAttackSFX(ref AttackAction action, ref bool canContinue) {
-        switch (monsterType) {
-            case MonsterType.player:
-                //put SFX here
+    void BeginAttackSFX(ref Weapon weapon, ref AttackAction action) {
+        switch(weapon.item.sfxType) {
+            case SFXItemType.Sword: {
+                AudioManager.i.SwordAttack();
                 break;
+            }
+            case SFXItemType.Bow: {
+                AudioManager.i.BowAttack();
+                break;
+            }
+        }
+
+        foreach(Effect e in weapon.item.effects) {
+            //effect layers here, i. e.
+            if(e is DamageOverTime) {
+                //play sfx 
+            }
         }
     }
 

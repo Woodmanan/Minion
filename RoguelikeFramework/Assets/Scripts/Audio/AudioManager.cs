@@ -108,5 +108,23 @@ public class AudioManager : MonoBehaviour
         takeDamage.start();
         takeDamage.release();
     }
+    
+    //Weapon SFX
+
+    public void SwordAttack() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Sword Attack");
+    }
+
+    public void BowAttack() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Bow Attack");
+    }
+
+    public void WoodenShield() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Wooden Shield");
+    }
+
+    public void FireLayer() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Fire Layer");
+    }
 
 }
