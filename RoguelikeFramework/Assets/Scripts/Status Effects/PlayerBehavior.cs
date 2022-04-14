@@ -9,10 +9,12 @@ public class PlayerBehavior : Effect
     public static bool isInDanger;
 
     public float playerHealthForDanger;
-    public float numMonstersForDanger;
+    public float monsterDangerLevelsForDanger;
+    public int dangerCooldown = 5;
 
     public float healthPer100;
     float healthStore; //Stores overflow per turn
+    private int turnsSinceDanger = 0;
 
     Monster player;
     /* The default priority of all functions in this class - the order in which they'll be called
@@ -56,25 +58,26 @@ public class PlayerBehavior : Effect
         healthStore += healthPer100 / 100;
         player.Heal((int)healthStore);
         healthStore %= 1;
-        if (!isInDanger)
-        {
 
-            if ((player.resources.health / ((float)player.stats.resources.health)) < playerHealthForDanger)
-            {
-                SetDanger(true);
-            }
-            else if (player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).Count >= numMonstersForDanger)
-            {
-                SetDanger(true);
-            }
-        }
-        else
+        int totalMonsterDanger = 0;
+        player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).ForEach(x => totalMonsterDanger += x.dangerLevel);
+        
+        if (!isInDanger && (player.resources.health / ((float)player.stats.resources.health)) < playerHealthForDanger)
         {
-            if (((player.resources.health / ((float)player.stats.resources.health)) > playerHealthForDanger)
-                && (player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).Count == 0))
-            {
-                SetDanger(false);
-            }
+            turnsSinceDanger = 0;
+            SetDanger(true);
+        }
+        else if (totalMonsterDanger >= monsterDangerLevelsForDanger)
+        {
+            turnsSinceDanger = 0;
+            SetDanger(true);
+        }
+        if (totalMonsterDanger == 0)
+        {
+            turnsSinceDanger++;
+        }
+        if(turnsSinceDanger >= dangerCooldown) {
+            SetDanger(false);
         }
         
     }

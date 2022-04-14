@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System;
 using UnityEngine;
-using System.Text.RegularExpressions; //Oh god oh fuck
+using System.Text.RegularExpressions; //Oh god oh fuck (so true)
 using System.Linq;
 
 
@@ -63,6 +63,9 @@ public class Monster : MonoBehaviour
 
     public string description;
     public string uniqueID;
+
+    //used for music's isInDanger
+    public int dangerLevel = 2;
     
     // Start is called before the first frame update
     public virtual void Start()

@@ -8,7 +8,8 @@ public class WinPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(GameController.singleton.gameObject);
+        if(GameController.singleton != null)
+            Destroy(GameController.singleton.gameObject);
     }
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class WinPanel : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        AudioManager.i.Level = 0;
         SceneManager.LoadScene(0);
     }
 

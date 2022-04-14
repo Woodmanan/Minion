@@ -36,6 +36,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: dangerLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: description
       value: TWO OF THESE ON SPAWN WHEN YOU KILL MEDIUM SLIME(so 4 in total)
       objectReference: {fileID: 0}

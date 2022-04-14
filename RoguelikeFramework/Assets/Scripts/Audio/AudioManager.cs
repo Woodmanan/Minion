@@ -6,23 +6,33 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager i;
     private static FMOD.Studio.EventInstance Music;
-    public int level = 1;
-    
+    private int level = 0;
+    public int Level {
+        get { return level; }
+        set {
+            StopMusic();
+            level = value;
+            StartMusic(level);
+        }
+    }
 
     void Awake()
      {
-         if(i != null)
-            GameObject.Destroy(i);
-         else
+         if(i != null) {
+            GameObject.Destroy(this);
+         }
+         else {
             i = this;
 
-         DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this);
+         }
+
      }
 
     // Start is called before the first frame update
     void Start()
     {
-        StartMusic(2);
+        StartMusic(level);
     }
 
     // Update is called once per frame
@@ -41,21 +51,21 @@ public class AudioManager : MonoBehaviour
     }
 
     public void StartMusic(int levelNum) {
-        level = levelNum;
         //switch music using level variable
+        UpdateMusic(false);
         string eventString;
-        switch(level)
+        switch(levelNum)
         { 
+            case 0:
+                eventString = "event:/Music/Main Menu";
+                break;
             case 1:
-                eventString = "event:/Music/Level 1 Music";
+                eventString = "event:/Music/Dungeon Music";
                 break;
             case 2:
                 eventString = "event:/Music/Forest Music";
                 break;
             case 3:
-                eventString = "event:/Music/Level 3 Music";
-                break;
-            case 4:
                 eventString = "event:/Music/Level 3 Music";
                 break;
             default:
@@ -69,6 +79,7 @@ public class AudioManager : MonoBehaviour
     public void GameOver() {
         StopMusic();
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Game Over");
+        Music.start();
         Music.release();
     }
 
