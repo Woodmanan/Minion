@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{bab262ed-5146-4e40-9d59-8f8ccdb7ee9a}">
 		<property name="assetPath">
-			<value>death jingle w:silence.wav</value>
+			<value>death jingle wsilence.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
