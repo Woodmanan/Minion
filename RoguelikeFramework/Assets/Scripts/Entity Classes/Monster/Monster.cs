@@ -163,10 +163,8 @@ public class Monster : MonoBehaviour
             return false;
         }
 
-        
-
         //TODO: Log Hit
-        //TakeDamage(damage, DamageType.NONE);
+        // 
         return true;
     }
 
@@ -193,6 +191,8 @@ public class Monster : MonoBehaviour
     {
         dealer?.connections.OnDealDamage.BlendInvoke(dealer.other?.OnDealDamage, ref damage, ref type, ref source);
         Damage(damage, type, source, message);
+        LogManager.S.LogSpecificEntityAttackWithDamage(dealer.displayName, displayName, "hit", damage, nameRequiresPluralVerbs, this == Player.player, this != Player.player);
+        LogManager.S.LogFloatingNumber(-damage, transform);
         if (resources.health <= 0)
         {
             dealer?.KillMonster(this, type, source);

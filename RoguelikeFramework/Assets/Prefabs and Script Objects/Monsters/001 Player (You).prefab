@@ -156,6 +156,8 @@ GameObject:
   - component: {fileID: 3853786310894742760}
   - component: {fileID: 3853786310894742761}
   - component: {fileID: 3853786310894742754}
+  - component: {fileID: 5025787241258185948}
+  - component: {fileID: 5439016432967468362}
   m_Layer: 0
   m_Name: 001 Player (You)
   m_TagString: Player
@@ -211,7 +213,7 @@ MonoBehaviour:
     mana: 0
     stamina: 0
     xp: 0
-  displayName: Player (You)
+  displayName: You
   nameRequiresPluralVerbs: 1
   faction: 2
   ID: 1
@@ -439,6 +441,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 0}
+--- !u!114 &5025787241258185948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853786310894742762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673dd832e2f37425f94223d903805b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterType: 0
+--- !u!114 &5439016432967468362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853786310894742762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &3853786311080168097
 GameObject:
   m_ObjectHideFlags: 0
