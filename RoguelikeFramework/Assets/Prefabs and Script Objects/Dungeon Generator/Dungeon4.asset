@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e84749fbfe63bf4c9e521d14bf6b7ec, type: 3}
-  m_Name: StandardStairs
+  m_Script: {fileID: 11500000, guid: c72126aef567d144b8698d667ab15470, type: 3}
+  m_Name: Dungeon4
   m_EditorClassIdentifier: 
-  priority: 3
+  priority: 0
   global: 1
   size: {x: 0, y: 0}
   start: {x: 0, y: 0}
   end: {x: 0, y: 0}
   canShareSpace: 1
-  canExpand: 0
+  canExpand: 1
   generator:
     name: 
     depth: 0
@@ -39,18 +39,8 @@ MonoBehaviour:
       dice: 0
     JIT: 0
     finished: 0
-  upStairsIndex: 2
-  downStairsIndex: 3
-  stairsUp:
-  - connectsTo: 
-    next: 1
-    numConnections: 3
-    connectionsStartAt: 0
-  stairsDown:
-  - connectsTo: 
-    next: 1
-    numConnections: 3
-    connectionsStartAt: 0
-  numExtraEntrances: 0
-  numExtraExits: 0
-  excludeRoom: 
+  numRooms: 1
+  attemptsBeforeFail: 100
+  rooms:
+  - {fileID: 11400000, guid: a8c63da58c4294a4893bb3c3abc1fae5, type: 2}
+  placedRooms: []

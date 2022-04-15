@@ -24,6 +24,7 @@ public class LogManager : MonoBehaviour
     private GameObject messagePrefab;
     [SerializeField]
     private GameObject floatingNumberPrefab;
+    [SerializeField] private float wiggle;
 
     [Header("Color Values")]
     [SerializeField]
@@ -431,6 +432,7 @@ public class LogManager : MonoBehaviour
         GameObject floatingNumberObj = Instantiate(floatingNumberPrefab, parent.position, Quaternion.identity);
         TextMeshProUGUI tm = floatingNumberObj.GetComponentInChildren<TextMeshProUGUI>();
         tm.text = $"<color=#{numberColor}>{number}</color>";
+        floatingNumberObj.transform.position += Vector3.right * UnityEngine.Random.Range(-wiggle, wiggle);
     }
 
     ///// HELPER METHODS /////
