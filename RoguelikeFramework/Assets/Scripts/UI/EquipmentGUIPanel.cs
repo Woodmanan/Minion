@@ -44,7 +44,9 @@ public class EquipmentGUIPanel : MonoBehaviour
         if (equipSlot.active)
         {
             image.enabled = true;
-            image.sprite = equipSlot.equipped.held[0].GetComponent<SpriteRenderer>().sprite;
+            SpriteRenderer render = equipSlot.equipped.held[0].GetComponent<SpriteRenderer>();
+            image.sprite = render.sprite;
+            image.color = render.color;
         }
         else
         {
