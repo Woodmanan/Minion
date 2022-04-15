@@ -234,6 +234,7 @@ MonoBehaviour:
   level: 1
   description: 
   uniqueID: pbjhmvvb
+  dangerLevel: 2
   testRoom: {fileID: 0}
   uiControls: {fileID: 0}
 --- !u!114 &3853786310894742757

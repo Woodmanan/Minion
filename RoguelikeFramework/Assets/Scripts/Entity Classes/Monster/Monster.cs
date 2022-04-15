@@ -194,7 +194,12 @@ public class Monster : MonoBehaviour
     {
         dealer?.connections.OnDealDamage.BlendInvoke(dealer.other?.OnDealDamage, ref damage, ref type, ref source);
         Damage(damage, type, source, message);
-        LogManager.S.LogSpecificEntityAttackWithDamage(dealer.displayName, displayName, "hit", damage, nameRequiresPluralVerbs, this == Player.player, this != Player.player);
+
+        //Quick hacky fix - Make this always true!
+        if (dealer != null)
+        {
+            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.displayName, displayName, "hit", damage, nameRequiresPluralVerbs, this == Player.player, this != Player.player);
+        }
         LogManager.S.LogFloatingNumber(-damage, transform);
         if (resources.health <= 0)
         {
