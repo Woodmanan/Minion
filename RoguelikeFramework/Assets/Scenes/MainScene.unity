@@ -2296,6 +2296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062e655399374bbd953403b83f3b548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
 --- !u!1 &525721199
 GameObject:
   m_ObjectHideFlags: 0
@@ -8664,8 +8665,8 @@ MonoBehaviour:
   msPerFrame: 4
   randomSeed: 1
   seed: 42
-  JITLoading: 0
-  StartAt: 0
+  JITLoading: 1
+  StartAt: 1
 --- !u!4 &1953941108
 Transform:
   m_ObjectHideFlags: 0
