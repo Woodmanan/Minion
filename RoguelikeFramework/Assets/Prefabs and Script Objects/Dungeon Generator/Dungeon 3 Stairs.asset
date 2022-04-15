@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e84749fbfe63bf4c9e521d14bf6b7ec, type: 3}
-  m_Name: StandardStairs
+  m_Name: Dungeon 3 Stairs
   m_EditorClassIdentifier: 
   priority: 3
   global: 1
@@ -49,7 +49,7 @@ MonoBehaviour:
   stairsDown:
   - connectsTo: 
     next: 1
-    numConnections: 3
+    numConnections: 1
     connectionsStartAt: 0
   numExtraEntrances: 0
   numExtraExits: 0

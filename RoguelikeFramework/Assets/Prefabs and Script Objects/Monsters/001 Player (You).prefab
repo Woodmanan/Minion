@@ -349,7 +349,7 @@ MonoBehaviour:
       applyOnHit:
         list: []
   - slotName: Primary Hand
-    type: 0200000003000000
+    type: 02000000
     equipped:
       id: 0
       type: 0

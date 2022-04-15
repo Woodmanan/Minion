@@ -49,7 +49,7 @@ public class StatBarBehaviour : MonoBehaviour
         }
         else
         {
-            mainBar.fillAmount = Mathf.Lerp(mainBar.fillAmount, val, 0.01f);
+            mainBar.fillAmount = val;//Mathf.Lerp(mainBar.fillAmount, val, 0.01f);
             if (sub)
             {
                 sub.fillAmount = Mathf.Lerp(sub.fillAmount, mainBar.fillAmount, 0.01f);
