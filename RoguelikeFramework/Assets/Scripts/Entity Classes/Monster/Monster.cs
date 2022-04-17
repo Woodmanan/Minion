@@ -39,7 +39,7 @@ public class Monster : MonoBehaviour
     public int energyPerStep;
     public Loadout loadout;
 
-    private static readonly float monsterZPosition = -5f;
+    public static readonly float monsterZPosition = -5f;
 
     [HideInInspector] public Connections connections;
     [HideInInspector] public Connections other = null;
@@ -53,7 +53,7 @@ public class Monster : MonoBehaviour
 
     [HideInInspector] public ActionController controller;
 
-    private SpriteRenderer renderer;
+    public SpriteRenderer renderer;
 
     public GameAction currentAction;
     public CustomTile currentTile;
