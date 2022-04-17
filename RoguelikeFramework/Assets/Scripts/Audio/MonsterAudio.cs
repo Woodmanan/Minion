@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterType {player, slime, goblin, bigSlime}
+public enum MonsterType {player, slime, goblin, bigSlime, bat}
 
 public class MonsterAudio : MonoBehaviour
 {

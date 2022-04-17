@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef6f0fce62a8fda47aa15e8d5e7816bc, type: 3}
-  m_Name: Split
+  m_Script: {fileID: 11500000, guid: c55fe14f71f25e84d8719bfe5a83e682, type: 3}
+  m_Name: MergeMedium
   m_EditorClassIdentifier: 
-  displayName: Split
-  image: {fileID: -7770694097599547242, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
+  displayName: 
+  image: {fileID: -6438481009107602274, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
   color: {r: 0, g: 0.5019608, b: 0.1254902, a: 1}
   baseTargeting:
     numPoints: 1
@@ -88,5 +88,5 @@ MonoBehaviour:
   types: 0
   effects:
     list: []
-  healthPercentage: 0.5
-  splitInto: {fileID: 2776638571021120720, guid: 83fe178f60bb41d47a0b896910eda2c5, type: 3}
+  minHPPercent: 0.5
+  mergeInto: {fileID: 2776638571021120720, guid: 612a3366c6c0ac74a836683ff6136eee, type: 3}
