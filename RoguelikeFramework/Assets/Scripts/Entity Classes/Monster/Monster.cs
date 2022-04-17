@@ -30,6 +30,9 @@ public class Monster : MonoBehaviour
     public float energy;
 
     public Vector2Int location;
+    private Vector3 lPosition0;
+    private Vector3 lPosition1;
+    private float lPositionTimer;
 
     public int visionRadius;
 
@@ -118,18 +121,20 @@ public class Monster : MonoBehaviour
         #if UNITY_EDITOR || DEVELOPMENT_BUILD
         //Confirm that we got our own unique space
         Debug.Assert(map.GetTile(location).currentlyStanding == this || map.GetTile(location).currentlyStanding == null, "Generator placed two monsters together", this);
-        #endif
+#endif
         //Put us in that space, and build our initial LOS
+        lPosition0 = new Vector3(location.x, location.y, monsterZPosition);
+        lPosition1 = lPosition0;
+        transform.position = new Vector3(location.x, location.y, monsterZPosition);
         SetPosition(map, location);
         UpdateLOS(map);
-
-        
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        lPositionTimer += Time.deltaTime;
+        transform.position = Vector3.Lerp(lPosition0, lPosition1, lPositionTimer * 12f);
     }
 
     public void Heal(int healthReturned)
@@ -468,8 +473,13 @@ public class Monster : MonoBehaviour
     public void SetPosition(Map map, Vector2Int newPosition)
     {
         if (currentTile) currentTile.currentlyStanding = null;
+        // visual slide
+        lPosition0 = new Vector3(location.x, location.y, monsterZPosition);
+        // update location
         location = newPosition;
-        transform.position = new Vector3(location.x, location.y, monsterZPosition);
+        // visual slide
+        lPosition1 = new Vector3(location.x, location.y, monsterZPosition);
+        lPositionTimer = 0;
         currentTile = map.GetTile(location);
         currentTile.SetMonster(this);
         if (currentTile.isVisible)
