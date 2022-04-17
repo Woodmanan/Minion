@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f6b91b37ee44093986bdc6eb232971, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  left: 00000000
+  right: 00000000
+  up: 00000000
+  down: 00000000
+  upLeft: 00000000
+  upRight: 00000000
+  downLeft: 00000000
+  downRight: 00000000
+  drop: 64000000
+  pickUp: 67000000
+  openInventory: 69000000
+  equip: 65000000
+  unEquip: 72000000
+  escaping: 1b000000
+  accept: 0d000000
+  apply: 71000000
+  castSpell: 61000000
+  fire: 66000000
+  wait: 2e00000030010000
+  goUp: 2c00000030010000
+  goDown: 2c00000030010000
+  autoAttack: 09000000
+  autoExplore: 6f000000

@@ -7,6 +7,8 @@ using System;
 
 public class InputTracking : MonoBehaviour
 {
+    public List<InputSetting> allInputSettings;
+    private InputSetting inputSetting;
     //Public functions for accessing all of this
     public static Queue<PlayerAction> actions = new Queue<PlayerAction>();
     public static Queue<string> inputs = new Queue<string>();
@@ -78,7 +80,7 @@ public class InputTracking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        inputSetting = allInputSettings[0];
     }
 
     // Update is called once per frame
@@ -92,36 +94,25 @@ public class InputTracking : MonoBehaviour
         }
         #endif
 
+        AddMovement();
+    }
+
+    public void AddMovement()
+    {
+        if (UIController.WindowsOpen)
+        {
+            PushAction(PlayerAction.NONE);
+            return;
+        }
+        
         //Add movements
         if (Left())
         {
-            if (Up())
-            {
-                PushAction(PlayerAction.MOVE_UP_LEFT);
-            }
-            else if (Down())
-            {
-                PushAction(PlayerAction.MOVE_DOWN_LEFT);
-            }
-            else
-            {
-                PushAction(PlayerAction.MOVE_LEFT);
-            }
+            PushAction(PlayerAction.MOVE_LEFT);
         }
         else if (Right())
         {
-            if (Up())
-            {
-                PushAction(PlayerAction.MOVE_UP_RIGHT);
-            }
-            else if (Down())
-            {
-                PushAction(PlayerAction.MOVE_DOWN_RIGHT);
-            }
-            else
-            {
-                PushAction(PlayerAction.MOVE_RIGHT);
-            }
+            PushAction(PlayerAction.MOVE_RIGHT);
         }
         else if (Down())
         {
@@ -207,7 +198,9 @@ public class InputTracking : MonoBehaviour
         {
             PushAction(PlayerAction.WAIT);
         }
-        else if (Input.inputString != "") //FINAL CHECK! Use this to add empty input to the buffer for character checks. (MUST BE LAST CHECK)
+        else if
+            (Input.inputString !=
+             "") //FINAL CHECK! Use this to add empty input to the buffer for character checks. (MUST BE LAST CHECK)
         {
             PushAction(PlayerAction.NONE);
         }
@@ -216,119 +209,258 @@ public class InputTracking : MonoBehaviour
     //WASD has been removed here
     private bool Left()
     {
-        return (Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Keypad4));
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.left)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool Right()
     {
-        return (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Keypad6));
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.right)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool Up()
     {
-        return (Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Keypad8));
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.up)
+        {
+            pressed = pressed & Input.GetKeyDown(key);
+        }
+
+        return pressed;
     }
 
     private bool Down()
     {
-        return (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Keypad2));
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.down)
+        {
+            pressed = pressed & Input.GetKeyDown(key);
+        }
+
+        return pressed;
     }
 
     private bool UpLeft()
     {
-        return (!UIController.WindowsOpen && (Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.Keypad7)));
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.upLeft)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool UpRight()
     {
-        return (!UIController.WindowsOpen && (Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.Keypad9)));
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.upRight)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool DownLeft()
     {
-        return (!UIController.WindowsOpen && (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Keypad1)));
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.downLeft)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool DownRight()
     {
-        return (!UIController.WindowsOpen && (Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.Keypad3)));
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.downRight)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool Drop()
     {
-        return Input.GetKeyDown(KeyCode.D);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.drop)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool PickUp()
     {
-        return (Input.GetKeyDown(KeyCode.Comma) && !Input.GetKey(KeyCode.LeftShift)) || Input.GetKeyDown(KeyCode.G);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.pickUp)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool OpenInventory()
     {
-        return Input.GetKeyDown(KeyCode.I);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.openInventory)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool Equip()
     {
-        return Input.GetKeyDown(KeyCode.E);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.equip)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     //TODO: Revisit this sequence of inputs. As of right now PlayerAction.MOVE_UP_RIGHT is the one keyed to this.
     private bool Unequip()
     {
-        return Input.GetKeyDown(KeyCode.R);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.unEquip)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool Escaping()
     {
-        return Input.GetKeyDown(KeyCode.Escape);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.escaping)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool Accept()
     {
-        return Input.GetKeyDown(KeyCode.Return);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.accept)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     //Currently Q for convention; Apply is the backend stuff, these will probably just be quaffables
+    //It's Q, for 'Qiswhatyouhittoapply'
     private bool Apply()
     {
-        return Input.GetKeyDown(KeyCode.Q); //It's Q, for 'Qiswhatyouhittoapply'
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.apply)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool CastSpell()
     {
-        return Input.GetKeyDown(KeyCode.A);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.castSpell)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool Fire()
     {
-        return Input.GetKeyDown(KeyCode.F);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.fire)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool Wait()
     {
-        return Input.GetKeyDown(KeyCode.Period) && !Input.GetKey(KeyCode.LeftShift);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.wait)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool GoUp()
     {
-        return Input.GetKeyDown(KeyCode.Comma) && Input.GetKey(KeyCode.LeftShift);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.goUp)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool GoDown()
     {
-        return Input.GetKeyDown(KeyCode.Period) && Input.GetKey(KeyCode.LeftShift);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.goDown)
+        {
+            pressed = pressed & Input.GetKeyDown((key));
+        }
+
+        return pressed;
     }
 
     private bool AutoAttack()
     {
-        return Input.GetKeyDown(KeyCode.Tab);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.autoAttack)
+        {
+            pressed = pressed & Input.GetKeyDown(key);
+        }
+
+        return pressed;
     }
 
     private bool AutoExplore()
     {
-        return Input.GetKeyDown(KeyCode.O);
+        bool pressed = true;
+        foreach (KeyCode key in inputSetting.autoExplore)
+        {
+            pressed = pressed & Input.GetKeyDown(key);
+        }
+
+        return pressed;
     }
 
 }
