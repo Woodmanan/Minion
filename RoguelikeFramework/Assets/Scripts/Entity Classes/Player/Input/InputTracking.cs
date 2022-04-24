@@ -254,7 +254,7 @@ public class InputTracking : MonoBehaviour
     private bool UpLeft()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.upLeft)
+        foreach (KeyCode key in inputSetting.up_left)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -265,7 +265,7 @@ public class InputTracking : MonoBehaviour
     private bool UpRight()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.upRight)
+        foreach (KeyCode key in inputSetting.up_right)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -276,7 +276,7 @@ public class InputTracking : MonoBehaviour
     private bool DownLeft()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.downLeft)
+        foreach (KeyCode key in inputSetting.down_left)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -287,7 +287,7 @@ public class InputTracking : MonoBehaviour
     private bool DownRight()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.downRight)
+        foreach (KeyCode key in inputSetting.down_right)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -309,7 +309,7 @@ public class InputTracking : MonoBehaviour
     private bool PickUp()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.pickUp)
+        foreach (KeyCode key in inputSetting.pick_up)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -320,7 +320,7 @@ public class InputTracking : MonoBehaviour
     private bool OpenInventory()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.openInventory)
+        foreach (KeyCode key in inputSetting.open_inventory)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -343,7 +343,7 @@ public class InputTracking : MonoBehaviour
     private bool Unequip()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.unEquip)
+        foreach (KeyCode key in inputSetting.unequip)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -354,7 +354,7 @@ public class InputTracking : MonoBehaviour
     private bool Escaping()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.escaping)
+        foreach (KeyCode key in inputSetting.escape)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -389,7 +389,7 @@ public class InputTracking : MonoBehaviour
     private bool CastSpell()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.castSpell)
+        foreach (KeyCode key in inputSetting.cast_spell)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -422,7 +422,7 @@ public class InputTracking : MonoBehaviour
     private bool GoUp()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.goUp)
+        foreach (KeyCode key in inputSetting.go_up)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -433,7 +433,7 @@ public class InputTracking : MonoBehaviour
     private bool GoDown()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.goDown)
+        foreach (KeyCode key in inputSetting.go_down)
         {
             pressed = pressed & Input.GetKeyDown((key));
         }
@@ -444,7 +444,7 @@ public class InputTracking : MonoBehaviour
     private bool AutoAttack()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.autoAttack)
+        foreach (KeyCode key in inputSetting.auto_attack)
         {
             pressed = pressed & Input.GetKeyDown(key);
         }
@@ -455,7 +455,7 @@ public class InputTracking : MonoBehaviour
     private bool AutoExplore()
     {
         bool pressed = true;
-        foreach (KeyCode key in inputSetting.autoExplore)
+        foreach (KeyCode key in inputSetting.auto_explore)
         {
             pressed = pressed & Input.GetKeyDown(key);
         }

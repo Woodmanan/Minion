@@ -12,26 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f6b91b37ee44093986bdc6eb232971, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  left: 00000000
-  right: 00000000
-  up: 00000000
-  down: 00000000
-  upLeft: 00000000
-  upRight: 00000000
-  downLeft: 00000000
-  downRight: 00000000
+  left: 14010000
+  right: 13010000
+  up: 11010000
+  down: 12010000
+  up_left: 
+  up_right: 
+  down_left: 
+  down_right: 
   drop: 64000000
-  pickUp: 67000000
-  openInventory: 69000000
+  pick_up: 
+  open_inventory: 
   equip: 65000000
-  unEquip: 72000000
-  escaping: 1b000000
+  unequip: 
+  escape: 
   accept: 0d000000
   apply: 71000000
-  castSpell: 61000000
+  cast_spell: 
   fire: 66000000
   wait: 2e00000030010000
-  goUp: 2c00000030010000
-  goDown: 2c00000030010000
-  autoAttack: 09000000
-  autoExplore: 6f000000
+  go_up: 
+  go_down: 
+  auto_attack: 
+  auto_explore: 

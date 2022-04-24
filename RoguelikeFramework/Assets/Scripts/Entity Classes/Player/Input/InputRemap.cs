@@ -8,10 +8,11 @@ public class InputRemap : MonoBehaviour
 {
     public Text displayTxt;
 
-    public int index;
-    public InputSetting inputSetting;
+    public bool hasWarning;
+    public InputRemapController irController;
+    public string displayText;
     public string buttonName;
-    private KeyCode[] keys;
+    public KeyCode[] keys;
     private HashSet<KeyCode> tempKeys;
     public bool remapping;
     private int buffer;
@@ -20,7 +21,6 @@ public class InputRemap : MonoBehaviour
     void Start()
     {
         remapping = false;
-        keys = (KeyCode[]) inputSetting.GetType().GetField(buttonName).GetValue(inputSetting);
         tempKeys = new HashSet<KeyCode>();
         Refresh();
     }
@@ -71,16 +71,29 @@ public class InputRemap : MonoBehaviour
         Debug.Log("end remapping" + tempKeys.ToArray());
         remapping = false;
         keys = tempKeys.ToArray();
-        inputSetting.GetType().GetField(buttonName).SetValue(inputSetting, keys);
+        irController.RemapControl(buttonName, keys);
         Refresh();
     }
 
     private void Refresh()
     {
-        displayTxt.text = "";
+        displayTxt.text = displayText;
+        displayTxt.text += ": ";
         foreach (KeyCode key in keys)
         {
             displayTxt.text += key + " ";
         }
+    }
+
+    public void RemoveWarning()
+    {
+        hasWarning = false;
+        displayTxt.color = Color.black;
+    }
+
+    public void RaiseWarning()
+    {
+        hasWarning = true;
+        displayTxt.color = Color.red;
     }
 }
