@@ -916,7 +916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -39.073082}
+  m_AnchoredPosition: {x: 0, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &185049596
@@ -8828,8 +8828,71 @@ MonoBehaviour:
       dice: 1
     JIT: 0
     finished: 0
+  - name: Level 6
+    depth: 1
+    seed: 0
+    bounds: {x: 60, y: 60}
+    machines:
+    - {fileID: 11400000, guid: 4b80814f4a6d06749bf658833797c6c1, type: 2}
+    - {fileID: 11400000, guid: 43433a0728105b343b21815d065b7c97, type: 2}
+    rooms: []
+    tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
+    numberOfAttempts: 100
+    attemptsPerMachine: 100
+    availableItems: {fileID: 11400000, guid: 74b47070ea93bb540bf92e42751605f5, type: 2}
+    numItems:
+      rolls: 2
+      dice: 5
+    availableMonsters: {fileID: 11400000, guid: c083bb6c4c4307340887537b8744d336, type: 2}
+    numMonsters:
+      rolls: 2
+      dice: 1
+    JIT: 0
+    finished: 0
+  - name: Level 7
+    depth: 1
+    seed: 0
+    bounds: {x: 70, y: 70}
+    machines:
+    - {fileID: 11400000, guid: 4b80814f4a6d06749bf658833797c6c1, type: 2}
+    - {fileID: 11400000, guid: 43433a0728105b343b21815d065b7c97, type: 2}
+    rooms: []
+    tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
+    numberOfAttempts: 100
+    attemptsPerMachine: 100
+    availableItems: {fileID: 11400000, guid: 74b47070ea93bb540bf92e42751605f5, type: 2}
+    numItems:
+      rolls: 2
+      dice: 5
+    availableMonsters: {fileID: 11400000, guid: c083bb6c4c4307340887537b8744d336, type: 2}
+    numMonsters:
+      rolls: 2
+      dice: 1
+    JIT: 0
+    finished: 0
+  - name: Level 8
+    depth: 1
+    seed: 0
+    bounds: {x: 50, y: 50}
+    machines:
+    - {fileID: 11400000, guid: 4b80814f4a6d06749bf658833797c6c1, type: 2}
+    - {fileID: 11400000, guid: 43433a0728105b343b21815d065b7c97, type: 2}
+    rooms: []
+    tilesAvailable: {fileID: 11400000, guid: d12cc22fd59ffdc42b6d908da9f32db2, type: 2}
+    numberOfAttempts: 100
+    attemptsPerMachine: 100
+    availableItems: {fileID: 11400000, guid: 74b47070ea93bb540bf92e42751605f5, type: 2}
+    numItems:
+      rolls: 2
+      dice: 5
+    availableMonsters: {fileID: 11400000, guid: c083bb6c4c4307340887537b8744d336, type: 2}
+    numMonsters:
+      rolls: 2
+      dice: 1
+    JIT: 0
+    finished: 0
   msPerFrame: 4
-  randomSeed: 1
+  randomSeed: 0
   seed: 42
   JITLoading: 1
   StartAt: 4
