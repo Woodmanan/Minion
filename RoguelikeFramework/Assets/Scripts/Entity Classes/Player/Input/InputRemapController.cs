@@ -2,15 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using UnityEngine;
 using System.Reflection;
 using UnityEditor;
 
 public class InputRemapController : MonoBehaviour
 {
-    public GameObject contentFrame;
-    public InputSetting inputSetting;
-    public GameObject keySettingPrefab;
+    [SerializeField] GameObject contentFrame;
+    [SerializeField] InputSetting defaultInputSetting;
+    [SerializeField] InputSetting inputSetting;
+    [SerializeField] GameObject keySettingPrefab;
 
     private readonly string[] keyNames = new string[]
     {
@@ -41,7 +43,7 @@ public class InputRemapController : MonoBehaviour
         {
             if (!buttonName.Equals(kv.Key))
             {
-                if (SameKey(keys, kv.Value.keys))
+                if (KeyCollision(keys, kv.Value.keys))
                 {
                     duplicates.Add(kv.Value);
                 }
@@ -65,11 +67,6 @@ public class InputRemapController : MonoBehaviour
         {
             currentRemap.RemoveWarning();
         }
-        
-        
-        EditorUtility.SetDirty(inputSetting);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
     }
 
     public bool hasDuplicate(string targetButton)
@@ -79,7 +76,7 @@ public class InputRemapController : MonoBehaviour
         {
             if (!targetButton.Equals(kv.Key))
             {
-                if (SameKey(keys, kv.Value.keys))
+                if (KeyCollision(keys, kv.Value.keys))
                 {
                     return true;
                 }
@@ -89,8 +86,14 @@ public class InputRemapController : MonoBehaviour
         return false;
     }
 
-    private bool SameKey(KeyCode[] keys1, KeyCode[] keys2)
+    private bool KeyCollision(KeyCode[] keys1, KeyCode[] keys2)
     {
+        if (keys1[keys1.Length - 1] == keys2[keys2.Length - 1])
+        {
+            // this is a different case
+            return true;
+        }
+        
         if (keys1.Length != keys2.Length)
         {
             return false;
@@ -109,6 +112,12 @@ public class InputRemapController : MonoBehaviour
     
     void Start()
     {
+        if (File.Exists(Constants.InputPath()))
+        {
+            string serializedInput = File.ReadAllText(Constants.InputPath());
+            JsonUtility.FromJsonOverwrite(serializedInput, inputSetting);
+        }
+
         keyMapping = new Dictionary<string, InputRemap>();
         
         for (int i = 0; i < keyNames.Length; i++)
@@ -126,9 +135,34 @@ public class InputRemapController : MonoBehaviour
         }
     }
 
-    private void SaveInput()
+    public void SaveInput()
     {
-        JsonUtility.ToJson(inputSetting);
-        //JsonUtility.FromJsonOverwrite(json, inputSetting);
+        string serializedInput = JsonUtility.ToJson(inputSetting);
+        File.WriteAllText(Constants.InputPath(), serializedInput);
+        //SaveScriptableObjectInEditor();
+    }
+
+    private void SaveScriptableObjectInEditor()
+    {
+        string serializedInput = JsonUtility.ToJson(inputSetting);
+        JsonUtility.FromJsonOverwrite(serializedInput, inputSetting);
+        EditorUtility.SetDirty(inputSetting);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+
+    public void ResetToDefault()
+    {
+        inputSetting = defaultInputSetting;
+        for (int i = 0; i < keyNames.Length; i++)
+        {
+            string buttonName = keyNames[i];
+            KeyCode[] keys = (KeyCode[]) inputSetting.GetType().GetField(buttonName).GetValue(inputSetting);
+            InputRemap irComponent = keyMapping[buttonName];
+            
+            irComponent.keys = keys;
+            
+            irComponent.Refresh();
+        }
     }
 }

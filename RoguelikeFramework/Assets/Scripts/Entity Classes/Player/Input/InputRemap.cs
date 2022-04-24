@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InputRemap : MonoBehaviour
 {
-    public Text displayTxt;
+    [SerializeField] Text displayTxt;
 
     public bool hasWarning;
     public InputRemapController irController;
@@ -75,7 +75,7 @@ public class InputRemap : MonoBehaviour
         Refresh();
     }
 
-    private void Refresh()
+    public void Refresh()
     {
         displayTxt.text = displayText;
         displayTxt.text += ": ";

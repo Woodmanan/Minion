@@ -16,22 +16,22 @@ MonoBehaviour:
   right: 13010000
   up: 11010000
   down: 12010000
-  up_left: 
-  up_right: 
-  down_left: 
-  down_right: 
+  up_left: 1401000011010000
+  up_right: 1301000011010000
+  down_left: 1401000012010000
+  down_right: 1301000012010000
   drop: 64000000
-  pick_up: 
-  open_inventory: 
+  pick_up: 67000000
+  open_inventory: 69000000
   equip: 65000000
-  unequip: 
-  escape: 
+  unequip: 75000000
+  escape: 1b000000
   accept: 0d000000
   apply: 71000000
-  cast_spell: 
+  cast_spell: 61000000
   fire: 66000000
-  wait: 2e00000030010000
-  go_up: 
-  go_down: 
-  auto_attack: 
-  auto_explore: 
+  wait: 2e000000
+  go_up: 300100002c000000
+  go_down: 300100002e000000
+  auto_attack: 09000000
+  auto_explore: 6f000000

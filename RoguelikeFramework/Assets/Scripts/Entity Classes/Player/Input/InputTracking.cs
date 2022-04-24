@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using System;
+using System.IO;
 
 
 public class InputTracking : MonoBehaviour
 {
-    public List<InputSetting> allInputSettings;
-    private InputSetting inputSetting;
+    [SerializeField] InputSetting inputSetting;
     //Public functions for accessing all of this
     public static Queue<PlayerAction> actions = new Queue<PlayerAction>();
     public static Queue<string> inputs = new Queue<string>();
@@ -80,7 +80,11 @@ public class InputTracking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inputSetting = allInputSettings[0];
+        if (File.Exists(Constants.InputPath()))
+        {
+            string serializedInput = File.ReadAllText(Constants.InputPath());
+            JsonUtility.FromJsonOverwrite(serializedInput, inputSetting);
+        }
     }
 
     // Update is called once per frame
@@ -206,261 +210,627 @@ public class InputTracking : MonoBehaviour
         }
     }
 
-    //WASD has been removed here
     private bool Left()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.left)
+        KeyCode[] keys = inputSetting.left;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Right()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.right)
+        KeyCode[] keys = inputSetting.right;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Up()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.up)
+        KeyCode[] keys = inputSetting.up;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown(key);
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Down()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.down)
+        KeyCode[] keys = inputSetting.down;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown(key);
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool UpLeft()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.up_left)
+        KeyCode[] keys = inputSetting.up_left;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool UpRight()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.up_right)
+        KeyCode[] keys = inputSetting.up_right;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool DownLeft()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.down_left)
+        KeyCode[] keys = inputSetting.down_left;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool DownRight()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.down_right)
+        KeyCode[] keys = inputSetting.down_right;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Drop()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.drop)
+        KeyCode[] keys = inputSetting.drop;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool PickUp()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.pick_up)
+        KeyCode[] keys = inputSetting.pick_up;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool OpenInventory()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.open_inventory)
+        KeyCode[] keys = inputSetting.open_inventory;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Equip()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.equip)
+        KeyCode[] keys = inputSetting.equip;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
-    //TODO: Revisit this sequence of inputs. As of right now PlayerAction.MOVE_UP_RIGHT is the one keyed to this.
     private bool Unequip()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.unequip)
+        KeyCode[] keys = inputSetting.unequip;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Escaping()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.escape)
+        KeyCode[] keys = inputSetting.escape;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Accept()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.accept)
+        KeyCode[] keys = inputSetting.accept;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     //Currently Q for convention; Apply is the backend stuff, these will probably just be quaffables
     //It's Q, for 'Qiswhatyouhittoapply'
     private bool Apply()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.apply)
+        KeyCode[] keys = inputSetting.apply;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool CastSpell()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.cast_spell)
+        KeyCode[] keys = inputSetting.cast_spell;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Fire()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.fire)
+        KeyCode[] keys = inputSetting.fire;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool Wait()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.wait)
+        KeyCode[] keys = inputSetting.wait;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool GoUp()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.go_up)
+        KeyCode[] keys = inputSetting.go_up;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool GoDown()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.go_down)
+        KeyCode[] keys = inputSetting.go_down;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown((key));
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool AutoAttack()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.auto_attack)
+        KeyCode[] keys = inputSetting.auto_attack;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown(key);
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
     private bool AutoExplore()
     {
-        bool pressed = true;
-        foreach (KeyCode key in inputSetting.auto_explore)
+        KeyCode[] keys = inputSetting.auto_explore;
+        int n = keys.Length;
+        
+        Debug.Assert(n != 0);
+        
+        if (n == 1)
         {
-            pressed = pressed & Input.GetKeyDown(key);
+            return Input.GetKeyDown(keys[0]);
         }
-
-        return pressed;
+        else
+        {
+            bool pressed = true;
+            int i = 0;
+            
+            while (i < n - 1)
+            {
+                pressed &= Input.GetKey((keys[i]));
+                i++;
+            }
+            pressed &= Input.GetKeyDown(keys[n - 1]);
+            
+            return pressed;
+        }
     }
 
 }

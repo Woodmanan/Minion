@@ -28,6 +28,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("FeedbackScene", LoadSceneMode.Single);
     }
 
+    public void LaunchSettings()
+    {
+        SceneManager.LoadScene("Setting", LoadSceneMode.Single);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

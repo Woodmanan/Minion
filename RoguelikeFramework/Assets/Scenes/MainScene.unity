@@ -4603,7 +4603,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1768364137}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10667,6 +10667,10 @@ PrefabInstance:
       propertyPath: uiControls
       value: 
       objectReference: {fileID: 216533712}
+    - target: {fileID: 3853786310894742757, guid: c66c03d83d651d04ea3d92d0cb88da50, type: 3}
+      propertyPath: inputSetting
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fc052beac5464ffaaaf886baf8f7785, type: 2}
     - target: {fileID: 3853786310894742760, guid: c66c03d83d651d04ea3d92d0cb88da50, type: 3}
       propertyPath: equipmentSlots.Array.size
       value: 4

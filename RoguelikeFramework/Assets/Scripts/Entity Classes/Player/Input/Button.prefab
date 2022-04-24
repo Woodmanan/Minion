@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -147,8 +147,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayTxt: {fileID: 2953324983559614265}
-  inputSetting: {fileID: 11400000, guid: 9fc052beac5464ffaaaf886baf8f7785, type: 2}
+  hasWarning: 0
+  irController: {fileID: 0}
+  displayText: 
   buttonName: left
+  keys: 
   remapping: 0
 --- !u!1 &2953324983559614267
 GameObject:
