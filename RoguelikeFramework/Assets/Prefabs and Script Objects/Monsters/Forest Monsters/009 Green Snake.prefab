@@ -33,12 +33,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: description
-      value: 'Notice: Please edit description and all these ---> and maybe the in-game
-        data too idk'
+      value: The green tree snake is a venomous species most often found on the edges
+        of the forests of Vandiver. Hunters and woodcutters both tread carefully-
+        fully aware that these snakes may lunge out from the limbs or roots of a
+        large tree at any moment. Though there are rumors that local shamans can
+        cure the poison, most people die an agonizing death when bitten. Moreover,
+        if the body is not quickly removed, a nest of the accursed snakes will move
+        the body deeper into the jungle to feed their young. If you ever see their
+        red demonic eyes, slowly back away and run.
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName
-      value: Snake
+      value: Green Snake
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.ac
@@ -110,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: 009 Snake
+      value: Green Snake
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size

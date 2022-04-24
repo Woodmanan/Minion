@@ -3710,10 +3710,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e775ab9cec339a46b8a88eda8fa040a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 2
   speed: 5
   lerpAmount: 0.01
-  stopDist: 1
+  stopDist: 0.5
   stopSpeed: -1
   stopSpeedMultiplier: 1.6
 --- !u!114 &903354581

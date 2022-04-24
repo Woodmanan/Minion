@@ -33,8 +33,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: description
-      value: 'Notice: Please edit description and all these ---> and maybe the in-game
-        data too idk'
+      value: 'The mission from the king seemed simple: kill the Archmage Mayhet who
+        was recently spotted in the farming village of Hethrow. As we moved through
+        the cornfields towards his cottage, our torches cast long shadows over hundreds
+        of lifelike scarecrows whose eyes reflected the dark red of our fires. We
+        barely made it halfway before the mayhem began. The scarecrows darted in
+        and out of our ranks, dragging hardened men away as they screamed. The ranks
+        broke, and I ran. When one of the demonic creatures jumped on me, I instinctively
+        lunged with my torch. It burned in moments, red lights streaming away from
+        its body. Of over a hundred men, I was the lone survivor.'
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName
@@ -110,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: 010 Scarecrow
+      value: Scarecrow
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size
