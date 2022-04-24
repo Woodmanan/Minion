@@ -916,7 +916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -38.453842}
+  m_AnchoredPosition: {x: 0, y: -0.0000076293945}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &185049596
@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40406155aae42b546bb02611f09bf7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preLoadUpTo: 4
+  preLoadUpTo: 3
   turn: 0
   energyPerTurn: 100
   player: {fileID: 546573371}
@@ -3184,7 +3184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.1}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: -4.9999847}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 0, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751305596
@@ -3640,10 +3640,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e775ab9cec339a46b8a88eda8fa040a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 2
   speed: 5
   lerpAmount: 0.01
-  stopDist: 1
+  stopDist: 0.5
   stopSpeed: -1
   stopSpeedMultiplier: 1.6
 --- !u!114 &903354581
@@ -3672,7 +3672,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941426431
 GameObject:
@@ -4603,7 +4603,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1768364137}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8664,8 +8664,8 @@ MonoBehaviour:
   msPerFrame: 4
   randomSeed: 1
   seed: 42
-  JITLoading: 1
-  StartAt: 1
+  JITLoading: 0
+  StartAt: 0
 --- !u!4 &1953941108
 Transform:
   m_ObjectHideFlags: 0
@@ -10621,7 +10621,7 @@ PrefabInstance:
       objectReference: {fileID: 903354579}
     - target: {fileID: 3853786310894742755, guid: c66c03d83d651d04ea3d92d0cb88da50, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3853786310894742755, guid: c66c03d83d651d04ea3d92d0cb88da50, type: 3}
       propertyPath: m_LocalPosition.x
