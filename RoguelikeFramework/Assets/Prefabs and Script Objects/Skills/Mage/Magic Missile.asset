@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37c6c7585bb1c6344be94810522d6eed, type: 3}
-  m_Name: Fireball2
+  m_Script: {fileID: 11500000, guid: 99753b17049a8784582a970d17502438, type: 3}
+  m_Name: Magic Missile
   m_EditorClassIdentifier: 
-  displayName: Lightning
+  displayName: Magic Missile
   image: {fileID: 21300000, guid: 0fb8d685488d74fea9f07594a0f47fef, type: 3}
-  color: {r: 1, g: 0.7957102, b: 0, a: 1}
+  color: {r: 1, g: 1, b: 1, a: 1}
   baseTargeting:
     numPoints: 1
     targetingType: 1
@@ -39,23 +39,14 @@ MonoBehaviour:
   baseStats:
     costs:
       health: 0
-      mana: 1
+      mana: 3
       stamina: 0
       xp: 0
-    cooldown: 0
-    power: 2
+    cooldown: 1
+    power: 0
   castQuery:
     outOf: 1
-    terms:
-    - subject: 0
-      subjectMod: 0
-      subjectCount: 0
-      property: 0
-      resource: 0
-      equality: 0
-      value: 70
-      valueMod: 1
-      weight: 1
+    terms: []
   targeting:
     numPoints: 1
     targetingType: 0
@@ -90,3 +81,8 @@ MonoBehaviour:
   types: 0
   effects:
     list: []
+  damagesAllies: 0
+  type: 0
+  damage:
+    rolls: 2
+    dice: 5
