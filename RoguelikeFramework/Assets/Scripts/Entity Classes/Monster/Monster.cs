@@ -69,6 +69,8 @@ public class Monster : MonoBehaviour
 
     //used for music's isInDanger
     public int dangerLevel = 2;
+
+    private bool spriteDir;
     
     // Start is called before the first frame update
     public virtual void Start()
@@ -108,6 +110,8 @@ public class Monster : MonoBehaviour
 
         loadout?.Apply(this);
 
+        spriteDir = GetComponent<SpriteRenderer>().flipX;
+
         setup = true;
     }
 
@@ -142,10 +146,10 @@ public class Monster : MonoBehaviour
             + Vector3.up * 0.4f * Mathf.Sin(Mathf.Min((float)Math.PI, lPositionTimer * (float)Math.PI));
 
         // look towards movement
-        float sx = transform.localScale.x;
-        if (lPosition0.x < lPosition1.x) sx = Mathf.Abs(sx);
-        else if (lPosition0.x > lPosition1.x) sx = -Mathf.Abs(sx);
-        transform.localScale = new Vector3(sx, transform.localScale.y, 1f);
+        bool flipDir = GetComponent<SpriteRenderer>().flipX;
+        if (lPosition0.x < lPosition1.x) flipDir = spriteDir;
+        else if (lPosition0.x > lPosition1.x) flipDir = !spriteDir;
+        GetComponent<SpriteRenderer>().flipX = flipDir;
     }
 
     public void Heal(int healthReturned)
