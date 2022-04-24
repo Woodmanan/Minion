@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90ec958dc3bda454b91afa99dd858f39, type: 3}
-  m_Name: SlimeTable
+  m_Name: ScarecrowTable
   m_EditorClassIdentifier: 
   monsters:
-  - {fileID: 2776638571021120720, guid: 612a3366c6c0ac74a836683ff6136eee, type: 3}
-  - {fileID: 2776638571021120720, guid: 83fe178f60bb41d47a0b896910eda2c5, type: 3}
-  - {fileID: 2776638571021120720, guid: 83fe178f60bb41d47a0b896910eda2c5, type: 3}
-  - {fileID: 2776638571021120720, guid: c761ccf99debc944fb65897b5603851a, type: 3}
-  - {fileID: 2776638571021120720, guid: c761ccf99debc944fb65897b5603851a, type: 3}
+  - {fileID: 7120000928203310967, guid: 88971e857ded2004ea43b083a0af4a07, type: 3}
+  - {fileID: 7120000928203310967, guid: 90efe479ff0381b4caa56c962ac0e5ab, type: 3}
+  - {fileID: 7120000928203310967, guid: 90efe479ff0381b4caa56c962ac0e5ab, type: 3}
   loadouts: []
   chanceForHigherLoadout: 0
   uniques: []

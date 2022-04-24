@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89a9638c9dc3a4d408c07966f43aed51, type: 3}
-  m_Name: SmallSlime
+  m_Name: Snake
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 8807692175375108180, guid: 5bb814d95e406d34899df12272a0d667, type: 3}
+  - {fileID: 623495136018800968, guid: f4f17bc22caab454aa3c753558d8a6cd, type: 3}
   abilities:
-  - {fileID: 11400000, guid: 47a74fbb4424f2240aa4c76013e8dd40, type: 2}
+  - {fileID: 11400000, guid: f77cdb28c706ab54bb94df34ff302cc4, type: 2}
   minDepth: 0
   maxDepth: 0
   effects:
