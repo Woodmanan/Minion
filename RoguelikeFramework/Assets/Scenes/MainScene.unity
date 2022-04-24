@@ -8655,7 +8655,7 @@ MonoBehaviour:
     numItems:
       rolls: 2
       dice: 5
-    availableMonsters: {fileID: 11400000, guid: c083bb6c4c4307340887537b8744d336, type: 2}
+    availableMonsters: {fileID: 11400000, guid: 8414f78b78a45b948a2da80cb4bb01fa, type: 2}
     numMonsters:
       rolls: 2
       dice: 1
