@@ -15,6 +15,8 @@ public class PlayerBehavior : Effect
     public float healthPer100;
     float healthStore; //Stores overflow per turn
     private int turnsSinceDanger = 0;
+    private int turnsSinceBoss = 0;
+    private bool bossMusicPlaying = false;
 
     Monster player;
     /* The default priority of all functions in this class - the order in which they'll be called
@@ -58,9 +60,28 @@ public class PlayerBehavior : Effect
         healthStore += healthPer100 / 100;
         player.Heal((int)healthStore);
         healthStore %= 1;
-
+        
         int totalMonsterDanger = 0;
-        player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).ForEach(x => totalMonsterDanger += x.dangerLevel);
+        List<Monster> visibleMonsters = player.view.visibleMonsters.FindAll(x => player.IsEnemy(x));
+        visibleMonsters.ForEach(x => totalMonsterDanger += x.dangerLevel);
+        bool bossPresent = false;
+        foreach(Monster m in visibleMonsters) {
+            MonsterAudio maudio = m.GetComponent<MonsterAudio>();
+            if(maudio.monsterType == MonsterType.dragon) {
+                bossPresent = true;
+                turnsSinceBoss = 0;
+            }
+        }
+
+        if(!bossPresent) {
+            turnsSinceBoss++;
+        }
+
+        if(bossPresent && !bossMusicPlaying) {
+            TurnOnBossMusic();
+        } else if(!bossPresent && bossMusicPlaying && turnsSinceBoss > 3) {
+            TurnOffBossMusic();
+        }
         
         if (!isInDanger && (player.resources.health / ((float)player.stats.resources.health)) < playerHealthForDanger)
         {
@@ -80,6 +101,16 @@ public class PlayerBehavior : Effect
             SetDanger(false);
         }
         
+    }
+
+    void TurnOnBossMusic() {
+        AudioManager.i.StartBossMusic();
+        bossMusicPlaying = true;
+    }
+
+    void TurnOffBossMusic() {
+        AudioManager.i.StartMusic(AudioManager.i.Level);
+        bossMusicPlaying = false;
     }
 
     //Called at the end of the global turn sequence

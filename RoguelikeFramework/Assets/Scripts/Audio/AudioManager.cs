@@ -51,6 +51,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void StartMusic(int levelNum) {
+        StopMusic();
         //switch music using level variable
         UpdateMusic(false);
         string eventString;
@@ -68,12 +69,20 @@ public class AudioManager : MonoBehaviour
             case 3:
                 eventString = "event:/Music/Level 3 Music";
                 break;
+            case 4:
+                eventString = "event:/Music/Dungeon Boss Music";
+                break;
             default:
                 eventString = "event:/Music/Level 1 Music";
                 break;
         }
         Music = FMODUnity.RuntimeManager.CreateInstance(eventString);
         Music.start();
+    }
+
+    public void StartBossMusic() {
+        StopMusic();
+        StartMusic(level + 3);
     }
 
     public void GameOver() {
@@ -84,8 +93,10 @@ public class AudioManager : MonoBehaviour
     }
 
     public void StopMusic() {
-        Music.release();
-        Music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        if(Music.isValid()) {
+            Music.release();
+            Music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     //UI SFX
