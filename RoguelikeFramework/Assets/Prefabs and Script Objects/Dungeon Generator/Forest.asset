@@ -40,4 +40,4 @@ MonoBehaviour:
     JIT: 0
     finished: 0
   percentStart: 45
-  numRounds: 3
+  numRounds: 6

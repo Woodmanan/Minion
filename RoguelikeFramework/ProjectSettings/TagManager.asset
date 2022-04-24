@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - UIControl
+  - EquipBox
   layers:
   - Default
   - TransparentFX
