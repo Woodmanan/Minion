@@ -100,12 +100,16 @@ public class AudioManager : MonoBehaviour
     }
 
     //UI SFX
+    
+    public void UISelect() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Select");
+    }
 
     public void UIMouseover() {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Mouseover");
     }
 
-    public void UISelect() {
+    public void UIStart() {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Start");
     }
 
@@ -116,6 +120,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void HealthUp(float totalHealth, float healthAdded) {
+        Debug.Log(totalHealth + " and adding " + healthAdded);
         FMOD.Studio.EventInstance healthUp = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Health Up");
         healthUp.setParameterByName("Health", totalHealth);
         healthUp.setParameterByName("healthAdded", healthAdded);
@@ -129,6 +134,10 @@ public class AudioManager : MonoBehaviour
         takeDamage.setParameterByName("AttackDamage", damage);
         takeDamage.start();
         takeDamage.release();
+    }
+
+    public void Staircase() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Stairs");
     }
     
     //Weapon SFX

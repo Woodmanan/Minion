@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public void LaunchGame()
     {
         AudioManager.i.Level = 1;
+        AudioManager.i.UIStart();
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
     }
 

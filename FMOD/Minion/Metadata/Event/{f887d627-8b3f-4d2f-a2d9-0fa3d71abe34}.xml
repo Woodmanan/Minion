@@ -169,6 +169,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{9c18b9a4-67dd-4b67-b0bd-6f7ea2b8f1d2}">
 		<relationship name="effects">
+			<destination>{b3057ca3-3e73-4981-a99e-7fbdff534d34}</destination>
 			<destination>{75bd2704-b91d-47e2-9865-3d1fabb9baa1}</destination>
 		</relationship>
 	</object>
@@ -193,13 +194,18 @@
 			<destination>{0bafb304-1dde-48f7-86ba-add8d4b073e8}</destination>
 		</relationship>
 	</object>
+	<object class="GainEffect" id="{b3057ca3-3e73-4981-a99e-7fbdff534d34}">
+		<property name="gain">
+			<value>3.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{75bd2704-b91d-47e2-9865-3d1fabb9baa1}" />
 	<object class="AutomationPoint" id="{d49783eb-12a9-41b3-8e36-fb748689fd9a}">
 		<property name="position">
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-3</value>
+			<value>-8</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{ca2da1af-a919-46ad-a214-a7a5b68ac1cd}">
@@ -212,7 +218,7 @@
 	</object>
 	<object class="AutomationPoint" id="{79e7a24b-09c8-4046-a264-cbf169ae5141}">
 		<property name="position">
-			<value>0.10000000000000001</value>
+			<value>0.070000000000000007</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -220,10 +226,10 @@
 	</object>
 	<object class="AutomationPoint" id="{435658b7-5c71-4137-bc25-6858492af645}">
 		<property name="position">
-			<value>0.0050000000000000001</value>
+			<value>0.040000000000000001</value>
 		</property>
 		<property name="value">
-			<value>-20</value>
+			<value>-17</value>
 		</property>
 		<property name="curveShape">
 			<value>0.303795457</value>
@@ -231,13 +237,13 @@
 	</object>
 	<object class="AutomationPoint" id="{0bafb304-1dde-48f7-86ba-add8d4b073e8}">
 		<property name="position">
-			<value>0.0049791666666666665</value>
+			<value>0.029999999999999999</value>
 		</property>
 		<property name="value">
-			<value>-70</value>
+			<value>-80</value>
 		</property>
 		<property name="curveShape">
-			<value>0.808132589</value>
+			<value>-0.0897499919</value>
 		</property>
 	</object>
 </objects>

@@ -59,13 +59,20 @@ public class MonsterAudio : MonoBehaviour
     }
 
     void TakeDamageSFX(ref int damage, ref DamageType damageType, ref DamageSource source) {
+        float maxDamagePct = 0.40f;
+        float damageAmt;
         switch (monsterType) {
             case MonsterType.player: 
-                float maxDamagePct = 0.40f;
+                Debug.Log("OUCHIE");
                 Debug.Log(Player.player.stats.resources.health);
-                float damageAmt = Mathf.Clamp((float)damage/Player.player.stats.resources.health, 0, maxDamagePct) * (1/maxDamagePct);//Player.player.baseStats;
+                damageAmt = Mathf.Clamp((float)damage/Player.player.stats.resources.health, 0, maxDamagePct) * (1/maxDamagePct);//Player.player.baseStats;
                 AudioManager.i.TakeDamage(damageAmt);
                 break;
+            default:
+                damageAmt = Mathf.Clamp((float)damage/monster.stats.resources.health, 0, maxDamagePct) * (1/maxDamagePct);//Player.player.baseStats;
+                AudioManager.i.TakeDamage(damageAmt);
+                break;
+                
         }
     }
 
