@@ -21,6 +21,7 @@ public class MonsterAudio : MonoBehaviour
         monster.connections.OnTakeDamage.AddListener(1, TakeDamageSFX);
         monster.connections.OnBeginPrimaryAttack.AddListener(1, BeginAttackSFX);
         monster.connections.OnBeginSecondaryAttack.AddListener(1, BeginAttackSFX);
+        monster.connections.OnDeath.AddListener(1, OnDeath);
     }
 
     void OnDestroy() {
@@ -63,14 +64,13 @@ public class MonsterAudio : MonoBehaviour
         float damageAmt;
         switch (monsterType) {
             case MonsterType.player: 
-                Debug.Log("OUCHIE");
                 Debug.Log(Player.player.stats.resources.health);
                 damageAmt = Mathf.Clamp((float)damage/Player.player.stats.resources.health, 0, maxDamagePct) * (1/maxDamagePct);//Player.player.baseStats;
-                AudioManager.i.TakeDamage(damageAmt);
+                AudioManager.i.TakeDamage(damageAmt, transform);
                 break;
             default:
                 damageAmt = Mathf.Clamp((float)damage/monster.stats.resources.health, 0, maxDamagePct) * (1/maxDamagePct);//Player.player.baseStats;
-                AudioManager.i.TakeDamage(damageAmt);
+                AudioManager.i.TakeDamage(damageAmt, transform);
                 break;
                 
         }
@@ -79,11 +79,11 @@ public class MonsterAudio : MonoBehaviour
     void BeginAttackSFX(ref Weapon weapon, ref AttackAction action) {
         switch(weapon.item.sfxType) {
             case SFXItemType.Sword: {
-                AudioManager.i.SwordAttack();
+                AudioManager.i.SwordAttack(action.caller.transform);
                 break;
             }
             case SFXItemType.Bow: {
-                AudioManager.i.BowAttack();
+                AudioManager.i.BowAttack(action.caller.transform);
                 break;
             }
         }
@@ -102,7 +102,8 @@ public class MonsterAudio : MonoBehaviour
 
     void OnDeath() {
         StopAmbient();
-        //AudioManager.i.MonsterDeath(monster.transform);
+        if(monsterType != MonsterType.player)
+            AudioManager.i.EnemyDeath(monster.transform);
     }
 
 }

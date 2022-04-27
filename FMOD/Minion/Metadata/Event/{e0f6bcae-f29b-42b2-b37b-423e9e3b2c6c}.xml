@@ -5,7 +5,7 @@
 			<value>Fire Layer</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c3826d55-282a-4576-9789-c5912ff3ef26}</destination>
@@ -113,6 +113,7 @@
 	<object class="MixerBusEffectChain" id="{8ffc49a7-5692-46e0-8994-53871f6ba5c9}">
 		<relationship name="effects">
 			<destination>{553a59a6-e5f2-4c74-ac2e-99317356d75a}</destination>
+			<destination>{03b7cb51-747f-4167-8ca2-2b40372e379e}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8bbd4505-0ab1-4b5a-bfd0-a0270f7718de}" />
@@ -124,5 +125,28 @@
 	</object>
 	<object class="MixerBusPanner" id="{a1d21cf0-1641-4ad5-b3ae-e300830c0289}" />
 	<object class="MixerBusFader" id="{553a59a6-e5f2-4c74-ac2e-99317356d75a}" />
+	<object class="SpatialiserEffect" id="{03b7cb51-747f-4167-8ca2-2b40372e379e}">
+		<property name="minimumDistance">
+			<value>3.20000005</value>
+		</property>
+		<property name="maximumDistance">
+			<value>9</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>7.5</value>
+		</property>
+		<property name="minimumExtent">
+			<value>162</value>
+		</property>
+		<property name="userStereoSeparation">
+			<value>54</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{6827fe72-a74f-456e-86c2-af703ab268ee}" />
 </objects>

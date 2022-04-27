@@ -128,10 +128,10 @@ public class AudioManager : MonoBehaviour
         healthUp.release();
     }
 
-    public void TakeDamage(float damage) {
-        Debug.Log("aasas " + damage);
+    public async void TakeDamage(float damage, Transform t) {
         FMOD.Studio.EventInstance takeDamage = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Take Damage");
         takeDamage.setParameterByName("AttackDamage", damage);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(takeDamage, t);
         takeDamage.start();
         takeDamage.release();
     }
@@ -142,20 +142,26 @@ public class AudioManager : MonoBehaviour
     
     //Weapon SFX
 
-    public void SwordAttack() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Sword Attack");
+    public async void SwordAttack(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Sword Attack", t.position);
     }
 
-    public void BowAttack() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Bow Attack");
+    public void BowAttack(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Bow Attack", t.position);
     }
 
-    public void WoodenShield() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Wooden Shield");
+    public void WoodenShield(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Wooden Shield", t.position);
     }
 
-    public void FireLayer() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Fire Layer");
+    public void FireLayer(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Fire Layer", t.position);
+    }
+
+    //Monster SFX
+
+    public void EnemyDeath(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Death", t.position);
     }
 
 }

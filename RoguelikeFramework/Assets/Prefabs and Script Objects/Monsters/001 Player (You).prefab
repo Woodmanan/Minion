@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 3853786310894742754}
   - component: {fileID: 8474446681096689617}
   - component: {fileID: -7138461436767079773}
+  - component: {fileID: 6234439986996691870}
   m_Layer: 0
   m_Name: 001 Player (You)
   m_TagString: Player
@@ -492,6 +493,20 @@ MonoBehaviour:
   deathAnimTime: 0.6
   attackAnimTime: 2
   shakeIntensity: 0.5
+--- !u!114 &6234439986996691870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853786310894742762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &3853786311080168097
 GameObject:
   m_ObjectHideFlags: 0

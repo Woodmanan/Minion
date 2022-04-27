@@ -5,7 +5,7 @@
 			<value>Sword Attack</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c3826d55-282a-4576-9789-c5912ff3ef26}</destination>
@@ -116,6 +116,7 @@
 	<object class="MixerBusEffectChain" id="{3ba285e8-2012-4fac-9824-fa0186b0aa7c}">
 		<relationship name="effects">
 			<destination>{85919fa8-2849-4831-a9f1-72f538c6688f}</destination>
+			<destination>{8c126798-4ed2-456d-99b8-aa40223964f5}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{501eda15-d819-4da9-9b6d-dfda15c7e1c5}" />
@@ -135,5 +136,28 @@
 	</object>
 	<object class="MixerBusPanner" id="{f2e3301e-6f26-4e76-9e92-6ad0d440423e}" />
 	<object class="MixerBusFader" id="{85919fa8-2849-4831-a9f1-72f538c6688f}" />
+	<object class="SpatialiserEffect" id="{8c126798-4ed2-456d-99b8-aa40223964f5}">
+		<property name="minimumDistance">
+			<value>3.20000005</value>
+		</property>
+		<property name="maximumDistance">
+			<value>9</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>6.5</value>
+		</property>
+		<property name="minimumExtent">
+			<value>162</value>
+		</property>
+		<property name="userStereoSeparation">
+			<value>54</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{f2edd063-92ad-4aa3-8088-fec04642a75f}" />
 </objects>
