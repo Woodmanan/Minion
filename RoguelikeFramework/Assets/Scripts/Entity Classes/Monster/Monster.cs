@@ -136,8 +136,16 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        lPositionTimer += Time.deltaTime;
-        transform.position = Vector3.Lerp(lPosition0, lPosition1, lPositionTimer * 12f);
+        // hop movement
+        lPositionTimer += Time.deltaTime * 12f;
+        transform.position = Vector3.Lerp(lPosition0, lPosition1, lPositionTimer)
+            + Vector3.up * 0.4f * Mathf.Sin(Mathf.Min((float)Math.PI, lPositionTimer * (float)Math.PI));
+
+        // look towards movement
+        float sx = transform.localScale.x;
+        if (lPosition0.x < lPosition1.x) sx = Mathf.Abs(sx);
+        else if (lPosition0.x > lPosition1.x) sx = -Mathf.Abs(sx);
+        transform.localScale = new Vector3(sx, transform.localScale.y, 1f);
     }
 
     public void Heal(int healthReturned)
