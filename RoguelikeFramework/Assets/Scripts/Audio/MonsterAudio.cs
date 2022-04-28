@@ -68,6 +68,18 @@ public class MonsterAudio : MonoBehaviour
                 damageAmt = Mathf.Clamp((float)damage/Player.player.stats.resources.health, 0, maxDamagePct) * (1/maxDamagePct);//Player.player.baseStats;
                 AudioManager.i.TakeDamage(damageAmt, transform);
                 break;
+            case MonsterType.goblin:
+                AudioManager.i.GoblinDamage(transform);
+                break;
+            case MonsterType.bigSlime:
+                AudioManager.i.BigSlimeDamage(transform);
+                break;
+            case MonsterType.medSlime:
+                AudioManager.i.MedSlimeDamage(transform);
+                break;
+            case MonsterType.smallSlime:
+                AudioManager.i.SmallSlimeDamage(transform);
+                break;
             default:
                 damageAmt = Mathf.Clamp((float)damage/monster.stats.resources.health, 0, maxDamagePct) * (1/maxDamagePct);//Player.player.baseStats;
                 AudioManager.i.TakeDamage(damageAmt, transform);
@@ -94,6 +106,25 @@ public class MonsterAudio : MonoBehaviour
                 //play sfx 
             }
         }
+
+        switch(monsterType) {
+            case MonsterType.bigSlime: {
+                AudioManager.i.BigSlimeAttack(transform);
+                break;
+            }
+            case MonsterType.medSlime: {
+                AudioManager.i.MedSlimeAttack(transform);
+                break;
+            }
+            case MonsterType.smallSlime: {
+                AudioManager.i.SmallSlimeAttack(transform);
+                break;
+            }
+            case MonsterType.goblin: {
+                AudioManager.i.GoblinAttack(transform);
+                break;
+            }
+        }
     }
 
     void StopAmbient() {
@@ -104,6 +135,34 @@ public class MonsterAudio : MonoBehaviour
         StopAmbient();
         if(monsterType != MonsterType.player)
             AudioManager.i.EnemyDeath(monster.transform);
+
+        switch(monsterType) {
+            case MonsterType.smallSlime: {
+                AudioManager.i.SmallSlimeSplit(transform);
+                break;
+            }
+            case MonsterType.goblin: {
+                AudioManager.i.GoblinDeath(transform);
+                break;
+            }
+        }
+    }
+
+    public void SlimeOnSplit() {
+        StopAmbient();
+        switch(monsterType) {
+            case MonsterType.bigSlime: {
+                AudioManager.i.BigSlimeSplit(transform);
+                break;
+            }
+            case MonsterType.medSlime: {
+                AudioManager.i.MedSlimeSplit(transform);
+                break;
+            }
+            default:
+                Debug.Log("Slime split SFX called on non-splittable entity");
+                break;
+        }
     }
 
 }

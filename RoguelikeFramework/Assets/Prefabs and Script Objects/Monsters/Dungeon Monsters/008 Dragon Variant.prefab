@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555562d95ebe24876807599452bb82a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterType: 5
+  monsterType: 7
 --- !u!114 &-3451449837568103123
 MonoBehaviour:
   m_ObjectHideFlags: 0

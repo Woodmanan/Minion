@@ -183,6 +183,54 @@ public class AudioManager : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Death", t.position);
     }
 
+    public void BigSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Attack", transform.position);
+    } 
+
+    public void BigSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Damage", transform.position);
+    } 
+
+    public void BigSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Split", transform.position);
+    } 
+
+    public void MedSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Attack", transform.position);
+    } 
+
+    public void MedSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Damage", transform.position);
+    } 
+
+    public void MedSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Split", transform.position);
+    } 
+
+    public void SmallSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Attack", transform.position);
+    } 
+
+    public void SmallSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Damage", transform.position);
+    } 
+
+    public void SmallSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Split", transform.position);
+    } 
+
+    public void GoblinAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Attack", transform.position);
+    }
+
+    public void GoblinDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Damage", transform.position);
+    }
+
+    public void GoblinDeath(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Death", transform.position);
+    }
+
     public bool IsPlaying(FMOD.Studio.EventInstance instance) {
         FMOD.Studio.PLAYBACK_STATE state;   
         instance.getPlaybackState(out state);
