@@ -33,6 +33,8 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         StartMusic(level);
+
+        pause = FMODUnity.RuntimeManager.CreateInstance("snapshot:/Pause");
     }
 
     // Update is called once per frame
@@ -100,6 +102,23 @@ public class AudioManager : MonoBehaviour
     }
 
     //UI SFX
+
+    public FMOD.Studio.EventInstance pause;
+    int pauseLayers = 0;
+
+    public void Pause() {
+        if(pauseLayers == 0) {
+            pause.start();
+        }
+        pauseLayers++;
+    }
+
+    public void UnPause() {
+        pauseLayers--;
+        if(pause.isValid() && pauseLayers == 0) {
+            pause.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
     
     public void UISelect() {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Select");
@@ -162,6 +181,12 @@ public class AudioManager : MonoBehaviour
 
     public void EnemyDeath(Transform t) {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Death", t.position);
+    }
+
+    public bool IsPlaying(FMOD.Studio.EventInstance instance) {
+        FMOD.Studio.PLAYBACK_STATE state;   
+        instance.getPlaybackState(out state);
+        return state != FMOD.Studio.PLAYBACK_STATE.STOPPED;
     }
 
 }

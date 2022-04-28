@@ -24,13 +24,13 @@ public class PauseMenu : RogueUIPanel
     /* Called every time this panel is activated by the controller */
     public override void OnActivation()
     {
-        
+        AudioManager.i.Pause();
     }
     
     /* Called every time this panel is deactived by the controller */
     public override void OnDeactivation()
     {
-
+        AudioManager.i.UnPause();
     }
 
     /* Called every time this panel is focused on. Use this to refresh values that might have changed */
