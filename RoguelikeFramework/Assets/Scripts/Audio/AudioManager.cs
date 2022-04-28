@@ -173,6 +173,10 @@ public class AudioManager : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Wooden Shield", t.position);
     }
 
+    public void MetalShield(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Metal Shield", t.position);
+    }
+
     public void FireLayer(Transform t) {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Fire Layer", t.position);
     }
