@@ -57,6 +57,20 @@ public class MonsterAudio : MonoBehaviour
                 break;
             }
         }
+
+        if(monster.equipment.equipmentSlots[2].equipped.held[1] != null) {
+            switch(monster.equipment.equipmentSlots[2].equipped.held[0].sfxType) {
+            case SFXItemType.WoodShield: {
+                AudioManager.i.WoodenShield(monster.transform);
+                break;
+            }
+            case SFXItemType.MetalShield: {
+                AudioManager.i.MetalShield(monster.transform);
+                break;
+            }
+        }
+        }
+
         /*
         foreach(Effect e in item.effects) {
             //effect layers here
