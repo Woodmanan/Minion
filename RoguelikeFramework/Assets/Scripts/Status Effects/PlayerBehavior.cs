@@ -58,7 +58,7 @@ public class PlayerBehavior : Effect
     public override void OnTurnStartGlobal()
     {
         healthStore += healthPer100 / 100;
-        player.Heal((int)healthStore);
+        player.Heal((int)healthStore, true);
         healthStore %= 1;
         
         int totalMonsterDanger = 0;

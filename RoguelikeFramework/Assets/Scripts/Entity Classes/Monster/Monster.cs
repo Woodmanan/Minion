@@ -148,7 +148,7 @@ public class Monster : MonoBehaviour
         transform.localScale = new Vector3(sx, transform.localScale.y, 1f);
     }
 
-    public void Heal(int healthReturned)
+    public void Heal(int healthReturned, bool isNatural=false)
     {
         connections.OnHealing.BlendInvoke(other?.OnHealing, ref healthReturned);
 
@@ -160,6 +160,12 @@ public class Monster : MonoBehaviour
         {
             resources.health = stats.resources.health;
             connections.OnFullyHealed.BlendInvoke(other?.OnFullyHealed);
+        }
+        
+        if (!isNatural)
+        {
+            LogManager.S.LogEntityHeal(displayName, healthReturned, nameRequiresPluralVerbs, this != Player.player);
+            LogManager.S.LogFloatingNumber(healthReturned, transform);
         }
     }
 

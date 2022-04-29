@@ -140,7 +140,7 @@ public class GameController : MonoBehaviour
             {
                 //Set up local turn
                 player.StartTurn();
-                
+
                 //Run the actual turn itself
                 IEnumerator turn = player.LocalTurn();
                 while (player.energy > 0 && turn.MoveNext())
