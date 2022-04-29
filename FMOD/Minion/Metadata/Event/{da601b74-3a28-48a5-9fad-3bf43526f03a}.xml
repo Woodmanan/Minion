@@ -141,7 +141,13 @@
 	</object>
 	<object class="TempoMarker" id="{754f3e11-d226-4330-87f1-fee53ef5be1e}">
 		<property name="position">
-			<value>0</value>
+			<value>0.5</value>
+		</property>
+		<property name="timeSignatureNumerator">
+			<value>7</value>
+		</property>
+		<property name="timeSignatureDenominator">
+			<value>8</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{75a51561-facc-42f2-8fa8-e2112950d302}</destination>
@@ -152,10 +158,16 @@
 	</object>
 	<object class="TempoMarker" id="{71f6a41f-daeb-41b7-b182-905fd024c5b2}">
 		<property name="position">
-			<value>88</value>
+			<value>88.864999999999995</value>
 		</property>
 		<property name="tempo">
 			<value>164</value>
+		</property>
+		<property name="timeSignatureNumerator">
+			<value>7</value>
+		</property>
+		<property name="timeSignatureDenominator">
+			<value>8</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{75a51561-facc-42f2-8fa8-e2112950d302}</destination>
