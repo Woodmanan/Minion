@@ -54,7 +54,9 @@ public class EquipableItem : MonoBehaviour
         clonedEffects.Clear();
         foreach (StatusEffect e in addedEffects)
         {
-            clonedEffects.Add(e.Instantiate());
+            Effect effect = e.Instantiate();
+            effect.credit = m;
+            clonedEffects.Add(effect);
         }
 
         m.AddEffect(clonedEffects.ToArray()); //Immediate status effect add

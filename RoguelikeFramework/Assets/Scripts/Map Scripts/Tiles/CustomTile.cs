@@ -20,6 +20,7 @@ public class CustomTile : MonoBehaviour
 
     public Vector2Int location;
     public int lightLevel;
+    public Color lightSourceColor = Color.white; //color of light projected onto this tile
     
     //Stuff that will not change a lot, and should not be (too) visible
     [Header("Static elements")] 
@@ -35,6 +36,7 @@ public class CustomTile : MonoBehaviour
     private ItemVisiblity itemVis;
 
     [HideInInspector] public SpriteRenderer render;
+    SpriteRenderer backGroundRender;
 
     public event Action<Monster> MonsterEntered;
 
@@ -74,6 +76,12 @@ public class CustomTile : MonoBehaviour
         //Set up initial visibility
         itemVis = GetComponent<ItemVisiblity>();
         itemVis.Setup();
+
+        if (transform.childCount > 0)
+        {
+
+            backGroundRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        }
 
         RebuildGraphics();
         this.enabled = false;
@@ -145,13 +153,16 @@ public class CustomTile : MonoBehaviour
 
     public virtual void RebuildGraphics()
     {
-        Color torchColor = new Color(1f,1.0f,1.0f,1f);
-        if (lightLevel == 0) torchColor = Color.white;
+        if (lightLevel == 0) lightSourceColor = Color.white;
         int brightness;
-        if (lightLevel > 7) brightness = 7;
+        if (lightLevel > 8) brightness = 8;
         else brightness = lightLevel;
-        Color litColor = color * (torchColor * 0.25f * (3.2f + lightLevel));
+        float p = (float)lightLevel / 8f;
+        float q = 1 - ((float)lightLevel / 8f);
+        float falloff = (((float)lightLevel + 3f) / 8f);
+        Color litColor = (falloff * lightSourceColor) * p + (falloff * color) * q;
         litColor.a = 1.0f;
+
         if (isVisible)
         {
             if (blocksVision)
@@ -160,9 +171,18 @@ public class CustomTile : MonoBehaviour
                 render.sortingOrder = 200 + (200 - location.y);
             }
             render.color = litColor;
+            if (backGroundRender)
+            {
+                backGroundRender.color = litColor;
+            }
+
             if (render.enabled == false)
             {
                 render.enabled = true;
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = true;
+                }
             }
             currentlyStanding?.SetGraphics(true);
         }
@@ -173,8 +193,14 @@ public class CustomTile : MonoBehaviour
             if (!isHidden)
             {
                 render.enabled = true;
-                float gray = color.grayscale / 2;
+                float gray = color.grayscale / 4;
                 render.color = new Color(gray, gray, gray, 1.0f);
+
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = true;
+                    backGroundRender.color = new Color(gray, gray, gray, 1.0f);
+                }
             }
             else
             {
@@ -183,7 +209,13 @@ public class CustomTile : MonoBehaviour
                     Debug.LogError("Someone didn't do something right!", this);
                 }
                 render.enabled = false;
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = false;
+                    backGroundRender.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                }
                 render.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                
             }
             currentlyStanding?.SetGraphics(false);
 

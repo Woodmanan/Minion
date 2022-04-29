@@ -38,7 +38,7 @@ public class DamageOverTime : Effect
     //Called at the start of the global turn sequence
     public override void OnTurnStartGlobal()
     {
-        connectedTo.monster.Damage(null, damagePerTurn.evaluate(), type, DamageSource.EFFECT);
+        connectedTo.monster.Damage(credit, damagePerTurn.evaluate(), type, DamageSource.EFFECT);
         duration -= 1;
         if (duration == 0)
         {

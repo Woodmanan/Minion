@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Inventory))]
 public class ItemVisiblity : MonoBehaviour
 {
-    [SerializeField] private Item visible;
+    [HideInInspector] public Item visible;
     private CustomTile tile;
     Inventory inventory;
 

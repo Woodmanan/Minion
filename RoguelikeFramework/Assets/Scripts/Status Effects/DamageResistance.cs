@@ -93,7 +93,7 @@ public class DamageResistance : Effect
 
     public override string GetDisplayDescription()
     {
-        return "You now resist some damage. But not that much. But that's still pretty cool!";
+        return $"You resist damage to {resistedType}.";
     }
 
     //Called when a monster recieves a healing event request
