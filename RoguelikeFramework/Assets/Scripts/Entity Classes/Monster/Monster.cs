@@ -502,6 +502,10 @@ public class Monster : MonoBehaviour
         lPosition0 = new Vector3(location.x, location.y, monsterZPosition);
         // update location
         location = newPosition;
+
+        //Update sprite sorting
+        renderer.sortingOrder = 200 + (200 - location.y);
+
         // visual slide
         lPosition1 = new Vector3(location.x, location.y, monsterZPosition);
         lPositionTimer = 0;
