@@ -13,6 +13,7 @@ public class LightSourceTile : CustomTile
 
     [SerializeField] public Color lightColor = Color.yellow; //color of light projected by this tile
                                                             //Also, not sure if different colors multiply correctly right now, but that never happens currently
+
     public void Cast(LOSData ld, Color lc)
     {
         Vector2Int origin = ld.origin;
@@ -27,7 +28,7 @@ public class LightSourceTile : CustomTile
                 {
                     Vector2Int pos = new Vector2Int(i + start.x, j + start.y);
                     int lvl = radius - Math.Abs(origin.x - pos.x) - Math.Abs(origin.y - pos.y);
-                    if (lvl > 0) //add check for !blocksVision here if you don't want walls lit
+                    if (lvl > map.GetTile(pos).lightLevel) //add check for !blocksVision here if you don't want walls lit
                     {
                         map.GetTile(pos).lightLevel = lvl; 
                         map.GetTile(pos).lightSourceColor = lc;
