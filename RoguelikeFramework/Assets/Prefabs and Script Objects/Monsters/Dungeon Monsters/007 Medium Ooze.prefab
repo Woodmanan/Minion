@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9218308145117411792
+--- !u!1001 &8995212556974897504
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,51 +8,102 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: ID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: faction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: loadout
+      value: 
+      objectReference: {fileID: 11400000, guid: 2729bca2ce1dbee4db7284cf4be762a7, type: 2}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: maxDepth
-      value: 4
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: minDepth
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: uniqueID
-      value: nnwxuhta
+      value: medslime
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: XPFromKill
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: dangerLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: description
-      value: "The fire dragon: the biggest, the baddest, and the fiercest predator
-        to claim The Spine as its own. Not only does its strength, sharp claws, and
-        metal melting flame breath make the fire dragon nearly impossible to beat
-        in combat, its intelligence is higher than most other sentient species. When
-        bored, they manipulate nearby kobolds to worship them as gods. Kobolds bring
-        daily offerings, sometimes even sacrificing themselves to appease their scaly
-        overlord. Never trespass on a dragon\u2019s territory, for a god\u2019s wrath
-        means assured death."
+      value: Oozes are ancient byproducts of an alchemical experiment gone wrong.
+        Usually dark green, sticky, and acidic, oozes pick up the vibrations of creatures
+        around them in order to hunt. After dropping on their prey, they will eat
+        through metals such as weapons or armor in order to nourish themselves on
+        more organic substances such as flesh and blood. Beware oozes that have eaten
+        many lifeforms as their increased size allows them to split, reform, and
+        quickly deal critical damage.
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName
-      value: Dragon
+      value: Medium Ooze
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.ac
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.ev
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: baseStats.resources.mana
-      value: 20
+      propertyPath: visionRadius
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: baseStats.resources.health
+      propertyPath: energyPerStep
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: stats.resources.health
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: stats.resources.stamina
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: baseStats.resources.mana
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: baseStats.resources.health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.resources.stamina
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -96,79 +147,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: Fire Dragon
+      value: 007 Medium Ooze
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].slotName
-      value: Tail
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].type.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].CanAttackUnarmed
+      propertyPath: equipmentSlots.Array.data[0].slotName
+      value: Pseudopod (Small)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: equipmentSlots.Array.data[0].type.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: equipmentSlots.Array.data[0].CanAttackUnarmed
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].type.Array.data[0]
-      value: 3
+      propertyPath: equipmentSlots.Array.data[0].unarmedAttack.accuracy
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].unarmedAttack.chanceToHit
-      value: 20
+      propertyPath: equipmentSlots.Array.data[0].unarmedAttack.piercing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].unarmedAttack.damage.Array.size
+      propertyPath: equipmentSlots.Array.data[0].unarmedAttack.chanceToHit
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: equipmentSlots.Array.data[0].unarmedAttack.damage.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[0].unarmedAttack.damage.Array.data[0].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].unarmedAttack.damage.Array.data[0].type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].unarmedAttack.damage.Array.data[0].damage.dice
-      value: 5
+      propertyPath: equipmentSlots.Array.data[0].unarmedAttack.damage.Array.data[0].damage.dice
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[0].unarmedAttack.damage.Array.data[0].damage.rolls
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[1].unarmedAttack.damage.Array.data[0].damage.rolls
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d208844cead029048a7edfc1141cac8c, type: 3}
+      objectReference: {fileID: 5463189583543264802, guid: 47bd40ff9d4f749a28188b3883199a45, type: 3}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.53789145
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.7735849
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.055951044
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: fightQuery.terms.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: fleeQuery.terms.Array.data[0].value
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: fightQuery.terms.Array.data[0].value
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797815, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: fleeQuery.terms.Array.data[0].weight
@@ -180,3 +235,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+--- !u!1 &2776638571021120723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+  m_PrefabInstance: {fileID: 8995212556974897504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7386630012275682423
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776638571021120723}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8f2657889eabac49b40cd4fd1a8c36b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6080145856280373987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776638571021120723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555562d95ebe24876807599452bb82a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterType: 1

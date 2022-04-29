@@ -3716,10 +3716,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e775ab9cec339a46b8a88eda8fa040a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 2
   speed: 5
   lerpAmount: 0.01
-  stopDist: 1
+  stopDist: 0.5
   stopSpeed: -1
   stopSpeedMultiplier: 1.6
 --- !u!114 &903354581
@@ -4679,7 +4679,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1768364137}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8990,9 +8990,9 @@ MonoBehaviour:
     finished: 0
   msPerFrame: 4
   randomSeed: 0
-  seed: 42
+  seed: 40
   JITLoading: 1
-  StartAt: 4
+  StartAt: 0
 --- !u!4 &1953941108
 Transform:
   m_ObjectHideFlags: 0

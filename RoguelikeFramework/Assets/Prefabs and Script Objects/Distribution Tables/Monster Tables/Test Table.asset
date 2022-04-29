@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsters:
   - {fileID: 2776638571021120720, guid: 612a3366c6c0ac74a836683ff6136eee, type: 3}
-  - {fileID: 2776638571021120720, guid: 83fe178f60bb41d47a0b896910eda2c5, type: 3}
   loadouts: []
   chanceForHigherLoadout: 0
   uniques: []

@@ -46,13 +46,21 @@ public class MoveAction : GameAction
 
         if (tile.currentlyStanding != null)
         {
-            AttackAction attack = new AttackAction(tile.currentlyStanding);
-            attack.Setup(caller);
-            while (attack.action.MoveNext())
+            if (caller.GetComponent<Monster>().IsEnemy(tile.currentlyStanding))
             {
-                yield return attack.action.Current;
+                AttackAction attack = new AttackAction(tile.currentlyStanding);
+                attack.Setup(caller);
+                while (attack.action.MoveNext())
+                {
+                    yield return attack.action.Current;
+                }
+                yield break;
+            } else
+            {
+                // Don't hurt your friends stupid
+                caller.energy -= caller.energyPerStep * tile.movementCost;
+                yield break;
             }
-            yield break;
         }
 
         caller.SetPosition(intendedLocation);
