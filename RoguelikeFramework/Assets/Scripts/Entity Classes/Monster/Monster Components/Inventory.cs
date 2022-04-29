@@ -400,8 +400,30 @@ public class Inventory : MonoBehaviour
         {
             i.Pickup(monster);
         }
-        Add(stack);
+        int newIndex = Add(stack);
         onFloor.RemoveAt(index);
+
+        //Equip it!
+        EquipableItem equip;
+        if (equip = items[newIndex].held[0].equipable)
+        {
+            //We can attempt to move forward here!
+            int equipIndex = monster.equipment.GetFirstSlot(equip);
+            List<int> neededSlots = monster.equipment.SlotsNeededToEquip(newIndex, equipIndex);
+
+            if (neededSlots.Count > 0)
+            {
+                //We need to remove those slots!
+                foreach (int slot in neededSlots)
+                {
+                    int itemSlot = monster.equipment.equipmentSlots[slot].equipped.position;
+                    monster.equipment.UnequipSlot(slot);
+                    Drop(itemSlot);
+                }
+            }
+
+            monster.equipment.Equip(newIndex, equipIndex);
+        }
     }
 
     public void MonsterToFloor(int index)

@@ -37,6 +37,7 @@ public class ChangeLevelAction : GameAction
                 yield break;
             }
 
+            AudioManager.i.Staircase();
             GameController.singleton.MoveToLevel(stair.connectsToFloor);
             caller.energy -= 100;
 

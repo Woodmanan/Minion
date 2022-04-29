@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 535412313}
   - component: {fileID: 535412312}
   - component: {fileID: 535412311}
+  - component: {fileID: 535412314}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -555,6 +556,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535412309}
   m_CullTransparentMesh: 1
+--- !u!114 &535412314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535412309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7f729b47ebb41f8ad87ca498271074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseoverSfxPath: 
+  selectSfxPath: event:/SFX/UI/Start
 --- !u!1 &611233117
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +582,7 @@ GameObject:
   - component: {fileID: 611233121}
   - component: {fileID: 611233120}
   - component: {fileID: 611233119}
+  - component: {fileID: 611233122}
   m_Layer: 5
   m_Name: Feedback
   m_TagString: Untagged
@@ -688,6 +704,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611233117}
   m_CullTransparentMesh: 1
+--- !u!114 &611233122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611233117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7f729b47ebb41f8ad87ca498271074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseoverSfxPath: 
+  selectSfxPath: 
+--- !u!1 &858663344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858663346}
+  - component: {fileID: 858663345}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &858663345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858663344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c062e655399374bbd953403b83f3b548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &858663346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858663344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.20345956, y: 0.17061998, z: -0.0122411875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871744626
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +1004,7 @@ GameObject:
   - component: {fileID: 1141023053}
   - component: {fileID: 1141023052}
   - component: {fileID: 1141023051}
+  - component: {fileID: 1141023054}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -1052,6 +1126,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141023049}
   m_CullTransparentMesh: 1
+--- !u!114 &1141023054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141023049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7f729b47ebb41f8ad87ca498271074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseoverSfxPath: 
+  selectSfxPath: 
 --- !u!1 &1303953128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Minion - Alpha Build
+  m_text: Minion - Beta Build
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1202,7 +1290,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.75
+  m_fontSize: 32.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

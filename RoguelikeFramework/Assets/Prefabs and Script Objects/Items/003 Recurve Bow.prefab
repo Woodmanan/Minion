@@ -118,6 +118,7 @@ MonoBehaviour:
     list: []
   optionalEffects:
     list: []
+  sfxType: 2
   applyable: {fileID: 0}
   targetable: {fileID: 0}
   equipable: {fileID: 0}

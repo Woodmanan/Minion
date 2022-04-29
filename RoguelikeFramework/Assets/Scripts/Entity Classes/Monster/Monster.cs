@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System;
 using UnityEngine;
-using System.Text.RegularExpressions; //Oh god oh fuck
+using System.Text.RegularExpressions; //Oh god oh fuck (so true)
 using System.Linq;
 
 
@@ -30,13 +30,16 @@ public class Monster : MonoBehaviour
     public float energy;
 
     public Vector2Int location;
+    private Vector3 lPosition0;
+    private Vector3 lPosition1;
+    private float lPositionTimer;
 
     public int visionRadius;
 
     public int energyPerStep;
     public Loadout loadout;
 
-    private static readonly float monsterZPosition = -5f;
+    public static readonly float monsterZPosition = -5f;
 
     [HideInInspector] public Connections connections;
     [HideInInspector] public Connections other = null;
@@ -50,7 +53,7 @@ public class Monster : MonoBehaviour
 
     [HideInInspector] public ActionController controller;
 
-    private SpriteRenderer renderer;
+    public SpriteRenderer renderer;
 
     public GameAction currentAction;
     public CustomTile currentTile;
@@ -63,6 +66,9 @@ public class Monster : MonoBehaviour
 
     public string description;
     public string uniqueID;
+
+    //used for music's isInDanger
+    public int dangerLevel = 2;
     
     // Start is called before the first frame update
     public virtual void Start()
@@ -118,18 +124,28 @@ public class Monster : MonoBehaviour
         #if UNITY_EDITOR || DEVELOPMENT_BUILD
         //Confirm that we got our own unique space
         Debug.Assert(map.GetTile(location).currentlyStanding == this || map.GetTile(location).currentlyStanding == null, "Generator placed two monsters together", this);
-        #endif
+#endif
         //Put us in that space, and build our initial LOS
+        lPosition0 = new Vector3(location.x, location.y, monsterZPosition);
+        lPosition1 = lPosition0;
+        transform.position = new Vector3(location.x, location.y, monsterZPosition);
         SetPosition(map, location);
         UpdateLOS(map);
-
-        
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        // hop movement
+        lPositionTimer += Time.deltaTime * 12f;
+        transform.position = Vector3.Lerp(lPosition0, lPosition1, lPositionTimer)
+            + Vector3.up * 0.4f * Mathf.Sin(Mathf.Min((float)Math.PI, lPositionTimer * (float)Math.PI));
+
+        // look towards movement
+        float sx = transform.localScale.x;
+        if (lPosition0.x < lPosition1.x) sx = Mathf.Abs(sx);
+        else if (lPosition0.x > lPosition1.x) sx = -Mathf.Abs(sx);
+        transform.localScale = new Vector3(sx, transform.localScale.y, 1f);
     }
 
     public void Heal(int healthReturned)
@@ -163,10 +179,8 @@ public class Monster : MonoBehaviour
             return false;
         }
 
-        
-
         //TODO: Log Hit
-        //TakeDamage(damage, DamageType.NONE);
+        // 
         return true;
     }
 
@@ -193,6 +207,13 @@ public class Monster : MonoBehaviour
     {
         dealer?.connections.OnDealDamage.BlendInvoke(dealer.other?.OnDealDamage, ref damage, ref type, ref source);
         Damage(damage, type, source, message);
+
+        //Quick hacky fix - Make this always true!
+        if (dealer != null)
+        {
+            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.displayName, displayName, "hit", damage, nameRequiresPluralVerbs, this == Player.player, this != Player.player);
+        }
+        LogManager.S.LogFloatingNumber(-damage, transform);
         if (resources.health <= 0)
         {
             dealer?.KillMonster(this, type, source);
@@ -468,8 +489,13 @@ public class Monster : MonoBehaviour
     public void SetPosition(Map map, Vector2Int newPosition)
     {
         if (currentTile) currentTile.currentlyStanding = null;
+        // visual slide
+        lPosition0 = new Vector3(location.x, location.y, monsterZPosition);
+        // update location
         location = newPosition;
-        transform.position = new Vector3(location.x, location.y, monsterZPosition);
+        // visual slide
+        lPosition1 = new Vector3(location.x, location.y, monsterZPosition);
+        lPositionTimer = 0;
         currentTile = map.GetTile(location);
         currentTile.SetMonster(this);
         if (currentTile.isVisible)

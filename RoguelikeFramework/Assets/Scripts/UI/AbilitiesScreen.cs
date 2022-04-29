@@ -57,6 +57,8 @@ public class AbilitiesScreen : RogueUIPanel
     /* Called every time this panel is activated by the controller */
     public override void OnActivation()
     {
+        AudioManager.i.Pause();
+        
         Debug.Log($"Displayed count is {displayed.Count}");
         Debug.Log($"Examined count is {examinedAbilities.Count}");
 
@@ -90,7 +92,7 @@ public class AbilitiesScreen : RogueUIPanel
     /* Called every time this panel is deactived by the controller */
     public override void OnDeactivation()
     {
-
+        AudioManager.i.UnPause();
     }
 
     /* Called every time this panel is focused on. Use this to refresh values that might have changed */

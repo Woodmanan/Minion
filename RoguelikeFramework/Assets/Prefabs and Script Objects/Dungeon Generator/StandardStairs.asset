@@ -21,6 +21,7 @@ MonoBehaviour:
   canExpand: 0
   generator:
     name: 
+    depth: 0
     seed: 0
     bounds: {x: 0, y: 0}
     machines: []
@@ -28,7 +29,15 @@ MonoBehaviour:
     tilesAvailable: {fileID: 0}
     numberOfAttempts: 0
     attemptsPerMachine: 0
-    player: {fileID: 0}
+    availableItems: {fileID: 0}
+    numItems:
+      rolls: 0
+      dice: 0
+    availableMonsters: {fileID: 0}
+    numMonsters:
+      rolls: 0
+      dice: 0
+    JIT: 0
     finished: 0
   upStairsIndex: 2
   downStairsIndex: 3
@@ -36,8 +45,12 @@ MonoBehaviour:
   - connectsTo: 
     next: 1
     numConnections: 3
+    connectionsStartAt: 0
   stairsDown:
   - connectsTo: 
     next: 1
     numConnections: 3
+    connectionsStartAt: 0
+  numExtraEntrances: 0
+  numExtraExits: 0
   excludeRoom: 

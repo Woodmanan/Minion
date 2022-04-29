@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+public enum SFXItemType { None, Sword, Bow, WoodShield, MetalShield }
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Item : MonoBehaviour
@@ -38,6 +39,8 @@ public class Item : MonoBehaviour
     public StatusEffectList effects = new StatusEffectList();
     public StatusEffectList optionalEffects = new StatusEffectList();
 
+    //needs to be manually set
+    public SFXItemType sfxType;
 
     private SpriteRenderer Render;
     public SpriteRenderer render

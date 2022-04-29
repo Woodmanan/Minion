@@ -63,6 +63,10 @@ public class Split : Ability
         Map.current.spawnedMonsters.Add(child1);
         Map.current.spawnedMonsters.Add(child2);
 
+        //SFX code
+        MonsterAudio monsterAudio = caster.GetComponent<MonsterAudio>();
+        monsterAudio.SlimeOnSplit();
+
         // Destroy caster
         caster.Remove();
     }

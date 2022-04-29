@@ -26,7 +26,7 @@ public class Loadout : ScriptableObject
         m.Setup();
 
         //Get the items attached
-        items = items.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
+        //items = items.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
         int numAttached = 0;
         foreach (Item item in items)
         {
@@ -56,7 +56,7 @@ public class Loadout : ScriptableObject
 
         numAttached = 0;
         //Do the abilities
-        abilities = abilities.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
+        //abilities = abilities.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
         foreach (Ability ability in abilities)
         {
             //if (numAttached >= maxAbilties) break;

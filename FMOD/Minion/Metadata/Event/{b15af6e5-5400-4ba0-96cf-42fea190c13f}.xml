@@ -72,7 +72,7 @@
 			<destination>{8bc75f12-d8ac-41cb-8823-655315e71d03}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{28b23151-66cc-4a27-a290-da030cf1cda0}</destination>
+			<destination>{cfb45ac1-4637-4388-bf5f-2353653d59ed}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{cc44e0d2-c82d-4e8f-abde-22f21c54dc80}" />
@@ -733,7 +733,7 @@
 			<value>0</value>
 		</property>
 		<property name="releaseTime">
-			<value>2211.53662</value>
+			<value>920</value>
 		</property>
 		<property name="releaseShape">
 			<value>0.145493373</value>

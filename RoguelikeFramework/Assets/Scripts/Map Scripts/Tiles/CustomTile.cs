@@ -158,6 +158,11 @@ public class CustomTile : MonoBehaviour
 
         if (isVisible)
         {
+            if (blocksVision)
+            {
+                Debug.Log("I got called!");
+                render.sortingOrder = 200 + (200 - location.y);
+            }
             render.color = litColor;
             if (render.enabled == false)
             {
