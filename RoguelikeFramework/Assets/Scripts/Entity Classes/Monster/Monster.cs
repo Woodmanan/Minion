@@ -168,7 +168,7 @@ public class Monster : MonoBehaviour
         
         if (!isNatural)
         {
-            LogManager.S.LogEntityHeal(GetFormattedName(), healthReturned, nameRequiresPluralVerbs, this != Player.player);
+            LogManager.S.LogEntityHeal(GetFormattedName(), healthReturned, nameRequiresPluralVerbs, IsEnemy(this));
             LogManager.S.LogFloatingNumber(healthReturned, transform);
         }
     }
@@ -226,7 +226,7 @@ public class Monster : MonoBehaviour
         //Quick hacky fix - Make this always true!
         if (dealer != null)
         {
-            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.GetFormattedName(), GetFormattedName(), "hit", damage, nameRequiresPluralVerbs, this == Player.player, this != Player.player);
+            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.GetFormattedName(), GetFormattedName(), "hit", damage, nameRequiresPluralVerbs, IsEnemy(dealer), IsEnemy(this));
         }
         LogManager.S.LogFloatingNumber(-damage, transform);
         if (resources.health <= 0)
