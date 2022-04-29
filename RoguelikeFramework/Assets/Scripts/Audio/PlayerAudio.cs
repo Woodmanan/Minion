@@ -23,7 +23,7 @@ public class PlayerAudio : MonsterAudio
     void OnHealing(ref int healAmount)
     {
         if(healAmount > 0) {
-            AudioManager.i.HealthUp(player.baseStats.resources.health/player.stats.resources.health, healAmount/player.stats.resources.health);
+            AudioManager.i.HealthUp((float)player.resources.health/(float)player.stats.resources.health, (float)healAmount/(float)player.stats.resources.health);
         }
 
     }

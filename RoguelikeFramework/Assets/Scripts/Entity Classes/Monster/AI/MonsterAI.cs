@@ -19,6 +19,7 @@ public class MonsterAI : ActionController
 {
     public Query fleeQuery;
     public Query fightQuery;
+    [HideInInspector] public bool isInBattle = false;
 
     public float interactionRange;
     public bool ranged = false;
@@ -70,6 +71,7 @@ public class MonsterAI : ActionController
         if (enemies.Count == 0)
         {
             //Standard behavior
+            isInBattle = false;
 
             //1 - Take an existing interaction
             (InteractableTile tile, float interactableCost) = GetInteraction(false, interactionRange);
@@ -107,6 +109,7 @@ public class MonsterAI : ActionController
         else
         {
             //We're majorly in combat!
+            isInBattle = true;
             //TODO: Make offered actions available to combat monsters for specific actions
 
             //Options

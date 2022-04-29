@@ -151,12 +151,15 @@ GameObject:
   - component: {fileID: 3853786310894742755}
   - component: {fileID: 3853786310894742756}
   - component: {fileID: 3853786310894742757}
+  - component: {fileID: -8945216475864371603}
   - component: {fileID: 3853786310894742758}
   - component: {fileID: 3853786310894742759}
   - component: {fileID: 3853786310894742760}
   - component: {fileID: 3853786310894742761}
   - component: {fileID: 3853786310894742754}
   - component: {fileID: 8474446681096689617}
+  - component: {fileID: -7138461436767079773}
+  - component: {fileID: 6234439986996691870}
   m_Layer: 0
   m_Name: 001 Player (You)
   m_TagString: Player
@@ -228,6 +231,7 @@ MonoBehaviour:
   equipment: {fileID: 0}
   abilities: {fileID: 0}
   controller: {fileID: 0}
+  renderer: {fileID: 0}
   currentTile: {fileID: 0}
   XPFromKill: 0
   level: 1
@@ -248,6 +252,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b03559047b7fc942be3ce9ca2caa502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8945216475864371603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853786310894742762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673dd832e2f37425f94223d903805b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterType: 0
 --- !u!212 &3853786310894742758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -460,6 +477,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7138461436767079773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853786310894742762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6557da2e6d9c0484faeecc72970fbf87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAnimTime: 6
+  deathAnimTime: 0.6
+  attackAnimTime: 2
+  shakeIntensity: 0.5
+--- !u!114 &6234439986996691870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853786310894742762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &3853786311080168097
 GameObject:
   m_ObjectHideFlags: 0

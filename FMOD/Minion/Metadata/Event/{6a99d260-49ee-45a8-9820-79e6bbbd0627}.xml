@@ -5,7 +5,7 @@
 			<value>Wooden Shield</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c3826d55-282a-4576-9789-c5912ff3ef26}</destination>
@@ -53,7 +53,7 @@
 			<destination>{81561e7b-3cf4-4474-aece-80a9257cd054}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{28b23151-66cc-4a27-a290-da030cf1cda0}</destination>
+			<destination>{cfb45ac1-4637-4388-bf5f-2353653d59ed}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{06c8abda-66e9-425a-ac7d-701e91dfd1c9}" />
@@ -119,6 +119,7 @@
 	<object class="MixerBusEffectChain" id="{d02d6a67-8140-491a-bb57-3632b1cca90b}">
 		<relationship name="effects">
 			<destination>{f2f2218b-1cad-4c53-965f-e6907175c2cc}</destination>
+			<destination>{2ec1de78-6825-45c6-938a-7e77acba417b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{62cfe2a5-da34-4368-9dc1-d14689d42b48}" />
@@ -138,5 +139,28 @@
 	</object>
 	<object class="MixerBusPanner" id="{2e0fd6e7-b808-4bb8-b3ca-914063b2651e}" />
 	<object class="MixerBusFader" id="{f2f2218b-1cad-4c53-965f-e6907175c2cc}" />
+	<object class="SpatialiserEffect" id="{2ec1de78-6825-45c6-938a-7e77acba417b}">
+		<property name="minimumDistance">
+			<value>3.20000005</value>
+		</property>
+		<property name="maximumDistance">
+			<value>9</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>2.20000005</value>
+		</property>
+		<property name="minimumExtent">
+			<value>162</value>
+		</property>
+		<property name="userStereoSeparation">
+			<value>54</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{f965c339-c307-412a-87c8-aeefceb95ab1}" />
 </objects>

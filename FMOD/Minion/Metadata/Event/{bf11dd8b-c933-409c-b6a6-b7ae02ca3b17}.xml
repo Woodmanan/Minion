@@ -5,7 +5,7 @@
 			<value>Bow Attack</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c3826d55-282a-4576-9789-c5912ff3ef26}</destination>
@@ -53,7 +53,7 @@
 			<destination>{6fcec5d8-9fa8-495e-8ed6-347bc4005880}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{28b23151-66cc-4a27-a290-da030cf1cda0}</destination>
+			<destination>{cfb45ac1-4637-4388-bf5f-2353653d59ed}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{ceaf10a0-64fd-4fd3-ad7f-bf56ec4320d5}" />
@@ -119,6 +119,7 @@
 	<object class="MixerBusEffectChain" id="{26a64bff-c73e-41db-8e75-e457f971ea7d}">
 		<relationship name="effects">
 			<destination>{133c6b0f-29fa-40bb-b77c-97aaf5c842eb}</destination>
+			<destination>{0dce962a-a7c6-4cac-af0a-db7a69e95adc}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{649c9590-c2ff-4774-855a-08fa60145f96}" />
@@ -138,5 +139,28 @@
 	</object>
 	<object class="MixerBusPanner" id="{ee164893-ccb7-404c-b070-fe23c98e60e2}" />
 	<object class="MixerBusFader" id="{133c6b0f-29fa-40bb-b77c-97aaf5c842eb}" />
+	<object class="SpatialiserEffect" id="{0dce962a-a7c6-4cac-af0a-db7a69e95adc}">
+		<property name="minimumDistance">
+			<value>3.20000005</value>
+		</property>
+		<property name="maximumDistance">
+			<value>9</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>5</value>
+		</property>
+		<property name="minimumExtent">
+			<value>190</value>
+		</property>
+		<property name="userStereoSeparation">
+			<value>54</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{d344bf75-78e4-43b2-8556-5d25343e8adc}" />
 </objects>
