@@ -22,7 +22,6 @@ public class Abilities : MonoBehaviour
 
     public void RegenerateAbilities()
     {
-        Debug.Log($"Starting the function that breaks things with {connectedTo.displayName}", connectedTo);
         foreach (Ability a in abilities)
         {
             a.Cleanup();
@@ -32,9 +31,7 @@ public class Abilities : MonoBehaviour
 
     public void CheckAvailability()
     {
-        Debug.Log("Started to check availability");
         RegenerateAbilities();
-        Debug.Log("Finished Regening abilities");
         foreach (Ability a in abilities)
         {
             a.CheckAvailable(connectedTo);

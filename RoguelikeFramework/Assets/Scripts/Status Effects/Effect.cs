@@ -40,6 +40,8 @@ public class Effect : ScriptableObject
 
     public static Dictionary<Type, int[]> connectionDict = new Dictionary<Type, int[]>();
 
+    public Monster credit;
+
     public virtual int priority { get { return 5; } }
 
     //Create UI piece

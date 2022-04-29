@@ -63,7 +63,7 @@ public class Player : Monster
 
     public override void Die()
     {
-        base.Die();
+        Remove();
         if (resources.health <= 0)
         {
             Debug.Log("Game over!");
