@@ -38,6 +38,19 @@ public class ChangeLevelAction : GameAction
             }
 
             AudioManager.i.Staircase();
+            if(stair.connectsToFloor <= 3) {
+                AudioManager.i.Level = 1;
+                Debug.Log("SETTING 1");
+                Debug.Log("LEVEL IS " + stair.connectsToFloor);
+            } else if(stair.connectsToFloor <= 5) {
+                AudioManager.i.Level = 2;
+                Debug.Log("SETTING 2");
+                Debug.Log("LEVEL IS " + stair.connectsToFloor);
+            } else {
+                AudioManager.i.Level = 3;
+                Debug.Log("SETTING 3");
+                Debug.Log("LEVEL IS " + stair.connectsToFloor);
+            }
             GameController.singleton.MoveToLevel(stair.connectsToFloor);
             caller.energy -= 100;
 
