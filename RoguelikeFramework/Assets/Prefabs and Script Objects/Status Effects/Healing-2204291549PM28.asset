@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f07974e789258e4e9b1ebe8da34daea, type: 3}
-  m_Name: Consumables Table
+  m_Script: {fileID: 11500000, guid: 744d54e8f76fcba4fb8e13fd97bd968a, type: 3}
+  m_Name: Healing-2204291549PM28
   m_EditorClassIdentifier: 
-  type: 8
-  items:
-  - {fileID: 2027390015365816414, guid: aa92152be24cb5c4083e2c367b182741, type: 3}
-  minRarity: 0
-  maxRarity: 0
-  elevationOptions:
-    list: []
+  statusIcon: {fileID: 0}
+  displayName: 
+  description: 
+  ReadyToDelete: 0
+  credit: {fileID: 0}
+  numTurns: 10
+  healthPerTurn: 10

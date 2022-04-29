@@ -26,7 +26,7 @@ public class ItemUpdateWizard
     [MenuItem("Tools/Dangerous/Update Item Stats")]
     public static void UpdateItems()
     {
-        string itemFolderPath = GetPathToFolder("Items");
+        string itemFolderPath = GetPathToFolder("Prefabs and Script Objects");
         if (itemFolderPath == "No File Found!")
         {
             Debug.LogError("No Items folder found");
@@ -51,7 +51,7 @@ public class ItemUpdateWizard
         }
 
         Dictionary<string, ItemData> newInfo = ProcessFile(fileName);
-
+        Debug.Log($"Here! There are {items.Count} items");
         foreach (var item in items)
         {
             string id = item.uniqueID;
@@ -66,6 +66,7 @@ public class ItemUpdateWizard
                 item.rarity = data.rarity;
                 newInfo.Remove(id);
                 EditorUtility.SetDirty(item);
+                Debug.Log($"Finished editing {data.name}");
             }
             else
             {
@@ -96,12 +97,19 @@ public class ItemUpdateWizard
     {
         var info = new DirectoryInfo(path);
 
-        foreach (FileInfo f in info.GetFiles("*.prefab"))
+        foreach (FileInfo f in info.GetFiles("*.prefab", SearchOption.AllDirectories))
         {
             string filePath = f.FullName;
             int length = filePath.Length - info.FullName.Length + path.Length;
             filePath = filePath.Substring(f.FullName.Length - length, length);
-            items.Add(AssetDatabase.LoadAssetAtPath<Item>(filePath));
+
+            Item i = AssetDatabase.LoadAssetAtPath<Item>(filePath);
+            if (i != null)
+            {
+                Debug.Log($"Loading {filePath} from that!");
+                items.Add(i);
+            }
+            
         }
         
         foreach (string subPath in Directory.GetDirectories(path))
