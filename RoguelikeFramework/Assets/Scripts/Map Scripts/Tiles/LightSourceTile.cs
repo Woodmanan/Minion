@@ -11,7 +11,10 @@ public class LightSourceTile : CustomTile
 {
     [HideInInspector] public LOSData view;
 
-    public void Cast(LOSData ld)
+    [SerializeField] public Color lightColor = Color.yellow; //color of light projected by this tile
+                                                            //Also, not sure if different colors multiply correctly right now, but that never happens currently
+
+    public void Cast(LOSData ld, Color lc)
     {
         Vector2Int origin = ld.origin;
         int radius = ld.radius;
@@ -25,7 +28,11 @@ public class LightSourceTile : CustomTile
                 {
                     Vector2Int pos = new Vector2Int(i + start.x, j + start.y);
                     int lvl = radius - Math.Abs(origin.x - pos.x) - Math.Abs(origin.y - pos.y);
-                    if (lvl > 0) map.GetTile(pos).lightLevel = lvl; //add check for !blocksVision here if you don't want walls lit
+                    if (lvl > map.GetTile(pos).lightLevel) //add check for !blocksVision here if you don't want walls lit
+                    {
+                        map.GetTile(pos).lightLevel = lvl; 
+                        map.GetTile(pos).lightSourceColor = lc;
+                    }
                 }
             }
         }
@@ -34,8 +41,8 @@ public class LightSourceTile : CustomTile
     //Called at the end of map construction, once this tile is guarunteed to be in the map!
     public override void SetInMap(Map m)
     {
-        view = LOS.LosAt(m, location, lightLevel-1);
-        Cast(view);
+        view = LOS.LosAt(m, location, lightLevel);
+        Cast(view, lightColor);
         if (!isVisible) isHidden = true;
     }
 }
