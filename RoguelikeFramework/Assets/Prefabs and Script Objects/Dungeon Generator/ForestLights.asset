@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0c0537055c026440a1db56bab29e770, type: 3}
-  m_Name: LightPlacer
+  m_Name: ForestLights
   m_EditorClassIdentifier: 
   priority: 4
   global: 1
@@ -41,4 +41,4 @@ MonoBehaviour:
     finished: 0
   lightSourceIndex: 6
   excludeRoom: 
-  lightsPerRoom: 1
+  lightsPerRoom: 20

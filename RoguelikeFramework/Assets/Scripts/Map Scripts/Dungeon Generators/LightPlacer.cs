@@ -12,6 +12,7 @@ public class LightPlacer : Machine
 
     [Header("Light settings")] //options for color/range?
     public List<int> excludeRoom;
+    public int lightsPerRoom = 1;
 
     List<int> roomsToConnect = new List<int>();
 
@@ -35,21 +36,24 @@ public class LightPlacer : Machine
         //Place Lights
         foreach (int i in roomsToConnect)
         {
-            Vector2Int prev = new Vector2Int(-100,-100);
-            Vector2Int loc;
-            int count = (int)UnityEngine.Random.Range(1f,2.7f);
-            for (int j = 0; j < count; j++)
+            for (int c = 0; c < lightsPerRoom; c++)
             {
-                Room r = generator.rooms[roomsToConnect[i]];
-                while (true)
+                Vector2Int prev = new Vector2Int(-100, -100);
+                Vector2Int loc;
+                int count = (int)UnityEngine.Random.Range(1f, 2.7f);
+                for (int j = 0; j < count; j++)
                 {
-                    loc = r.GetOpenSpace(1, generator.map);
-                    if (Math.Abs(prev.x - loc.x) + Math.Abs(prev.y - loc.y) >= 2) 
-                        break;
-                }
+                    Room r = generator.rooms[roomsToConnect[i]];
+                    while (true)
+                    {
+                        loc = r.GetOpenSpace(1, generator.map);
+                        if (Math.Abs(prev.x - loc.x) + Math.Abs(prev.y - loc.y) >= 2)
+                            break;
+                    }
 
-                generator.map[loc.x, loc.y] = lightSourceIndex;
-                prev = loc;
+                    generator.map[loc.x, loc.y] = lightSourceIndex;
+                    prev = loc;
+                }
             }
         }
 
