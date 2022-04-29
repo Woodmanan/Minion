@@ -62,7 +62,7 @@ public class AutoExploreAction : GameAction
             while (path.Count() > 0)
             {
                 Vector2Int next = path.Pop();
-                MoveAction act = new MoveAction(next);
+                MoveAction act = new MoveAction(next, true, false);
 
                 caller.UpdateLOS();
 

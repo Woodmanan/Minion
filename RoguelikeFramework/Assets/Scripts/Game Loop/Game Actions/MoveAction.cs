@@ -7,13 +7,15 @@ public class MoveAction : GameAction
     public Vector2Int intendedLocation;
     public Direction direction;
     public bool costs;
+    public bool useStair;
 
     //Constuctor for the action
-    public MoveAction(Vector2Int location, bool costs = true)
+    public MoveAction(Vector2Int location, bool costs = true, bool useStair = true)
     {
         //Construct me! Assigns caller by default in the base class
         intendedLocation = location;
         this.costs = costs;
+        this.useStair = useStair;
     }
 
     //The main function! This EXACT coroutine will be executed, even across frames.
@@ -64,6 +66,18 @@ public class MoveAction : GameAction
         }
 
         caller.SetPosition(intendedLocation);
+
+        Stair stair = tile as Stair;
+        if (stair && caller == Player.player && useStair)
+        {
+            ChangeLevelAction act = new ChangeLevelAction(stair.upStair);
+            act.Setup(caller);
+            while (act.action.MoveNext())
+            {
+                yield return act.action.Current;
+            }
+            yield return GameAction.AbortAll;
+        }
 
         if (costs)
         {
