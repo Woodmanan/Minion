@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public enum SFXItemType { None, Sword, Bow, WoodShield }
+public enum SFXItemType { None, Sword, Bow, WoodShield, MetalShield }
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Item : MonoBehaviour

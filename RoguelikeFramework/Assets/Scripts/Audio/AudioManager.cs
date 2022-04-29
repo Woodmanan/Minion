@@ -33,6 +33,8 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         StartMusic(level);
+
+        pause = FMODUnity.RuntimeManager.CreateInstance("snapshot:/Pause");
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void StartMusic(int levelNum) {
+        StopMusic();
         //switch music using level variable
         UpdateMusic(false);
         string eventString;
@@ -68,12 +71,20 @@ public class AudioManager : MonoBehaviour
             case 3:
                 eventString = "event:/Music/Level 3 Music";
                 break;
+            case 4:
+                eventString = "event:/Music/Dungeon Boss Music";
+                break;
             default:
                 eventString = "event:/Music/Level 1 Music";
                 break;
         }
         Music = FMODUnity.RuntimeManager.CreateInstance(eventString);
         Music.start();
+    }
+
+    public void StartBossMusic() {
+        StopMusic();
+        StartMusic(level + 3);
     }
 
     public void GameOver() {
@@ -84,17 +95,40 @@ public class AudioManager : MonoBehaviour
     }
 
     public void StopMusic() {
-        Music.release();
-        Music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        if(Music.isValid()) {
+            Music.release();
+            Music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     //UI SFX
+
+    public FMOD.Studio.EventInstance pause;
+    int pauseLayers = 0;
+
+    public void Pause() {
+        if(pauseLayers == 0) {
+            pause.start();
+        }
+        pauseLayers++;
+    }
+
+    public void UnPause() {
+        pauseLayers--;
+        if(pause.isValid() && pauseLayers == 0) {
+            pause.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+    
+    public void UISelect() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Select");
+    }
 
     public void UIMouseover() {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Mouseover");
     }
 
-    public void UISelect() {
+    public void UIStart() {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Start");
     }
 
@@ -105,6 +139,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void HealthUp(float totalHealth, float healthAdded) {
+        Debug.Log(totalHealth + " and adding " + healthAdded);
         FMOD.Studio.EventInstance healthUp = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Health Up");
         healthUp.setParameterByName("Health", totalHealth);
         healthUp.setParameterByName("healthAdded", healthAdded);
@@ -112,30 +147,98 @@ public class AudioManager : MonoBehaviour
         healthUp.release();
     }
 
-    public void TakeDamage(float damage) {
-        Debug.Log("aasas " + damage);
+    public async void TakeDamage(float damage, Transform t) {
         FMOD.Studio.EventInstance takeDamage = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Take Damage");
         takeDamage.setParameterByName("AttackDamage", damage);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(takeDamage, t);
         takeDamage.start();
         takeDamage.release();
+    }
+
+    public void Staircase() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Stairs");
     }
     
     //Weapon SFX
 
-    public void SwordAttack() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Sword Attack");
+    public async void SwordAttack(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Sword Attack", t.position);
     }
 
-    public void BowAttack() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Bow Attack");
+    public void BowAttack(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Bow Attack", t.position);
     }
 
-    public void WoodenShield() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Wooden Shield");
+    public void WoodenShield(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Wooden Shield", t.position);
     }
 
-    public void FireLayer() {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Fire Layer");
+    public void MetalShield(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Metal Shield", t.position);
+    }
+
+    public void FireLayer(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Fire Layer", t.position);
+    }
+
+    //Monster SFX
+
+    public void EnemyDeath(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Death", t.position);
+    }
+
+    public void BigSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Attack", transform.position);
+    } 
+
+    public void BigSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Damage", transform.position);
+    } 
+
+    public void BigSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Split", transform.position);
+    } 
+
+    public void MedSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Attack", transform.position);
+    } 
+
+    public void MedSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Damage", transform.position);
+    } 
+
+    public void MedSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Split", transform.position);
+    } 
+
+    public void SmallSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Attack", transform.position);
+    } 
+
+    public void SmallSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Damage", transform.position);
+    } 
+
+    public void SmallSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Split", transform.position);
+    } 
+
+    public void GoblinAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Attack", transform.position);
+    }
+
+    public void GoblinDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Damage", transform.position);
+    }
+
+    public void GoblinDeath(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Death", transform.position);
+    }
+
+    public bool IsPlaying(FMOD.Studio.EventInstance instance) {
+        FMOD.Studio.PLAYBACK_STATE state;   
+        instance.getPlaybackState(out state);
+        return state != FMOD.Studio.PLAYBACK_STATE.STOPPED;
     }
 
 }

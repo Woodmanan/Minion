@@ -151,13 +151,15 @@ GameObject:
   - component: {fileID: 3853786310894742755}
   - component: {fileID: 3853786310894742756}
   - component: {fileID: 3853786310894742757}
+  - component: {fileID: -8945216475864371603}
   - component: {fileID: 3853786310894742758}
   - component: {fileID: 3853786310894742759}
   - component: {fileID: 3853786310894742760}
   - component: {fileID: 3853786310894742761}
   - component: {fileID: 3853786310894742754}
-  - component: {fileID: 5025787241258185948}
-  - component: {fileID: 5439016432967468362}
+  - component: {fileID: 8474446681096689617}
+  - component: {fileID: -7138461436767079773}
+  - component: {fileID: 6234439986996691870}
   m_Layer: 0
   m_Name: 001 Player (You)
   m_TagString: Player
@@ -213,7 +215,7 @@ MonoBehaviour:
     mana: 0
     stamina: 0
     xp: 0
-  displayName: You
+  displayName: Player (You)
   nameRequiresPluralVerbs: 1
   faction: 2
   ID: 1
@@ -229,6 +231,7 @@ MonoBehaviour:
   equipment: {fileID: 0}
   abilities: {fileID: 0}
   controller: {fileID: 0}
+  renderer: {fileID: 0}
   currentTile: {fileID: 0}
   XPFromKill: 0
   level: 1
@@ -249,6 +252,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b03559047b7fc942be3ce9ca2caa502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8945216475864371603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853786310894742762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673dd832e2f37425f94223d903805b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterType: 0
 --- !u!212 &3853786310894742758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -350,7 +366,7 @@ MonoBehaviour:
       applyOnHit:
         list: []
   - slotName: Primary Hand
-    type: 02000000
+    type: 0200000003000000
     equipped:
       id: 0
       type: 0
@@ -442,7 +458,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 0}
---- !u!114 &5025787241258185948
+--- !u!95 &8474446681096689617
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853786310894742762}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ebab40c344834345a0762a15511acbc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7138461436767079773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -451,11 +486,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3853786310894742762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673dd832e2f37425f94223d903805b17, type: 3}
+  m_Script: {fileID: 11500000, guid: 6557da2e6d9c0484faeecc72970fbf87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterType: 0
---- !u!114 &5439016432967468362
+  damageAnimTime: 6
+  deathAnimTime: 0.6
+  attackAnimTime: 2
+  shakeIntensity: 0.5
+--- !u!114 &6234439986996691870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

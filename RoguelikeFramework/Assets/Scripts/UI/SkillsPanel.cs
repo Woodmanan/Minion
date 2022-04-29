@@ -24,11 +24,13 @@ public class SkillsPanel : RogueUIPanel
     private void OnEnable()
     {
         ReloadAvailableSkills();
+        AudioManager.i.Pause();
     }
 
     private void OnDisable()
     {
         EraseAvailableSkills();
+        AudioManager.i.UnPause();
     }
 
     public void ReloadAvailableSkills()

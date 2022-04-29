@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SmallSlime
   m_EditorClassIdentifier: 
   items: []
-  maxItems: 0
   abilities:
-  - {fileID: 11400000, guid: 33e224a055df9574abd054803bfd4278, type: 2}
-  maxAbilties: 1
+  - {fileID: 11400000, guid: 47a74fbb4424f2240aa4c76013e8dd40, type: 2}
   minDepth: 0
   maxDepth: 0
+  effects:
+    list: []

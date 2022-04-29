@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{4e961c67-9885-4f74-afa3-92b3e2ebee21}">
+		<property name="assetPath">
+			<value>Sheesh Delay 4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.9847619047619052</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{76158cb0-5a10-43e3-9645-5e32c3323f46}</destination>
+		</relationship>
+	</object>
+</objects>

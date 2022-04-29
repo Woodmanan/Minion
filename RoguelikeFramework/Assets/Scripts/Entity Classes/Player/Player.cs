@@ -46,9 +46,9 @@ public class Player : Monster
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
     }
 
     //Special case, because it affects the world around it through the player's view.

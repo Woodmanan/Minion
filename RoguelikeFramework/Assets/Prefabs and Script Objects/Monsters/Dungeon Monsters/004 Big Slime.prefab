@@ -64,6 +64,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -105,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: BigSlime
+      value: 004 Big Slime
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size
@@ -161,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 5463189583543264802, guid: 47bd40ff9d4f749a28188b3883199a45, type: 3}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.b
-      value: 0.123529434
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.g
@@ -254,3 +262,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterType: 3
+--- !u!114 &-3876142139766327514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776638571021120723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6557da2e6d9c0484faeecc72970fbf87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAnimTime: 3
+  deathAnimTime: 0.6
+  attackAnimTime: 2
