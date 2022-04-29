@@ -164,7 +164,7 @@ public class Monster : MonoBehaviour
         
         if (!isNatural)
         {
-            LogManager.S.LogEntityHeal(displayName, healthReturned, nameRequiresPluralVerbs, this != Player.player);
+            LogManager.S.LogEntityHeal(GetFormattedName(), healthReturned, nameRequiresPluralVerbs, this != Player.player);
             LogManager.S.LogFloatingNumber(healthReturned, transform);
         }
     }
@@ -217,7 +217,7 @@ public class Monster : MonoBehaviour
         //Quick hacky fix - Make this always true!
         if (dealer != null)
         {
-            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.displayName, displayName, "hit", damage, nameRequiresPluralVerbs, this == Player.player, this != Player.player);
+            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.GetFormattedName(), GetFormattedName(), "hit", damage, nameRequiresPluralVerbs, this == Player.player, this != Player.player);
         }
         LogManager.S.LogFloatingNumber(-damage, transform);
         if (resources.health <= 0)
@@ -259,6 +259,7 @@ public class Monster : MonoBehaviour
             resources.xp -= XPTillNextLevel();
             Debug.Log($"After leveling up with {XPTillNextLevel()} xp, monster now has {resources.xp} xp");
             LevelUp();
+            LogManager.S.LogTotallyHighlightedQuote("Level up!", "FFFF00");
         }
 
     }
