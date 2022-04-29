@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 7869953346085159658}
   m_Layer: 5
   m_Name: EquipmentBox
-  m_TagString: Untagged
+  m_TagString: EquipBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

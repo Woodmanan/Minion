@@ -66,7 +66,7 @@ public class LogManager : MonoBehaviour
     /// Sends a message to the console and automatically removes older messages past a certain threshold.
     /// </summary>
     /// <param name="msg">The message to send to the console.</param>
-    private void Log(string msg)
+    public void Log(string msg)
     {
         // Retrieve and delete the oldest message if we are over the maximum number of messages we should display
         if (logs.Count > maximumNumMessages)

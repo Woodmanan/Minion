@@ -3,99 +3,103 @@ REXPaint v1.60
 I=0000000 Initializing resources
 I=0000003 Initializing Rogue Engine X
 I=0000003 |   Starting SDL
-I=0000019 |   Importing icon
-E=0000019 |   REX_Init() | Application icon "rex/icon.png" not found, this program may not be installed correctly!
-I=0000019 |   Confirmed resource initialization
-I=0000019 |   Loading colors
-I=0000019 |   Initializing font type data
-I=0000019 |   Mapping standard ASCII values
-I=0000019 |   Loading fonts
-I=0000020 |   |   [font set: CP437 12x12]
-I=0000023 |   |   ...cp437_12x12.png
-I=0000025 |   |   ...cp437_12x12.png
-I=0000025 |   |   [font set: CP437 14x14]
-I=0000028 |   |   ...cp437_14x14.png
-I=0000030 |   |   ...cp437_14x14.png
-I=0000030 |   |   [font set: CP437 16x16]
-I=0000035 |   |   ...cp437_16x16.png
-I=0000037 |   |   ...cp437_16x16.png
-I=0000037 |   |   [font set: CP437 18x18]
-I=0000042 |   |   ...cp437_18x18.png
-I=0000044 |   |   ...cp437_18x18.png
-I=0000044 |   |   [font set ignored: CP437 20x20] (resolution exceeds desktop)
-I=0000044 |   |   [font set: CP437 8x8]
-I=0000047 |   |   ...cp437_8x8.png
-I=0000048 |   |   ...cp437_8x8.png
-I=0000048 |   |   [font set: CP437 10x10]
-I=0000051 |   |   ...cp437_10x10.png
-I=0000052 |   |   ...cp437_10x10.png
-I=0000052 |   \---DONE
-I=0000052 |   Setting video mode
-I=0000052 |   |   Calculating dimensions
-I=0000052 |   |   ...charW=12
-I=0000052 |   |   ...charH=12
-I=0000052 |   |   ...wMin=936
-I=0000052 |   |   ...hMin=720
-I=0000052 |   |   ...wWanted=936
-I=0000052 |   |   ...hWanted=720
-I=0000052 |   |   All video modes available
-I=0000052 |   |   Setting software video mode
-I=0000059 |   \---DONE
-I=0000059 |   Setting video mode
-I=0000059 |   |   Calculating dimensions
-I=0000059 |   |   ...charW=12
-I=0000059 |   |   ...charH=12
-I=0000059 |   |   ...wMin=936
-I=0000059 |   |   ...hMin=720
-I=0000059 |   |   ...wWanted=936
-I=0000059 |   |   ...hWanted=720
-I=0000059 |   |   All video modes available
-I=0000059 |   |   Setting software video mode
-I=0000062 |   \---DONE
-I=0000062 |   Initializing audio
-I=0000373 |   Creating console
-I=0000373 \---DONE
-I=0000374 RP::initialize() | Initializing program
-I=0000374 |   Mapping font glyphs
-I=0000374 |   Creating game consoles
-I=0000374 |   CProgram() | Creating CProgram
-I=0000374 |   |   Initializing input domains and commands
-I=0000374 |   |   Loading inline colors
-I=0000374 |   \---DONE
-I=0000374 |   Creating top-level consoles
-I=0000374 |   ...CPaint
-I=0000375 |   Loading palette: Palette
-I=0000376 |   ...CBrowse
-I=0000376 |   ...CCanvas
-I=0000377 |   ...CPicker
-I=0000377 |   ...CFilename
-I=0000377 |   ...CResize
-I=0000377 |   ...CConfirm
-I=0000377 |   ...COptions
-I=0000377 |   ...CCommands
-I=0000378 |   ...CMessage
-I=0000378 |   ...CMessage 2
-I=0000378 \---DONE
-I=0000378 Starting REX loop
-I=0000378 Http::newsCheck() | Checking version and retrieving news
-I=0000378 |   Resolving address...
-I=0000384 |   Connecting...
-I=0000440 |   Sending content...
-I=0000440 |   Waiting for ACK...
-I=0000996 |   Got 372 bytes: HTTP/1.1 200 OK
-Date: Wed, 23 Feb 2022 22:59:22 GMT
+I=0000021 |   Importing icon
+E=0000021 |   REX_Init() | Application icon "rex/icon.png" not found, this program may not be installed correctly!
+I=0000021 |   Confirmed resource initialization
+I=0000021 |   Loading colors
+I=0000021 |   Initializing font type data
+I=0000021 |   Mapping standard ASCII values
+I=0000021 |   Loading fonts
+I=0000022 |   |   [font set: CP437 12x12]
+I=0000026 |   |   ...cp437_12x12.png
+I=0000027 |   |   ...cp437_12x12.png
+I=0000027 |   |   [font set: CP437 14x14]
+I=0000032 |   |   ...cp437_14x14.png
+I=0000034 |   |   ...cp437_14x14.png
+I=0000034 |   |   [font set: CP437 16x16]
+I=0000038 |   |   ...cp437_16x16.png
+I=0000041 |   |   ...cp437_16x16.png
+I=0000041 |   |   [font set: CP437 18x18]
+I=0000046 |   |   ...cp437_18x18.png
+I=0000049 |   |   ...cp437_18x18.png
+I=0000049 |   |   [font set ignored: CP437 20x20] (resolution exceeds desktop)
+I=0000049 |   |   [font set: CP437 8x8]
+I=0000052 |   |   ...cp437_8x8.png
+I=0000053 |   |   ...cp437_8x8.png
+I=0000053 |   |   [font set: CP437 10x10]
+I=0000056 |   |   ...cp437_10x10.png
+I=0000058 |   |   ...cp437_10x10.png
+I=0000058 |   \---DONE
+I=0000058 |   Setting video mode
+I=0000058 |   |   Calculating dimensions
+I=0000058 |   |   ...charW=12
+I=0000058 |   |   ...charH=12
+I=0000058 |   |   ...wMin=936
+I=0000058 |   |   ...hMin=720
+I=0000058 |   |   ...wWanted=936
+I=0000058 |   |   ...hWanted=720
+I=0000058 |   |   All video modes available
+I=0000058 |   |   Setting software video mode
+I=0000065 |   \---DONE
+I=0000065 |   Setting video mode
+I=0000065 |   |   Calculating dimensions
+I=0000065 |   |   ...charW=12
+I=0000065 |   |   ...charH=12
+I=0000065 |   |   ...wMin=936
+I=0000065 |   |   ...hMin=720
+I=0000065 |   |   ...wWanted=936
+I=0000065 |   |   ...hWanted=720
+I=0000065 |   |   All video modes available
+I=0000065 |   |   Setting software video mode
+I=0000068 |   \---DONE
+I=0000068 |   Initializing audio
+I=0000354 |   Creating console
+I=0000355 \---DONE
+I=0000355 RP::initialize() | Initializing program
+I=0000355 |   Mapping font glyphs
+I=0000355 |   Creating game consoles
+I=0000356 |   CProgram() | Creating CProgram
+I=0000356 |   |   Initializing input domains and commands
+I=0000356 |   |   Loading inline colors
+I=0000356 |   \---DONE
+I=0000356 |   Creating top-level consoles
+I=0000356 |   ...CPaint
+I=0000356 |   Loading palette: Palette
+I=0000358 |   ...CBrowse
+I=0000358 |   ...CCanvas
+I=0000358 |   ...CPicker
+I=0000359 |   ...CFilename
+I=0000359 |   ...CResize
+I=0000359 |   ...CConfirm
+I=0000359 |   ...COptions
+I=0000359 |   ...CCommands
+I=0000359 |   ...CMessage
+I=0000359 |   ...CMessage 2
+I=0000359 \---DONE
+I=0000359 
+I=0000359 Http::newsCheck() | Checking version and retrieving newsStarting REX loop
+I=0000359 |   Resolving address...
+I=0000365 |   Connecting...
+I=0000423 |   Sending content...
+I=0000423 |   Waiting for ACK...
+I=0000503 |   Got 390 bytes: HTTP/1.1 200 OK
+Date: Fri, 29 Apr 2022 18:51:42 GMT
 Server: Apache
 Upgrade: h2,h2c
 Connection: Upgrade
 Vary: Accept-Encoding
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
-Content-Length: 112
+Transfer-Encoding: chunked
 Content-Type: text/html; charset=UTF-8
 
-version_v1.60:REXPaint v1.60 is out! See the announcement on Grid Sage Forums for the latest version info.</END>
-I=0000996 |   POST succeeded
-I=0000996 |   Closing socket...
-I=0000996 \---DONE
-I=0013698 Saving config
-I=0013699 exitREXPaint() | Cleaning up program before exit
+70
+version_v1.60:REXPaint v1.60 is out! See the announcement on Grid Sage Forums for the latest version info.</END>
+0
+
+
+I=0000503 |   POST succeeded
+I=0000503 |   Closing socket...
+I=0000504 \---DONE
+I=0008613 Saving config
+I=0008614 exitREXPaint() | Cleaning up program before exit

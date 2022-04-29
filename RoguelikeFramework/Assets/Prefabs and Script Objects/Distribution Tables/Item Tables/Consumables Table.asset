@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Consumables Table
   m_EditorClassIdentifier: 
   type: 8
-  items: []
+  items:
+  - {fileID: 2027390015365816414, guid: aa92152be24cb5c4083e2c367b182741, type: 3}
   minRarity: 0
   maxRarity: 0
   elevationOptions:

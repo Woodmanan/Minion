@@ -88,8 +88,14 @@ public class Room : ScriptableObject
     {
         for (int attempt = 0; attempt < 100; attempt++)
         {
-            Vector2Int spot = new Vector2Int(Random.Range(start.x, end.x), Random.Range(start.y, end.y));
-            if (map[spot.x, spot.y] == type)
+            Vector2Int spot = new Vector2Int(Random.Range(start.x + 1, end.x - 1), Random.Range(start.y + 1, end.y - 1));
+            int wallCount = 0;
+            if (map[spot.x+1, spot.y] != type) wallCount++;
+            if (map[spot.x, spot.y+1] != type) wallCount++;
+            if (map[spot.x-1, spot.y] != type) wallCount++;
+            if (map[spot.x, spot.y-1] != type) wallCount++;
+
+            if (map[spot.x, spot.y] == type && wallCount <= 1)
             {
                 return spot;
             }

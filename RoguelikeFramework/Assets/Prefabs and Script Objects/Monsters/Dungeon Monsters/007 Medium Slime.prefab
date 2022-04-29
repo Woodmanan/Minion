@@ -41,7 +41,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: description
-      value: TWO OF THESE ON SPAWN WHEN YOU KILL MEDIUM SLIME(so 4 in total)
+      value: Oozes are ancient byproducts of an alchemical experiment gone wrong.
+        Usually dark green, sticky, and acidic, oozes pick up the vibrations of creatures
+        around them in order to hunt. After dropping on their prey, they will eat
+        through metals such as weapons or armor in order to nourish themselves on
+        more organic substances such as flesh and blood. Beware oozes that have eaten
+        many lifeforms as their increased size allows them to split, reform, and
+        quickly deal critical damage.
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName
@@ -141,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: 007 Medium Slime
+      value: Small Ooze
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size
