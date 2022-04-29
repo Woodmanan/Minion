@@ -69,13 +69,19 @@ public class AudioManager : MonoBehaviour
                 eventString = "event:/Music/Forest Music";
                 break;
             case 3:
-                eventString = "event:/Music/Level 3 Music";
+                eventString = "event:/Music/Tower Music";
                 break;
             case 4:
                 eventString = "event:/Music/Dungeon Boss Music";
                 break;
+            case 5:
+                eventString = "event:/Music/Dungeon Boss Music";
+                break;
+            case 6:
+                eventString = "event:/Music/Tower Music 2";
+                break;
             default:
-                eventString = "event:/Music/Level 1 Music";
+                eventString = "event:/Music/Dungeon Music";
                 break;
         }
         Music = FMODUnity.RuntimeManager.CreateInstance(eventString);

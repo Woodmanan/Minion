@@ -19,7 +19,14 @@ public class Player : Monster
         {
             if (_player == null)
             {
-                _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+                try
+                {
+                    _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+                }
+                catch
+                {
+                    Debug.LogWarning("Effect chunk called on player before they could be found.");
+                }
             }
             return _player;
         }

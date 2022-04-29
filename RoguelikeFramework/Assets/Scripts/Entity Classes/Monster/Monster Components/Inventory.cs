@@ -399,6 +399,7 @@ public class Inventory : MonoBehaviour
         foreach (Item i in stack.held)
         {
             i.Pickup(monster);
+            LogManager.S.LogPickup(monster.GetFormattedName(), i.GetNameClean(), monster.IsEnemy(monster));
         }
         int newIndex = Add(stack);
         onFloor.RemoveAt(index);
