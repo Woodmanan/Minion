@@ -41,6 +41,8 @@ public class PathfindAction : GameAction
             }
             firstTurn = false;
 
+            yield return new WaitForSeconds(.05f);
+
             yield return GameAction.StateCheck;
         }
     }

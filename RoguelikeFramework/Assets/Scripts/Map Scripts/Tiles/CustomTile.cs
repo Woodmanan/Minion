@@ -35,6 +35,7 @@ public class CustomTile : MonoBehaviour
     private ItemVisiblity itemVis;
 
     [HideInInspector] public SpriteRenderer render;
+    SpriteRenderer backGroundRender;
 
     public event Action<Monster> MonsterEntered;
 
@@ -74,6 +75,12 @@ public class CustomTile : MonoBehaviour
         //Set up initial visibility
         itemVis = GetComponent<ItemVisiblity>();
         itemVis.Setup();
+
+        if (transform.childCount > 0)
+        {
+
+            backGroundRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        }
 
         RebuildGraphics();
         this.enabled = false;
@@ -160,9 +167,18 @@ public class CustomTile : MonoBehaviour
                 render.sortingOrder = 200 + (200 - location.y);
             }
             render.color = litColor;
+            if (backGroundRender)
+            {
+                backGroundRender.color = litColor;
+            }
+
             if (render.enabled == false)
             {
                 render.enabled = true;
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = true;
+                }
             }
             currentlyStanding?.SetGraphics(true);
         }
@@ -173,8 +189,15 @@ public class CustomTile : MonoBehaviour
             if (!isHidden)
             {
                 render.enabled = true;
+                
                 float gray = color.grayscale / 2;
                 render.color = new Color(gray, gray, gray, 1.0f);
+
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = true;
+                    backGroundRender.color = new Color(gray, gray, gray, 1.0f);
+                }
             }
             else
             {
@@ -183,7 +206,13 @@ public class CustomTile : MonoBehaviour
                     Debug.LogError("Someone didn't do something right!", this);
                 }
                 render.enabled = false;
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = false;
+                    backGroundRender.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                }
                 render.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                
             }
             currentlyStanding?.SetGraphics(false);
 

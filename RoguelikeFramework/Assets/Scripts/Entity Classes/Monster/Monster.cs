@@ -188,6 +188,7 @@ public class Monster : MonoBehaviour
         return true;
     }
 
+    
     private void Damage(int damage, DamageType type, DamageSource source, string message = "{name} take%s{|s} {damage} damage")
     {
         connections.OnTakeDamage.BlendInvoke(other?.OnTakeDamage, ref damage, ref type, ref source);
@@ -195,7 +196,7 @@ public class Monster : MonoBehaviour
         
         //Loggingstuff
         string toPrint = FormatStringForName(message).Replace("{damage}", $"{damage}");
-        Debug.Log($"Console print: {toPrint}");
+        //Debug.Log($"Console print: {toPrint}");
 
         if (resources.health <= 0)
         {
@@ -209,6 +210,10 @@ public class Monster : MonoBehaviour
 
     public void Damage(Monster dealer, int damage, DamageType type, DamageSource source, string message = "{name} take%s{|s} {damage} damage")
     {
+        if (dealer == null)
+        {
+            Debug.LogError("Dealer was null!");
+        }
         dealer?.connections.OnDealDamage.BlendInvoke(dealer.other?.OnDealDamage, ref damage, ref type, ref source);
         Damage(damage, type, source, message);
 

@@ -18,7 +18,7 @@ public class AutoExploreAction : GameAction
         {
             if (caller.view.visibleMonsters.FindAll(x => x.IsEnemy(caller)).Count > 0)
             {
-                Debug.Log("Console: You cannot auto-explore while enemies are in sight.");
+                LogManager.S.Log("You cannot auto-explore while enemies are in sight.");
                 yield break;
             }
 
@@ -46,7 +46,8 @@ public class AutoExploreAction : GameAction
 
             if (goals.Count == 0)
             {
-                Debug.Log("Nothing left to explore!");
+                LogManager.S.Log("There's nothing else to explore!");
+                
                 yield break;
             }
 
@@ -67,7 +68,7 @@ public class AutoExploreAction : GameAction
 
                 if (caller.view.visibleMonsters.FindAll(x => x.IsEnemy(caller)).Count > 0)
                 {
-                    Debug.Log($"Monster came into sight, stopping auto explore!");
+                    LogManager.S.Log($"You stop.");
                     yield break;
                 }
 

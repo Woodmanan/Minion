@@ -29,7 +29,9 @@ public class Combat
 
         foreach (StatusEffect s in stats.applyOnHit)
         {
-            defender.AddEffect(s.Instantiate());
+            Effect e = s.Instantiate();
+            e.credit = attacker;
+            defender.AddEffect(e);
         }
     }
 }
