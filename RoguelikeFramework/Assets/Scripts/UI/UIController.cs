@@ -151,6 +151,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
+            returnCall.Invoke(true);
             RogueUIPanel.ExitAllWindows(); //SWITCH THIS TO UI CONTROLLER WHEN THAT'S IN
         }
     }
@@ -183,6 +184,8 @@ public class UIController : MonoBehaviour
     public void RemoveStatusEffect(Effect effectToRemove)
     {
         statusDisplay.RemoveStatusEffectFromDisplay(effectToRemove);
+        StatusEffectPopupWindow.singleton.effect = null;
+        StatusEffectPopupWindow.singleton.group.alpha = 0;
     }
 
     public void OpenPause()

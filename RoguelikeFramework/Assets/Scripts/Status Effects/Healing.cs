@@ -24,19 +24,19 @@ public class Healing : Effect
     //Create UI piece
     public override EffectDisplayInfo GetDisplayInfo()
     {
-        return null;
+        return new EffectDisplayInfo(1, numTurns > 0 ? $"For {numTurns} more turns" : "Forever");
     }
 
     //Returns the name that will be shown on hovering the UI element
     public override string GetDisplayName()
     {
-        return "You must override this function, if you can see this.";
+        return "Healing";
     }
 
     //Returns the description that will be shown on hovering the UI element
     public override string GetDisplayDescription()
     {
-        return "You must override this function, if you can see this.";
+        return $"You are healing {healthPerTurn} health every turn.";
     }
 
     //Constuctor for the object; use this in code if you're not using the asset version!
@@ -50,7 +50,7 @@ public class Healing : Effect
     //Use this to apply effects or stats immediately, before the next frame
     public override void OnConnection()
     {
-        Step();
+        //Step();
     }
 
     public void Step()

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AOE Ice
   m_EditorClassIdentifier: 
   displayName: Freeze All
-  image: {fileID: -6972642314198601601, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
-  color: {r: 0.09803922, g: 0.6996779, b: 0.78431374, a: 1}
+  image: {fileID: 21300000, guid: 241a79446cdb94ded9f56be9817c0c54, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
   baseTargeting:
     numPoints: 1
     targetingType: 5

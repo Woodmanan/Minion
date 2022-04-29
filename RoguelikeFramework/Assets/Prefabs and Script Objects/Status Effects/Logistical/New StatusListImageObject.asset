@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusSprites:
   - {fileID: 21300000, guid: 9a5c26b98f1494c90894d823a85ba854, type: 3}
+  - {fileID: 8867715788660648214, guid: c860d1e4d76979949b91361a0fc8bd35, type: 3}

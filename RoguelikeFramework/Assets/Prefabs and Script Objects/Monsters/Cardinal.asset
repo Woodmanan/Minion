@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4a36defc4d6614b81b5b638e29111d, type: 3}
-  m_Name: DamageResistance-2203131554PM80
+  m_Script: {fileID: 11500000, guid: 89a9638c9dc3a4d408c07966f43aed51, type: 3}
+  m_Name: Cardinal
   m_EditorClassIdentifier: 
-  statusIcon: {fileID: 0}
-  ReadyToDelete: 0
-  resisted: -1
-  numTurns: 0
-  shavedDamage: 0
-  percentDamage: 10
+  items: []
+  abilities:
+  - {fileID: 11400000, guid: ed3de43c2dc27814aa9d70df594ee414, type: 2}
+  minDepth: 0
+  maxDepth: 0
+  effects:
+    list: []

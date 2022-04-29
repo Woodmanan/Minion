@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6691294963905063014, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
-  m_Color: {r: 0.5377358, g: 0.38250265, b: 0.38250265, a: 1}
+  m_Sprite: {fileID: -633519659517106433, guid: c860d1e4d76979949b91361a0fc8bd35, type: 3}
+  m_Color: {r: 0.7169812, g: 0.5433971, b: 0.3747241, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   elevatesTo: 0
   ID: 5
   stackable: 0
-  color: {r: 0.5377358, g: 0.38250265, b: 0.38250265, a: 1}
+  color: {r: 0.7169812, g: 0.5433971, b: 0.3747241, a: 1}
   location: {x: 0, y: 0}
   held: 0
   name: Padded Armor

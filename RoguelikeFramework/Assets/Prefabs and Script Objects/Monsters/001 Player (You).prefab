@@ -433,6 +433,26 @@ MonoBehaviour:
       damage: []
       applyOnHit:
         list: []
+  - slotName: Ring
+    type: 05000000
+    equipped:
+      id: 0
+      type: 0
+      count: 0
+      held: []
+      position: 0
+      lastUpdated: 0
+    active: 0
+    removable: 1
+    position: 0
+    CanAttackUnarmed: 0
+    unarmedAttack:
+      chanceToHit: 0
+      accuracy: 0
+      piercing: 0
+      damage: []
+      applyOnHit:
+        list: []
 --- !u!114 &3853786310894742761
 MonoBehaviour:
   m_ObjectHideFlags: 0

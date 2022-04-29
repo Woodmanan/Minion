@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Freeze
   description: Freeze all your foes.
-  icon: {fileID: 21300000, guid: 948462b076a70df45b83e2545df79ed6, type: 3}
+  icon: {fileID: 21300000, guid: 241a79446cdb94ded9f56be9817c0c54, type: 3}
   effectsToApply:
     list: []
   abilitiesToApply:

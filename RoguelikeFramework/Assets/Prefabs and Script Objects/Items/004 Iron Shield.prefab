@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3337741813538357974, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
-  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1391229b6ada6b548975eabf074a85a0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   elevatesTo: 0
   ID: 4
   stackable: 0
-  color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+  color: {r: 1, g: 1, b: 1, a: 1}
   location: {x: 0, y: 0}
   held: 0
   name: Iron Shield

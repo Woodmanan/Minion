@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3b57815fd7753436caeb6a1eb3583674, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 5230745000023558068, guid: c860d1e4d76979949b91361a0fc8bd35, type: 3}
+  m_Color: {r: 1, g: 0.48490566, b: 0.48490566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,14 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ce513ce41ec854b8468d6e711882a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rarity: 1
+  rarity: 0
   type: 8
   minDepth: 0
   maxDepth: 4
   elevatesTo: 0
   ID: 9
   stackable: 0
-  color: {r: 1, g: 0, b: 0, a: 1}
+  color: {r: 1, g: 0.48490566, b: 0.48490566, a: 1}
   location: {x: 0, y: 0}
   held: 0
   name: Lesser Potion of Healing

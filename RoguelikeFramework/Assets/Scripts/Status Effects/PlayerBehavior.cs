@@ -67,6 +67,7 @@ public class PlayerBehavior : Effect
         bool bossPresent = false;
         foreach(Monster m in visibleMonsters) {
             MonsterAudio maudio = m.GetComponent<MonsterAudio>();
+            if (maudio == null) continue;
             if(maudio.monsterType == MonsterType.dragon) {
                 bossPresent = true;
                 turnsSinceBoss = 0;
