@@ -15,9 +15,9 @@ MonoBehaviour:
   type: 8
   items:
   - {fileID: 1855169149801219234, guid: 472e5ccff739bfb4681a12fdb494fe89, type: 3}
+  - {fileID: 8334500962773683340, guid: af76211271810454c9ac00c07aa01b8e, type: 3}
+  - {fileID: 2743420509523839256, guid: 7cd00e27871012a4aa201704a118e92f, type: 3}
   - {fileID: 2027390015365816414, guid: aa92152be24cb5c4083e2c367b182741, type: 3}
-  - {fileID: 8334500962773683340, guid: af76211271810454c9ac00c07aa01b8e, type: 3}
-  - {fileID: 8334500962773683340, guid: af76211271810454c9ac00c07aa01b8e, type: 3}
   minRarity: 0
   maxRarity: 0
   elevationOptions:

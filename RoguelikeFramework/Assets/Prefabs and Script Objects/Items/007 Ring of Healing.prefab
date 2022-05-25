@@ -98,8 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 0
   type: 4
-  minDepth: 0
-  maxDepth: 3
+  minDepth: 2
+  maxDepth: 6
   elevatesTo: 0
   ID: 7
   stackable: 0

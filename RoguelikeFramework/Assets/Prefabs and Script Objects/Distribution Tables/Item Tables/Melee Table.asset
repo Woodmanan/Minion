@@ -19,5 +19,4 @@ MonoBehaviour:
   minRarity: 0
   maxRarity: 0
   elevationOptions:
-    list:
-    - heldEffect: {fileID: 11400000, guid: c79ef58ce978861499f2bab8f9d11db4, type: 2}
+    list: []

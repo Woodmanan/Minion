@@ -299,7 +299,5 @@ public class MonsterAI : ActionController
         {
             minRange = slots.Min(x => x.equipped.held[0].ranged.targeting.range);
         }
-
-        Debug.Log("Monster equipped item! Ranged is now " + ranged);
     }
 }

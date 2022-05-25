@@ -28,6 +28,11 @@ public class LootTable : ScriptableObject
     {
         LootTable table = Instantiate(this);
         table.items = items.FindAll(x => x.minDepth <= depth && x.maxDepth >= depth);
+        if (table.items.Count == 0)
+        {
+            Debug.LogError($"{this.name} has no items that spawn at depth {depth}! Please fix!");
+            return null;
+        }
         if (willElevate)
         {
             table.minRarity = table.items.Min(x => x.rarity);

@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 9b20948d14a6c8c498bc296d41751185, type: 2}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: maxDepth
-      value: 30
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: minDepth
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: uniqueID

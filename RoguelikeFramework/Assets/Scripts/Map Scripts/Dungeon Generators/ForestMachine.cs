@@ -19,8 +19,6 @@ public class ForestMachine : Machine
             }
         }
 
-        PrintMap(map);
-
         for (int r = 0; r < numRounds; r++)
         {
             bool[,] newMap = new bool[size.x, size.y];
@@ -48,7 +46,6 @@ public class ForestMachine : Machine
             }
 
             map = newMap;
-            PrintMap(map);
         }
 
         //Map
@@ -72,8 +69,6 @@ public class ForestMachine : Machine
                 }
             }
         }
-
-        Debug.Log($"Identified {c} clusters on the map. The max was {max_ind}, with count {max}");
 
         for (int i = 0; i < map.GetLength(0); i++)
         {

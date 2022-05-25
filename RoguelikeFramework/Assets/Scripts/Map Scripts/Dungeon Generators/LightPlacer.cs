@@ -32,7 +32,6 @@ public class LightPlacer : Machine
 
         //Shuffle!
         roomsToConnect = roomsToConnect.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
-        UnityEngine.Debug.Log("shuffled");
         //Place Lights
         foreach (int i in roomsToConnect)
         {

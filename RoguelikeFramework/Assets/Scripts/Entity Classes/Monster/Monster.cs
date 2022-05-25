@@ -361,11 +361,8 @@ public class Monster : MonoBehaviour
 
     public void StartTurn()
     {
-        Debug.Log($"Monster is starting turn. Sanity check, I am setup: {setup}", this);
         CallRegenerateStats();
-        Debug.Log("Regened stats sucessfully", this);
         abilities?.CheckAvailability();
-        Debug.Log("Monster checked availability sucessfully", this);
         connections.OnTurnStartLocal.BlendInvoke(other?.OnTurnStartLocal);
     }
 

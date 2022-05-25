@@ -91,4 +91,4 @@ MonoBehaviour:
   effects:
     list: []
   minHPPercent: 0.5
-  mergeInto: {fileID: 2776638571021120720, guid: c761ccf99debc944fb65897b5603851a, type: 3}
+  mergeInto: {fileID: 2776638571021120720, guid: 4eb70835d7995374a85210a5bf9588c3, type: 3}

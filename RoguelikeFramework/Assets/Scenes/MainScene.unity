@@ -8871,7 +8871,7 @@ MonoBehaviour:
     JIT: 0
     finished: 0
   - name: Level 2
-    depth: 1
+    depth: 2
     seed: 0
     bounds: {x: 50, y: 50}
     machines:
@@ -8894,7 +8894,7 @@ MonoBehaviour:
     JIT: 0
     finished: 0
   - name: Level 3
-    depth: 1
+    depth: 3
     seed: 0
     bounds: {x: 50, y: 50}
     machines:
@@ -8917,7 +8917,7 @@ MonoBehaviour:
     JIT: 0
     finished: 0
   - name: Level 4
-    depth: 1
+    depth: 4
     seed: 0
     bounds: {x: 50, y: 50}
     machines:
@@ -8933,12 +8933,12 @@ MonoBehaviour:
       dice: 5
     availableMonsters: {fileID: 11400000, guid: c083bb6c4c4307340887537b8744d336, type: 2}
     numMonsters:
-      rolls: 2
-      dice: 1
+      rolls: 0
+      dice: 0
     JIT: 0
     finished: 0
   - name: Level 5
-    depth: 1
+    depth: 5
     seed: 0
     bounds: {x: 50, y: 50}
     machines:
@@ -8960,7 +8960,7 @@ MonoBehaviour:
     JIT: 0
     finished: 0
   - name: Level 6
-    depth: 1
+    depth: 6
     seed: 0
     bounds: {x: 60, y: 60}
     machines:
@@ -8981,7 +8981,7 @@ MonoBehaviour:
     JIT: 0
     finished: 0
   - name: Level 7
-    depth: 1
+    depth: 7
     seed: 0
     bounds: {x: 70, y: 70}
     machines:
@@ -9002,7 +9002,7 @@ MonoBehaviour:
     JIT: 0
     finished: 0
   - name: Level 8
-    depth: 1
+    depth: 8
     seed: 0
     bounds: {x: 50, y: 50}
     machines:

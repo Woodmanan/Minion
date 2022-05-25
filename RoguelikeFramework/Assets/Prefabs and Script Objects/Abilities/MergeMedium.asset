@@ -41,6 +41,7 @@ MonoBehaviour:
       health: 0
       mana: 0
       stamina: 0
+      xp: 0
     cooldown: 0
     power: 0
   castQuery:
@@ -81,6 +82,7 @@ MonoBehaviour:
       health: 0
       mana: 0
       stamina: 0
+      xp: 0
     cooldown: 0
     power: 0
   currentCooldown: 0
@@ -89,4 +91,4 @@ MonoBehaviour:
   effects:
     list: []
   minHPPercent: 0.5
-  mergeInto: {fileID: 2776638571021120720, guid: 612a3366c6c0ac74a836683ff6136eee, type: 3}
+  mergeInto: {fileID: 7692752674940021460, guid: 88a1229cde332f649bdd8b3b60061a81, type: 3}

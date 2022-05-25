@@ -42,7 +42,7 @@ public class MonsterTable : ScriptableObject
 
     public Monster RandomMonsterByDepth(int depth)
     {
-        if (Random.Range(0.0f, 99.99f) > chanceForUnique)
+        if (Random.Range(0.0f, 99.99f) < chanceForUnique)
         {
             return SpawnUniqueMonster(depth);
         }
@@ -76,7 +76,8 @@ public class MonsterTable : ScriptableObject
         List<Monster> toSpawn = monsters.FindAll(x => x.minDepth <= depth && x.maxDepth >= depth);
         if (toSpawn.Count == 0)
         {
-            Debug.LogError("Table can't spawn any monsters at depth! Returning null for a retry");
+            Debug.LogError($"{this.name} can't spawn any monsters at depth {depth}! Returning null for a retry.");
+            Debug.LogError($"Did we claim to contain it? {containedDepths.Contains(depth)}");
             return null;
         }
         else
