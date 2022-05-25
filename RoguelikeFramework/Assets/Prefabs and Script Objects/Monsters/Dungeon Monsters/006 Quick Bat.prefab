@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: ID
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: loadout
@@ -116,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: Quick Bat
+      value: 006 Quick Bat
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size

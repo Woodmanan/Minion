@@ -451,7 +451,6 @@ public class Monster : MonoBehaviour
                 }
             }
 
-
             //Short circuits early!
             while (energy > 0 && currentAction.action.MoveNext())
             {

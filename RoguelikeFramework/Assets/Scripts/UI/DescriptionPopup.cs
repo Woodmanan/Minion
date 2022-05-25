@@ -117,22 +117,22 @@ public class DescriptionPopup : MonoBehaviour
 
 
     //Returns 'true' if we touched or hovering on Unity UI element.
-    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaycastResults)
     {
-        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        for (int index = 0; index < eventSystemRaycastResults.Count; index++)
         {
-            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+            RaycastResult curRaysastResult = eventSystemRaycastResults[index];
             if (curRaysastResult.gameObject.layer == UILayer)
                 return true;
         }
         return false;
     }
 
-    private EquipmentGUIPanel GetPanel(List<RaycastResult> eventSystemRaysastResults)
+    private EquipmentGUIPanel GetPanel(List<RaycastResult> eventSystemRaycastResults)
     {
-        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        for (int index = 0; index < eventSystemRaycastResults.Count; index++)
         {
-            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+            RaycastResult curRaysastResult = eventSystemRaycastResults[index];
             Transform trans = curRaysastResult.gameObject.transform;
             while (trans.parent != null)
             {
@@ -152,8 +152,8 @@ public class DescriptionPopup : MonoBehaviour
     {
         PointerEventData eventData = new PointerEventData(EventSystem.current);
         eventData.position = Input.mousePosition;
-        List<RaycastResult> raysastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, raysastResults);
-        return raysastResults;
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+        return raycastResults;
     }
 }

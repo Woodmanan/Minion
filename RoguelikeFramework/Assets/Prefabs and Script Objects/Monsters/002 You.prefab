@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: -7138461436767079773}
   - component: {fileID: 6234439986996691870}
   m_Layer: 0
-  m_Name: 002 Player (You)
+  m_Name: 002 You
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
     mana: 0
     stamina: 0
     xp: 0
-  displayName: Player (You)
+  displayName: You
   nameRequiresPluralVerbs: 1
   faction: 2
   ID: 2
@@ -238,8 +238,7 @@ MonoBehaviour:
   description: You. Don't get too attached.
   uniqueID: pbjhmvvb
   dangerLevel: 2
-  testRoom: {fileID: 0}
-  uiControls: {fileID: 0}
+  NewItemInSight: {fileID: 0}
 --- !u!114 &3853786310894742757
 MonoBehaviour:
   m_ObjectHideFlags: 0

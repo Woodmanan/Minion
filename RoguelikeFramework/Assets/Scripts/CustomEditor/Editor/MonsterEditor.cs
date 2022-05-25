@@ -37,7 +37,7 @@ public class MonsterEditor : Editor
 
         //Begin Upload Process
         WWWForm form = new WWWForm();
-        form.AddField("entry.1322731119", monster.name);
+        form.AddField("entry.1322731119", monster.displayName);
         form.AddField("entry.887831505", monster.description);
         form.AddField("entry.558851800", monster.XPFromKill);
         form.AddField("entry.217620525", monster.baseStats.resources.health);

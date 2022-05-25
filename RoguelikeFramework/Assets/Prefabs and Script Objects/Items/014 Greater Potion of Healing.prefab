@@ -113,6 +113,7 @@ MonoBehaviour:
   CanTarget: 0
   CanMelee: 0
   CanRanged: 0
+  seen: 0
   effects:
     list: []
   optionalEffects:

@@ -7,10 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : Monster
 {
-    public RexRoom testRoom;
-
-    //UI Stuff!
-    //[SerializeField] UIController uiControls;
     [HideInInspector] public Item NewItemInSight = null;
 
     private static Monster _player;
