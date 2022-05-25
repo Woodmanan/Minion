@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: ID
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: loadout
@@ -17,35 +17,34 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 15f97d19619ce4b4e85faa3b51e14151, type: 2}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: maxDepth
-      value: 4
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: minDepth
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: uniqueID
-      value: scarecrw
+      value: quickbat
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: XPFromKill
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: description
-      value: 'The mission from the king seemed simple: kill the Archmage Mayhet who
-        was recently spotted in the farming village of Hethrow. As we moved through
-        the cornfields towards his cottage, our torches cast long shadows over hundreds
-        of lifelike scarecrows whose eyes reflected the dark red of our fires. We
-        barely made it halfway before the mayhem began. The scarecrows darted in
-        and out of our ranks, dragging hardened men away as they screamed. The ranks
-        broke, and I ran. When one of the demonic creatures jumped on me, I instinctively
-        lunged with my torch. It burned in moments, red lights streaming away from
-        its body. Of over a hundred men, I was the lone survivor.'
+      value: "Quick bats are a delicious and common cuisine for villagers near the
+        Spine. Newcomers are often surprised to find chimney-like structures scattered
+        throughout the landscape. During the day, villagers will cap the structure
+        and start a fire at the base for a meal of several roasted bats. Newcomers
+        are equally surprised to find during lean times, villagers will not even
+        approach the structures. Only the bones are found for those stupid enough
+        to try. The saying goes, \u201CThe only thing faster than death and more
+        desperate than men are hungry quick bats.\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName
-      value: Scarecrow
+      value: Quick Bat
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.ac
@@ -57,19 +56,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: visionRadius
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: energyPerStep
-      value: 200
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.resources.mana
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.resources.health
-      value: 130
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_RootOrder
@@ -117,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: Scarecrow
+      value: Quick Bat
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size
@@ -125,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].slotName
-      value: Primary Hand
+      value: Head
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[2].slotName
@@ -141,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].CanAttackUnarmed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[0].type.Array.data[0]
@@ -149,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].type.Array.data[0]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[2].type.Array.data[0]
@@ -173,19 +172,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[0].unarmedAttack.damage.Array.data[0].type
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].unarmedAttack.damage.Array.data[0].type
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[2].unarmedAttack.damage.Array.data[0].type
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[0].unarmedAttack.damage.Array.data[0].damage.dice
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].unarmedAttack.damage.Array.data[0].damage.dice
@@ -194,10 +189,6 @@ PrefabInstance:
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[2].unarmedAttack.damage.Array.data[0].damage.dice
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[0].unarmedAttack.damage.Array.data[0].damage.rolls
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].unarmedAttack.damage.Array.data[0].damage.rolls
@@ -214,7 +205,7 @@ PrefabInstance:
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cd8a89a087ab46c4fa5475107e079c72, type: 3}
+      objectReference: {fileID: 21300000, guid: 3b57815fd7753436caeb6a1eb3583674, type: 3}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -330,4 +321,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555562d95ebe24876807599452bb82a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterType: 6
+  monsterType: 4

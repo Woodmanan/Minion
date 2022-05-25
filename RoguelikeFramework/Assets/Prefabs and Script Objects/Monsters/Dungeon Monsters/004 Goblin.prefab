@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: ID
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: loadout
@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 15f97d19619ce4b4e85faa3b51e14151, type: 2}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: maxDepth
-      value: 30
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: minDepth
@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: uniqueID
-      value: quickbat
+      value: kufnualu
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: XPFromKill
@@ -33,22 +33,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: description
-      value: "Quick bats are a delicious and common cuisine for villagers near the
-        Spine. Newcomers are often surprised to find chimney-like structures scattered
-        throughout the landscape. During the day, villagers will cap the structure
-        and start a fire at the base for a meal of several roasted bats. Newcomers
-        are equally surprised to find during lean times, villagers will not even
-        approach the structures. Only the bones are found for those stupid enough
-        to try. The saying goes, \u201CThe only thing faster than death and more
-        desperate than men are hungry quick bats.\u201D"
+      value: The dream of every goblin warrior is to kill and plunder. In reality,
+        most other monsters refer to them as the green rats and cook them up when
+        bored. While usually easy to eliminate, goblin warriors rally when led by
+        a goblin warlord. They will jump onto backs, stab knees, and even sacrifice
+        themselves just to overwhelm and kill their victims.
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: displayName
-      value: Quick Bat
+      value: Goblin
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.ac
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.ev
@@ -60,15 +57,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: energyPerStep
-      value: 65
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.resources.mana
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: baseStats.resources.health
-      value: 25
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511624763293797808, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
+      propertyPath: baseStats.resources.stamina
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797809, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_RootOrder
@@ -116,11 +117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797811, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Name
-      value: Quick Bat
+      value: Goblin
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].slotName
@@ -140,10 +141,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].CanAttackUnarmed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[0].type.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
@@ -171,10 +168,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
-      propertyPath: equipmentSlots.Array.data[0].unarmedAttack.damage.Array.data[0].type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511624763293797812, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: equipmentSlots.Array.data[1].unarmedAttack.damage.Array.data[0].type
       value: 1
       objectReference: {fileID: 0}
@@ -200,12 +193,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3b57815fd7753436caeb6a1eb3583674, type: 3}
+      objectReference: {fileID: 21300000, guid: 3a99842d8eecb4fee9c2b89d9a9a0e4f, type: 3}
     - target: {fileID: 6511624763293797814, guid: 9d81075f6b0f44940be7ff465e57b40e, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -321,4 +314,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555562d95ebe24876807599452bb82a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterType: 4
+  monsterType: 2
+--- !u!114 &952671071848389285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120000928203310964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6557da2e6d9c0484faeecc72970fbf87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAnimTime: 3
+  deathAnimTime: 0.6
+  attackAnimTime: 2
+  shakeIntensity: 1

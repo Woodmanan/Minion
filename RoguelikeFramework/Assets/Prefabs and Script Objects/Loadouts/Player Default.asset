@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 8807692175375108180, guid: 5bb814d95e406d34899df12272a0d667, type: 3}
-  abilities:
-  - {fileID: 11400000, guid: 1a31a4017897a3a49852c2465a4f2efa, type: 2}
+  abilities: []
   minDepth: 0
   maxDepth: 0
   effects:

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3007021209556738296
+--- !u!1 &2743420509523839269
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 386630655389938709}
-  - component: {fileID: 6984581491827261282}
-  - component: {fileID: 4927039692828745984}
-  - component: {fileID: 2652313710801554027}
+  - component: {fileID: 2743420509523839262}
+  - component: {fileID: 2743420509523839257}
+  - component: {fileID: 2743420509523839256}
+  - component: {fileID: 2743420509523839274}
   m_Layer: 0
-  m_Name: Chain
+  m_Name: 012 Medium Potion of Healing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &386630655389938709
+--- !u!4 &2743420509523839262
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3007021209556738296}
+  m_GameObject: {fileID: 2743420509523839269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6984581491827261282
+--- !u!212 &2743420509523839257
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3007021209556738296}
+  m_GameObject: {fileID: 2743420509523839269}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -633519659517106433, guid: c860d1e4d76979949b91361a0fc8bd35, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 5230745000023558068, guid: c860d1e4d76979949b91361a0fc8bd35, type: 3}
+  m_Color: {r: 1, g: 0.48490566, b: 0.48490566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,30 +84,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4927039692828745984
+--- !u!114 &2743420509523839256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3007021209556738296}
+  m_GameObject: {fileID: 2743420509523839269}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48ce513ce41ec854b8468d6e711882a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rarity: 0
-  type: 4
+  rarity: 1
+  type: 8
   minDepth: 0
   maxDepth: 4
   elevatesTo: 0
-  ID: 5
+  ID: 12
   stackable: 0
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 1, g: 0.48490566, b: 0.48490566, a: 1}
   location: {x: 0, y: 0}
   held: 0
-  name: Padded Armor
-  plural: Padded Armor
+  name: Medium Potion of Healing
+  plural: Medium Potions of Healing
   CanEquip: 0
   CanApply: 0
   CanTarget: 0
@@ -123,31 +123,24 @@ MonoBehaviour:
   equipable: {fileID: 0}
   melee: {fileID: 0}
   ranged: {fileID: 0}
-  uniqueID: chainmal
-  description: 
---- !u!114 &2652313710801554027
+  uniqueID: ysyaqcaa
+  description: A step up from the rudimentary 'lesser' Potions of Healing. The work
+    of Duvike in brewing the first health potions was unprecedented ... for its time.
+    But now, advancements have been made, with stronger and bolder magic infused
+    into every drop of these elixirs. Don't let the name 'Medium' fool you. Lesser
+    is what you need to survive. Medium is what you need to live.
+--- !u!114 &2743420509523839274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3007021209556738296}
+  m_GameObject: {fileID: 2743420509523839269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061029ab2cec2c74693f98a94e2c64cb, type: 3}
+  m_Script: {fileID: 11500000, guid: a4b9c33063ced1c48b947458782fac9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primarySlot: 4
-  secondarySlots: 
-  addedStats:
-    resources:
-      health: 0
-      mana: 0
-      stamina: 0
-      xp: 0
-    ac: 8
-    ev: 0
-  addedEffects:
-    list: []
-  isEquipped: 0
-  removable: 1
+  effectsToApply:
+    list:
+    - heldEffect: {fileID: 11400000, guid: 58767173dbdad654d9b368744b65bb62, type: 2}

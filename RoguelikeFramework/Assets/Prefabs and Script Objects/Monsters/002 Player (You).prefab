@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: -7138461436767079773}
   - component: {fileID: 6234439986996691870}
   m_Layer: 0
-  m_Name: 001 Player (You)
+  m_Name: 002 Player (You)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   displayName: Player (You)
   nameRequiresPluralVerbs: 1
   faction: 2
-  ID: 1
+  ID: 2
   minDepth: 0
   maxDepth: 0
   energy: 0
@@ -235,7 +235,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   XPFromKill: 0
   level: 1
-  description: 
+  description: You. Don't get too attached.
   uniqueID: pbjhmvvb
   dangerLevel: 2
   testRoom: {fileID: 0}
@@ -366,7 +366,7 @@ MonoBehaviour:
       applyOnHit:
         list: []
   - slotName: Primary Hand
-    type: 0200000003000000
+    type: 02000000
     equipped:
       id: 0
       type: 0
