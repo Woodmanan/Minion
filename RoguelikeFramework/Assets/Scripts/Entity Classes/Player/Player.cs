@@ -10,7 +10,8 @@ public class Player : Monster
     public RexRoom testRoom;
 
     //UI Stuff!
-    [SerializeField] UIController uiControls;
+    //[SerializeField] UIController uiControls;
+    [HideInInspector] public Item NewItemInSight = null;
 
     private static Monster _player;
     public static Monster player
@@ -55,6 +56,17 @@ public class Player : Monster
     public override void UpdateLOS()
     {
         view = LOS.GeneratePlayerLOS(Map.current, location, visionRadius);
+        NewItemInSight = null;
+        foreach (Item i in view.visibleItems)
+        {
+            if (i.seen == false)
+            {
+                i.seen = true;
+                LogManager.S.Log("You see a " + i.GetName() + ".");
+                NewItemInSight = i;
+            }
+        }
+
     }
  
     public override int XPTillNextLevel()

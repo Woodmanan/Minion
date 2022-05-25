@@ -145,7 +145,6 @@ public class AudioManager : MonoBehaviour
     }
 
     public void HealthUp(float totalHealth, float healthAdded) {
-        Debug.Log(totalHealth + " and adding " + healthAdded);
         FMOD.Studio.EventInstance healthUp = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Health Up");
         healthUp.setParameterByName("Health", totalHealth);
         healthUp.setParameterByName("healthAdded", healthAdded);

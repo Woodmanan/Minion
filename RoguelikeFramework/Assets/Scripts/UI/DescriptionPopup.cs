@@ -136,7 +136,6 @@ public class DescriptionPopup : MonoBehaviour
             Transform trans = curRaysastResult.gameObject.transform;
             while (trans.parent != null)
             {
-                Debug.Log("Examing " + trans.name + " : " + trans.tag);
                 if (trans.tag.Equals("EquipBox"))
                 {
                     return trans.GetComponent<EquipmentGUIPanel>();

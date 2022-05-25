@@ -80,10 +80,6 @@ public class Ability : ScriptableObject
     //TODO: Set this up in a nice way
     public void RegenerateStats(Monster m)
     {
-        Debug.Log($"Regenerating ability stats for {this.displayName} attached to {m.displayName}", m);
-        Debug.Log($"What the fuck is null? Targetting {baseTargeting == null} or stats {baseStats == null} or connections {connections == null} or monster connections {m.connections == null}");
-
-        //I am losing my fucking mind
         targeting = baseTargeting.ShallowCopy();
         stats = baseStats;
         Ability ability = this;

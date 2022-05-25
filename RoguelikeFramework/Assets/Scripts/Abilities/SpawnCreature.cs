@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New SpawnCreature", menuName = "Abilities/SpawnCreature", order = 1)]
 public class SpawnCreature : Ability
 {
-    private List<Vector2Int> splitPositionCanidates;
+    private List<Vector2Int> splitPositionCanidates = new List<Vector2Int>();
     public GameObject toSpawn;
     public int numSpawned = 1;
 

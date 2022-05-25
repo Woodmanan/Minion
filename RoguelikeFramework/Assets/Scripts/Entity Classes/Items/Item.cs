@@ -33,11 +33,14 @@ public class Item : MonoBehaviour
     [HideInInspector] public bool CanMelee;
     [HideInInspector] public bool CanRanged;
 
+    [HideInInspector] public bool seen = false;
+
     public Connections connections = new Connections();
     [HideInInspector] List<Effect> attachedEffects = new List<Effect>();
 
     public StatusEffectList effects = new StatusEffectList();
     public StatusEffectList optionalEffects = new StatusEffectList();
+
 
     //needs to be manually set
     public SFXItemType sfxType;
@@ -161,8 +164,15 @@ public class Item : MonoBehaviour
 
     public void SetGrayscale()
     {
-        float gray = color.grayscale;
-        render.color = new Color(gray, gray, gray);
+        if (color == Color.white)
+        {
+            render.color = new Color(.3f, .3f, .3f);
+        }
+        else
+        {
+            float gray = color.grayscale;
+            render.color = new Color(gray, gray, gray);
+        }
     }
 
     public void SetFullColor()
