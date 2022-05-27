@@ -156,10 +156,17 @@ public class Monster : MonoBehaviour
     {
         connections.OnHealing.BlendInvoke(other?.OnHealing, ref healthReturned);
 
+        //Healing has no actual effect (and therefore no display) if you didn't actually heal
+        if (resources.health == stats.resources.health)
+        {
+            return;
+        }
+
         if (healthReturned > 0) //Negative health healing is currently just ignored, for clarity's sake
         {
             resources.health += healthReturned;
         }
+
         if (resources.health >= stats.resources.health)
         {
             resources.health = stats.resources.health;

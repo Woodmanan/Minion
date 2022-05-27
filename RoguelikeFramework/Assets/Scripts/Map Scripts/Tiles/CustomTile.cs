@@ -79,13 +79,21 @@ public class CustomTile : MonoBehaviour
 
         if (transform.childCount > 0)
         {
-
             backGroundRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
         }
 
         RebuildGraphics();
         this.enabled = false;
         setup = true;
+
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (movementCost == 0)
+        {
+            Debug.LogError($"{this.name} cannot have cost of 0! This breaks an important precondition of pathfinding.");
+            Debug.LogError("This has temporarily been fixed to prevent a freeze, but will NOT be corrected in a build. FIX NOW.");
+            movementCost = 1;
+        }
+        #endif
     }
 
     public void Reveal()

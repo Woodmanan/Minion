@@ -53,7 +53,7 @@ public class AutoExploreAction : GameAction
                 yield break;
             }
 
-            Path path = Pathfinding.CreateDjikstraPath(caller.location, goals.ToArray());
+            Path path = Pathfinding.CreateDjikstraPath(caller.location, goals);
 
             if (path.Count() == 0)
             {

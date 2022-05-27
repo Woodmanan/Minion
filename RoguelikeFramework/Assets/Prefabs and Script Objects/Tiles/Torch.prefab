@@ -189,7 +189,7 @@ MonoBehaviour:
   lightSourceColor: {r: 1, g: 0.7568628, b: 0.22352943, a: 1}
   name: 
   description: 
-  movementCost: 0
+  movementCost: 1
   blocksVision: 0
   color: {r: 1, g: 0.8364166, b: 0.22075468, a: 1}
   currentlyStanding: {fileID: 0}
