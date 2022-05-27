@@ -63,7 +63,6 @@ public class AutoExploreAction : GameAction
 
             while (path.Count() > 0)
             {
-                LogManager.S.Log("Taking step!");
                 Vector2Int next = path.Pop();
                 MoveAction act = new MoveAction(next, true, false);
 
@@ -78,7 +77,6 @@ public class AutoExploreAction : GameAction
                 //Copied to try and get ahead of the wait check.
                 if (caller.view.visibleMonsters.FindAll(x => x.IsEnemy(caller)).Count > 0)
                 {
-                    Debug.Log("Quitting in inner loop");
                     LogManager.S.Log($"You see a " + caller.view.visibleMonsters.FindAll(x => x.IsEnemy(caller))[0].displayName + " and stop.");
                     yield break;
                 }
