@@ -21,7 +21,8 @@ public class WinPanel : MonoBehaviour
     public void GoToMainMenu()
     {
         AudioManager.i.Level = 0;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene(0);
     }
 
     public void GoToFeedback()
