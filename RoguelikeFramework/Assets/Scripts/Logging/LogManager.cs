@@ -13,11 +13,17 @@ public class LogManager : MonoBehaviour
     [SerializeField]
     private GameObject loggerWindow;
     [SerializeField]
-    private Transform loggerWindowContentArea;
+    private RectTransform loggerWindowContentArea;
     [SerializeField]
     private int maximumNumMessages = 50;
     [SerializeField]
     private Transform worldCanvas;
+
+    [SerializeField]
+    private int numMessagesShown = 6;
+    [SerializeField]
+    private RectTransform viewport;
+    private VerticalLayoutGroup layout;
 
     [Header("Non-Scene Objects")]
     [SerializeField]
@@ -60,6 +66,8 @@ public class LogManager : MonoBehaviour
         damageDealtHighlightColorHexString = ColorUtility.ToHtmlStringRGB(damageDealtHighlightColor);
         damageTakenHighlightColorHexString = ColorUtility.ToHtmlStringRGB(damageTakenHighlightColor);
         critTakenHighlightColorHexString = ColorUtility.ToHtmlStringRGB(critTakenHighlightColor);
+
+        layout = loggerWindowContentArea.GetComponent<VerticalLayoutGroup>();
     }
 
     /// <summary>
@@ -68,22 +76,33 @@ public class LogManager : MonoBehaviour
     /// <param name="msg">The message to send to the console.</param>
     public void Log(string msg)
     {
+        GameObject messageObj = null;
         // Retrieve and delete the oldest message if we are over the maximum number of messages we should display
         if (logs.Count > maximumNumMessages)
         {
             GameObject oldestMessage = logs[0];
             logs.Remove(oldestMessage);
-            Destroy(oldestMessage);
+            messageObj = oldestMessage;
             //logs.RemoveRange(0, logs.Count - 50);
         }
 
+
         // Create a new message object and set its text
-        GameObject messageObj = Instantiate(messagePrefab, loggerWindowContentArea);
+        if (messageObj == null)
+        {
+            messageObj = Instantiate(messagePrefab, loggerWindowContentArea);
+        }
+        else
+        {
+            messageObj.transform.SetAsLastSibling();
+        }
+
         messageObj.GetComponent<MessageControl>().SetMessageText(msg);
+        messageObj.GetComponent<LayoutElement>().minHeight = ((viewport.rect.height - layout.padding.vertical + layout.spacing) / numMessagesShown) - layout.spacing;
         // Add that message object to the log
         logs.Add(messageObj);
         // Tell the logger to forcibly scroll to the bottom of the window.
-        Canvas.ForceUpdateCanvases();
+        //Canvas.ForceUpdateCanvases();
         loggerWindow.GetComponent<ScrollRect>().verticalNormalizedPosition = 0;
     }
 
