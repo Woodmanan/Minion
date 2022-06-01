@@ -216,7 +216,7 @@ MonoBehaviour:
     stamina: 0
     xp: 0
   displayName: You
-  nameRequiresPluralVerbs: 1
+  nameRequiresPluralVerbs: 0
   faction: 2
   ID: 2
   minDepth: 0

@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744d54e8f76fcba4fb8e13fd97bd968a, type: 3}
-  m_Name: Healing-2204291549PM28
+  m_Script: {fileID: 11500000, guid: d63c85582516a464099664d736bf83d3, type: 3}
+  m_Name: Blink-2206011357PM65
   m_EditorClassIdentifier: 
   statusIcon: {fileID: 0}
   displayName: 
   description: 
   ReadyToDelete: 0
   credit: {fileID: 0}
-  numTurns: 10
-  healthPerTurn: 10

@@ -20,3 +20,4 @@ MonoBehaviour:
   effects:
     list:
     - heldEffect: {fileID: 11400000, guid: 1d7d8cc7e85269846ba76a80c77757cc, type: 2}
+    - heldEffect: {fileID: 11400000, guid: 30dc5b4722144a0429a07cec6d28e761, type: 2}

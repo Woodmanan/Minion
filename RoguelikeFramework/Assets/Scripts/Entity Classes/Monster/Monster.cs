@@ -233,7 +233,7 @@ public class Monster : MonoBehaviour
         //Quick hacky fix - Make this always true!
         if (dealer != null)
         {
-            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.GetFormattedName(), GetFormattedName(), "hit", damage, nameRequiresPluralVerbs, IsEnemy(dealer), IsEnemy(this));
+            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.GetFormattedName(), GetFormattedName(), "hit", damage, !nameRequiresPluralVerbs, IsEnemy(dealer), IsEnemy(this));
         }
         LogManager.S.LogFloatingNumber(-damage, transform);
         if (resources.health <= 0)
