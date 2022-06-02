@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 1
   type: 1
-  minDepth: 3
+  minDepth: 5
   maxDepth: 8
   elevatesTo: 1
   ID: 1

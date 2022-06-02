@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class TargetingPanel : RogueUIPanel
 {
@@ -14,6 +15,8 @@ public class TargetingPanel : RogueUIPanel
     [SerializeField] HighlightBlock rangeHighlight;
     [SerializeField] RectTransform targetingIcon;
     HighlightBlock[,] highlights;
+
+    public Monster lastTarget;
 
     BoolDelegate returnCall;
 
@@ -31,8 +34,60 @@ public class TargetingPanel : RogueUIPanel
 
     public bool Setup(Targeting t, BoolDelegate endResult)
     {
+        if (current != t)
+        {
+            lastTarget = null;
+        }
+
         current = t;
         returnCall = endResult;
+        Vector2Int startLocation = Player.player.location;
+
+        //Perform setup and correctness check for last time
+        if (lastTarget != null)
+        {
+            int dist = Mathf.Max(Mathf.Abs(lastTarget.location.x - startLocation.x), Mathf.Abs(lastTarget.location.y - startLocation.y));
+            if (dist > t.range)
+            {
+                lastTarget = null;
+            }
+            else
+            {
+                startLocation = lastTarget.location;
+            }
+        }
+
+        //If this is now true, attempt to determine the best spot
+        if (lastTarget == null && !t.recommendsPlayerTarget)
+        {
+            List<Monster> targets = Player.player.view.visibleMonsters;
+            targets.Remove(Player.player);
+
+            if ((t.tags & TargetTags.RECOMMNEDS_ALLY_TARGET) > 0)
+            {
+                Monster target = targets.Where(x => !x.IsEnemy(Player.player))
+                                 .OrderBy(x => Mathf.Max(Mathf.Abs(x.location.x - startLocation.x), Mathf.Abs(x.location.y - startLocation.y)))
+                                 .FirstOrDefault();
+
+                if (target != null && Mathf.Max(Mathf.Abs(target.location.x - startLocation.x), Mathf.Abs(target.location.y - startLocation.y)) <= t.range)
+                {
+                    startLocation = target.location;
+                }
+            }
+            else
+            {
+                Monster target = targets.Where(x => x.IsEnemy(Player.player))
+                                 .OrderBy(x => Mathf.Max(Mathf.Abs(x.location.x - startLocation.x), Mathf.Abs(x.location.y - startLocation.y)))
+                                 .FirstOrDefault();
+
+                if (target != null && Mathf.Max(Mathf.Abs(target.location.x - startLocation.x), Mathf.Abs(target.location.y - startLocation.y)) <= t.range)
+                {
+                    startLocation = target.location;
+                }
+            }
+        }
+        
+
         //current = t.Initialize();
         if (current.BeginTargetting(Player.player.location, LOS.lastCall))
         {
@@ -59,6 +114,8 @@ public class TargetingPanel : RogueUIPanel
                     highlights[i, j].Hide();
                 }
             }
+
+            current.MoveTarget(startLocation);
             return true;
         }
         else
@@ -195,6 +252,9 @@ public class TargetingPanel : RogueUIPanel
                         UIController.singleton.OpenConfirmation("<color=\"black\">Are you sure you want to target yourself?", (b) => ReturnConfirmed(b)); //DELEGATE MAGICCCC
                         break;
                     }
+
+                    CustomTile tile = Map.current.GetTile(current.points[0]);
+                    lastTarget = tile.currentlyStanding;
 
                     ReturnConfirmed(true);
                 }

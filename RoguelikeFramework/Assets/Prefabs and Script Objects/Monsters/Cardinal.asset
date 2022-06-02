@@ -18,4 +18,5 @@ MonoBehaviour:
   minDepth: 0
   maxDepth: 0
   effects:
-    list: []
+    list:
+    - heldEffect: {fileID: 11400000, guid: b9536df8995df124e9e3cc5edc952880, type: 2}
