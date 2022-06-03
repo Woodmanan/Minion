@@ -25,6 +25,8 @@ public class GCSLogo : MonoBehaviour
 
     public float snapTime = 1f;
 
+    public float holdDelay = 1f;
+
     [Header("Text Controls")]
     public float TextFadeTime = .5f;
     [SerializeField]
@@ -85,7 +87,7 @@ public class GCSLogo : MonoBehaviour
         col.a = 1;
         textBox.color = col;
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(holdDelay);
 
         MoveToNext();
     }
