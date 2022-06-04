@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 205665888}
   - component: {fileID: 205665887}
   m_Layer: 5
-  m_Name: TextPanel
+  m_Name: TextAndTeamPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1834,7 +1834,7 @@ GameObject:
   - component: {fileID: 847381997}
   - component: {fileID: 847381996}
   m_Layer: 5
-  m_Name: LetterPanel
+  m_Name: GCSLettersPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2370,7 +2370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 953230293}
   m_Layer: 5
-  m_Name: Borders
+  m_Name: PhysicsBorders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4631,10 +4631,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2075537753}
+  - component: {fileID: 2075537755}
   - component: {fileID: 2075537752}
   - component: {fileID: 2075537751}
   - component: {fileID: 2075537750}
-  - component: {fileID: 2075537755}
   - component: {fileID: 2075537754}
   m_Layer: 5
   m_Name: Canvas
@@ -4833,8 +4833,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5634672f52ff84d94edf5252695c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondaryLogo: {fileID: 21300000, guid: 948462b076a70df45b83e2545df79ed6, type: 3}
-  secondaryName: minion team - spring 2022
+  secondaryLogo: {fileID: 0}
+  secondaryName: 
+  matchSplashScreenColor: 0
+  keyToSkip: 32
   logoContainer: {fileID: 847381995}
   initialDelay: 1.5
   startSpeed: 600
@@ -4845,6 +4847,7 @@ MonoBehaviour:
   holdDelay: 1.5
   TextFadeTime: 0.5
   textBox: {fileID: 1643505013}
+  textColor: {r: 0.20784315, g: 0.20784315, b: 0.20784315, a: 0}
   noise: {fileID: 8300000, guid: 0ad8c85f324c33946977d9cf66149967, type: 3}
   waitBeforeShowing: 0
   secondaryLogoImage: {fileID: 262017164}
@@ -4853,5 +4856,3 @@ MonoBehaviour:
   teamLogoContainer: {fileID: 1375469387}
   secondaryTextFadeTime: 0.5
   secondaryTextBox: {fileID: 889058392}
-  matchSplashScreenColor: 0
-  keyToSkip: 32
