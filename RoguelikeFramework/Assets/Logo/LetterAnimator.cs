@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LetterAnimator : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class LetterAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Ensure letter image enabled
+        GetComponent<Image>().enabled = true;
+
         rTransform = transform as RectTransform;
         rigid = GetComponent<Rigidbody2D>();
         Resize();
@@ -35,11 +39,11 @@ public class LetterAnimator : MonoBehaviour
         rTransform.localScale = Vector3.one * (logoSizing.rect.width / 834.8f);
     }
 
-    private void OnValidate()
+    /*private void OnValidate()
     {
         rTransform = transform as RectTransform;
         Resize();
-    }
+    }*/
 
     public void DisableCollider()
     {

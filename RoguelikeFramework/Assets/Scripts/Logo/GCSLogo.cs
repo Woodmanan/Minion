@@ -14,9 +14,10 @@ public class GCSLogo : MonoBehaviour
 {
     [Header("Your team info goes here!")]
     public Sprite secondaryLogo;
-    public Sprite secondaryName;
+    public string secondaryName;
 
     [Header("Logo Pieces Controls")]
+    public RectTransform logoContainer;
     public float initialDelay = 1f;
     public float startSpeed = 100f;
     public float timeBetweenSnaps = .5f;
@@ -27,10 +28,25 @@ public class GCSLogo : MonoBehaviour
 
     public float holdDelay = 1f;
 
-    [Header("Text Controls")]
+    [Header("Main Logo Text Controls")]
     public float TextFadeTime = .5f;
     [SerializeField]
     TextMeshProUGUI textBox;
+
+    [Header("Secondarry Content Noise")]
+    public AudioClip noise;
+
+    [Header("Secondary Logo Controls")]
+    public float waitBeforeShowing;
+    public Image secondaryLogoImage;
+    public float percentOfSpace = 40f;
+    public float secondaryLogoTimeToShow = 1f;
+
+    [Header("Secondary Logo Text Controls")]
+    public RectTransform teamLogoContainer;
+    public float secondaryTextFadeTime = .5f;
+    [SerializeField]
+    TextMeshProUGUI secondaryTextBox;
 
     [Header("Meta controls")]
     public bool matchSplashScreenColor = true;
@@ -57,8 +73,13 @@ public class GCSLogo : MonoBehaviour
     IEnumerator RunAnim()
     {
         Color col = textBox.color;
+
         col.a = 0;
         textBox.color = col;
+        secondaryTextBox.color = col;
+        secondaryLogoImage.color = col;
+        teamLogoContainer.anchorMin = new Vector2(1, teamLogoContainer.anchorMin.y);
+
 
         foreach (LetterAnimator letter in letters)
         {
@@ -86,6 +107,49 @@ public class GCSLogo : MonoBehaviour
 
         col.a = 1;
         textBox.color = col;
+
+        if (secondaryLogo != null || secondaryName.Length > 0)
+        {
+            yield return new WaitForSeconds(waitBeforeShowing);
+        }
+
+        if (secondaryLogo != null)
+        {
+            Color white = Color.white;
+            white.a = 0;
+            //Run logo anim
+            secondaryLogoImage.sprite = secondaryLogo;
+            secondaryLogoImage.GetComponent<AspectRatioFitter>().aspectRatio = secondaryLogo.rect.width / secondaryLogo.rect.height;
+            for (float t = 0; t < secondaryLogoTimeToShow; t += Time.deltaTime)
+            {
+                float p = t / secondaryLogoTimeToShow;
+                logoContainer.anchorMax = new Vector2(1.0f - (percentOfSpace / 100f) * p, logoContainer.anchorMax.y);
+                teamLogoContainer.anchorMin = new Vector2(1.0f - (percentOfSpace / 100f) * p, teamLogoContainer.anchorMin.y);
+                white.a = p;
+                secondaryLogoImage.color = white;
+                yield return null;
+            }
+        }
+
+        if (secondaryLogo != null || secondaryName.Length > 0)
+        {
+            GetComponent<AudioSource>().PlayOneShot(noise);
+        }
+
+            if (secondaryName.Length > 0)
+        {
+            secondaryTextBox.text = secondaryName.ToLower();
+            col.a = 0;
+            for (float t = 0; t < secondaryTextFadeTime; t += Time.deltaTime)
+            {
+                col.a = t / secondaryTextFadeTime;
+                secondaryTextBox.color = col;
+                yield return null;
+            }
+
+            col.a = 1;
+            secondaryTextBox.color = col;
+        }
 
         yield return new WaitForSeconds(holdDelay);
 
