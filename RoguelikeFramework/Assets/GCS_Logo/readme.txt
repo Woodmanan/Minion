@@ -7,6 +7,11 @@ Copyright
   you see fit, provided that you leave this readme and provide credit. If you make
   modifications, feel free to add your name and info above!
 
+Dependencies
+- This scene requires TextMeshPro to be installed. If the textboxes don't appear to
+  be working, trying deleting the folder, installing textmeshpro, and reimporting 
+  the package.
+
 Setup
 - If you're seeing this, you've unpacked the unitypackage file into your project.
   - If you somehow didn't do that, do that first! You should be able to just drag

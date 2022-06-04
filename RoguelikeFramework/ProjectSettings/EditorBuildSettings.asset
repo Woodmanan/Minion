@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Logo/GCSLogo.unity
+    path: Assets/GCS_Logo/GCSLogo.unity
     guid: 0dcb3cf55ac72eb478fff6046b2b3910
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
