@@ -56,6 +56,6 @@ public class PauseMenu : RogueUIPanel
     public void ExitGame()
     {
         AudioManager.i.Level = 0;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
     }    
 }

@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class SkillsPanel : RogueUIPanel
 {
-    public SkillTree tree;
+    public SkillTree treePrefab;
+    [HideInInspector] public SkillTree tree;
     public Transform skillUIParent;
     public GameObject skillUIObject;
+    private bool setup = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (!setup) Setup();
         tree.InitializeAvailableSkills();
         ReloadAvailableSkills();
+    }
+
+    void Setup()
+    {
+        if (setup) return;
+        setup = true;
+        tree = treePrefab.GetCopy();
+        Debug.Log("Tree is " + tree);
     }
 
     // Update is called once per frame
@@ -23,6 +34,7 @@ public class SkillsPanel : RogueUIPanel
 
     private void OnEnable()
     {
+        if (!setup) Setup();
         ReloadAvailableSkills();
         AudioManager.i.Pause();
     }

@@ -931,7 +931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -87.50001}
+  m_AnchoredPosition: {x: 0, y: -87.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &185049596
@@ -2215,6 +2215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInFocus: 0
   canBeEscaped: 1
+  treePrefab: {fileID: 11400000, guid: e9fcfe7391b16a741ad4c11d432efd9a, type: 2}
   tree: {fileID: 11400000, guid: e9fcfe7391b16a741ad4c11d432efd9a, type: 2}
   skillUIParent: {fileID: 1257971076}
   skillUIObject: {fileID: 4658561889756773386, guid: 61644fb65dd570e4da48fcd6effffd87, type: 3}

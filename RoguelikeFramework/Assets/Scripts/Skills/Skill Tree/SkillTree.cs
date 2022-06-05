@@ -42,4 +42,9 @@ public class SkillTree : NodeGraph {
     {
         availableSkills.Remove(node);
     }
+
+    public SkillTree GetCopy()
+    {
+        return this.Copy() as SkillTree;
+    }
 }
