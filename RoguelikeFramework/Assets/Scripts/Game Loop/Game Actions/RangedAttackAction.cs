@@ -39,18 +39,21 @@ public class RangedAttackAction : AttackAction
 
             caller.connections.OnGenerateArmedAttacks.Invoke(ref primaryWeapons, ref secondaryWeapons);
             int numShots = 0;
-            bool canFire = true;
+            bool canFire = false; //Assume we CANNOT fire by default.
 
             foreach (Weapon w in primaryWeapons)
             {
                 RangedWeapon weapon = (RangedWeapon) w;
                 Debug.Log("Right before we try to target?");
+                canFire = false;
                 IEnumerator targeting = caller.controller.DetermineTarget(weapon.targeting, (b) => canFire = b);
-                Debug.Log("Right after we try to target. Canfire is " + canFire);
+                
                 while (targeting.MoveNext())
                 {
                     yield return targeting.Current;
                 }
+
+                Debug.Log("Right after we try to target. Canfire is " + canFire);
 
                 if (canFire)
                 {
@@ -79,6 +82,7 @@ public class RangedAttackAction : AttackAction
             {
                 RangedWeapon weapon = (RangedWeapon) w;
 
+                canFire = false;
                 IEnumerator targeting = caller.controller.DetermineTarget(weapon.targeting, (b) => canFire = b);
                 while (targeting.MoveNext())
                 {

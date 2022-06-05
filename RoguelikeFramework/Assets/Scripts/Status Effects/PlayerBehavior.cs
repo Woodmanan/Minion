@@ -59,7 +59,7 @@ public class PlayerBehavior : Effect
     {
         healthStore += healthPer100 / 100;
         player.Heal((int)healthStore, true);
-        player.resources.mana += 1;
+        player.AddResource(Resource.MANA, 1);
         healthStore %= 1;
         
         int totalMonsterDanger = 0;

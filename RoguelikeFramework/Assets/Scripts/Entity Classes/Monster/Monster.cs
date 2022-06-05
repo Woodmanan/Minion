@@ -242,6 +242,7 @@ public class Monster : MonoBehaviour
         }
     }
 
+
     public virtual void Die()
     {
         Debug.Log("Monster is dead!");
@@ -278,6 +279,15 @@ public class Monster : MonoBehaviour
             LogManager.S.LogTotallyHighlightedQuote("Level up!", "FFFF00");
         }
 
+    }
+
+    public void AddResource(Resource resource, int amount)
+    {
+        resources[resource] += amount;
+        if (resources[resource] > stats.resources[resource])
+        {
+            resources[resource] = stats.resources[resource];
+        }
     }
     
     //TODO: Make this 

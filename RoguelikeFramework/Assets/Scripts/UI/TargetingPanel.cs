@@ -47,7 +47,7 @@ public class TargetingPanel : RogueUIPanel
         if (lastTarget != null)
         {
             int dist = Mathf.Max(Mathf.Abs(lastTarget.location.x - startLocation.x), Mathf.Abs(lastTarget.location.y - startLocation.y));
-            if (dist > t.range)
+            if (dist > t.range || !Player.player.view.visibleMonsters.Contains(lastTarget))
             {
                 lastTarget = null;
             }
