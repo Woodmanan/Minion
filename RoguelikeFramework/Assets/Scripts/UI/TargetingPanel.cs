@@ -120,7 +120,6 @@ public class TargetingPanel : RogueUIPanel
         }
         else
         {
-            Debug.Log("UI asked to quit early, so locking point in now");
             if (!current.LockPoint()) //UI thinks we don't even need it, so just skip this whole thing
             {
                 Debug.LogError("Targeting item that skips can NOT have more than one point! This is unecessary behaviour, and must be fixed immediately to maintain invariants.");

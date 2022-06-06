@@ -26,10 +26,10 @@ public class SpawnCreature : Ability
             for (int y = -targeting.radius; y <= targeting.radius; y++)
             {
                 Vector2Int checkCoords = location + new Vector2Int(x, y);
-                Debug.Log("HEre");
+                
                 if (!(checkCoords.x >= 0 && checkCoords.x < Map.current.width && checkCoords.y >= 0 && checkCoords.y < Map.current.height)) continue;
                 CustomTile checkSpot = Map.current.GetTile(checkCoords);
-                Debug.Log("HEre2");
+                
                 // add spot is canidate if spot is empty
                 if (checkSpot != null && checkSpot.currentlyStanding == null
                     && !checkSpot.BlocksMovement())

@@ -35,7 +35,6 @@ public class PlayerBehavior : Effect
 
     public void SetDanger(bool value)
     {
-        if (isInDanger ^ value) Debug.Log("Setting player danger to " + value);
         isInDanger = value;
         AudioManager.i.UpdateMusic(isInDanger);
     }

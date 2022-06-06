@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afc042858802444db9f3a71b32fe711, type: 3}
   m_Name: SpawnRoyalGaurd
   m_EditorClassIdentifier: 
-  displayName: 
+  displayName: Summon Guards!
   image: {fileID: 21300000, guid: 76177ca8b06cb479994f9e9b0620af62, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
   baseTargeting:

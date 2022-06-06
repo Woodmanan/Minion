@@ -73,7 +73,6 @@ public class ItemVisiblity : MonoBehaviour
 
     public void ItemIsRemoved(ref ItemStack stack)
     {
-        Debug.Log("Item removal called.");
         #if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (visible == null)
         {

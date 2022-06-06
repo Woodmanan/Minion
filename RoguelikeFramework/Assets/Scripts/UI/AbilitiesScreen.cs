@@ -58,9 +58,6 @@ public class AbilitiesScreen : RogueUIPanel
     public override void OnActivation()
     {
         AudioManager.i.Pause();
-        
-        Debug.Log($"Displayed count is {displayed.Count}");
-        Debug.Log($"Examined count is {examinedAbilities.Count}");
 
         for (int i = displayed.Count - 1; i >= examinedAbilities.Count; i--)
         {

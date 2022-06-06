@@ -39,7 +39,7 @@ MonoBehaviour:
   baseStats:
     costs:
       health: 0
-      mana: 3
+      mana: 1
       stamina: 0
       xp: 0
     cooldown: 1
@@ -84,5 +84,5 @@ MonoBehaviour:
   damagesAllies: 0
   type: 0
   damage:
-    rolls: 2
+    rolls: 1
     dice: 5

@@ -44,7 +44,6 @@ public class RangedAttackAction : AttackAction
             foreach (Weapon w in primaryWeapons)
             {
                 RangedWeapon weapon = (RangedWeapon) w;
-                Debug.Log("Right before we try to target?");
                 canFire = false;
                 IEnumerator targeting = caller.controller.DetermineTarget(weapon.targeting, (b) => canFire = b);
                 
@@ -52,8 +51,6 @@ public class RangedAttackAction : AttackAction
                 {
                     yield return targeting.Current;
                 }
-
-                Debug.Log("Right after we try to target. Canfire is " + canFire);
 
                 if (canFire)
                 {

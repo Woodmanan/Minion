@@ -9026,10 +9026,10 @@ MonoBehaviour:
     JIT: 0
     finished: 0
   msPerFrame: 1
-  randomSeed: 0
+  randomSeed: 1
   seed: 42
   JITLoading: 0
-  StartAt: 0
+  StartAt: 7
 --- !u!4 &1953941108
 Transform:
   m_ObjectHideFlags: 0

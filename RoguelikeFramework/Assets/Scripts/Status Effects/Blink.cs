@@ -53,11 +53,17 @@ public class Blink : Effect
         {
             Monster caller = connectedTo.monster;
             Vector2Int pos = caller.location + Random.Range(-8, 8) * Vector2Int.right + Random.Range(-8, 8) * Vector2Int.up;
-            if (caller.view.Contains(pos.x, pos.y))
+            if (pos.x > 0 && pos.y > 0 && pos.x < Map.current.width - 1 && pos.y < Map.current.height - 1)
             {
-                caller.SetPosition(pos);
-                Disconnect();
-                return;
+                if (!Map.current.GetTile(pos).BlocksMovement())
+                {
+                    if (caller.view.Contains(pos.x, pos.y))
+                    {
+                        caller.SetPosition(pos);
+                        Disconnect();
+                        return;
+                    }
+                }
             }
         }
     }

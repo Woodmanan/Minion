@@ -39,7 +39,7 @@ MonoBehaviour:
   baseStats:
     costs:
       health: 0
-      mana: 0
+      mana: 2
       stamina: 0
       xp: 0
     cooldown: 16

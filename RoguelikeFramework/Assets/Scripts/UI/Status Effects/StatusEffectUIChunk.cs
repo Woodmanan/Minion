@@ -19,7 +19,6 @@ public class StatusEffectUIChunk : MonoBehaviour, IPointerEnterHandler, IPointer
         else
         {
             statusEffectImage.sprite = imageListObject.statusSprites[info.imageID];
-            print(imageListObject.statusSprites[info.imageID]);
             Player.player.connections.OnTurnStartLocal.AddListener(1000, UpdateMe);
         }
     }

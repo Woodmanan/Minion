@@ -417,9 +417,12 @@ public class Inventory : MonoBehaviour
                 //We need to remove those slots!
                 foreach (int slot in neededSlots)
                 {
-                    int itemSlot = monster.equipment.equipmentSlots[slot].equipped.position;
-                    monster.equipment.UnequipSlot(slot);
-                    Drop(itemSlot);
+                    if (monster.equipment.equipmentSlots[slot].equipped != null)
+                    {
+                        int itemSlot = monster.equipment.equipmentSlots[slot].equipped.position;
+                        monster.equipment.UnequipSlot(slot);
+                        Drop(itemSlot);
+                    }
                 }
             }
 

@@ -164,7 +164,6 @@ public class LogManager : MonoBehaviour
     public void LogSpecificEntityCastSpell(string casterName, string spellName, string verb, bool pluralVerbs = true)
     {
         string castingName = createHighlightedEntityName(casterName, true, true);
-        Debug.Log("Casting name is " + castingName);
         string spellCastName = $"<color=purple>{spellName}</color>";
         Log(castingName + $" {verb}{(pluralVerbs ? "s" : "")} " + spellCastName + "!");
     }

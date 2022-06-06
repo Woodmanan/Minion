@@ -39,11 +39,11 @@ MonoBehaviour:
   baseStats:
     costs:
       health: 0
-      mana: 1
+      mana: 2
       stamina: 0
       xp: 0
     cooldown: 0
-    power: 2
+    power: 4
   castQuery:
     outOf: 1
     terms:

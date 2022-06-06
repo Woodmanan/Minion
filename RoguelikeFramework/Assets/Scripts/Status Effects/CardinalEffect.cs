@@ -77,6 +77,7 @@ public class CardinalEffect : Effect
     //Called when the connected monster dies
     public override void OnDeath()
     {
+        StatTracking.victory = true;
         SceneManager.LoadScene("WinScene");
     }
 

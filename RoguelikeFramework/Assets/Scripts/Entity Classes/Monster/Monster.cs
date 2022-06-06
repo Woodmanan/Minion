@@ -273,8 +273,8 @@ public class Monster : MonoBehaviour
         resources.xp += amount;
         if (resources.xp >= stats.resources.xp)
         {
-            resources.xp -= XPTillNextLevel();
-            Debug.Log($"After leveling up with {XPTillNextLevel()} xp, monster now has {resources.xp} xp");
+            resources.xp -= stats.resources.xp;
+            Debug.Log($"After leveling up with {XPTillNextLevel()} xp, monster now has {resources.xp} xp leftover.");
             LevelUp();
             LogManager.S.LogTotallyHighlightedQuote("Level up!", "FFFF00");
         }

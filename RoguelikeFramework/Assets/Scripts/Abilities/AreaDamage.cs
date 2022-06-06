@@ -25,7 +25,7 @@ public class AreaDamage : Ability
         List<Monster> targets = targeting.affected;
         if (!damagesAllies)
         {
-            targets = targets.FindAll(x => !x.IsEnemy(caster));
+            targets = targets.FindAll(x => x.IsEnemy(caster));
         }
 
         foreach (Monster m in targets)

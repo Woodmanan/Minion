@@ -140,6 +140,7 @@ MonoBehaviour:
   highlightPrefab: {fileID: 2415315086530851241, guid: f7427ac0677505a459d23290b996a56b, type: 3}
   rangeHighlight: {fileID: 3290977032563688315}
   targetingIcon: {fileID: 3853786311080168096}
+  lastTarget: {fileID: 0}
 --- !u!1 &3853786310894742762
 GameObject:
   m_ObjectHideFlags: 0

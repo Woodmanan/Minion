@@ -108,7 +108,6 @@ public class MonsterAI : ActionController
                     break;
                 case 3:
                     Vector2Int rand = Map.current.GetRandomWalkableTile();
-                    Debug.Log($"{this.monster.name} is now exploring, moving to {rand}", this.monster);
                     nextAction = new PathfindAction(rand);
                     break;
                 case 4:
@@ -136,13 +135,10 @@ public class MonsterAI : ActionController
             //3 - Some offered action
 
             float flee = fleeQuery.Evaluate(monster, monster.view.visibleMonsters, null, null);
-            Debug.Log($"Flee value is {flee}");
             float approach = fightQuery.Evaluate(monster, monster.view.visibleMonsters, null, null);
-            Debug.Log($"Approach value us {approach}");
 
             (int spellIndex, float spellValue) = (-1, -1);
             if (monster.abilities) (spellIndex, spellValue) = monster.abilities.GetBestAbility();
-            Debug.Log($"I think we should cast spell {spellIndex} with value {spellValue}");
 
             (InteractableTile tile, float interactableCost) = GetInteraction(false, interactionRange);
             
@@ -156,25 +152,19 @@ public class MonsterAI : ActionController
             switch (choices.First.value)
             {
                 case 0:
-                    Debug.Log("Fleeing!");
                     nextAction = new FleeAction();
                     break;
                 case 1:
-                    Debug.Log("Monster chose to attack!");
                     enemies = enemies.OrderBy(x => monster.location.GameDistance(x.location)).ToList();
                     int dist = Mathf.RoundToInt(monster.location.GameDistance(enemies[0].location) + .5f);
-                    Debug.Log($"Min range is {minRange}, dist is {dist}");
                     if (ranged)
                     {
-                        Debug.Log("Went the ranged path");
                         if (dist <= minRange)
                         {
-                            Debug.Log("They are within range");
                             nextAction = new RangedAttackAction();
                         }
                         else
                         {
-                            Debug.Log("They are not in range.");
                             nextAction = new PathfindAction(enemies[0].location);
                         }
                     }
