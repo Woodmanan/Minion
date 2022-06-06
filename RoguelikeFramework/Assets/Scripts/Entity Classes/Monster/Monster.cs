@@ -517,7 +517,7 @@ public class Monster : MonoBehaviour
 
     public void SetPosition(Map map, Vector2Int newPosition)
     {
-        if (currentTile) currentTile.currentlyStanding = null;
+        if (currentTile) currentTile.ClearMonster();
         // visual slide
         lPosition0 = new Vector3(location.x, location.y, monsterZPosition);
         // update location

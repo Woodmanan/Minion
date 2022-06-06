@@ -65,6 +65,11 @@ public class MoveAction : GameAction
             }
         }
 
+        if (costs)
+        {
+            caller.energy -= caller.energyPerStep * tile.movementCost;
+        }
+
         caller.SetPosition(intendedLocation);
 
         Stair stair = tile as Stair;
@@ -77,11 +82,6 @@ public class MoveAction : GameAction
                 yield return act.action.Current;
             }
             yield return GameAction.AbortAll;
-        }
-
-        if (costs)
-        {
-            caller.energy -= caller.energyPerStep * tile.movementCost;
         }
 
         caller.UpdateLOS();

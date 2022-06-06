@@ -227,6 +227,7 @@ public class GameController : MonoBehaviour
             if (nextLevel != -1)
             {
                 MoveLevel();
+                yield return null;
             }
         }
     }

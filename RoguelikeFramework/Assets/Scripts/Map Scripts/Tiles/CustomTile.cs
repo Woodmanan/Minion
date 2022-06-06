@@ -112,6 +112,7 @@ public class CustomTile : MonoBehaviour
     public void ClearMonster()
     {
         currentlyStanding = null;
+        map.moveCosts[location.x, location.y] = 1 * movementCost;
     }
 
     public void SetMonster(Monster m)
@@ -122,6 +123,7 @@ public class CustomTile : MonoBehaviour
         }
         currentlyStanding = m;
         MonsterEntered?.Invoke(m);
+        map.moveCosts[location.x, location.y] = 5 * movementCost;
     }
 
     public void RebuildMapData()

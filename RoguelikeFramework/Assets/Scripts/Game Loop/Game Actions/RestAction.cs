@@ -28,7 +28,7 @@ public class RestAction : GameAction
                 yield break;
             }
 
-            yield return null;
+            //yield return null;
 
             GameAction act = new WaitAction();
             act.Setup(caller);
@@ -42,6 +42,8 @@ public class RestAction : GameAction
                 Debug.Log("Console: You finish resting.");
                 yield break;
             }
+
+            yield return GameAction.StateCheck;
         }
     }
 
