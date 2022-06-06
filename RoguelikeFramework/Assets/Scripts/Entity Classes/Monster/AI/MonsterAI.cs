@@ -73,6 +73,7 @@ public class MonsterAI : ActionController
             //Standard behavior
             isInBattle = false;
 
+
             //1 - Take an existing interaction
             (InteractableTile tile, float interactableCost) = GetInteraction(false, interactionRange);
             choices.Enqueue(new IntNode(1), 1f - interactableCost);
@@ -83,10 +84,18 @@ public class MonsterAI : ActionController
                 choices.Enqueue(new IntNode(2), 1f - .8f);
             }
 
-            //Else, try to go exploring!
+            //Wait for 60 turns on avg, then go explore
+            if (UnityEngine.Random.Range(0, 60) == 0)
+            {
+                choices.Enqueue(new IntNode(3), 1f - .7f);
+            }
+            
 
             //4 - Wait
             choices.Enqueue(new IntNode(4), 1f - .1f);
+
+            //5 - Heal up
+            choices.Enqueue(new IntNode(5), (monster.resources.health / (float)monster.stats.resources.health));
 
             switch (choices.First.value)
             {
@@ -97,11 +106,19 @@ public class MonsterAI : ActionController
                     nextAction = new PathfindAction(lastEnemy.location);
                     currentTries--;
                     break;
+                case 3:
+                    Vector2Int rand = Map.current.GetRandomWalkableTile();
+                    Debug.Log($"{this.monster.name} is now exploring, moving to {rand}", this.monster);
+                    nextAction = new PathfindAction(rand);
+                    break;
                 case 4:
                     nextAction = new WaitAction();
                     break;
+                case 5:
+                    nextAction = new MonsterRest();
+                    break;
                 default:
-                    Debug.LogError($"Monster does not have action set for choice {choices.First.value}");
+                    Debug.LogError($"Monster does not have non-combat action set for choice {choices.First.value}", monster);
                     break;
             }
             yield break;
