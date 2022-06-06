@@ -296,12 +296,13 @@ public class Monster : MonoBehaviour
         return int.MaxValue;
     }
 
-    public  void LevelUp()
+    public void LevelUp()
     {
         level++;
         connections.OnLevelUp.BlendInvoke(other?.OnLevelUp, ref level);
         baseStats.resources.xp = XPTillNextLevel();
         OnLevelUp();
+        abilities?.CheckAvailability();
     }
 
     public virtual void OnLevelUp()
@@ -314,8 +315,7 @@ public class Monster : MonoBehaviour
         // Like dying but no drops
         Debug.Log("Monster Removed!");
         resources.health = 0;
-        if (currentTile.currentlyStanding == this)
-            currentTile.currentlyStanding = null;
+        currentTile.ClearMonster();
     }
 
     public bool IsDead()

@@ -68,8 +68,9 @@ public class UIController : MonoBehaviour
 
     public void OpenInventoryInspect()
     {
-        inventory.Setup(Player.player.inventory, ItemAction.INSPECT);
-        inventory.Activate();
+        OpenInventoryApply();
+        /*inventory.Setup(Player.player.inventory, ItemAction.INSPECT);
+          inventory.Activate(); */
     }
 
     public void OpenInventoryDrop()

@@ -43,6 +43,7 @@ public class SkillsPanel : RogueUIPanel
     {
         EraseAvailableSkills();
         AudioManager.i.UnPause();
+        Player.player.abilities?.CheckAvailability();
     }
 
     public void ReloadAvailableSkills()

@@ -77,7 +77,12 @@ public class AttackAction : GameAction
         }
         else
         {
-            Debug.Log("Console Log: You have nothing to attack with!");
+            LogManager.S.Log("Your can't melee attack with a ranged weapon!");
+            if (caller == Player.player)
+            {
+                yield break;
+            }
+
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.LogError("Assuming a monster did this. Taking its turn as retribution! (PLS Fix)");
             #endif

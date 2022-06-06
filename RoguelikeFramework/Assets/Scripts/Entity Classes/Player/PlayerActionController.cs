@@ -46,11 +46,13 @@ public class PlayerActionController : ActionController
                 case PlayerAction.WAIT:
                     nextAction = new WaitAction();
                     break;
+                /*
                 case PlayerAction.DROP_ITEMS:
                     Debug.Log("Dropping items!");
                     UIController.singleton.OpenInventoryDrop();
                     yield return new WaitUntil(() => !UIController.WindowsOpen);
                     break;
+                */
                 case PlayerAction.PICK_UP_ITEMS:
                     //Intelligently pick up items, opening dialouge box if needed.
                     PickupSmartDetection();
@@ -65,6 +67,7 @@ public class PlayerActionController : ActionController
                     UIController.singleton.OpenInventoryInspect();
                     yield return new WaitUntil(() => !UIController.WindowsOpen);
                     break;
+                /*
                 case PlayerAction.EQUIP:
                     UIController.singleton.OpenEquipmentInspect();
                     yield return new WaitUntil(() => !UIController.WindowsOpen);
@@ -73,6 +76,7 @@ public class PlayerActionController : ActionController
                     UIController.singleton.OpenEquipmentUnequip();
                     yield return new WaitUntil(() => !UIController.WindowsOpen);
                     break;
+                */
                 case PlayerAction.APPLY:
                     UIController.singleton.OpenInventoryApply();
                     yield return new WaitUntil(() => !UIController.WindowsOpen);

@@ -43,7 +43,7 @@ public class AbilityAction : GameAction
 
         if (toCast.currentCooldown > 0)
         {
-            Debug.Log($"Console: You cannot cast {toCast.displayName}, it still has {toCast.currentCooldown} turns left.");
+            LogManager.S.Log($"You cannot cast {toCast.displayName}, it still has {toCast.currentCooldown} turns left.");
             caller.other = null;
             yield break;
         }
@@ -73,7 +73,7 @@ public class AbilityAction : GameAction
 
             caller.connections.OnPreCast.BlendInvoke(toCast.connections.OnPreCast, ref toCast);
 
-            Debug.Log($"Console: {caller.GetFormattedName()} cast {toCast.displayName}!");
+            LogManager.S.LogSpecificEntityCastSpell(caller.GetFormattedName(), toCast.displayName, "cast", caller.nameRequiresPluralVerbs);
             toCast.Cast(caller);
 
             caller.connections.OnPostCast.BlendInvoke(toCast.connections.OnPostCast, ref toCast);

@@ -161,6 +161,14 @@ public class LogManager : MonoBehaviour
         Log(attackingEntityNameString + $" {verb}{(pluralVerbs ? "s" : "")} " + defendingEntityNameString + $" for <color=#{damageTakenHighlightColorHexString}>{damagePoints} damage</color>.");
     }
 
+    public void LogSpecificEntityCastSpell(string casterName, string spellName, string verb, bool pluralVerbs = true)
+    {
+        string castingName = createHighlightedEntityName(casterName, true, true);
+        Debug.Log("Casting name is " + castingName);
+        string spellCastName = $"<color=purple>{spellName}</color>";
+        Log(castingName + $" {verb}{(pluralVerbs ? "s" : "")} " + spellCastName + "!");
+    }
+
     /// <summary>
     /// Logs an entity healing for some amount of HP. Use this when an entity regains HP.
     /// </summary>
@@ -456,7 +464,7 @@ public class LogManager : MonoBehaviour
 
     ///// HELPER METHODS /////
 
-    private string createHighlightedEntityName(string name, bool isEnemy, bool isFirstWord = false, bool isItem = false)
+    public string createHighlightedEntityName(string name, bool isEnemy, bool isFirstWord = false, bool isItem = false)
     {
         if (isFirstWord) name = capitalize(name);
         return $"<color=#{(isEnemy ? enemyHighlightColorHexString : (isItem? itemHighlightColorHexString : "FFFFFF"))}>{(name.ToLower() == "you" && !isFirstWord ? "you" : capitalize(name, true))}</color>";

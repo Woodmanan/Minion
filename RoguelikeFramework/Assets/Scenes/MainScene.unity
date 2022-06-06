@@ -9025,7 +9025,7 @@ MonoBehaviour:
       dice: 1
     JIT: 0
     finished: 0
-  msPerFrame: 4
+  msPerFrame: 1
   randomSeed: 0
   seed: 42
   JITLoading: 0
