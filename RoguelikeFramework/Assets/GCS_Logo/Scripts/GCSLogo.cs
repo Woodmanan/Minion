@@ -50,7 +50,7 @@ public class GCSLogo : MonoBehaviour
     TextMeshProUGUI textBox;
     [SerializeField]
     [Tooltip("The color of all the text boxes")]
-    Color textColor;
+    public Color textColor;
 
     [Header("Secondarry Content Noise")]
     [Tooltip("Audio clip that plays after team logo animates in")]
@@ -78,6 +78,8 @@ public class GCSLogo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        secondaryLogo = MainController.instance.gameOrTeamIcon;
+
         //Auto-Identify the letters objects - their names are formatted as "#: name" to make this sort work.
         letters = GameObject.FindObjectsOfType<LetterAnimator>().OrderBy(x => x.transform.parent.name).ToList();
         StartCoroutine(RunAnim());

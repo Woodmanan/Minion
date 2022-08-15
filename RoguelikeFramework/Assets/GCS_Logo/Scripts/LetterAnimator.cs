@@ -5,15 +5,28 @@ using UnityEngine.UI;
 
 public class LetterAnimator : MonoBehaviour
 {
+    public enum LetterColor {Red, Blue};
+    public Sprite redSprite;
+    public Sprite blueSprite;
+
     public RectTransform logoSizing;
     RectTransform rTransform;
 
     public Rigidbody2D rigid;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        switch (MainController.instance.colorProfile)
+        {
+            case MainController.ColorProfile.Light:
+                GetComponent<Image>().sprite = redSprite;
+                break;
+            case MainController.ColorProfile.Dark:
+                GetComponent<Image>().sprite = blueSprite;
+                break;
+        }
+
         //Ensure letter image enabled
         GetComponent<Image>().enabled = true;
 

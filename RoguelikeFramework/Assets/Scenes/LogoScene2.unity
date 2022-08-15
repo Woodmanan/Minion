@@ -252,6 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20152998c4493fd41a0373c7f5371013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redSprite: {fileID: 21300000, guid: f1e1298ab91a5554a85b0dbcde588616, type: 3}
+  blueSprite: {fileID: 21300000, guid: 8471f7d9146014a368626be9daa62ba1, type: 3}
   logoSizing: {fileID: 640036076}
   rigid: {fileID: 0}
 --- !u!50 &178352140
@@ -847,7 +849,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &352391494
 GameObject:
@@ -1226,7 +1228,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &505933687
 GameObject:
@@ -1898,6 +1900,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847381994}
   m_CullTransparentMesh: 1
+--- !u!1 &870519836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870519838}
+  - component: {fileID: 870519837}
+  m_Layer: 0
+  m_Name: MainController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &870519837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870519836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a8e574ea971440d8d96410a21edf01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorProfile: 0
+  gameOrTeamIcon: {fileID: 21300000, guid: 948462b076a70df45b83e2545df79ed6, type: 3}
+--- !u!4 &870519838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870519836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 583.9272, y: 277.2992, z: -0.24265943}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &889058390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,7 +2029,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.85
+  m_fontSize: 23.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2085,6 +2132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20152998c4493fd41a0373c7f5371013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redSprite: {fileID: 21300000, guid: c716092966f0e074980683a243ec5b70, type: 3}
+  blueSprite: {fileID: 21300000, guid: 7e5494c51746c426795aa3288f582588, type: 3}
   logoSizing: {fileID: 640036076}
   rigid: {fileID: 0}
 --- !u!50 &908839329
@@ -3090,6 +3139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20152998c4493fd41a0373c7f5371013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redSprite: {fileID: 21300000, guid: df760787cef0fa240b193da1afe4d5ac, type: 3}
+  blueSprite: {fileID: 21300000, guid: ccf3e7ec73bcd470f9c66c8f236d4ff6, type: 3}
   logoSizing: {fileID: 640036076}
   rigid: {fileID: 0}
 --- !u!50 &1409205039
@@ -3450,7 +3501,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.35
+  m_fontSize: 52.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3574,6 +3625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20152998c4493fd41a0373c7f5371013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redSprite: {fileID: 21300000, guid: 178bd93819a2c0c479aa0034ecc7e3e4, type: 3}
+  blueSprite: {fileID: 21300000, guid: ef32bab229abb45619b335e268817d83, type: 3}
   logoSizing: {fileID: 640036076}
   rigid: {fileID: 0}
 --- !u!114 &1652875703
@@ -3839,6 +3892,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20152998c4493fd41a0373c7f5371013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redSprite: {fileID: 21300000, guid: 7f407f652a36aee47898bb61f19d7d2d, type: 3}
+  blueSprite: {fileID: 21300000, guid: f9ee87dd2ca874e8c8108d2abdbd2e97, type: 3}
   logoSizing: {fileID: 640036076}
   rigid: {fileID: 0}
 --- !u!50 &1867683664
@@ -4049,6 +4104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20152998c4493fd41a0373c7f5371013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redSprite: {fileID: 21300000, guid: edd98b23cb37be0429d3aea98654b7de, type: 3}
+  blueSprite: {fileID: 21300000, guid: 74a5571361eee498197c2ad9469ef9d6, type: 3}
   logoSizing: {fileID: 640036076}
   rigid: {fileID: 0}
 --- !u!50 &1891390273
@@ -4259,6 +4316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20152998c4493fd41a0373c7f5371013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redSprite: {fileID: 21300000, guid: 93971a716a190084db5bc7a364f96d48, type: 3}
+  blueSprite: {fileID: 21300000, guid: fcfff848001cb4842b1fb09308f18886, type: 3}
   logoSizing: {fileID: 640036076}
   rigid: {fileID: 0}
 --- !u!50 &1899860892
@@ -4637,7 +4696,7 @@ GameObject:
   - component: {fileID: 2075537755}
   - component: {fileID: 2075537754}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4718,7 +4777,7 @@ RectTransform:
   - {fileID: 1081339291}
   - {fileID: 953230293}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4835,6 +4894,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondaryLogo: {fileID: 21300000, guid: 948462b076a70df45b83e2545df79ed6, type: 3}
   secondaryName: minion team - spring 2022
+  matchSplashScreenColor: 0
+  keyToSkip: 32
   logoContainer: {fileID: 847381995}
   initialDelay: 1.5
   startSpeed: 600
@@ -4845,6 +4906,7 @@ MonoBehaviour:
   holdDelay: 1.5
   TextFadeTime: 0.5
   textBox: {fileID: 1643505013}
+  textColor: {r: 0, g: 0, b: 0, a: 0}
   noise: {fileID: 8300000, guid: 0ad8c85f324c33946977d9cf66149967, type: 3}
   waitBeforeShowing: 0
   secondaryLogoImage: {fileID: 262017164}
@@ -4853,5 +4915,3 @@ MonoBehaviour:
   teamLogoContainer: {fileID: 1375469387}
   secondaryTextFadeTime: 0.5
   secondaryTextBox: {fileID: 889058392}
-  matchSplashScreenColor: 0
-  keyToSkip: 32
