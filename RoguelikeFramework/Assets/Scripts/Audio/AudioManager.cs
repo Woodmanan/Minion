@@ -6,11 +6,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager i;
     private static FMOD.Studio.EventInstance Music;
+    private string current_music_string = "";
     private int level = 0;
     public int Level {
         get { return level; }
         set {
-            StopMusic();
             level = value;
             StartMusic(level);
         }
@@ -37,12 +37,6 @@ public class AudioManager : MonoBehaviour
         pause = FMODUnity.RuntimeManager.CreateInstance("snapshot:/Pause");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateMusic(bool isInDanger) {
         
         float newVal = 0f;
@@ -53,9 +47,8 @@ public class AudioManager : MonoBehaviour
     }
 
     public void StartMusic(int levelNum) {
-        StopMusic();
-        //switch music using level variable
         UpdateMusic(false);
+        //switch music using level variable
         string eventString;
         switch(levelNum)
         { 
@@ -84,8 +77,13 @@ public class AudioManager : MonoBehaviour
                 eventString = "event:/Music/Dungeon Music";
                 break;
         }
-        Music = FMODUnity.RuntimeManager.CreateInstance(eventString);
-        Music.start();
+        if(eventString != current_music_string) {
+            StopMusic();
+            Music = FMODUnity.RuntimeManager.CreateInstance(eventString);
+            Music.start();
+            current_music_string = eventString;
+        }
+        
     }
 
     public void StartBossMusic() {
