@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 8807692175375108180, guid: 5bb814d95e406d34899df12272a0d667, type: 3}
-  maxItems: 1
   abilities: []
-  maxAbilties: 0
   minDepth: 0
   maxDepth: 0
   effects:
     list:
     - heldEffect: {fileID: 11400000, guid: 1d7d8cc7e85269846ba76a80c77757cc, type: 2}
+    - heldEffect: {fileID: 11400000, guid: 30dc5b4722144a0429a07cec6d28e761, type: 2}

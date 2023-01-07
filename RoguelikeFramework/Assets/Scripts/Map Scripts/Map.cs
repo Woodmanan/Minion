@@ -274,4 +274,16 @@ public class Map : MonoBehaviour
 
         return moveCosts[loc.x, loc.y] < 0;
     }
+
+    public Vector2Int GetRandomWalkableTile()
+    {
+        while (true)
+        {
+            Vector2Int spot = new Vector2Int(Random.Range(1, width - 1), Random.Range(1, height - 1));
+            if (moveCosts[spot.x, spot.y] > 0)
+            {
+                return spot;
+            }
+        }
+    }
 }

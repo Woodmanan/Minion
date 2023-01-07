@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -18,6 +19,7 @@ public class MonsterAI : ActionController
 {
     public Query fleeQuery;
     public Query fightQuery;
+    [HideInInspector] public bool isInBattle = false;
 
     public float interactionRange;
     public bool ranged = false;
@@ -30,9 +32,23 @@ public class MonsterAI : ActionController
 
     public Monster lastEnemy;
 
+    private Transform targetEnemy;
+    private Transform AttackIndicator;
+    private void Start()
+    {
+        base.Start();
+        GameObject IndicatorPrefab = Resources.Load<GameObject>("AttackIndicator");
+        AttackIndicator = Instantiate(IndicatorPrefab, gameObject.transform, false).transform;
+        AttackIndicator.gameObject.SetActive(false);
+        monster.connections.OnTurnEndLocal.AddListener(50, UpdateAttackIndicationUI);
+    }
+    
     //The main loop for monster AI! This assumes 
     public override IEnumerator DetermineAction()
     {
+        // target for UI purposes
+        targetEnemy = null;
+        
         if (monster.view == null)
         {
             Debug.LogError("Monster did not have a view available! If this happened during real gameplay, we have a problem. Eating its turn to be safe.");
@@ -55,6 +71,8 @@ public class MonsterAI : ActionController
         if (enemies.Count == 0)
         {
             //Standard behavior
+            isInBattle = false;
+
 
             //1 - Take an existing interaction
             (InteractableTile tile, float interactableCost) = GetInteraction(false, interactionRange);
@@ -66,10 +84,18 @@ public class MonsterAI : ActionController
                 choices.Enqueue(new IntNode(2), 1f - .8f);
             }
 
-            //Else, try to go exploring!
+            //Wait for 60 turns on avg, then go explore
+            if (UnityEngine.Random.Range(0, 60) == 0)
+            {
+                choices.Enqueue(new IntNode(3), 1f - .7f);
+            }
+            
 
             //4 - Wait
             choices.Enqueue(new IntNode(4), 1f - .1f);
+
+            //5 - Heal up
+            choices.Enqueue(new IntNode(5), (monster.resources.health / (float)monster.stats.resources.health));
 
             switch (choices.First.value)
             {
@@ -80,11 +106,18 @@ public class MonsterAI : ActionController
                     nextAction = new PathfindAction(lastEnemy.location);
                     currentTries--;
                     break;
+                case 3:
+                    Vector2Int rand = Map.current.GetRandomWalkableTile();
+                    nextAction = new PathfindAction(rand);
+                    break;
                 case 4:
                     nextAction = new WaitAction();
                     break;
+                case 5:
+                    nextAction = new MonsterRest();
+                    break;
                 default:
-                    Debug.LogError($"Monster does not have action set for choice {choices.First.value}");
+                    Debug.LogError($"Monster does not have non-combat action set for choice {choices.First.value}", monster);
                     break;
             }
             yield break;
@@ -92,6 +125,7 @@ public class MonsterAI : ActionController
         else
         {
             //We're majorly in combat!
+            isInBattle = true;
             //TODO: Make offered actions available to combat monsters for specific actions
 
             //Options
@@ -101,13 +135,10 @@ public class MonsterAI : ActionController
             //3 - Some offered action
 
             float flee = fleeQuery.Evaluate(monster, monster.view.visibleMonsters, null, null);
-            Debug.Log($"Flee value is {flee}");
             float approach = fightQuery.Evaluate(monster, monster.view.visibleMonsters, null, null);
-            Debug.Log($"Approach value us {approach}");
 
             (int spellIndex, float spellValue) = (-1, -1);
             if (monster.abilities) (spellIndex, spellValue) = monster.abilities.GetBestAbility();
-            Debug.Log($"I think we should cast spell {spellIndex} with value {spellValue}");
 
             (InteractableTile tile, float interactableCost) = GetInteraction(false, interactionRange);
             
@@ -121,25 +152,19 @@ public class MonsterAI : ActionController
             switch (choices.First.value)
             {
                 case 0:
-                    Debug.Log("Fleeing!");
                     nextAction = new FleeAction();
                     break;
                 case 1:
-                    Debug.Log("Monster chose to attack!");
                     enemies = enemies.OrderBy(x => monster.location.GameDistance(x.location)).ToList();
                     int dist = Mathf.RoundToInt(monster.location.GameDistance(enemies[0].location) + .5f);
-                    Debug.Log($"Min range is {minRange}, dist is {dist}");
                     if (ranged)
                     {
-                        Debug.Log("Went the ranged path");
                         if (dist <= minRange)
                         {
-                            Debug.Log("They are within range");
                             nextAction = new RangedAttackAction();
                         }
                         else
                         {
-                            Debug.Log("They are not in range.");
                             nextAction = new PathfindAction(enemies[0].location);
                         }
                     }
@@ -149,6 +174,7 @@ public class MonsterAI : ActionController
                     }
 
                     lastEnemy = enemies[0];
+                    targetEnemy = enemies[0].transform;
                     currentTries = intelligence;
                     break;
                 case 2:
@@ -163,6 +189,20 @@ public class MonsterAI : ActionController
                     break;
             }
         }
+    }
+
+    private void UpdateAttackIndicationUI()
+    {
+        if (targetEnemy == null)
+        {
+            AttackIndicator.gameObject.SetActive(false);
+            return;
+        }
+        
+        AttackIndicator.gameObject.SetActive(true);
+        Vector3 dir = targetEnemy.position - monster.transform.position;
+        float dirAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
+        AttackIndicator.rotation = Quaternion.AngleAxis(dirAngle, new Vector3(0,0,1));
     }
 
     public (InteractableTile, float) GetInteraction(bool isInCombat, float distanceCutoff)
@@ -252,7 +292,7 @@ public class MonsterAI : ActionController
             }
         }
     }
-
+    
     public override void Setup()
     {
         GetComponent<Equipment>().OnEquipmentAdded += UpdateRanged;
@@ -266,7 +306,5 @@ public class MonsterAI : ActionController
         {
             minRange = slots.Min(x => x.equipped.held[0].ranged.targeting.range);
         }
-
-        Debug.Log("Monster equipped item! Ranged is now " + ranged);
     }
 }

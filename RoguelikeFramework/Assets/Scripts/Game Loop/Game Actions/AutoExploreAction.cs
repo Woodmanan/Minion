@@ -14,15 +14,23 @@ public class AutoExploreAction : GameAction
     //See GameAction.cs for more information on how this function should work!
     public override IEnumerator TakeAction()
     {
+        Player player = caller as Player;
         while (true)
         {
             if (caller.view.visibleMonsters.FindAll(x => x.IsEnemy(caller)).Count > 0)
             {
-                Debug.Log("Console: You cannot auto-explore while enemies are in sight.");
+                LogManager.S.Log("You cannot auto-explore while enemies are in sight.");
+                Debug.Log("Quitting in outer loop");
                 yield break;
             }
 
             //TODO: Rest action first!
+            GameAction restAct = new RestAction();
+            restAct.Setup(caller);
+            while (restAct.action.MoveNext())
+            {
+                yield return restAct.action.Current;
+            }
 
             //Build up the points we need!
             List<Vector2Int> goals = new List<Vector2Int>();
@@ -40,30 +48,25 @@ public class AutoExploreAction : GameAction
 
             if (goals.Count == 0)
             {
-                Debug.Log("Nothing left to explore!");
+                LogManager.S.Log("There's nothing else to explore!");
+                
                 yield break;
             }
 
-            Path path = Pathfinding.CreateDjikstraPath(caller.location, goals.ToArray());
+            Path path = Pathfinding.CreateDjikstraPath(caller.location, goals);
 
             if (path.Count() == 0)
             {
-                Debug.Log("Can't reach anymore spaces!");
+                LogManager.S.Log("Can't reach anymore unexplored spaces!");
                 yield break;
             }
 
             while (path.Count() > 0)
             {
                 Vector2Int next = path.Pop();
-                MoveAction act = new MoveAction(next);
+                MoveAction act = new MoveAction(next, true, false);
 
                 caller.UpdateLOS();
-
-                if (caller.view.visibleMonsters.FindAll(x => x.IsEnemy(caller)).Count > 0)
-                {
-                    Debug.Log($"Monster came into sight, stopping auto explore!");
-                    yield break;
-                }
 
                 act.Setup(caller);
                 while (act.action.MoveNext())
@@ -71,7 +74,23 @@ public class AutoExploreAction : GameAction
                     yield return act.action.Current;
                 }
 
-                //yield return new WaitForSeconds(.1f);
+                //Copied to try and get ahead of the wait check.
+                if (caller.view.visibleMonsters.FindAll(x => x.IsEnemy(caller)).Count > 0)
+                {
+                    LogManager.S.Log($"You see a " + caller.view.visibleMonsters.FindAll(x => x.IsEnemy(caller))[0].displayName + " and stop.");
+                    yield break;
+                }
+
+                if (player.NewItemInSight)
+                {
+                    LogManager.S.Log("You stop for it.");
+                    Player.player.UpdateLOS();
+                    yield break;
+                }
+
+                Debug.Log("Player is currently viewing " + player.NewItemInSight);
+
+                yield return new WaitForSeconds(.05f);
 
                 yield return GameAction.StateCheck;
             }

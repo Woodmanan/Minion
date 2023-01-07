@@ -320,6 +320,7 @@ public static class Pathfinding
         }
     }
 
+    //Convenience function that 
     public static Path CreateDjikstraPath(Vector2Int start, params Vector2Int[] goals)
     {
         return CreateDjikstraPath(start, goals.ToList());
@@ -327,6 +328,7 @@ public static class Pathfinding
 
     public static Path CreateDjikstraPath(Vector2Int start, List<Vector2Int> goals)
     {
+        RebuildChecked();
         if (goals.Count == 0) return new Path(new Stack<Vector2Int>(), -1);
         //Create path from everything to start
         float[,] map = CreateDijkstraMap(new List<Vector2Int> { start });
@@ -339,10 +341,12 @@ public static class Pathfinding
 
         Debug.Log($"Djikstra path thinks that {start} to {best} is the shortest path!");
 
+
         //Hard part - build that path back!
         Stack<Vector2Int> path = new Stack<Vector2Int>();
         Vector2Int searching = best;
         float totalCost = 0;
+
         while (searching != start)
         {
             Debug.Log($"Currently searching at {searching}");

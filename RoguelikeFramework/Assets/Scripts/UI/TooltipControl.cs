@@ -14,6 +14,11 @@ public class TooltipControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Resize();
+    }
+
+    public void Resize()
+    {
         Vector2 mousePosition = Input.mousePosition;
         Vector2 rectSize = rect.sizeDelta;
 

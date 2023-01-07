@@ -18,7 +18,7 @@ public class AutoAttackAction : GameAction
     {
         if (target)
         {
-            GameAction act = new PathfindAction(target.location);
+            GameAction act = new PathfindAction(target.location, false);
             act.Setup(caller);
             
             while (act.action.MoveNext())

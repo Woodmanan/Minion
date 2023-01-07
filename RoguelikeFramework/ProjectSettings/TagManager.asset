@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - UIControl
+  - EquipBox
   layers:
   - Default
   - TransparentFX
@@ -41,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 366149317
     locked: 0

@@ -5,10 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Fireball", menuName = "Abilities/Elemental/Fireball", order = 1)]
 public class Fireball : Ability
 {
-    public override bool OnCheckActivationSoft(Monster caster)
-    {
-        return (caster.location.x + caster.location.y) % 2 == 0;
-    }
 
     public override void OnCast(Monster caster)
     {

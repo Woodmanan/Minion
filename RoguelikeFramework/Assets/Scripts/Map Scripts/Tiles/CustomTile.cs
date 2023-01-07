@@ -19,6 +19,8 @@ public class CustomTile : MonoBehaviour
     private bool setup = false;
 
     public Vector2Int location;
+    public int lightLevel;
+    public Color lightSourceColor = Color.white; //color of light projected onto this tile
     
     //Stuff that will not change a lot, and should not be (too) visible
     [Header("Static elements")] 
@@ -33,7 +35,8 @@ public class CustomTile : MonoBehaviour
     public Inventory inventory;
     private ItemVisiblity itemVis;
 
-    private SpriteRenderer render;
+    [HideInInspector] public SpriteRenderer render;
+    SpriteRenderer backGroundRender;
 
     public event Action<Monster> MonsterEntered;
 
@@ -47,10 +50,10 @@ public class CustomTile : MonoBehaviour
     private Color currentColor;
     #endif
 
-    Map map;
+    public Map map;
     
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         
     }
@@ -74,9 +77,23 @@ public class CustomTile : MonoBehaviour
         itemVis = GetComponent<ItemVisiblity>();
         itemVis.Setup();
 
+        if (transform.childCount > 0)
+        {
+            backGroundRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        }
+
         RebuildGraphics();
         this.enabled = false;
         setup = true;
+
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (movementCost == 0)
+        {
+            Debug.LogError($"{this.name} cannot have cost of 0! This breaks an important precondition of pathfinding.");
+            Debug.LogError("This has temporarily been fixed to prevent a freeze, but will NOT be corrected in a build. FIX NOW.");
+            movementCost = 1;
+        }
+        #endif
     }
 
     public void Reveal()
@@ -95,6 +112,7 @@ public class CustomTile : MonoBehaviour
     public void ClearMonster()
     {
         currentlyStanding = null;
+        map.moveCosts[location.x, location.y] = 1 * movementCost;
     }
 
     public void SetMonster(Monster m)
@@ -105,6 +123,7 @@ public class CustomTile : MonoBehaviour
         }
         currentlyStanding = m;
         MonsterEntered?.Invoke(m);
+        map.moveCosts[location.x, location.y] = 5 * movementCost;
     }
 
     public void RebuildMapData()
@@ -142,24 +161,55 @@ public class CustomTile : MonoBehaviour
         }
     }
 
-    public void RebuildGraphics()
+    public virtual void RebuildGraphics()
     {
+        if (lightLevel == 0) lightSourceColor = Color.white;
+        int brightness;
+        if (lightLevel > 8) brightness = 8;
+        else brightness = lightLevel;
+        float p = (float)lightLevel / 8f;
+        float q = 1 - ((float)lightLevel / 8f);
+        float falloff = (((float)lightLevel + 3f) / 8f);
+        Color litColor = (falloff * lightSourceColor) * p + (falloff * color) * q;
+        litColor.a = 1.0f;
+
         if (isVisible)
         {
-            render.color = color;
+            if (blocksVision)
+            {
+                render.sortingOrder = 200 + (200 - location.y);
+            }
+            render.color = litColor;
+            if (backGroundRender)
+            {
+                backGroundRender.color = litColor;
+            }
+
             if (render.enabled == false)
             {
                 render.enabled = true;
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = true;
+                }
             }
+            currentlyStanding?.SetGraphics(true);
         }
         else
         {
             //TODO: Item coloring on tiles that are not visible anymore
+            //and account for lighting lol
             if (!isHidden)
             {
                 render.enabled = true;
-                float gray = color.grayscale / 2;
-                render.color = new Color(gray, gray, gray);
+                float gray = color.grayscale / 4;
+                render.color = new Color(gray, gray, gray, 1.0f);
+
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = true;
+                    backGroundRender.color = new Color(gray, gray, gray, 1.0f);
+                }
             }
             else
             {
@@ -168,8 +218,15 @@ public class CustomTile : MonoBehaviour
                     Debug.LogError("Someone didn't do something right!", this);
                 }
                 render.enabled = false;
+                if (backGroundRender)
+                {
+                    backGroundRender.enabled = false;
+                    backGroundRender.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                }
                 render.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                
             }
+            currentlyStanding?.SetGraphics(false);
 
         }
 

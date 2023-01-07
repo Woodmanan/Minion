@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+public enum SFXItemType { None, Sword, Bow, WoodShield, MetalShield }
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Item : MonoBehaviour
@@ -32,12 +33,17 @@ public class Item : MonoBehaviour
     [HideInInspector] public bool CanMelee;
     [HideInInspector] public bool CanRanged;
 
+    [HideInInspector] public bool seen = false;
+
     public Connections connections = new Connections();
     [HideInInspector] List<Effect> attachedEffects = new List<Effect>();
 
     public StatusEffectList effects = new StatusEffectList();
     public StatusEffectList optionalEffects = new StatusEffectList();
 
+
+    //needs to be manually set
+    public SFXItemType sfxType;
 
     private SpriteRenderer Render;
     public SpriteRenderer render
@@ -158,8 +164,15 @@ public class Item : MonoBehaviour
 
     public void SetGrayscale()
     {
-        float gray = color.grayscale;
-        render.color = new Color(gray, gray, gray);
+        if (color == Color.white)
+        {
+            render.color = new Color(.3f, .3f, .3f);
+        }
+        else
+        {
+            float gray = color.grayscale;
+            render.color = new Color(gray, gray, gray);
+        }
     }
 
     public void SetFullColor()

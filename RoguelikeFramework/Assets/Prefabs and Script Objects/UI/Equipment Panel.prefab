@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -213,8 +214,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: a - The sword of Damocles
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3f4ce83d1d021a64cac196dfdd647fc2, type: 2}
+  m_sharedMaterial: {fileID: -1585472179996251903, guid: 3f4ce83d1d021a64cac196dfdd647fc2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -291,6 +292,7 @@ GameObject:
   - component: {fileID: 8367402861721582613}
   - component: {fileID: 7680159482556019539}
   - component: {fileID: 7828274672097916404}
+  - component: {fileID: 7071858656813538027}
   m_Layer: 5
   m_Name: Holding Panel
   m_TagString: Untagged
@@ -356,3 +358,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7071858656813538027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4899621303425849999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7f729b47ebb41f8ad87ca498271074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseoverSfxPath: 
+  selectSfxPath: 

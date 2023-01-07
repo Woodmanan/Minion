@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: SlimeTable
   m_EditorClassIdentifier: 
   monsters:
-  - {fileID: 2776638571021120720, guid: 612a3366c6c0ac74a836683ff6136eee, type: 3}
-  - {fileID: 2776638571021120720, guid: 83fe178f60bb41d47a0b896910eda2c5, type: 3}
+  - {fileID: 6333918117537061790, guid: ddf3af236fba1cc4398c7919f7eea4b8, type: 3}
+  - {fileID: 2776638571021120720, guid: 4eb70835d7995374a85210a5bf9588c3, type: 3}
+  - {fileID: 7692752674940021460, guid: 88a1229cde332f649bdd8b3b60061a81, type: 3}
   loadouts: []
   chanceForHigherLoadout: 0
   uniques: []

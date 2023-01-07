@@ -85,11 +85,13 @@ MonoBehaviour:
   equipment: {fileID: 0}
   abilities: {fileID: 0}
   controller: {fileID: 0}
+  renderer: {fileID: 0}
   currentTile: {fileID: 0}
   XPFromKill: 0
   level: 0
   description: TWO OF THESE ON SPAWN WHEN YOU KILL MEDIUM SLIME(so 4 in total)
   uniqueID: quaidlbv
+  dangerLevel: 2
 --- !u!212 &6511624763293797814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -169,6 +171,7 @@ MonoBehaviour:
   fightQuery:
     outOf: 1
     terms: []
+  isInBattle: 0
   interactionRange: 300
   ranged: 0
   minRange: 0

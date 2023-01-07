@@ -14,6 +14,18 @@ using System.Linq;
  * I have suffered so you don't have to ;_;
  */
 
+public class EffectDisplayInfo
+{
+    public int imageID;
+    public string subDisplayText;
+
+    public EffectDisplayInfo(int imageID, string subDisplayText)
+    {
+        this.imageID = imageID;
+        this.subDisplayText = subDisplayText;
+    }
+}
+
 public class Effect : ScriptableObject
 {
     //AUTO: Connection count
@@ -28,7 +40,25 @@ public class Effect : ScriptableObject
 
     public static Dictionary<Type, int[]> connectionDict = new Dictionary<Type, int[]>();
 
+    public Monster credit;
+
     public virtual int priority { get { return 5; } }
+
+    //Create UI piece
+    public virtual EffectDisplayInfo GetDisplayInfo()
+    {
+        return null;
+    }
+
+    public virtual string GetDisplayName()
+    {
+        return "You must override this function, if you can see this.";
+    }
+
+    public virtual string GetDisplayDescription()
+    {
+        return "You must override this function, if you can see this.";
+    }
 
     /* Connect:
      * The method that links this effect to a given monster, and hooks up its event calls.

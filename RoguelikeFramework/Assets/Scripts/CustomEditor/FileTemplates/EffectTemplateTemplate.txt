@@ -14,6 +14,30 @@ public class #SCRIPTNAME# : Effect
      */
     //public override int priority { get { return 10; } }
 
+    /*
+     * These next 3 functions create UI info. Leave GetDisplayInfo() as null to not have a UI piece.
+     * Otherwise, return an image and counter (optional) in GetDisplayInfo, and the name and description
+     * in the other two functions.
+     */
+
+    //Create UI piece
+    public override EffectDisplayInfo GetDisplayInfo()
+    {
+        return null;
+    }
+
+    //Returns the name that will be shown on hovering the UI element
+    public override string GetDisplayName()
+    {
+        return "You must override this function, if you can see this.";
+    }
+
+    //Returns the description that will be shown on hovering the UI element
+    public override string GetDisplayDescription()
+    {
+        return "You must override this function, if you can see this.";
+    }
+
     //Constuctor for the object; use this in code if you're not using the asset version!
     //Generally nice to include, just for future feature proofing
     public #SCRIPTNAME#()

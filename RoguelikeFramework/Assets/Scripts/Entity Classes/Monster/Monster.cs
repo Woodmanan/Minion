@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System;
 using UnityEngine;
-using System.Text.RegularExpressions; //Oh god oh fuck
+using System.Text.RegularExpressions; //Oh god oh fuck (so true)
 using System.Linq;
 
 
@@ -30,13 +30,16 @@ public class Monster : MonoBehaviour
     public float energy;
 
     public Vector2Int location;
+    private Vector3 lPosition0;
+    private Vector3 lPosition1;
+    private float lPositionTimer;
 
     public int visionRadius;
 
     public int energyPerStep;
     public Loadout loadout;
 
-    private static readonly float monsterZPosition = -5f;
+    public static readonly float monsterZPosition = -5f;
 
     [HideInInspector] public Connections connections;
     [HideInInspector] public Connections other = null;
@@ -50,6 +53,8 @@ public class Monster : MonoBehaviour
 
     [HideInInspector] public ActionController controller;
 
+    public SpriteRenderer renderer;
+
     public GameAction currentAction;
     public CustomTile currentTile;
 
@@ -61,6 +66,11 @@ public class Monster : MonoBehaviour
 
     public string description;
     public string uniqueID;
+
+    //used for music's isInDanger
+    public int dangerLevel = 2;
+
+    private bool spriteDir;
     
     // Start is called before the first frame update
     public virtual void Start()
@@ -76,6 +86,8 @@ public class Monster : MonoBehaviour
         equipment = GetComponent<Equipment>();
         abilities = GetComponent<Abilities>();
         controller = GetComponent<ActionController>();
+
+        renderer = GetComponent<SpriteRenderer>();
         
 
         //TODO: Have starting equipment? Probably not a huge concern right now, though.
@@ -98,6 +110,8 @@ public class Monster : MonoBehaviour
 
         loadout?.Apply(this);
 
+        spriteDir = GetComponent<SpriteRenderer>().flipX;
+
         setup = true;
     }
 
@@ -114,32 +128,55 @@ public class Monster : MonoBehaviour
         #if UNITY_EDITOR || DEVELOPMENT_BUILD
         //Confirm that we got our own unique space
         Debug.Assert(map.GetTile(location).currentlyStanding == this || map.GetTile(location).currentlyStanding == null, "Generator placed two monsters together", this);
-        #endif
+#endif
         //Put us in that space, and build our initial LOS
+        lPosition0 = new Vector3(location.x, location.y, monsterZPosition);
+        lPosition1 = lPosition0;
+        transform.position = new Vector3(location.x, location.y, monsterZPosition);
         SetPosition(map, location);
         UpdateLOS(map);
-
-        
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        // hop movement
+        lPositionTimer += Time.deltaTime * 12f;
+        transform.position = Vector3.Lerp(lPosition0, lPosition1, lPositionTimer)
+            + Vector3.up * 0.4f * Mathf.Sin(Mathf.Min((float)Math.PI, lPositionTimer * (float)Math.PI));
+
+        // look towards movement
+        bool flipDir = GetComponent<SpriteRenderer>().flipX;
+        if (lPosition0.x < lPosition1.x) flipDir = spriteDir;
+        else if (lPosition0.x > lPosition1.x) flipDir = !spriteDir;
+        GetComponent<SpriteRenderer>().flipX = flipDir;
     }
 
-    public void Heal(int healthReturned)
+    public void Heal(int healthReturned, bool isNatural=false)
     {
         connections.OnHealing.BlendInvoke(other?.OnHealing, ref healthReturned);
+
+        //Healing has no actual effect (and therefore no display) if you didn't actually heal
+        if (resources.health == stats.resources.health)
+        {
+            return;
+        }
 
         if (healthReturned > 0) //Negative health healing is currently just ignored, for clarity's sake
         {
             resources.health += healthReturned;
         }
+
         if (resources.health >= stats.resources.health)
         {
             resources.health = stats.resources.health;
             connections.OnFullyHealed.BlendInvoke(other?.OnFullyHealed);
+        }
+        
+        if (!isNatural)
+        {
+            LogManager.S.LogEntityHeal(GetFormattedName(), healthReturned, nameRequiresPluralVerbs, IsEnemy(this));
+            LogManager.S.LogFloatingNumber(healthReturned, transform);
         }
     }
 
@@ -159,13 +196,12 @@ public class Monster : MonoBehaviour
             return false;
         }
 
-        
-
         //TODO: Log Hit
-        //TakeDamage(damage, DamageType.NONE);
+        // 
         return true;
     }
 
+    
     private void Damage(int damage, DamageType type, DamageSource source, string message = "{name} take%s{|s} {damage} damage")
     {
         connections.OnTakeDamage.BlendInvoke(other?.OnTakeDamage, ref damage, ref type, ref source);
@@ -173,7 +209,7 @@ public class Monster : MonoBehaviour
         
         //Loggingstuff
         string toPrint = FormatStringForName(message).Replace("{damage}", $"{damage}");
-        Debug.Log($"Console print: {toPrint}");
+        //Debug.Log($"Console print: {toPrint}");
 
         if (resources.health <= 0)
         {
@@ -187,13 +223,25 @@ public class Monster : MonoBehaviour
 
     public void Damage(Monster dealer, int damage, DamageType type, DamageSource source, string message = "{name} take%s{|s} {damage} damage")
     {
+        if (dealer == null)
+        {
+            Debug.LogError("Dealer was null!");
+        }
         dealer?.connections.OnDealDamage.BlendInvoke(dealer.other?.OnDealDamage, ref damage, ref type, ref source);
         Damage(damage, type, source, message);
+
+        //Quick hacky fix - Make this always true!
+        if (dealer != null)
+        {
+            LogManager.S.LogSpecificEntityAttackWithDamage(dealer.GetFormattedName(), GetFormattedName(), "hit", damage, !nameRequiresPluralVerbs, IsEnemy(dealer), IsEnemy(this));
+        }
+        LogManager.S.LogFloatingNumber(-damage, transform);
         if (resources.health <= 0)
         {
             dealer?.KillMonster(this, type, source);
         }
     }
+
 
     public virtual void Die()
     {
@@ -225,11 +273,21 @@ public class Monster : MonoBehaviour
         resources.xp += amount;
         if (resources.xp >= stats.resources.xp)
         {
-            resources.xp -= XPTillNextLevel();
-            Debug.Log($"After leveling up with {XPTillNextLevel()} xp, monster now has {resources.xp} xp");
+            resources.xp -= stats.resources.xp;
+            Debug.Log($"After leveling up with {XPTillNextLevel()} xp, monster now has {resources.xp} xp leftover.");
             LevelUp();
+            LogManager.S.LogTotallyHighlightedQuote("Level up!", "FFFF00");
         }
 
+    }
+
+    public void AddResource(Resource resource, int amount)
+    {
+        resources[resource] += amount;
+        if (resources[resource] > stats.resources[resource])
+        {
+            resources[resource] = stats.resources[resource];
+        }
     }
     
     //TODO: Make this 
@@ -238,12 +296,13 @@ public class Monster : MonoBehaviour
         return int.MaxValue;
     }
 
-    public  void LevelUp()
+    public void LevelUp()
     {
         level++;
         connections.OnLevelUp.BlendInvoke(other?.OnLevelUp, ref level);
         baseStats.resources.xp = XPTillNextLevel();
         OnLevelUp();
+        abilities?.CheckAvailability();
     }
 
     public virtual void OnLevelUp()
@@ -256,8 +315,7 @@ public class Monster : MonoBehaviour
         // Like dying but no drops
         Debug.Log("Monster Removed!");
         resources.health = 0;
-        if (currentTile.currentlyStanding == this)
-            currentTile.currentlyStanding = null;
+        currentTile.ClearMonster();
     }
 
     public bool IsDead()
@@ -320,11 +378,8 @@ public class Monster : MonoBehaviour
 
     public void StartTurn()
     {
-        Debug.Log($"Monster is starting turn. Sanity check, I am setup: {setup}", this);
         CallRegenerateStats();
-        Debug.Log("Regened stats sucessfully", this);
         abilities?.CheckAvailability();
-        Debug.Log("Monster checked availability sucessfully", this);
         connections.OnTurnStartLocal.BlendInvoke(other?.OnTurnStartLocal);
     }
 
@@ -385,6 +440,7 @@ public class Monster : MonoBehaviour
     //Takes the local turn
     public IEnumerator LocalTurn()
     {
+        if (view.visibleMonsters.Any(x => x.IsEnemy(this))) currentAction = null;
         while (energy > 0)
         {
             if (currentAction == null)
@@ -411,7 +467,6 @@ public class Monster : MonoBehaviour
                     continue;
                 }
             }
-
 
             //Short circuits early!
             while (energy > 0 && currentAction.action.MoveNext())
@@ -462,11 +517,28 @@ public class Monster : MonoBehaviour
 
     public void SetPosition(Map map, Vector2Int newPosition)
     {
-        if (currentTile) currentTile.currentlyStanding = null;
+        if (currentTile) currentTile.ClearMonster();
+        // visual slide
+        lPosition0 = new Vector3(location.x, location.y, monsterZPosition);
+        // update location
         location = newPosition;
-        transform.position = new Vector3(location.x, location.y, monsterZPosition);
+
+        //Update sprite sorting
+        renderer.sortingOrder = 200 + (200 - location.y);
+
+        // visual slide
+        lPosition1 = new Vector3(location.x, location.y, monsterZPosition);
+        lPositionTimer = 0;
         currentTile = map.GetTile(location);
         currentTile.SetMonster(this);
+        if (currentTile.isVisible)
+        {
+            SetGraphics(true);
+        }
+        else
+        {
+            SetGraphics(false);
+        }
     }
 
     //Function to activate event call of Global turn start
@@ -523,4 +595,9 @@ public class Monster : MonoBehaviour
     {
         return Vector2Int.Distance(location, other.location);
     }
+
+    public void SetGraphics(bool state)
+    {
+        renderer.enabled = state;
+    }    
 }

@@ -158,6 +158,18 @@ public class Equipment : MonoBehaviour
         return true;
     }
 
+    public int GetFirstSlot(EquipableItem item)
+    {
+        foreach (EquipmentSlot s in equipmentSlots)
+        {
+            if (s.type.Contains(item.primarySlot))
+            {
+                return s.position;
+            }
+        }
+        return -1;
+    }
+
     //Confirms the existence of enough slots to attach this item
     public bool CanEquip(int itemIndex, int EquipIndex)
     {

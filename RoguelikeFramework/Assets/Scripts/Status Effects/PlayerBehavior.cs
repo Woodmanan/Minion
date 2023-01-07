@@ -9,10 +9,14 @@ public class PlayerBehavior : Effect
     public static bool isInDanger;
 
     public float playerHealthForDanger;
-    public float numMonstersForDanger;
+    public float monsterDangerLevelsForDanger;
+    public int dangerCooldown = 5;
 
     public float healthPer100;
     float healthStore; //Stores overflow per turn
+    private int turnsSinceDanger = 0;
+    private int turnsSinceBoss = 0;
+    private bool bossMusicPlaying = false;
 
     Monster player;
     /* The default priority of all functions in this class - the order in which they'll be called
@@ -31,7 +35,6 @@ public class PlayerBehavior : Effect
 
     public void SetDanger(bool value)
     {
-        if (isInDanger ^ value) Debug.Log("Setting player danger to " + value);
         isInDanger = value;
         AudioManager.i.UpdateMusic(isInDanger);
     }
@@ -54,29 +57,61 @@ public class PlayerBehavior : Effect
     public override void OnTurnStartGlobal()
     {
         healthStore += healthPer100 / 100;
-        player.Heal((int)healthStore);
+        player.Heal((int)healthStore, true);
+        player.AddResource(Resource.MANA, 1);
         healthStore %= 1;
-        if (!isInDanger)
-        {
-
-            if ((player.resources.health / ((float)player.stats.resources.health)) < playerHealthForDanger)
-            {
-                SetDanger(true);
-            }
-            else if (player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).Count >= numMonstersForDanger)
-            {
-                SetDanger(true);
+        
+        int totalMonsterDanger = 0;
+        List<Monster> visibleMonsters = player.view.visibleMonsters.FindAll(x => player.IsEnemy(x));
+        visibleMonsters.ForEach(x => totalMonsterDanger += x.dangerLevel);
+        bool bossPresent = false;
+        foreach(Monster m in visibleMonsters) {
+            MonsterAudio maudio = m.GetComponent<MonsterAudio>();
+            if (maudio == null) continue;
+            if(maudio.monsterType == MonsterType.dragon) {
+                bossPresent = true;
+                turnsSinceBoss = 0;
             }
         }
-        else
-        {
-            if (((player.resources.health / ((float)player.stats.resources.health)) > playerHealthForDanger)
-                && (player.view.visibleMonsters.FindAll(x => player.IsEnemy(x)).Count == 0))
-            {
-                SetDanger(false);
-            }
+
+        if(!bossPresent) {
+            turnsSinceBoss++;
+        }
+
+        if(bossPresent && !bossMusicPlaying) {
+            TurnOnBossMusic();
+        } else if(!bossPresent && bossMusicPlaying && turnsSinceBoss > 3) {
+            TurnOffBossMusic();
         }
         
+        if (!isInDanger && (player.resources.health / ((float)player.stats.resources.health)) < playerHealthForDanger)
+        {
+            turnsSinceDanger = 0;
+            SetDanger(true);
+        }
+        else if (totalMonsterDanger >= monsterDangerLevelsForDanger)
+        {
+            turnsSinceDanger = 0;
+            SetDanger(true);
+        }
+        if (totalMonsterDanger == 0)
+        {
+            turnsSinceDanger++;
+        }
+        if(turnsSinceDanger >= dangerCooldown) {
+            SetDanger(false);
+        }
+        
+    }
+
+    void TurnOnBossMusic() {
+        AudioManager.i.StartBossMusic();
+        bossMusicPlaying = true;
+    }
+
+    void TurnOffBossMusic() {
+        AudioManager.i.StartMusic(AudioManager.i.Level);
+        bossMusicPlaying = false;
     }
 
     //Called at the end of the global turn sequence

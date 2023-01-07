@@ -16,6 +16,7 @@ MonoBehaviour:
   displayName: 
   description: 
   ReadyToDelete: 0
-  playerHealthForDanger: 0.5
-  numMonstersForDanger: 3
+  playerHealthForDanger: 0.4
+  monsterDangerLevelsForDanger: 5
+  dangerCooldown: 5
   healthPer100: 50

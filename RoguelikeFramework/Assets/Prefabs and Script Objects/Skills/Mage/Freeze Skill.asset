@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4c58dd23149ac4d89650f5f3e171cc, type: 3}
+  m_Name: Freeze Skill
+  m_EditorClassIdentifier: 
+  name: Freeze
+  description: Freeze all your foes.
+  icon: {fileID: 21300000, guid: 241a79446cdb94ded9f56be9817c0c54, type: 3}
+  effectsToApply:
+    list: []
+  abilitiesToApply:
+  - {fileID: 11400000, guid: c1f6324b3e6051e4bb94f02add99337d, type: 2}

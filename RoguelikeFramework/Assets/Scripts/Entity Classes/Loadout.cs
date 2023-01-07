@@ -7,10 +7,10 @@ using System.Linq;
 public class Loadout : ScriptableObject
 {
     public List<Item> items;
-    public int maxItems;
+    //public int maxItems;
 
     public List<Ability> abilities;
-    public int maxAbilties;
+    //public int maxAbilties;
 
     public int minDepth;
     public int maxDepth;
@@ -26,11 +26,11 @@ public class Loadout : ScriptableObject
         m.Setup();
 
         //Get the items attached
-        items = items.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
+        //items = items.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
         int numAttached = 0;
         foreach (Item item in items)
         {
-            if (numAttached >= maxItems) break;
+            //if (numAttached >= maxItems) break;
 
             EquipableItem equip = item.GetComponent<EquipableItem>();
             if (equip)
@@ -56,10 +56,10 @@ public class Loadout : ScriptableObject
 
         numAttached = 0;
         //Do the abilities
-        abilities = abilities.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
+        //abilities = abilities.OrderBy(x => UnityEngine.Random.Range(int.MinValue, int.MaxValue)).ToList();
         foreach (Ability ability in abilities)
         {
-            if (numAttached >= maxAbilties) break;
+            //if (numAttached >= maxAbilties) break;
 
             m.abilities.AddAbility(ability.Instantiate());
             numAttached++;

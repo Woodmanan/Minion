@@ -57,7 +57,7 @@ public class MonsterUpdateWizard : MonoBehaviour
             if (newInfo.ContainsKey(id))
             {
                 MonsterData data = newInfo[id];
-                monster.name = data.name;
+                monster.displayName = data.name;
                 monster.description = data.description;
                 monster.XPFromKill = data.XPOnKill;
                 monster.baseStats.resources.health = data.health;
@@ -150,7 +150,7 @@ public class MonsterUpdateWizard : MonoBehaviour
             string key = attributes[keyIndex];
             if (key.Length == 0)
             {
-                Debug.LogWarning($"Monster {monster.name} is in the drive, but not in the project! Please create it, and assign it a key in the drive.");
+                Debug.LogWarning($"Monster {attributes[nameIndex]} is in the drive, but not in the project! Please create it, and assign it a key in the drive.");
                 continue;
             }
 

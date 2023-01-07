@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c6c7585bb1c6344be94810522d6eed, type: 3}
   m_Name: Fireball2
   m_EditorClassIdentifier: 
-  displayName: Zap
-  image: {fileID: 6699756317804703528, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
+  displayName: Lightning
+  image: {fileID: 21300000, guid: 0fb8d685488d74fea9f07594a0f47fef, type: 3}
   color: {r: 1, g: 0.7957102, b: 0, a: 1}
   baseTargeting:
     numPoints: 1
@@ -39,10 +39,11 @@ MonoBehaviour:
   baseStats:
     costs:
       health: 0
-      mana: 1
+      mana: 2
       stamina: 0
+      xp: 0
     cooldown: 0
-    power: 2
+    power: 4
   castQuery:
     outOf: 1
     terms:
@@ -81,6 +82,7 @@ MonoBehaviour:
       health: 0
       mana: 0
       stamina: 0
+      xp: 0
     cooldown: 0
     power: 0
   currentCooldown: 0

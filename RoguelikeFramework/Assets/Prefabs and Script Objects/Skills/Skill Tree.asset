@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7744047393842941571
+--- !u!114 &-6097328251874657600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -136, y: 120}
+  position: {x: -216, y: -152}
   ports:
     keys:
     - canBePurchased
@@ -23,7 +23,7 @@ MonoBehaviour:
     - hasBeenPurchased
     values:
     - _fieldName: canBePurchased
-      _node: {fileID: -7744047393842941571}
+      _node: {fileID: -6097328251874657600}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -32,7 +32,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: purchaseAllRootsFirst
-      _node: {fileID: -7744047393842941571}
+      _node: {fileID: -6097328251874657600}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -41,7 +41,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: skills
-      _node: {fileID: -7744047393842941571}
+      _node: {fileID: -6097328251874657600}
       _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -50,7 +50,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: skillFlag
-      _node: {fileID: -7744047393842941571}
+      _node: {fileID: -6097328251874657600}
       _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -59,12 +59,12 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: hasBeenPurchased
-      _node: {fileID: -7744047393842941571}
+      _node: {fileID: -6097328251874657600}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: canBePurchased
-        node: {fileID: 4386202397896270084}
+        node: {fileID: -868851412941088977}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -73,10 +73,10 @@ MonoBehaviour:
   canBePurchased: 1
   purchaseAllRootsFirst: 0
   skills:
-  - {fileID: 11400000, guid: 81eef8b820594f046a2d3c2f74585d4d, type: 2}
+  - {fileID: 11400000, guid: fffe32347e0bb56468d13877b53539ee, type: 2}
   skillFlag: 0
   hasBeenPurchased: 0
---- !u!114 &-6420434811753366377
+--- !u!114 &-5571486055159845128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,29 +89,41 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -152, y: -472}
+  position: {x: 440, y: 136}
   ports:
     keys:
-    - hasBeenPurchased
-    - skills
     - canBePurchased
-    - skillFlag
     - purchaseAllRootsFirst
+    - skills
+    - skillFlag
+    - hasBeenPurchased
     values:
-    - _fieldName: hasBeenPurchased
-      _node: {fileID: -6420434811753366377}
+    - _fieldName: canBePurchased
+      _node: {fileID: -5571486055159845128}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: canBePurchased
-        node: {fileID: -4586400737393937805}
+      - fieldName: hasBeenPurchased
+        node: {fileID: 7751514330023837487}
         reroutePoints: []
-      _direction: 1
+      - fieldName: hasBeenPurchased
+        node: {fileID: -868851412941088977}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: purchaseAllRootsFirst
+      _node: {fileID: -5571486055159845128}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: skills
-      _node: {fileID: -6420434811753366377}
+      _node: {fileID: -5571486055159845128}
       _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -119,20 +131,8 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: canBePurchased
-      _node: {fileID: -6420434811753366377}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: hasBeenPurchased
-        node: {fileID: 7761639871191831317}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: skillFlag
-      _node: {fileID: -6420434811753366377}
+      _node: {fileID: -5571486055159845128}
       _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -140,23 +140,22 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: purchaseAllRootsFirst
-      _node: {fileID: -6420434811753366377}
+    - _fieldName: hasBeenPurchased
+      _node: {fileID: -5571486055159845128}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
-      _direction: 0
+      _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   canBePurchased: 0
   purchaseAllRootsFirst: 0
   skills:
-  - {fileID: 11400000, guid: 074cd3ff222e703489db6e730f8cadf1, type: 2}
-  - {fileID: 11400000, guid: 8135f899f6e24704b9e2a3e996fb15a1, type: 2}
+  - {fileID: 11400000, guid: 91ee8604e5f8b5e4e9ae2bfe4cd9d222, type: 2}
   skillFlag: 0
   hasBeenPurchased: 0
---- !u!114 &-6382712622367831547
+--- !u!114 &-4472019103743350931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,187 +168,26 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -72, y: -152}
+  position: {x: -216, y: 136}
   ports:
     keys:
     - canBePurchased
-    - skills
-    - hasBeenPurchased
-    - skillFlag
     - purchaseAllRootsFirst
+    - skills
+    - skillFlag
+    - hasBeenPurchased
     values:
     - _fieldName: canBePurchased
-      _node: {fileID: -6382712622367831547}
+      _node: {fileID: -4472019103743350931}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: hasBeenPurchased
-        node: {fileID: -765389027919451268}
-        reroutePoints: []
-      - fieldName: hasBeenPurchased
-        node: {fileID: 7761639871191831317}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: skills
-      _node: {fileID: -6382712622367831547}
-      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: hasBeenPurchased
-      _node: {fileID: -6382712622367831547}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: canBePurchased
-        node: {fileID: -4586400737393937805}
-        reroutePoints: []
-      - fieldName: canBePurchased
-        node: {fileID: 4386202397896270084}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: skillFlag
-      _node: {fileID: -6382712622367831547}
-      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: purchaseAllRootsFirst
-      _node: {fileID: -6382712622367831547}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  canBePurchased: 0
-  purchaseAllRootsFirst: 0
-  skills:
-  - {fileID: 11400000, guid: f6134a56310fbe547a7f8d1f71ab1041, type: 2}
-  - {fileID: 11400000, guid: 8135f899f6e24704b9e2a3e996fb15a1, type: 2}
-  skillFlag: 0
-  hasBeenPurchased: 0
---- !u!114 &-4586400737393937805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
-  m_Name: Skill
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 328, y: -184}
-  ports:
-    keys:
-    - canBePurchased
-    - skills
-    - hasBeenPurchased
-    - skillFlag
-    - purchaseAllRootsFirst
-    values:
-    - _fieldName: canBePurchased
-      _node: {fileID: -4586400737393937805}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: hasBeenPurchased
-        node: {fileID: -6420434811753366377}
-        reroutePoints: []
-      - fieldName: hasBeenPurchased
-        node: {fileID: -6382712622367831547}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: skills
-      _node: {fileID: -4586400737393937805}
-      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: hasBeenPurchased
-      _node: {fileID: -4586400737393937805}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: canBePurchased
-        node: {fileID: 1647434379508285269}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: skillFlag
-      _node: {fileID: -4586400737393937805}
-      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: purchaseAllRootsFirst
-      _node: {fileID: -4586400737393937805}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  canBePurchased: 0
-  purchaseAllRootsFirst: 1
-  skills:
-  - {fileID: 11400000, guid: cbff4c781f8a6634699e0948a4ba1b5f, type: 2}
-  - {fileID: 11400000, guid: ceaef817fcf491f45878a51cac5cec9d, type: 2}
-  - {fileID: 11400000, guid: 30760efbfc8a02c46a295a245be3f675, type: 2}
-  skillFlag: 0
-  hasBeenPurchased: 0
---- !u!114 &-765389027919451268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
-  m_Name: Skill
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -376, y: 120}
-  ports:
-    keys:
-    - canBePurchased
-    - skills
-    - hasBeenPurchased
-    - skillFlag
-    - purchaseAllRootsFirst
-    values:
-    - _fieldName: canBePurchased
-      _node: {fileID: -765389027919451268}
+      _node: {fileID: -4472019103743350931}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -358,7 +196,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: skills
-      _node: {fileID: -765389027919451268}
+      _node: {fileID: -4472019103743350931}
       _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -366,20 +204,8 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: hasBeenPurchased
-      _node: {fileID: -765389027919451268}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: canBePurchased
-        node: {fileID: -6382712622367831547}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: skillFlag
-      _node: {fileID: -765389027919451268}
+      _node: {fileID: -4472019103743350931}
       _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -387,20 +213,111 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: purchaseAllRootsFirst
-      _node: {fileID: -765389027919451268}
+    - _fieldName: hasBeenPurchased
+      _node: {fileID: -4472019103743350931}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
+      connections:
+      - fieldName: canBePurchased
+        node: {fileID: 7751514330023837487}
+        reroutePoints: []
+      - fieldName: canBePurchased
+        node: {fileID: 7647340962718918393}
+        reroutePoints: []
+      - fieldName: canBePurchased
+        node: {fileID: 1732757012842979827}
+        reroutePoints: []
+      _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   canBePurchased: 1
   purchaseAllRootsFirst: 0
   skills:
-  - {fileID: 11400000, guid: b198494d683567c4481b1cb1e292c7ba, type: 2}
+  - {fileID: 11400000, guid: 46b6dba221f63524b8ee02ebc672402a, type: 2}
   skillFlag: 0
+  hasBeenPurchased: 0
+--- !u!114 &-868851412941088977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 120, y: -168}
+  ports:
+    keys:
+    - canBePurchased
+    - purchaseAllRootsFirst
+    - skills
+    - skillFlag
+    - hasBeenPurchased
+    values:
+    - _fieldName: canBePurchased
+      _node: {fileID: -868851412941088977}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: hasBeenPurchased
+        node: {fileID: -6097328251874657600}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: purchaseAllRootsFirst
+      _node: {fileID: -868851412941088977}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skills
+      _node: {fileID: -868851412941088977}
+      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: -868851412941088977}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: hasBeenPurchased
+      _node: {fileID: -868851412941088977}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: canBePurchased
+        node: {fileID: 61485252142273711}
+        reroutePoints: []
+      - fieldName: canBePurchased
+        node: {fileID: -5571486055159845128}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  canBePurchased: 0
+  purchaseAllRootsFirst: 0
+  skills:
+  - {fileID: 11400000, guid: 19d4177219b7b4945a8ac18acd37fb58, type: 2}
+  skillFlag: 2
   hasBeenPurchased: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -415,17 +332,20 @@ MonoBehaviour:
   m_Name: Skill Tree
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 7761639871191831317}
-  - {fileID: -6420434811753366377}
-  - {fileID: -765389027919451268}
-  - {fileID: -6382712622367831547}
-  - {fileID: -4586400737393937805}
-  - {fileID: 4386202397896270084}
-  - {fileID: -7744047393842941571}
-  - {fileID: 1647434379508285269}
+  - {fileID: -6097328251874657600}
+  - {fileID: -868851412941088977}
+  - {fileID: 61485252142273711}
+  - {fileID: -4472019103743350931}
+  - {fileID: 7751514330023837487}
+  - {fileID: 1732757012842979827}
+  - {fileID: 7647340962718918393}
+  - {fileID: -5571486055159845128}
+  - {fileID: 183132777927708680}
+  - {fileID: 509710012665432029}
+  - {fileID: 1461694927317375602}
   maxToDisplayOnLevelUp: 5
   resetSkillLevelsOnRestart: 1
---- !u!114 &1647434379508285269
+--- !u!114 &61485252142273711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -438,7 +358,7 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 616, y: 8}
+  position: {x: 456, y: -184}
   ports:
     keys:
     - canBePurchased
@@ -448,22 +368,19 @@ MonoBehaviour:
     - hasBeenPurchased
     values:
     - _fieldName: canBePurchased
-      _node: {fileID: 1647434379508285269}
+      _node: {fileID: 61485252142273711}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: hasBeenPurchased
-        node: {fileID: -4586400737393937805}
-        reroutePoints: []
-      - fieldName: hasBeenPurchased
-        node: {fileID: 4386202397896270084}
+        node: {fileID: -868851412941088977}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: purchaseAllRootsFirst
-      _node: {fileID: 1647434379508285269}
+      _node: {fileID: 61485252142273711}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -472,7 +389,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: skills
-      _node: {fileID: 1647434379508285269}
+      _node: {fileID: 61485252142273711}
       _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -481,7 +398,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: skillFlag
-      _node: {fileID: 1647434379508285269}
+      _node: {fileID: 61485252142273711}
       _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -490,7 +407,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: hasBeenPurchased
-      _node: {fileID: 1647434379508285269}
+      _node: {fileID: 61485252142273711}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -499,12 +416,12 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   canBePurchased: 0
-  purchaseAllRootsFirst: 1
+  purchaseAllRootsFirst: 0
   skills:
-  - {fileID: 11400000, guid: 7f02ee5b32bb12245a1cb3598a796494, type: 2}
+  - {fileID: 11400000, guid: c2c437a8a6ce6dc45b66e09bf9c97d9d, type: 2}
   skillFlag: 0
   hasBeenPurchased: 0
---- !u!114 &4386202397896270084
+--- !u!114 &183132777927708680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -517,7 +434,7 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 184, y: 72}
+  position: {x: -264, y: 888}
   ports:
     keys:
     - canBePurchased
@@ -527,22 +444,16 @@ MonoBehaviour:
     - hasBeenPurchased
     values:
     - _fieldName: canBePurchased
-      _node: {fileID: 4386202397896270084}
+      _node: {fileID: 183132777927708680}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: hasBeenPurchased
-        node: {fileID: -6382712622367831547}
-        reroutePoints: []
-      - fieldName: hasBeenPurchased
-        node: {fileID: -7744047393842941571}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: purchaseAllRootsFirst
-      _node: {fileID: 4386202397896270084}
+      _node: {fileID: 183132777927708680}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -551,7 +462,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: skills
-      _node: {fileID: 4386202397896270084}
+      _node: {fileID: 183132777927708680}
       _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -560,7 +471,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: skillFlag
-      _node: {fileID: 4386202397896270084}
+      _node: {fileID: 183132777927708680}
       _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -569,100 +480,412 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: hasBeenPurchased
-      _node: {fileID: 4386202397896270084}
+      _node: {fileID: 183132777927708680}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: canBePurchased
-        node: {fileID: 1647434379508285269}
+        node: {fileID: 1461694927317375602}
         reroutePoints: []
       _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  canBePurchased: 0
-  purchaseAllRootsFirst: 1
-  skills:
-  - {fileID: 11400000, guid: 1846835dd18511f4c9fe516060251afd, type: 2}
-  - {fileID: 11400000, guid: 1846835dd18511f4c9fe516060251afd, type: 2}
-  skillFlag: 0
-  hasBeenPurchased: 0
---- !u!114 &7761639871191831317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
-  m_Name: Skill
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -376, y: -264}
-  ports:
-    keys:
-    - hasBeenPurchased
-    - skills
-    - canBePurchased
-    - skillFlag
-    - purchaseAllRootsFirst
-    values:
-    - _fieldName: hasBeenPurchased
-      _node: {fileID: 7761639871191831317}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: canBePurchased
-        node: {fileID: -6420434811753366377}
-        reroutePoints: []
-      - fieldName: canBePurchased
-        node: {fileID: -6382712622367831547}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: skills
-      _node: {fileID: 7761639871191831317}
-      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: canBePurchased
-      _node: {fileID: 7761639871191831317}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: skillFlag
-      _node: {fileID: 7761639871191831317}
-      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: purchaseAllRootsFirst
-      _node: {fileID: 7761639871191831317}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   canBePurchased: 1
   purchaseAllRootsFirst: 0
   skills:
-  - {fileID: 11400000, guid: c87637ec367eb6940a268d2f62dc78b8, type: 2}
+  - {fileID: 11400000, guid: 86e45c092435cba49972c0194acb84eb, type: 2}
+  skillFlag: 0
+  hasBeenPurchased: 0
+--- !u!114 &509710012665432029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 440, y: 728}
+  ports:
+    keys:
+    - canBePurchased
+    - purchaseAllRootsFirst
+    - skills
+    - skillFlag
+    - hasBeenPurchased
+    values:
+    - _fieldName: canBePurchased
+      _node: {fileID: 509710012665432029}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: hasBeenPurchased
+        node: {fileID: 1461694927317375602}
+        reroutePoints: []
+      - fieldName: hasBeenPurchased
+        node: {fileID: 7647340962718918393}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: purchaseAllRootsFirst
+      _node: {fileID: 509710012665432029}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skills
+      _node: {fileID: 509710012665432029}
+      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: 509710012665432029}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: hasBeenPurchased
+      _node: {fileID: 509710012665432029}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  canBePurchased: 0
+  purchaseAllRootsFirst: 0
+  skills:
+  - {fileID: 11400000, guid: 27b5e8a7a23104442991ab44959774e2, type: 2}
+  skillFlag: 0
+  hasBeenPurchased: 0
+--- !u!114 &1461694927317375602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 72, y: 872}
+  ports:
+    keys:
+    - canBePurchased
+    - purchaseAllRootsFirst
+    - skills
+    - skillFlag
+    - hasBeenPurchased
+    values:
+    - _fieldName: canBePurchased
+      _node: {fileID: 1461694927317375602}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: hasBeenPurchased
+        node: {fileID: 183132777927708680}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: purchaseAllRootsFirst
+      _node: {fileID: 1461694927317375602}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skills
+      _node: {fileID: 1461694927317375602}
+      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: 1461694927317375602}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: hasBeenPurchased
+      _node: {fileID: 1461694927317375602}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: canBePurchased
+        node: {fileID: 509710012665432029}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  canBePurchased: 0
+  purchaseAllRootsFirst: 0
+  skills:
+  - {fileID: 11400000, guid: 7adcf54d3e31b6448b9df5851e751c81, type: 2}
+  skillFlag: 0
+  hasBeenPurchased: 0
+--- !u!114 &1732757012842979827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 72, y: 552}
+  ports:
+    keys:
+    - canBePurchased
+    - purchaseAllRootsFirst
+    - skills
+    - skillFlag
+    - hasBeenPurchased
+    values:
+    - _fieldName: canBePurchased
+      _node: {fileID: 1732757012842979827}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: hasBeenPurchased
+        node: {fileID: -4472019103743350931}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: purchaseAllRootsFirst
+      _node: {fileID: 1732757012842979827}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skills
+      _node: {fileID: 1732757012842979827}
+      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: 1732757012842979827}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: hasBeenPurchased
+      _node: {fileID: 1732757012842979827}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  canBePurchased: 0
+  purchaseAllRootsFirst: 0
+  skills:
+  - {fileID: 11400000, guid: 514adfb3c5c8f5c4fb1011fefc7b87e1, type: 2}
+  skillFlag: 0
+  hasBeenPurchased: 0
+--- !u!114 &7647340962718918393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 72, y: 344}
+  ports:
+    keys:
+    - canBePurchased
+    - purchaseAllRootsFirst
+    - skills
+    - skillFlag
+    - hasBeenPurchased
+    values:
+    - _fieldName: canBePurchased
+      _node: {fileID: 7647340962718918393}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: hasBeenPurchased
+        node: {fileID: -4472019103743350931}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: purchaseAllRootsFirst
+      _node: {fileID: 7647340962718918393}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skills
+      _node: {fileID: 7647340962718918393}
+      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: 7647340962718918393}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: hasBeenPurchased
+      _node: {fileID: 7647340962718918393}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: canBePurchased
+        node: {fileID: 509710012665432029}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  canBePurchased: 0
+  purchaseAllRootsFirst: 0
+  skills:
+  - {fileID: 11400000, guid: 3fb6d3628afcfad4e8a275f32faf3e27, type: 2}
+  skillFlag: 0
+  hasBeenPurchased: 0
+--- !u!114 &7751514330023837487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3551f6b4f81188d4b97fe547192605aa, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 72, y: 136}
+  ports:
+    keys:
+    - canBePurchased
+    - purchaseAllRootsFirst
+    - skills
+    - skillFlag
+    - hasBeenPurchased
+    values:
+    - _fieldName: canBePurchased
+      _node: {fileID: 7751514330023837487}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: hasBeenPurchased
+        node: {fileID: -4472019103743350931}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: purchaseAllRootsFirst
+      _node: {fileID: 7751514330023837487}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skills
+      _node: {fileID: 7751514330023837487}
+      _typeQualifiedName: Skill[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: skillFlag
+      _node: {fileID: 7751514330023837487}
+      _typeQualifiedName: SkillNode+SkillFlag, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: hasBeenPurchased
+      _node: {fileID: 7751514330023837487}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: canBePurchased
+        node: {fileID: -5571486055159845128}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  canBePurchased: 0
+  purchaseAllRootsFirst: 0
+  skills:
+  - {fileID: 11400000, guid: b8cd709561598124892791f33c8d7e90, type: 2}
   skillFlag: 0
   hasBeenPurchased: 0

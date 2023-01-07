@@ -13,11 +13,14 @@ public class DamageResistance : Effect
     public float percentDamage = 20f;
 
     float storedDamage = 0;
+
+    private float initialNumTurns;
     //Constuctor for the object; use this in code if you're not using the asset version!
     public DamageResistance(int numTurns)
     {
         //Construct me!
         this.numTurns = numTurns;
+        initialNumTurns = numTurns;
     }
 
     //Called the moment an effect connects to a monster
@@ -76,6 +79,21 @@ public class DamageResistance : Effect
             }
             damage = damage - shavedDamage;
         }
+    }
+
+    public override EffectDisplayInfo GetDisplayInfo()
+    {
+        return new EffectDisplayInfo(0, initialNumTurns == 0 ? "Permanent" : numTurns + " turns left");
+    }
+
+    public override string GetDisplayName()
+    {
+        return "Damage Resistance";
+    }
+
+    public override string GetDisplayDescription()
+    {
+        return $"You resist damage to {resistedType}.";
     }
 
     //Called when a monster recieves a healing event request

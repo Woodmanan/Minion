@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Inventory))]
 public class ItemVisiblity : MonoBehaviour
 {
-    [SerializeField] private Item visible;
+    [HideInInspector] public Item visible;
     private CustomTile tile;
     Inventory inventory;
 
@@ -73,7 +73,6 @@ public class ItemVisiblity : MonoBehaviour
 
     public void ItemIsRemoved(ref ItemStack stack)
     {
-        Debug.Log("Item removal called.");
         #if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (visible == null)
         {

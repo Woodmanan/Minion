@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2474601479550185651, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 772935a66a7f2424981f55c0e1b75007, type: 3}
+  m_Color: {r: 1, g: 0.40943396, b: 0.40943396, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,12 +99,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 1
   type: 1
-  minDepth: 0
-  maxDepth: 3
+  minDepth: 5
+  maxDepth: 8
   elevatesTo: 1
   ID: 1
   stackable: 0
-  color: {r: 1, g: 0, b: 0, a: 1}
+  color: {r: 1, g: 0.40943396, b: 0.40943396, a: 1}
   location: {x: 0, y: 0}
   held: 0
   name: Flame Sword
@@ -114,10 +114,12 @@ MonoBehaviour:
   CanTarget: 0
   CanMelee: 0
   CanRanged: 0
+  seen: 0
   effects:
     list: []
   optionalEffects:
     list: []
+  sfxType: 1
   applyable: {fileID: 0}
   targetable: {fileID: 0}
   equipable: {fileID: 0}

@@ -51,6 +51,9 @@ public class InventoryScreen : RogueUIPanel
 
     public override void OnActivation()
     {
+        
+        AudioManager.i.Pause();
+        
         //Clear old items
         displayed.Clear();
         for (int i = holdingPanel.childCount - 1; i >= 0; i--)
@@ -269,7 +272,7 @@ public class InventoryScreen : RogueUIPanel
 
     public override void OnDeactivation()
     {
-
+        AudioManager.i.UnPause();
     }
 
     public override void OnFocus()

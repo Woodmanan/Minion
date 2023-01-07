@@ -6,23 +6,35 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager i;
     private static FMOD.Studio.EventInstance Music;
-    public int level = 1;
-    
+    private int level = 0;
+    public int Level {
+        get { return level; }
+        set {
+            StopMusic();
+            level = value;
+            StartMusic(level);
+        }
+    }
 
     void Awake()
      {
-         if(i != null)
-            GameObject.Destroy(i);
-         else
+         if(i != null) {
+            GameObject.Destroy(this);
+         }
+         else {
             i = this;
 
-         DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this);
+         }
+
      }
 
     // Start is called before the first frame update
     void Start()
     {
-        StartMusic(2);
+        StartMusic(level);
+
+        pause = FMODUnity.RuntimeManager.CreateInstance("snapshot:/Pause");
     }
 
     // Update is called once per frame
@@ -41,56 +53,197 @@ public class AudioManager : MonoBehaviour
     }
 
     public void StartMusic(int levelNum) {
-        level = levelNum;
+        StopMusic();
         //switch music using level variable
+        UpdateMusic(false);
         string eventString;
-        switch(level)
+        switch(levelNum)
         { 
+            case 0:
+                eventString = "event:/Music/Main Menu";
+                break;
             case 1:
-                eventString = "event:/Music/Level 1 Music";
+                eventString = "event:/Music/Dungeon Music";
                 break;
             case 2:
                 eventString = "event:/Music/Forest Music";
                 break;
             case 3:
-                eventString = "event:/Music/Level 3 Music";
+                eventString = "event:/Music/Tower Music";
                 break;
             case 4:
-                eventString = "event:/Music/Level 3 Music";
+                eventString = "event:/Music/Dungeon Boss Music";
+                break;
+            case 5:
+                eventString = "event:/Music/Dungeon Boss Music";
+                break;
+            case 6:
+                eventString = "event:/Music/Tower Music 2";
                 break;
             default:
-                eventString = "event:/Music/Level 1 Music";
+                eventString = "event:/Music/Dungeon Music";
                 break;
         }
         Music = FMODUnity.RuntimeManager.CreateInstance(eventString);
         Music.start();
     }
 
+    public void StartBossMusic() {
+        StopMusic();
+        StartMusic(level + 3);
+    }
+
     public void GameOver() {
         StopMusic();
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Game Over");
+        Music.start();
         Music.release();
     }
 
     public void StopMusic() {
-        Music.release();
-        Music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        if(Music.isValid()) {
+            Music.release();
+            Music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     //UI SFX
+
+    public FMOD.Studio.EventInstance pause;
+    int pauseLayers = 0;
+
+    public void Pause() {
+        if(pauseLayers == 0) {
+            pause.start();
+        }
+        pauseLayers++;
+    }
+
+    public void UnPause() {
+        pauseLayers--;
+        if(pause.isValid() && pauseLayers == 0) {
+            pause.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+    
+    public void UISelect() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Select");
+    }
 
     public void UIMouseover() {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Mouseover");
     }
 
-    public void UISelect() {
+    public void UIStart() {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UI/Start");
     }
 
     //Player SFX
 
     public void Footstep() {
-        Debug.Log("i take a stepi");
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Footstep");
     }
+
+    public void HealthUp(float totalHealth, float healthAdded) {
+        FMOD.Studio.EventInstance healthUp = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Health Up");
+        healthUp.setParameterByName("Health", totalHealth);
+        healthUp.setParameterByName("healthAdded", healthAdded);
+        healthUp.start();
+        healthUp.release();
+    }
+
+    public async void TakeDamage(float damage, Transform t) {
+        FMOD.Studio.EventInstance takeDamage = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Player/Take Damage");
+        takeDamage.setParameterByName("AttackDamage", damage);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(takeDamage, t);
+        takeDamage.start();
+        takeDamage.release();
+    }
+
+    public void Staircase() {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Stairs");
+    }
+    
+    //Weapon SFX
+
+    public async void SwordAttack(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Sword Attack", t.position);
+    }
+
+    public void BowAttack(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Bow Attack", t.position);
+    }
+
+    public void WoodenShield(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Wooden Shield", t.position);
+    }
+
+    public void MetalShield(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Metal Shield", t.position);
+    }
+
+    public void FireLayer(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Items/Fire Layer", t.position);
+    }
+
+    //Monster SFX
+
+    public void EnemyDeath(Transform t) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Death", t.position);
+    }
+
+    public void BigSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Attack", transform.position);
+    } 
+
+    public void BigSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Damage", transform.position);
+    } 
+
+    public void BigSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Big Slime/Split", transform.position);
+    } 
+
+    public void MedSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Attack", transform.position);
+    } 
+
+    public void MedSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Damage", transform.position);
+    } 
+
+    public void MedSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Med Slime/Split", transform.position);
+    } 
+
+    public void SmallSlimeAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Attack", transform.position);
+    } 
+
+    public void SmallSlimeDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Damage", transform.position);
+    } 
+
+    public void SmallSlimeSplit(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Small Slime/Split", transform.position);
+    } 
+
+    public void GoblinAttack(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Attack", transform.position);
+    }
+
+    public void GoblinDamage(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Damage", transform.position);
+    }
+
+    public void GoblinDeath(Transform transform) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemies/Goblin/Death", transform.position);
+    }
+
+    public bool IsPlaying(FMOD.Studio.EventInstance instance) {
+        FMOD.Studio.PLAYBACK_STATE state;   
+        instance.getPlaybackState(out state);
+        return state != FMOD.Studio.PLAYBACK_STATE.STOPPED;
+    }
+
 }

@@ -41,7 +41,8 @@ MonoBehaviour:
       health: 0
       mana: 1
       stamina: 0
-    cooldown: 4
+      xp: 0
+    cooldown: 6
     power: 2
   castQuery:
     outOf: 6
@@ -81,6 +82,7 @@ MonoBehaviour:
       health: 0
       mana: 0
       stamina: 0
+      xp: 0
     cooldown: 0
     power: 0
   currentCooldown: 0

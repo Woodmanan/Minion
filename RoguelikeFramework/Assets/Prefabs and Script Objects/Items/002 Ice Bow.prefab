@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -521381110006258880, guid: 488385d6e187b9c48859995ffd74bdb1, type: 3}
-  m_Color: {r: 0, g: 0.94946814, b: 1, a: 1}
+  m_Sprite: {fileID: -8168679790708384447, guid: c860d1e4d76979949b91361a0fc8bd35, type: 3}
+  m_Color: {r: 0, g: 0.76707935, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,12 +99,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 0
   type: 2
-  minDepth: 0
-  maxDepth: 4
+  minDepth: 3
+  maxDepth: 8
   elevatesTo: 0
   ID: 2
   stackable: 0
-  color: {r: 0, g: 0.94946814, b: 1, a: 1}
+  color: {r: 0, g: 0.76707935, b: 1, a: 1}
   location: {x: 0, y: 0}
   held: 0
   name: Ice Bow
@@ -114,26 +114,28 @@ MonoBehaviour:
   CanTarget: 0
   CanMelee: 0
   CanRanged: 0
+  seen: 0
   effects:
     list: []
   optionalEffects:
     list: []
+  sfxType: 2
   applyable: {fileID: 0}
   targetable: {fileID: 0}
   equipable: {fileID: 0}
   melee: {fileID: 0}
   ranged: {fileID: 0}
   uniqueID: ufpxllhc
-  description: It is a common tale amongst the uneducated that there was local artificer's
-    apprentice whose magical implements kept overheating long ago. Instead of learning
-    how to improve their magical circuitry, they developed an engravement for absorbing
-    all heat. Naturally, the second thing they did was weaponize this. Of course,
-    this is false. The apprentice merely found the work of some faraway tribes in
-    a hot desert, where this type of bow is very effective. Their origins matter
-    less than their capabilities, really. The geniuses truly responsible for this
-    created a weapon that would imbue basic arrows with effects as if someone had
-    engraved the arrows themselves. They are impractical in cold places, but I doubt
-    that will be a problem.
+  description: It is a common tale amongst the uneducated that there existed a local
+    artificer's apprentice whose magical implements kept overheating long ago. Instead
+    of learning how to improve their magical circuitry, they developed an engravement
+    for absorbing all heat. Naturally, the second thing they did was weaponize this.
+    Of course, this is false. The apprentice merely found the work of some faraway
+    tribes in a hot desert, where this type of bow is very effective. Their origins
+    matter less than their capabilities, really. The geniuses truly responsible for
+    this created a weapon that would imbue basic arrows with effects as if someone
+    had engraved the arrows themselves. They are impractical in cold places, but
+    I doubt that will be a problem.
 --- !u!114 &4889488825457435892
 MonoBehaviour:
   m_ObjectHideFlags: 0

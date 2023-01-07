@@ -7,10 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : Monster
 {
-    public RexRoom testRoom;
-
-    //UI Stuff!
-    [SerializeField] UIController uiControls;
+    [HideInInspector] public Item NewItemInSight = null;
 
     private static Monster _player;
     public static Monster player
@@ -19,7 +16,14 @@ public class Player : Monster
         {
             if (_player == null)
             {
-                _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+                try
+                {
+                    _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+                }
+                catch
+                {
+                    Debug.LogWarning("Effect chunk called on player before they could be found.");
+                }
             }
             return _player;
         }
@@ -33,19 +37,32 @@ public class Player : Monster
     public override void Start()
     {
         base.Start();
+        Setup();
         player = this;
+        Player.player.connections.OnTurnStartLocal.AddListener(1000, OnTurnStart);
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
     }
 
     //Special case, because it affects the world around it through the player's view.
     public override void UpdateLOS()
     {
         view = LOS.GeneratePlayerLOS(Map.current, location, visionRadius);
+        NewItemInSight = null;
+        foreach (Item i in view.visibleItems)
+        {
+            if (i.seen == false)
+            {
+                i.seen = true;
+                LogManager.S.Log("You see a " + i.GetName() + ".");
+                NewItemInSight = i;
+            }
+        }
+
     }
  
     public override int XPTillNextLevel()
@@ -61,11 +78,17 @@ public class Player : Monster
 
     public override void Die()
     {
-        base.Die();
+        Remove();
         if (resources.health <= 0)
         {
             Debug.Log("Game over!");
+            AudioManager.i.GameOver();
             SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
         }
+    }
+
+    public void OnTurnStart()
+    {
+
     }
 }

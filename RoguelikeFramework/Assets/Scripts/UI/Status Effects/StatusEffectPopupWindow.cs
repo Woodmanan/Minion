@@ -36,9 +36,9 @@ public class StatusEffectPopupWindow : MonoBehaviour
     {
         if (effect)
         {
-            nameBox.text = effect.name;
-            turnsRemainingBox.text = effect.name;   // Should be turns remaining instead
-            descriptionBox.text = effect.description;
+            nameBox.text = effect.GetDisplayName();
+            turnsRemainingBox.text = effect.GetDisplayInfo().subDisplayText;
+            descriptionBox.text = effect.GetDisplayDescription();
         }
     }
 }

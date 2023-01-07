@@ -8,11 +8,19 @@ public class StatusEffectUIChunk : MonoBehaviour, IPointerEnterHandler, IPointer
 {
     public Effect statusEffect;
     public Image statusEffectImage;
+    private EffectDisplayInfo info;
+    public StatusImageListObject imageListObject;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (statusEffect.statusIcon) statusEffectImage.sprite = statusEffect.statusIcon;
+        info = statusEffect.GetDisplayInfo();
+        if (info == null) Destroy(gameObject);
+        else
+        {
+            statusEffectImage.sprite = imageListObject.statusSprites[info.imageID];
+            Player.player.connections.OnTurnStartLocal.AddListener(1000, UpdateMe);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -25,5 +33,16 @@ public class StatusEffectUIChunk : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         StatusEffectPopupWindow.singleton.effect = null;
         StatusEffectPopupWindow.singleton.group.alpha = 0;
+    }
+
+    private void UpdateMe()
+    {
+        info = statusEffect.GetDisplayInfo();
+        statusEffectImage.sprite = imageListObject.statusSprites[info.imageID];
+    }
+
+    private void OnDestroy()
+    {
+        Player.player.connections.OnTurnStartLocal.RemoveListener(UpdateMe);
     }
 }
